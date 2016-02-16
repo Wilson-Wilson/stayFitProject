@@ -5,7 +5,8 @@ import java.awt.*;
 public class LoginPanel extends JPanel {
 
     public LoginPanel() {
-        this.setBackground(Color.blue);
+        //this.setBackground(Color.blue);
+        this.setOpaque(false);
     }
 
 }
