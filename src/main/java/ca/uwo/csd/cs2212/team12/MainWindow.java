@@ -1,6 +1,10 @@
 package ca.uwo.csd.cs2212.team12;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.lang.Object;
+import java.util.logging.LogManager;
 
 public class MainWindow extends JFrame {
     private JTextField txtName;
@@ -8,6 +12,8 @@ public class MainWindow extends JFrame {
     private JRadioButton radBachelors;
     private JRadioButton radMasters;
     private JRadioButton radPhd;
+
+    private JLayeredPane mainPanel;
 
     public MainWindow() {
         this.initUI();
@@ -20,7 +26,9 @@ public class MainWindow extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.setLayout(new BorderLayout());
-        this.add(new LoginPanel(), BorderLayout.CENTER);
+        this.add(new BackgroundPanel(), BorderLayout.CENTER);
+        //JLabel background = new JLabel();
+        //background.setIcon(backgroundImageIcon);
     }
 
     /**
