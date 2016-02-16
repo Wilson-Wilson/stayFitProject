@@ -7,11 +7,6 @@ import java.lang.Object;
 import java.util.logging.LogManager;
 
 public class MainWindow extends JFrame {
-    private JTextField txtName;
-    private JLabel lblGreeting;
-    private JRadioButton radBachelors;
-    private JRadioButton radMasters;
-    private JRadioButton radPhd;
 
     private JLayeredPane mainPanel;
 
