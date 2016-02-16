@@ -8,7 +8,7 @@ import java.util.logging.LogManager;
 
 public class MainWindow extends JFrame {
 
-    private JLayeredPane mainPanel;
+    private JPanel mainPanel;
 
     public MainWindow() {
         this.initUI();
@@ -21,9 +21,11 @@ public class MainWindow extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.setLayout(new BorderLayout());
-        this.add(new BackgroundPanel(), BorderLayout.CENTER);
+        this.mainPanel = new BackgroundPanel();
+        this.add(this.mainPanel, BorderLayout.CENTER);
         //JLabel background = new JLabel();
         //background.setIcon(backgroundImageIcon);
+        this.presentPanel(new LoginPanel());
     }
 
     /**
@@ -31,8 +33,8 @@ public class MainWindow extends JFrame {
      * @param panel
      */
     public void presentPanel(JPanel panel) {
-        this.removeAll();
-        this.add(panel, BorderLayout.CENTER);
+        this.mainPanel.removeAll();
+        this.mainPanel.add(panel, BorderLayout.CENTER);
     }
 
 }

@@ -6,6 +6,7 @@ public class LoginPanel extends JPanel {
 
     public LoginPanel() {
         //this.setBackground(Color.blue);
+        this.setOpaque(false);
     }
 
 }

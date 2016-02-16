@@ -12,6 +12,7 @@ public class BackgroundPanel extends JPanel {
     private BufferedImage backgroundImage;
 
     public BackgroundPanel() {
+        this.setLayout(new BorderLayout());
         try {
             this.backgroundImage = ImageIO.read(ClassLoader.getSystemResource("BackgroundImage.png"));
         } catch (Exception e) {
