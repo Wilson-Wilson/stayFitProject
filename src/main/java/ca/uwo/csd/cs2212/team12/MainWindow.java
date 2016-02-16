@@ -23,7 +23,10 @@ public class MainWindow extends JFrame {
         this.add(new LoginPanel(), BorderLayout.CENTER);
     }
 
-    /* Replaces the panel currently being shown in MainWindow and replaces it with a new one. */
+    /**
+     * Replaces the panel currently being shown in MainWindow and replaces it with a new one.
+     * @param panel
+     */
     public void presentPanel(JPanel panel) {
         this.removeAll();
         this.add(panel, BorderLayout.CENTER);
