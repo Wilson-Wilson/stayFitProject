@@ -21,7 +21,11 @@ public class MainWindow extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.setLayout(new BorderLayout());
-        this.mainPanel = new BackgroundPanel();
+        try {
+            this.mainPanel = new BackgroundPanel(new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("BackgroundImage.png"))));
+        } catch (Exception e) {
+            LogManager.getLogManager().getLogger(App.class.getName()).warning(e.getMessage());
+        }
         this.add(this.mainPanel, BorderLayout.CENTER);
         //JLabel background = new JLabel();
         //background.setIcon(backgroundImageIcon);

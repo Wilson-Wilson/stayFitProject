@@ -1,6 +1,5 @@
 package ca.uwo.csd.cs2212.team12;
 import javax.imageio.ImageIO;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -8,21 +7,27 @@ import java.lang.Object;
 import java.util.logging.LogManager;
 
 public class BackgroundPanel extends JPanel {
+    ImageIcon backImage;
 
-    private BufferedImage backgroundImage;
-
-    public BackgroundPanel() {
-        this.setLayout(new BorderLayout());
-        try {
-            this.backgroundImage = ImageIO.read(ClassLoader.getSystemResource("BackgroundImage.png"));
-        } catch (Exception e) {
-            LogManager.getLogManager().getLogger(App.class.getName()).warning(e.getMessage());
-        }
+    public BackgroundPanel(ImageIcon backImage) {
+        this.backImage = backImage;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+        BufferedImage scaledImage = getScaledImage();
         super.paintComponent(g);
-        g.drawImage(this.backgroundImage.getScaledInstance(950, -1, Image.SCALE_SMOOTH), 0, 0, this);
+        g.drawImage(scaledImage, 0, 0, null);
+    //    g.draw3DRect(20, 20, 100, 50, true);
+    //	 g.fill3DRect(20, 20, 100, 50, true);
+    }
+
+    private BufferedImage getScaledImage(){
+        BufferedImage image = new BufferedImage(getWidth(),getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = (Graphics2D) image.createGraphics();
+        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY));
+        g2d.drawImage(backImage.getImage(), 0, 0,getWidth(),getHeight(), null);
+
+        return image;
     }
 }
