@@ -1,4 +1,6 @@
+package ca.uwo.csd.cs2212.team12;
 import java.awt.EventQueue;
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,33 +9,32 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.CardLayout;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
 
 public class DashBoard {
+	public JFrame frame;
 
-	private JFrame frame;
-	
-	
-	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("C:/Users/Jodi-Marie/Pictures/Saved Pictures/background.jpg");
-	ImageIcon caloriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png");
-	ImageIcon minutesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\TimeIcon2.png");
-	ImageIcon movementIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\RunningIcon2.png");
-	ImageIcon lifetimeIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\StarIcon2.png");
-	ImageIcon timeseriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BarGraphIcon2.png");
-	ImageIcon bestdayIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BlueStarIcon2.png");
-	ImageIcon exitIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\closebutton2.png");
-	ImageIcon rightarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\rightArrow2.png");
-	ImageIcon leftarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\leftArrow2.png");
-	ImageIcon trophyIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy.png");
-	ImageIcon cardIcon =new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\dash.png");
+	ImageIcon backImage;
+	ImageIcon caloriesIcon;
+	ImageIcon minutesIcon;
+	ImageIcon movementIcon;
+	ImageIcon lifetimeIcon;
+	ImageIcon timeseriesIcon;
+	ImageIcon bestdayIcon;
+	ImageIcon exitIcon;
+	ImageIcon rightarrowIcon;
+	ImageIcon leftarrowIcon;
+	ImageIcon trophyIcon;
+	ImageIcon cardIcon;
 	
 	/**
 	 * Launch the application.
+	 * App.java should handle running the application, so we should use that instead of the commented code below.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -45,12 +46,26 @@ public class DashBoard {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the application.
 	 */
-	public DashBoard() {
+	public DashBoard() throws IOException {
+		//We'll need a special method responsible for caching resources like images.
+		this.backImage = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("BackgroundImage.png")));
+		this.caloriesIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("FireIcon.png")));
+		this.minutesIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("TimeIcon.png")));
+		this.movementIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("RunningIcon.png")));
+		this.lifetimeIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("StarIcon.png")));
+		this.timeseriesIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("BarGraphIcon.png")));
+		this.bestdayIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("BlueStarIcon.png")));
+		this.exitIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("CloseIcon.png")));
+		this.rightarrowIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("RightArrow.png")));
+		this.leftarrowIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("LeftArrow.png")));
+		this.trophyIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("Trophy.png")));
+		this.cardIcon = new ImageIcon(ImageIO.read(ClassLoader.getSystemResource("DashboardCard.png")));
+
 		initialize();
 	}
 
@@ -74,7 +89,7 @@ public class DashBoard {
 		BackgroundPanel dashPanel = new BackgroundPanel(backImage);
 		dashPanel.setBackground(new Color(0, 128, 0));
 		panel_3.add(dashPanel, "2");
-		JPanel cardPanel = new JPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+		final JPanel cardPanel = new JPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 		cardPanel.setOpaque(false);
 		cardPanel.setBounds(new Rectangle(200, 200, 200, 200));
 		dashPanel.setLayout(new BorderLayout(0, 0));
@@ -87,7 +102,7 @@ public class DashBoard {
 		/*Calories card*/
 		
 		//Calories Button		 
-		 JButton caloriesButton = new JButton("");
+		 final JButton caloriesButton = new JButton("");
 		 caloriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 caloriesButton.setBorder(null);
 		 caloriesButton.setContentAreaFilled(false);
@@ -121,7 +136,8 @@ public class DashBoard {
 		 JPanel pl= new JPanel();
 		 pl.setForeground(new Color(255, 255, 255));
 		 pl.setOpaque(false);
-		 pl.setLayout(new MigLayout("", "[][][][209.00px][119.00px]", "[][][36px]"));
+		// pl.setLayout(new MigLayout("", "[][][][209.00px][119.00px]", "[][][36px]"));
+		 pl.setLayout(new GridLayout(0, 2, 0, 0));
 		 caloriesButton.add(pl,BorderLayout.NORTH);
 		 
 		 //exit button for the calories card
@@ -168,7 +184,7 @@ public class DashBoard {
 		 /*Minutes card*/
 		 
 		 //Minutes Button
-		 JButton minutesButton = new JButton("");
+		 final JButton minutesButton = new JButton("");
 		 minutesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 minutesButton.setContentAreaFilled(false);
 		 minutesButton.setOpaque(false);
@@ -197,7 +213,8 @@ public class DashBoard {
 		 JPanel pl2= new JPanel();
 		 pl2.setOpaque(false);
 		 pl2.setForeground(new Color(255, 255, 255));
-		 pl2.setLayout(new MigLayout("", "[][][103.00px,grow]", "[][][][grow][][30px]"));
+		 //pl2.setLayout(new MigLayout("", "[][][103.00px,grow]", "[][][][grow][][30px]"));
+		 pl2.setLayout(new GridLayout(0, 2, 0, 0));
 		 pl2.setForeground(new Color(255, 255, 255));
 		 minutesButton.add(pl2,BorderLayout.NORTH);
 		 cardPanel.add(minutesButton);//adding it to the cardpanel
@@ -235,7 +252,7 @@ public class DashBoard {
 		 /*Movement card */
 		 
 		 //Movement Button
-		 JButton movementButton = new JButton("");
+		 final JButton movementButton = new JButton("");
 		 movementButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 movementButton.setContentAreaFilled(false);
 		 movementButton.setBorder(null);
@@ -264,7 +281,8 @@ public class DashBoard {
 		 JPanel pl3= new JPanel();
 		 pl3.setOpaque(false);
 		 movementButton.add(pl3, BorderLayout.NORTH);
-		 pl3.setLayout(new MigLayout("", "[219.00][][54.00][67.00px]", "[][][][][][][30px]"));
+		 //pl3.setLayout(new MigLayout("", "[219.00][][54.00][67.00px]", "[][][][][][][30px]"));
+		 pl3.setLayout(new GridLayout(0, 2, 0, 0));
 		 
 		 //the label for the title of the movements card
 		 JLabel lblMovements = new JLabel("Movements");
@@ -299,7 +317,7 @@ public class DashBoard {
 		 
 		 
 		 //Lifetime button
-		 JButton lifetimeButton = new JButton("");
+		 final JButton lifetimeButton = new JButton("");
 		 lifetimeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 lifetimeButton.setContentAreaFilled(false);
 		 lifetimeButton.setBorder(null);
@@ -354,7 +372,8 @@ public class DashBoard {
 		        });
 			 lifeExit.setIcon(exitIcon);
 			 lifeExit.setBorder(null);
-			 pl4.setLayout(new MigLayout("", "[251.00px][114.00px]", "[30px]"));
+			 //pl4.setLayout(new MigLayout("", "[251.00px][114.00px]", "[30px]"));
+		     pl4.setLayout(new GridLayout(0, 2, 0, 0));
 			 pl4.add(lblLifetime_1, "cell 0 0,alignx left,aligny top");
 			 pl4.add(lifeExit, "cell 1 0,alignx right,aligny top");
 			 cardPanel.add(lifetimeButton);;
@@ -362,7 +381,7 @@ public class DashBoard {
 			 /*Time Series card*/
 			 
 			 //Time Series button
-			 JButton timeseriesButton = new JButton("");
+			 final JButton timeseriesButton = new JButton("");
 			 timeseriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			 timeseriesButton.setContentAreaFilled(false);
 			 timeseriesButton.setBorder(null);
@@ -393,7 +412,8 @@ public class DashBoard {
 			 pl5.setForeground(new Color(255, 255, 255));
 			
 			 timeseriesButton.add(pl5,BorderLayout.NORTH);
-			 pl5.setLayout(new MigLayout("", "[188.00][95.00px]", "[][][30px]"));
+			 //pl5.setLayout(new MigLayout("", "[188.00][95.00px]", "[][][30px]"));
+		     pl5.setLayout(new GridLayout(0, 2, 0, 0));
 			
 			//the label for the title of the time series card
 			JLabel lblTimeSeries = new JLabel("Time Series");
@@ -426,7 +446,7 @@ public class DashBoard {
 			 
 			 //Best Days button
 			 
-			 JButton bestdayButton = new JButton("");
+			 final JButton bestdayButton = new JButton("");
 			 bestdayButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			 bestdayButton.setContentAreaFilled(false);
 			 bestdayButton.setBorder(null);
@@ -455,8 +475,9 @@ public class DashBoard {
 			 pl6.setFont(new Font("Verdana", Font.BOLD, 13));
 			 pl6.setForeground(new Color(255, 255, 255));
 			 bestdayButton.add(pl6,BorderLayout.NORTH);
-			 pl6.setLayout(new MigLayout("", "[195.00][][61.00][107px]", "[][][][][][][30px]"));
-			 
+			 //pl6.setLayout(new MigLayout("", "[195.00][][61.00][107px]", "[][][][][][][30px]"));
+		     pl6.setLayout(new GridLayout(0, 2, 0, 0));
+
 			//the label for the title of the best days card
 			 JLabel lblBestDays_1 = new JLabel("Best Days");
 			 lblBestDays_1.setFont(new Font("Verdana", Font.BOLD, 13));
