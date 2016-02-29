@@ -1,6 +1,12 @@
-public class UserInfo {
+import java.io.Serializable;
+
+public class UserInfo implements Serializable {
+
+	private static final long serialVersionUID= 1L;
+	private static final String FILENAME= "userinfo.boop";
 
 	private String userName;
+	private Preferences userPrefs;
 
 	private int calLife;
 	private int distanceLife;
@@ -9,8 +15,11 @@ public class UserInfo {
 	private int actMinsLife;
 	private int sedMinsLife;
 
-	public UserInfo(String name, int cal, int distance, int floors, int steps, int actMin, int sedMin){
+	//Constructor for UserInfo with params
+
+	public UserInfo(String name, Preferences pref, int cal, int distance, int floors, int steps, int actMin, int sedMin){
 		userName= name;
+		userPrefs= pref;
 		calLife= cal;
 		distanceLife= distance;
 		floorsLife= floors;
@@ -19,8 +28,10 @@ public class UserInfo {
 		sedMinsLife= sedMin;
 	}
 
+//Constructor for UserInfo without params
 	public UserInfo(){
 		userName= null;
+		userPrefs= null;
 		calLife= 0;
 		distanceLife= 0;
 		floorsLife= 0;
@@ -28,6 +39,33 @@ public class UserInfo {
 		actMinsLife= 0;
 		sedMinsLife= 0;
 	}
+
+	//The following methods are used to persist UserInfo object between runs
+
+	private static void storeUser(){
+		try{
+			ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
+			out.writeObject(this);
+			out.close();
+				} catch(IOException e){
+						System.out.println("User could not be saved to disk. IO error occured.");
+						e.printStackTrace();
+					}
+
+		}
+
+
+	private static void loadUser(){
+		try{
+			ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
+			UserInfo user= (UserInfo) in.readObject();
+
+			in.close();
+				} catch (IOException e){
+						System.out.println("User could not be loaded from disk. IO error occured.");
+						e.printStackTrace;
+					}
+		}
 
 
 	/**
