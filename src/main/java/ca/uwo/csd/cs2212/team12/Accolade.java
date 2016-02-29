@@ -8,7 +8,6 @@ public class Accolade implements Serializable{
 	private ImageIcon accoIcon;
 	private boolean userObtained;
 
-
 	public Accolade(int id, String type, int thresh, ImageIcon icon, boolean userObt ){
 
 		accoID= id;

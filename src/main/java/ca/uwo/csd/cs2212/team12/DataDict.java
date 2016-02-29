@@ -7,7 +7,7 @@ import java.util.ArrayList;
   //We may need to change our collection object to a more efficient one if we decide to store many days at a time
 
   private static final long serialVersionUID= 1L;
-  private static final String FILENAME= "userdata.dict";
+  private static final String FILENAME= "dailydata.boop";
 
 public class DataDict implements Serializable{
 
