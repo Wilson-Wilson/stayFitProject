@@ -1,5 +1,3 @@
-
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
@@ -9,7 +7,7 @@ public class AccoDict implements Serializable {
   private List<Accolade> accoList;
 
   private static final long serialVersionUID= 1L;
-  private static final String FILENAME= "accolades.dict";
+  private static final String FILENAME= "accolades.boop";
 
   public AccoDict(){
     accoList= new ArrayList<Accolade>();
@@ -19,19 +17,9 @@ public class AccoDict implements Serializable {
     if(this.get(accoID).userObtained == true){
       return true;
     }
+
     return false;
   }
-
-
-
-
-
-
-
-
-
-
-
 
 
   //The following methods are used to persist AccoDict object between runs
@@ -52,7 +40,7 @@ public class AccoDict implements Serializable {
   private static void loadAccolades(){
     try{
       ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
-      DataEntry data= (DataEntry) in.readObject();
+      AccoDict accoList= (AccoDict) in.readObject();
 
       in.close();
         } catch (IOException e){
