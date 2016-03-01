@@ -160,6 +160,8 @@ public class OpenCardListener extends JPanel{
 		trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		trophyButton.setBorder(null);
+		trophyButton.setBorderPainted(false);
+
 		trophyButton.setIcon(new ImageIcon("../src/main/resources/Trophy2.png"));
 
 		JButton btnJodimarie = new JButton("Jodi-Marie");
@@ -167,11 +169,13 @@ public class OpenCardListener extends JPanel{
 		btnJodimarie.setForeground(new Color(255, 255, 255));
 		btnJodimarie.setContentAreaFilled(false);
 		btnJodimarie.setBorder(null);
+		btnJodimarie.setBorderPainted(false);
 
 		JButton timeseriesButton = new JButton("");
 		timeseriesButton.setContentAreaFilled(false);
 		timeseriesButton.setIcon(new ImageIcon("../src/main/resources/BarGraphIcon2.png"));
 		timeseriesButton.setBorder(null);
+		timeseriesButton.setBorderPainted(false);
 		timeseriesButton.addActionListener(new ActionListener() {
 
             @Override
@@ -188,6 +192,8 @@ public class OpenCardListener extends JPanel{
 		bestButton.setBorder(null);
 		bestButton.setIcon(new ImageIcon("../src/main/resources/BlueStarIcon2.png"));
 		bestButton.setContentAreaFilled(false);
+		btnJodimarie.setBorder(null);
+		btnJodimarie.setBorderPainted(false);
 		bestButton.addActionListener(new ActionListener() {
 
             @Override
@@ -205,6 +211,7 @@ public class OpenCardListener extends JPanel{
 		caloriesButton.setIcon(new ImageIcon("../src/main/resources/FireIcon2.png"));
 		caloriesButton.setContentAreaFilled(false);
 		caloriesButton.setBorder(null);
+		caloriesButton.setBorderPainted(false);
 		caloriesButton.addActionListener(new ActionListener() {
 
             @Override
@@ -219,6 +226,7 @@ public class OpenCardListener extends JPanel{
 		JButton movementButton = new JButton("");
 		movementButton.setContentAreaFilled(false);
 		movementButton.setBorder(null);
+		movementButton.setBorderPainted(false);
 		movementButton.setIcon(new ImageIcon("../src/main/resources/RunningIcon2.png"));
 		movementButton.addActionListener(new ActionListener() {
 
@@ -235,6 +243,7 @@ public class OpenCardListener extends JPanel{
 		JButton minutesButton = new JButton("");
 		minutesButton.setIcon(new ImageIcon("../src/main/resources/TimeIcon2.png"));
 		minutesButton.setBorder(null);
+		minutesButton.setBorderPainted(false);
 		minutesButton.setContentAreaFilled(false);
 		minutesButton.addActionListener(new ActionListener() {
 
@@ -250,6 +259,7 @@ public class OpenCardListener extends JPanel{
 		JButton lifetimeButton = new JButton("");
 		lifetimeButton.setContentAreaFilled(false);
 		lifetimeButton.setBorder(null);
+		lifetimeButton.setBorderPainted(false);
 		lifetimeButton.setIcon(new ImageIcon("../src/main/resources/StarIcon2.png"));
 		lifetimeButton.addActionListener(new ActionListener() {
 
@@ -280,6 +290,7 @@ public class OpenCardListener extends JPanel{
 		homebutton.setContentAreaFilled(false);
 		homebutton.setIcon(new ImageIcon("../src/main/resources/home2.png"));
 		homebutton.setBorder(null);
+		homeButton.setBorderPainted(false);
 		 homebutton .addActionListener(new ActionListener() {
 
 	            @Override
@@ -363,6 +374,7 @@ public class OpenCardListener extends JPanel{
 		JButton button_6 = new JButton("");
 		button_6.setContentAreaFilled(false);
 		button_6.setBorder(null);
+		button_6.setBorderPainted(false);
 		button_6.setOpaque(false);
 		button_6.setIcon(new ImageIcon("../src/main/resources/smallleftarrow.png"));
 		panel_16.add(button_6);
@@ -376,6 +388,7 @@ public class OpenCardListener extends JPanel{
 		JButton button_7 = new JButton("");
 		button_7.setContentAreaFilled(false);
 		button_7.setBorder(null);
+		button_7.setBorderPainted(false);
 		button_7.setIcon(new ImageIcon("../src/main/resources/smallrightarrow.png"));
 		panel_16.add(button_7);
 
