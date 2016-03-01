@@ -25,9 +25,9 @@ public class DataEntry implements Serializable {
 			distanceTravelled= 0;
 			floorsClimbed= 0;
 			stepsTaken= 0;
-			actMinutes= 0;
-			sedMinutes= 0;
-			theDate= null;
+			actMins= 0;
+			sedMins= 0;
+			date= null;
 		}
 
 	/**
