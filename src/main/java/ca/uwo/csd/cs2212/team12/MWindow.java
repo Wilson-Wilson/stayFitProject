@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 
 
@@ -9,19 +10,31 @@ public class MWindow {
 	
 	
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/background.png");
-	ImageIcon caloriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png");
-	ImageIcon minutesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/TimeIcon2.png");
-	ImageIcon movementIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/RunningIcon2.png");
-	ImageIcon lifetimeIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png");
-	ImageIcon timeseriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BarGraphIcon2.png");
-	ImageIcon bestdayIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BlueStarIcon2.png");
-	ImageIcon exitIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/closebutton2.png");
-	ImageIcon rightarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/rightArrow2.png");
-	ImageIcon leftarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/leftArrow2.png");
-	ImageIcon trophyIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy.png");
-	ImageIcon cardIcon =new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/dash.png");
+	ImageIcon backImage = new ImageIcon("C:/Users/Jodi-Marie/Pictures/Saved Pictures/background.jpg");
+	ImageIcon caloriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png");
+	ImageIcon minutesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\TimeIcon2.png");
+	ImageIcon movementIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\RunningIcon2.png");
+	ImageIcon lifetimeIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\StarIcon2.png");
+	ImageIcon timeseriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BarGraphIcon2.png");
+	ImageIcon bestdayIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BlueStarIcon2.png");
+	ImageIcon exitIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\closebutton2.png");
+	ImageIcon rightarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\rightArrow2.png");
+	ImageIcon leftarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\leftArrow2.png");
+	ImageIcon trophyIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy.png");
+	ImageIcon cardIcon =new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\dash.png");
 	
+	/*ImageIcon caloriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\FireIcon2.png");
+	ImageIcon minutesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\TimeIcon2.png");
+	ImageIcon movementIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\RunningIcon2.png");
+	ImageIcon lifetimeIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\StarIcon2.png");
+	ImageIcon timeseriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\BarGraphIcon2.png");
+	ImageIcon bestdayIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\BlueStarIcon2.png");
+	ImageIcon exitIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\closebutton2.png");
+	ImageIcon rightarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\rightArrow2.png");
+	ImageIcon leftarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\leftArrow2.png");
+	ImageIcon trophyIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\Trophy.png");
+	ImageIcon cardIcon =new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\dash.png");
+	*/
 	/**
 	 * Launch the application.
 	 */

@@ -2,6 +2,7 @@
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +28,7 @@ import java.util.Date;
 
 
 
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 
@@ -38,18 +40,18 @@ public class DashBoardPanel extends JPanel {
 	
 	
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/background.jpg");
-	ImageIcon caloriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png");
-	ImageIcon minutesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/TimeIcon2.png");
-	ImageIcon movementIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/RunningIcon2.png");
-	ImageIcon lifetimeIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png");
-	ImageIcon timeseriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BarGraphIcon2.png");
-	ImageIcon bestdayIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BlueStarIcon2.png");
-	ImageIcon exitIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/closebutton2.png");
-	ImageIcon rightarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/rightArrow2.png");
-	ImageIcon leftarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/leftArrow2.png");
-	ImageIcon trophyIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy.png");
-	ImageIcon cardIcon =new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/dash.png");
+	ImageIcon backImage = new ImageIcon("C:/Users/Jodi-Marie/Pictures/Saved Pictures/background.jpg");
+	ImageIcon caloriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png");
+	ImageIcon minutesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\TimeIcon2.png");
+	ImageIcon movementIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\RunningIcon2.png");
+	ImageIcon lifetimeIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\StarIcon2.png");
+	ImageIcon timeseriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BarGraphIcon2.png");
+	ImageIcon bestdayIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BlueStarIcon2.png");
+	ImageIcon exitIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\closebutton2.png");
+	ImageIcon rightarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\rightArrow2.png");
+	ImageIcon leftarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\leftArrow2.png");
+	ImageIcon trophyIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy.png");
+	ImageIcon cardIcon =new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\dash.png");
 	
 	/**
 	 * Launch the application.
@@ -618,7 +620,7 @@ public class DashBoardPanel extends JPanel {
 		trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		trophyButton.setBorder(null);
-		trophyButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy2.png"));
+		trophyButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy2.png"));
 		
 		JButton btnJodimarie = new JButton("Jodi-Marie");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -695,30 +697,28 @@ public class DashBoardPanel extends JPanel {
 		JButton settingsbutton = new JButton("");
 		settingsbutton.setContentAreaFilled(false);
 		settingsbutton.setBorder(null);
-		settingsbutton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Gear-icon2.png"));
+		settingsbutton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Gear-icon2.png"));
 		GroupLayout gl_panel1= new GroupLayout(panel);
 		gl_panel1.setHorizontalGroup(
-		gl_panel1.createParallelGroup(Alignment.TRAILING)
-		.addGroup(gl_panel1.createSequentialGroup()
-		.addContainerGap(292, Short.MAX_VALUE)
-		.addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-		.addPreferredGap(ComponentPlacement.RELATED)
-		.addComponent(settingsbutton)
-		.addPreferredGap(ComponentPlacement.RELATED)
-		.addComponent(trophyButton))
+			gl_panel1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel1.createSequentialGroup()
+					.addContainerGap(292, Short.MAX_VALUE)
+					.addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(settingsbutton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(trophyButton))
 		);
 		gl_panel1.setVerticalGroup(
-		gl_panel1.createParallelGroup(Alignment.LEADING)
-		.addGroup(gl_panel1.createSequentialGroup()
-		.addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
-		.addComponent(settingsbutton)
-		.addComponent(trophyButton)
-		.addComponent(btnJodimarie, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-		.addContainerGap())
+			gl_panel1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel1.createSequentialGroup()
+					.addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
+						.addComponent(settingsbutton)
+						.addComponent(trophyButton)
+						.addComponent(btnJodimarie, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		panel.setLayout(gl_panel1);
-
-		
 		
 	}
 

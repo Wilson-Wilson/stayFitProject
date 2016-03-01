@@ -41,55 +41,12 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 public class OpenCardListener extends JPanel{
 
-	private JFrame frame;
-    /** Stroke size. it is recommended to set it to 1 for better view */
-    protected int strokeSize = 1;
-    /** Color of shadow */
-    protected Color shadowColor = Color.black;
-    /** Sets if it drops shadow */
-    protected boolean shady = true;
-    /** Sets if it has an High Quality view */
-    protected boolean highQuality = true;
-    /** Double values for Horizontal and Vertical radius of corner arcs */
-    protected Dimension arcs = new Dimension(20, 20);
-    /** Distance between shadow border and opaque panel border */
-    protected int shadowGap = 5;
-    /** The offset of shadow.  */
-    protected int shadowOffset = 4;
-    /** The transparency value of shadow. ( 0 - 255) */
-    protected int shadowAlpha = 150;
+	
 	
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/background.jpg");
-	ImageIcon caloriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png");
-	ImageIcon minutesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/TimeIcon2.png");
-	ImageIcon movementIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/RunningIcon2.png");
-	ImageIcon lifetimeIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png");
-	ImageIcon timeseriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BarGraphIcon2.png");
-	ImageIcon bestdayIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BlueStarIcon2.png");
-	ImageIcon exitIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/closebutton2.png");
-	ImageIcon rightarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/rightArrow2.png");
-	ImageIcon leftarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/leftArrow2.png");
-	ImageIcon trophyIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy.png");
-	ImageIcon cardIcon =new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/dash.png");
+	ImageIcon backImage = new ImageIcon("C:/Users/Jodi-Marie/Pictures/Saved Pictures/background.jpg");
 	
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CaloriesPanel window = new CaloriesPanel();
-					window.frame.setSize(1000,600);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+	
 	/**
 	 * Create the application.
 	 */
@@ -203,7 +160,7 @@ public class OpenCardListener extends JPanel{
 		trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		trophyButton.setBorder(null);
-		trophyButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy2.png"));
+		trophyButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy2.png"));
 		
 		JButton btnJodimarie = new JButton("Jodi-Marie");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -213,7 +170,7 @@ public class OpenCardListener extends JPanel{
 		
 		JButton timeseriesButton = new JButton("");
 		timeseriesButton.setContentAreaFilled(false);
-		timeseriesButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BarGraphIcon2.png"));
+		timeseriesButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BarGraphIcon2.png"));
 		timeseriesButton.setBorder(null);
 		timeseriesButton.addActionListener(new ActionListener() {
 
@@ -229,7 +186,7 @@ public class OpenCardListener extends JPanel{
 		
 		JButton bestButton = new JButton("");
 		bestButton.setBorder(null);
-		bestButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BlueStarIcon2.png"));
+		bestButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BlueStarIcon2.png"));
 		bestButton.setContentAreaFilled(false);
 		bestButton.addActionListener(new ActionListener() {
 
@@ -245,7 +202,7 @@ public class OpenCardListener extends JPanel{
 		
 		
 		JButton caloriesButton = new JButton("");
-		caloriesButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png"));
+		caloriesButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png"));
 		caloriesButton.setContentAreaFilled(false);
 		caloriesButton.setBorder(null);
 		caloriesButton.addActionListener(new ActionListener() {
@@ -262,7 +219,7 @@ public class OpenCardListener extends JPanel{
 		JButton movementButton = new JButton("");
 		movementButton.setContentAreaFilled(false);
 		movementButton.setBorder(null);
-		movementButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/RunningIcon2.png"));
+		movementButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\RunningIcon2.png"));
 		movementButton.addActionListener(new ActionListener() {
 
             @Override
@@ -276,7 +233,7 @@ public class OpenCardListener extends JPanel{
 		
 		
 		JButton minutesButton = new JButton("");
-		minutesButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/TimeIcon2.png"));
+		minutesButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\TimeIcon2.png"));
 		minutesButton.setBorder(null);
 		minutesButton.setContentAreaFilled(false);
 		minutesButton.addActionListener(new ActionListener() {
@@ -293,13 +250,13 @@ public class OpenCardListener extends JPanel{
 		JButton lifetimeButton = new JButton("");
 		lifetimeButton.setContentAreaFilled(false);
 		lifetimeButton.setBorder(null);
-		lifetimeButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png"));
+		lifetimeButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\StarIcon2.png"));
 		lifetimeButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");	
-            	OpenCardListener opencard = new OpenCardListener(2);
+            	OpenCardListener opencard = new OpenCardListener(4);
         		panel_3.add(opencard,"10") ;	
         		cl.show(panel_3,"10");
             	
@@ -321,7 +278,7 @@ public class OpenCardListener extends JPanel{
 		
 		
 		homebutton.setContentAreaFilled(false);
-		homebutton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/home2.png"));
+		homebutton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\home2.png"));
 		homebutton.setBorder(null);
 		 homebutton .addActionListener(new ActionListener() {
 
@@ -407,7 +364,7 @@ public class OpenCardListener extends JPanel{
 		button_6.setContentAreaFilled(false);
 		button_6.setBorder(null);
 		button_6.setOpaque(false);
-		button_6.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/smallleftarrow.png"));
+		button_6.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\smallleftarrow.png"));
 		panel_16.add(button_6);
 		JLabel lblToday = new JLabel("Today");
 		lblToday.setBackground(new Color(105, 105, 105,180));
@@ -419,7 +376,7 @@ public class OpenCardListener extends JPanel{
 		JButton button_7 = new JButton("");
 		button_7.setContentAreaFilled(false);
 		button_7.setBorder(null);
-		button_7.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/smallrightarrow.png"));
+		button_7.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\smallrightarrow.png"));
 		panel_16.add(button_7);
 		
 		
