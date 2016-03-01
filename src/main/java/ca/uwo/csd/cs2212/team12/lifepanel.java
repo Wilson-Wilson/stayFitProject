@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -31,7 +31,7 @@ import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import java.util.Date;
 
-import net.miginfocom.swing.MigLayout;
+
 
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
@@ -204,7 +204,7 @@ public class lifepanel extends JPanel{
 		lblNewLabel.setHorizontalAlignment(JLabel.LEFT);
 		
 				lblNewLabel.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 128, 0), new Color(0, 255, 0), new Color(255, 250, 250), new Color(210, 105, 30)));
-				lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\StarIcon2.png"));
+				lblNewLabel.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png"));
 				lblNewLabel.setBackground(new Color(128, 128, 128));
 				lblNewLabel.setBorder(new LineBorder(new Color(0, 128, 0), 24, true));
 				
@@ -318,7 +318,7 @@ public class lifepanel extends JPanel{
 		panel_11.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png"));
 		lblNewLabel_1.setBackground(new Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));

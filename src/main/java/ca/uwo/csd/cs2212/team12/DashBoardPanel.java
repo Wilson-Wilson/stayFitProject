@@ -1,6 +1,8 @@
-import java.awt.EventQueue;
+
 
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,11 +14,18 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.CardLayout;
+import java.awt.Font;
 import java.awt.event.*;
 import java.util.Calendar;
 import java.util.Date;
 
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
+
+
+
+
+
+
 
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -29,18 +38,18 @@ public class DashBoardPanel extends JPanel {
 	
 	
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("C:/Users/Jodi-Marie/Pictures/Saved Pictures/background.jpg");
-	ImageIcon caloriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png");
-	ImageIcon minutesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\TimeIcon2.png");
-	ImageIcon movementIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\RunningIcon2.png");
-	ImageIcon lifetimeIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\StarIcon2.png");
-	ImageIcon timeseriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BarGraphIcon2.png");
-	ImageIcon bestdayIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BlueStarIcon2.png");
-	ImageIcon exitIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\closebutton2.png");
-	ImageIcon rightarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\rightArrow2.png");
-	ImageIcon leftarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\leftArrow2.png");
-	ImageIcon trophyIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy.png");
-	ImageIcon cardIcon =new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\dash.png");
+	ImageIcon backImage = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/background.jpg");
+	ImageIcon caloriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png");
+	ImageIcon minutesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/TimeIcon2.png");
+	ImageIcon movementIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/RunningIcon2.png");
+	ImageIcon lifetimeIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png");
+	ImageIcon timeseriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BarGraphIcon2.png");
+	ImageIcon bestdayIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BlueStarIcon2.png");
+	ImageIcon exitIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/closebutton2.png");
+	ImageIcon rightarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/rightArrow2.png");
+	ImageIcon leftarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/leftArrow2.png");
+	ImageIcon trophyIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy.png");
+	ImageIcon cardIcon =new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/dash.png");
 	
 	/**
 	 * Launch the application.
@@ -87,27 +96,6 @@ public class DashBoardPanel extends JPanel {
 		panel_3.add(dashPanel,"1");
 		
 	
-		CaloriesPanel calPanel = new CaloriesPanel();
-		//panel_2.setBackground(new Color(0, 128, 0));
-		panel_3.add(calPanel, "2");
-		
-		MinutesPanel minPanel= new MinutesPanel();
-		panel_3.add(minPanel,"4");
-		
-		MovementPanel movePanel= new MovementPanel();
-		panel_3.add(movePanel,"6");
-		
-		
-		LifetimePanel lifePanel= new LifetimePanel();
-		panel_3.add(lifePanel,"7");
-		
-		
-		TimeSeriesPanel timePanel= new TimeSeriesPanel();
-		panel_3.add(timePanel,"8");
-
-		BestDaysPanel bestPanel= new BestDaysPanel();
-		panel_3.add(bestPanel,"9");
-		
 		
 		JPanel cardPanel = new JPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 		cardPanel.setOpaque(false);
@@ -138,7 +126,7 @@ public class DashBoardPanel extends JPanel {
 	            @Override
 	            public void actionPerformed(ActionEvent ae) {
 	                //cl.show(panel_3,"2");	
-	            	OpenedCard opencard = new OpenedCard(1);
+	            	OpenCardListener opencard = new OpenCardListener(1);
 	        		panel_3.add(opencard,"10") ;	
 	        		cl.show(panel_3,"10");
 	            	
@@ -150,7 +138,6 @@ public class DashBoardPanel extends JPanel {
 		 JPanel pl= new JPanel();
 		 pl.setForeground(new Color(255, 255, 255));
 		 pl.setOpaque(false);
-		 pl.setLayout(new MigLayout("", "[][][][209.00px][119.00px]", "[][][36px]"));
 		 caloriesButton.add(pl,BorderLayout.NORTH);
 		 
 		 //exit button for the calories card
@@ -174,11 +161,28 @@ public class DashBoardPanel extends JPanel {
 		 lblCalories_1.setFont(new Font("Verdana", Font.BOLD, 14));
 		 lblCalories_1.setForeground(new Color(255, 255, 255));
 		 lblCalories_1.setIcon(caloriesIcon);
-		 pl.add(lblCalories_1, "flowy,cell 0 0,alignx right,aligny bottom");
 		 calExit.setContentAreaFilled(false);
 		 calExit.setBorder(null);
 		 calExit.setIcon(exitIcon);
-		 pl.add(calExit, "cell 1 0 4 1,alignx right,aligny top");
+		 GroupLayout gl_pl = new GroupLayout(pl);
+		 gl_pl.setHorizontalGroup(
+		 	gl_pl.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl.createSequentialGroup()
+		 			.addGap(7)
+		 			.addComponent(lblCalories_1, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+		 			.addGap(125)
+		 			.addComponent(calExit, GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE))
+		 );
+		 gl_pl.setVerticalGroup(
+		 	gl_pl.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl.createSequentialGroup()
+		 			.addGap(4)
+		 			.addGroup(gl_pl.createParallelGroup(Alignment.LEADING, false)
+		 				.addComponent(lblCalories_1)
+		 				.addComponent(calExit))
+		 			.addGap(11))
+		 );
+		 pl.setLayout(gl_pl);
 		 calExit. addActionListener(new java.awt.event.ActionListener() {
 	            @Override
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +193,7 @@ public class DashBoardPanel extends JPanel {
 	            }
 	    	         
 	        });
+		
 		
 		 cardPanel.add(caloriesButton);
 		
@@ -212,7 +217,7 @@ public class DashBoardPanel extends JPanel {
 	            
 	            	
 	            	//cl.show(panel_3,"4");	
-	            	OpenedCard opencard = new OpenedCard(2);
+	            	OpenCardListener opencard = new OpenCardListener(2);
 	        		panel_3.add(opencard,"10") ;	
 	        		cl.show(panel_3,"10");
 	            	
@@ -223,18 +228,9 @@ public class DashBoardPanel extends JPanel {
 		 JPanel pl2= new JPanel();
 		 pl2.setOpaque(false);
 		 pl2.setForeground(new Color(255, 255, 255));
-		 pl2.setLayout(new MigLayout("", "[][][103.00px,grow]", "[][][][grow][][30px]"));
 		 pl2.setForeground(new Color(255, 255, 255));
 		 minutesButton.add(pl2,BorderLayout.NORTH);
 		 cardPanel.add(minutesButton);//adding it to the cardpanel
-		 
-		 //the label for the title of the minutes card
-		 JLabel lblMinutes = new JLabel("Minutes");
-		 lblMinutes.setFont(new Font("Verdana", Font.BOLD, 13));
-		 lblMinutes.setForeground(new Color(255, 255, 255));
-		 lblMinutes.setIcon(minutesIcon);
-		 pl2.add(lblMinutes, "cell 0 0,alignx right,aligny top");
-		 
 		 //button for minute exit
 		 JButton minExit = new JButton("");
 		 minExit.addActionListener(new java.awt.event.ActionListener() {
@@ -252,9 +248,32 @@ public class DashBoardPanel extends JPanel {
 		 minExit .setContentAreaFilled(false);
 		 minExit .setBorder(null);
 		 minExit .setIcon(exitIcon);
-		 pl2.add(minExit , "cell 2 0,alignx right,aligny top");
 		 
+		 //the label for the title of the minutes card
+		 JLabel lblMinutes = new JLabel("Minutes");
+		 lblMinutes.setFont(new Font("Verdana", Font.BOLD, 13));
+		 lblMinutes.setForeground(new Color(255, 255, 255));
+		 lblMinutes.setIcon(minutesIcon);
 		 
+		
+		 GroupLayout gl_pl2 = new GroupLayout(pl2);
+		 gl_pl2.setHorizontalGroup(
+		 	gl_pl2.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl2.createSequentialGroup()
+		 			.addGap(7)
+		 			.addComponent(lblMinutes)
+		 			.addGap(130)
+		 			.addComponent(minExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		 );
+		 gl_pl2.setVerticalGroup(
+		 	gl_pl2.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl2.createSequentialGroup()
+		 			.addGap(4)
+		 			.addGroup(gl_pl2.createParallelGroup(Alignment.LEADING)
+		 				.addComponent(lblMinutes)
+		 				.addComponent(minExit)))
+		 );
+		 pl2.setLayout(gl_pl2);
 		 
 		 
 		 
@@ -274,7 +293,7 @@ public class DashBoardPanel extends JPanel {
 	            public void actionPerformed(ActionEvent ae) {
 	           
 	             	//cl.show(panel_3,"6");	
-	            	OpenedCard opencard = new OpenedCard(3);
+	            	OpenCardListener opencard = new OpenCardListener(3);
 	        		panel_3.add(opencard,"10") ;	
 	        		cl.show(panel_3,"10");
 	            	
@@ -285,14 +304,12 @@ public class DashBoardPanel extends JPanel {
 		 JPanel pl3= new JPanel();
 		 pl3.setOpaque(false);
 		 movementButton.add(pl3, BorderLayout.NORTH);
-		 pl3.setLayout(new MigLayout("", "[219.00][][54.00][67.00px]", "[][][][][][][30px]"));
 		 
 		 //the label for the title of the movements card
 		 JLabel lblMovements = new JLabel("Movements");
 		 lblMovements.setForeground(new Color(255, 255, 255));
 		 lblMovements.setFont(new Font("Verdana", Font.BOLD, 13));
 		 lblMovements.setIcon(movementIcon);
-		 pl3.add(lblMovements, "cell 0 0,growx,aligny top");
 		  
 		 
 		 //exit button for movement
@@ -310,7 +327,26 @@ public class DashBoardPanel extends JPanel {
 		 moveExit.setContentAreaFilled(false);
 		 moveExit.setBorder(null);
 		 moveExit.setIcon(exitIcon);
-		 pl3.add(moveExit, "flowy,cell 1 0 3 1,alignx right,aligny top");
+		 GroupLayout gl_pl3 = new GroupLayout(pl3);
+		 gl_pl3.setHorizontalGroup(
+		 	gl_pl3.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl3.createSequentialGroup()
+		 			.addGap(7)
+		 			.addComponent(lblMovements)
+		 			.addGap(115)
+		 			.addComponent(moveExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		 );
+		 gl_pl3.setVerticalGroup(
+		 	gl_pl3.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl3.createSequentialGroup()
+		 			.addGap(4)
+		 			.addGroup(gl_pl3.createParallelGroup(Alignment.LEADING)
+		 				.addComponent(lblMovements)
+		 				.addComponent(moveExit)))
+		 );
+		 pl3.setLayout(gl_pl3);
+		 
+		
 		 
 		
 		 cardPanel.add(movementButton);;
@@ -332,46 +368,60 @@ public class DashBoardPanel extends JPanel {
 		            public void actionPerformed(ActionEvent ae) {
 		            	
 		            	//cl.show(panel_3,"7");	
-		            	OpenedCard opencard = new OpenedCard(4);
+		            	OpenCardListener opencard = new OpenCardListener(4);
 		        		panel_3.add(opencard,"10") ;	
 		        		cl.show(panel_3,"10");
 		            }});
 			 
 			 
 			
-			 
-			//card panel for lifetime 
-			 JPanel pl4= new JPanel();
-			 pl4.setOpaque(false);
-			 pl4.setFont(new Font("Verdana", Font.BOLD, 13));
-			 pl4.setForeground(new Color(255, 255, 255));
-			 lifetimeButton.add(pl4,BorderLayout.NORTH);
-			 
-			//the label for the title of the lifetime card
-			 JLabel lblLifetime_1 = new JLabel("Lifetime");
-			 lblLifetime_1.setForeground(new Color(255, 255, 255));
-			 lblLifetime_1.setFont(new Font("Verdana", Font.BOLD, 13));
-			 lblLifetime_1.setIcon(lifetimeIcon);
-			 
-			 //exit button for lifetime card
-			 JButton lifeExit= new JButton("");
-			 lifeExit.setContentAreaFilled(false);
-			 lifeExit. addActionListener(new java.awt.event.ActionListener() {
-		            @Override
-		            public void actionPerformed(java.awt.event.ActionEvent evt) {
-		            	
-		    	            	 cardPanel.remove(lifetimeButton);
-		    	            	 cardPanel.invalidate();
-		    	            	 //cardPanel.revalidate();
-		    	                 cardPanel.repaint();
-		            }
-		    	         
-		        });
-			 lifeExit.setIcon(exitIcon);
-			 lifeExit.setBorder(null);
-			 pl4.setLayout(new MigLayout("", "[251.00px][114.00px]", "[30px]"));
-			 pl4.add(lblLifetime_1, "cell 0 0,alignx left,aligny top");
-			 pl4.add(lifeExit, "cell 1 0,alignx right,aligny top");
+	   //card panel for lifetime 
+		 JPanel pl4= new JPanel();
+		 pl4.setOpaque(false);
+		 pl4.setFont(new Font("Verdana", Font.BOLD, 13));
+		 pl4.setForeground(new Color(255, 255, 255));
+		 lifetimeButton.add(pl4,BorderLayout.NORTH);
+		 
+		//the label for the title of the lifetime card
+		 JLabel lblLifetime_1 = new JLabel("Lifetime");
+		 lblLifetime_1.setForeground(new Color(255, 255, 255));
+		 lblLifetime_1.setFont(new Font("Verdana", Font.BOLD, 13));
+		 lblLifetime_1.setIcon(lifetimeIcon);
+		 
+		 //exit button for lifetime card
+		 JButton lifeExit= new JButton("");
+		 lifeExit.setContentAreaFilled(false);
+		 lifeExit. addActionListener(new java.awt.event.ActionListener() {
+	            @Override
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	            	
+	    	            	 cardPanel.remove(lifetimeButton);
+	    	            	 cardPanel.invalidate();
+	    	            	 //cardPanel.revalidate();
+	    	                 cardPanel.repaint();
+	            }
+	    	         
+	        });
+		 lifeExit.setIcon(exitIcon);
+		 lifeExit.setBorder(null);
+		 GroupLayout gl_pl4 = new GroupLayout(pl4);
+		 gl_pl4.setHorizontalGroup(
+		 	gl_pl4.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl4.createSequentialGroup()
+		 			.addGap(7)
+		 			.addComponent(lblLifetime_1)
+		 			.addGap(125)
+		 			.addComponent(lifeExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		 );
+		 gl_pl4.setVerticalGroup(
+		 	gl_pl4.createParallelGroup(Alignment.LEADING)
+		 		.addGroup(gl_pl4.createSequentialGroup()
+		 			.addGap(4)
+		 			.addGroup(gl_pl4.createParallelGroup(Alignment.LEADING)
+		 				.addComponent(lblLifetime_1)
+		 				.addComponent(lifeExit)))
+		 );
+		 pl4.setLayout(gl_pl4);
 			 cardPanel.add(lifetimeButton);;
 			 
 			 /*Time Series card*/
@@ -389,12 +439,11 @@ public class DashBoardPanel extends JPanel {
 		            public void actionPerformed(ActionEvent ae) {
 		            
 		            	//cl.show(panel_3,"8");
-		            	OpenedCard opencard = new OpenedCard(5);
+		            	OpenCardListener opencard = new OpenCardListener(5);
 		        		panel_3.add(opencard,"10") ;	
 		        		cl.show(panel_3,"10");
 		            	
 		            }});
-			 
 			 
 			 
 			//card panel for time series
@@ -404,14 +453,12 @@ public class DashBoardPanel extends JPanel {
 			 pl5.setForeground(new Color(255, 255, 255));
 			
 			 timeseriesButton.add(pl5,BorderLayout.NORTH);
-			 pl5.setLayout(new MigLayout("", "[188.00][95.00px]", "[][][30px]"));
 			
 			//the label for the title of the time series card
 			JLabel lblTimeSeries = new JLabel("Time Series");
 			lblTimeSeries.setForeground(Color.WHITE);
 			lblTimeSeries.setFont(new Font("Verdana", Font.BOLD, 13));
 			lblTimeSeries.setIcon(timeseriesIcon);
-			pl5.add(lblTimeSeries, "cell 0 0,alignx left,aligny top");
 			
 			//Exit button for time series card
 			JButton timeExit = new JButton("");
@@ -428,7 +475,24 @@ public class DashBoardPanel extends JPanel {
 			timeExit.setContentAreaFilled(false);
 			timeExit.setIcon(exitIcon);
 			timeExit.setBorder(null);
-			pl5.add(timeExit, "cell 1 0,alignx right,aligny top");
+			GroupLayout gl_pl5 = new GroupLayout(pl5);
+			gl_pl5.setHorizontalGroup(
+				gl_pl5.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_pl5.createSequentialGroup()
+						.addGap(7)
+						.addComponent(lblTimeSeries)
+						.addGap(105)
+						.addComponent(timeExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
+			gl_pl5.setVerticalGroup(
+				gl_pl5.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_pl5.createSequentialGroup()
+						.addGap(4)
+						.addGroup(gl_pl5.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblTimeSeries)
+							.addComponent(timeExit)))
+			);
+			pl5.setLayout(gl_pl5);
 			 
 			 cardPanel.add(timeseriesButton);
 			
@@ -450,7 +514,7 @@ public class DashBoardPanel extends JPanel {
 		            	
 		               	
 		            	//cl.show(panel_3,"9");	
-		            	OpenedCard opencard = new OpenedCard(6);
+		            	OpenCardListener opencard = new OpenCardListener(6);
 		        		panel_3.add(opencard,"10") ;	
 		        		cl.show(panel_3,"10");
 		            	
@@ -462,14 +526,12 @@ public class DashBoardPanel extends JPanel {
 			 pl6.setFont(new Font("Verdana", Font.BOLD, 13));
 			 pl6.setForeground(new Color(255, 255, 255));
 			 bestdayButton.add(pl6,BorderLayout.NORTH);
-			 pl6.setLayout(new MigLayout("", "[195.00][][61.00][107px]", "[][][][][][][30px]"));
 			 
 			//the label for the title of the best days card
 			 JLabel lblBestDays_1 = new JLabel("Best Days");
 			 lblBestDays_1.setFont(new Font("Verdana", Font.BOLD, 13));
 			 lblBestDays_1.setForeground(Color.WHITE);
 			 lblBestDays_1.setIcon(bestdayIcon);
-			 pl6.add(lblBestDays_1, "cell 0 0,alignx left,aligny top");
 			 
 			 //exit button for best days card
 			 JButton bestExit = new JButton("");
@@ -486,7 +548,24 @@ public class DashBoardPanel extends JPanel {
 			 bestExit.setContentAreaFilled(false);
 			 bestExit.setBorder(null);
 			 bestExit.setIcon(exitIcon);
-			 pl6.add(bestExit, "cell 1 0 3 1,alignx right,aligny top");
+			 GroupLayout gl_pl6 = new GroupLayout(pl6);
+			 gl_pl6.setHorizontalGroup(
+			 	gl_pl6.createParallelGroup(Alignment.LEADING)
+			 		.addGroup(gl_pl6.createSequentialGroup()
+			 			.addGap(7)
+			 			.addComponent(lblBestDays_1)
+			 			.addGap(125)
+			 			.addComponent(bestExit))
+			 );
+			 gl_pl6.setVerticalGroup(
+			 	gl_pl6.createParallelGroup(Alignment.LEADING)
+			 		.addGroup(gl_pl6.createSequentialGroup()
+			 			.addGap(4)
+			 			.addGroup(gl_pl6.createParallelGroup(Alignment.LEADING)
+			 				.addComponent(lblBestDays_1)
+			 				.addComponent(bestExit)))
+			 );
+			 pl6.setLayout(gl_pl6);
 			 cardPanel.add(bestdayButton);
 		
 		//Left Arrow	 
@@ -539,7 +618,7 @@ public class DashBoardPanel extends JPanel {
 		trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		trophyButton.setBorder(null);
-		trophyButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy2.png"));
+		trophyButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy2.png"));
 		
 		JButton btnJodimarie = new JButton("Jodi-Marie");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -610,9 +689,35 @@ public class DashBoardPanel extends JPanel {
 		);
 		panel_16.setLayout(gl_panel_16);
 		
-		CaloriesPanel panel_1 = new CaloriesPanel();
-		panel_3.add(panel_1, "5");
+		//CaloriesPanel panel_1 = new CaloriesPanel();
+		//panel_3.add(panel_1, "5");
 		
+		JButton settingsbutton = new JButton("");
+		settingsbutton.setContentAreaFilled(false);
+		settingsbutton.setBorder(null);
+		settingsbutton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Gear-icon2.png"));
+		GroupLayout gl_panel1= new GroupLayout(panel);
+		gl_panel1.setHorizontalGroup(
+		gl_panel1.createParallelGroup(Alignment.TRAILING)
+		.addGroup(gl_panel1.createSequentialGroup()
+		.addContainerGap(292, Short.MAX_VALUE)
+		.addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+		.addPreferredGap(ComponentPlacement.RELATED)
+		.addComponent(settingsbutton)
+		.addPreferredGap(ComponentPlacement.RELATED)
+		.addComponent(trophyButton))
+		);
+		gl_panel1.setVerticalGroup(
+		gl_panel1.createParallelGroup(Alignment.LEADING)
+		.addGroup(gl_panel1.createSequentialGroup()
+		.addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
+		.addComponent(settingsbutton)
+		.addComponent(trophyButton)
+		.addComponent(btnJodimarie, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+		.addContainerGap())
+		);
+		panel.setLayout(gl_panel1);
+
 		
 		
 	}
