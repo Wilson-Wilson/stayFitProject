@@ -1,4 +1,4 @@
-
+package ca.uwo.csd.cs2212.team12;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
@@ -37,22 +37,22 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class DashBoardPanel extends JPanel {
 
 	private JFrame frame;
-	
-	
+
+
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("C:/Users/Jodi-Marie/Pictures/Saved Pictures/background.jpg");
-	ImageIcon caloriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png");
-	ImageIcon minutesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\TimeIcon2.png");
-	ImageIcon movementIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\RunningIcon2.png");
-	ImageIcon lifetimeIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\StarIcon2.png");
-	ImageIcon timeseriesIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BarGraphIcon2.png");
-	ImageIcon bestdayIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\BlueStarIcon2.png");
-	ImageIcon exitIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\closebutton2.png");
-	ImageIcon rightarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\rightArrow2.png");
-	ImageIcon leftarrowIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\leftArrow2.png");
-	ImageIcon trophyIcon = new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy.png");
-	ImageIcon cardIcon =new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\dash.png");
-	
+	ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
+	ImageIcon caloriesIcon = new ImageIcon("../src/main/resources/FireIcon2.png");
+	ImageIcon minutesIcon = new ImageIcon("../src/main/resources/TimeIcon2.png");
+	ImageIcon movementIcon = new ImageIcon("../src/main/resources/RunningIcon2.png");
+	ImageIcon lifetimeIcon = new ImageIcon("../src/main/resources/StarIcon2.png");
+	ImageIcon timeseriesIcon = new ImageIcon("../src/main/resources/BarGraphIcon2.png");
+	ImageIcon bestdayIcon = new ImageIcon("../src/main/resources/BlueStarIcon2.png");
+	ImageIcon exitIcon = new ImageIcon("../src/main/resources/closebutton2.png");
+	ImageIcon rightarrowIcon = new ImageIcon("../src/main/resources/rightArrow2.png");
+	ImageIcon leftarrowIcon = new ImageIcon("../src/main/resources/leftArrow2.png");
+	ImageIcon trophyIcon = new ImageIcon("../src/main/resources/Trophy.png");
+	ImageIcon cardIcon =new ImageIcon("../src/main/resources/dash.png");
+
 	/**
 	 * Launch the application.
 	 */
@@ -81,25 +81,25 @@ public class DashBoardPanel extends JPanel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
+
 		//main frame
-		
-		CardLayout cl = new CardLayout(0,0);
+
+		final CardLayout cl = new CardLayout(0,0);
 		this.setLayout(new CardLayout(0,0));
-		
-		JPanel panel_3 = new JPanel();
+
+		final JPanel panel_3 = new JPanel();
 		this.add(panel_3, "3");
 		panel_3.setLayout(cl);
 		//panel_1.setBackground(Color.RED);
-		
-		
+
+
 		BackgroundPanel dashPanel = new BackgroundPanel(backImage);
 		//dashPanel.setBackground(new Color(0, 128, 0));
 		panel_3.add(dashPanel,"1");
-		
-	
-		
-		JPanel cardPanel = new JPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+
+
+
+		final JPanel cardPanel = new JPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 		cardPanel.setOpaque(false);
 		cardPanel.setBounds(new Rectangle(200, 200, 200, 200));
 		dashPanel.setLayout(new BorderLayout(0, 0));
@@ -108,11 +108,11 @@ public class DashBoardPanel extends JPanel {
 		//bi.setNorthPane(null);
 		cardPanel.setLayout(new GridLayout(2, 3, 20, 20));
 		cardPanel.setLayout(new GridLayout(2, 3, 20, 50));;
-		
+
 		/*Calories card*/
-		
-		//Calories Button		 
-		 JButton caloriesButton = new JButton("");
+
+		//Calories Button
+		final  JButton caloriesButton = new JButton("");
 		 caloriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 caloriesButton.setBorder(null);
 		 caloriesButton.setContentAreaFilled(false);
@@ -127,37 +127,37 @@ public class DashBoardPanel extends JPanel {
 
 	            @Override
 	            public void actionPerformed(ActionEvent ae) {
-	                //cl.show(panel_3,"2");	
+	                //cl.show(panel_3,"2");
 	            	OpenCardListener opencard = new OpenCardListener(1);
-	        		panel_3.add(opencard,"10") ;	
+	        		panel_3.add(opencard,"10") ;
 	        		cl.show(panel_3,"10");
-	            	
+
 	            }});
-		
-		
-		 
+
+
+
 		//card panel for calories
 		 JPanel pl= new JPanel();
 		 pl.setForeground(new Color(255, 255, 255));
 		 pl.setOpaque(false);
 		 caloriesButton.add(pl,BorderLayout.NORTH);
-		 
+
 		 //exit button for the calories card
 		 JButton calExit = new JButton("");
 		 calExit. addActionListener(new java.awt.event.ActionListener() {
 	            @Override
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            	
+
 	    	            	 cardPanel.remove( caloriesButton);
 	    	            	 cardPanel.invalidate();
 	    	            	 cardPanel.repaint();
 	            }
-	    	         
+
 	        });
-		 
-		 
-		 
-		 
+
+
+
+
 		 //the label for the title of the calories card
 		 JLabel lblCalories_1 = new JLabel("Calories");
 		 lblCalories_1.setFont(new Font("Verdana", Font.BOLD, 14));
@@ -165,6 +165,7 @@ public class DashBoardPanel extends JPanel {
 		 lblCalories_1.setIcon(caloriesIcon);
 		 calExit.setContentAreaFilled(false);
 		 calExit.setBorder(null);
+		 calExit.setBorderPainted(false);
 		 calExit.setIcon(exitIcon);
 		 GroupLayout gl_pl = new GroupLayout(pl);
 		 gl_pl.setHorizontalGroup(
@@ -188,23 +189,23 @@ public class DashBoardPanel extends JPanel {
 		 calExit. addActionListener(new java.awt.event.ActionListener() {
 	            @Override
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            	
+
 	    	            	 cardPanel.remove( caloriesButton);
 	    	            	 cardPanel.invalidate();
 	    	            	 cardPanel.repaint();
 	            }
-	    	         
+
 	        });
-		
-		
+
+
 		 cardPanel.add(caloriesButton);
-		
-		 
-		 
+
+
+
 		 /*Minutes card*/
-		 
+
 		 //Minutes Button
-		 JButton minutesButton = new JButton("");
+		final JButton minutesButton = new JButton("");
 		 minutesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 minutesButton.setContentAreaFilled(false);
 		 minutesButton.setOpaque(false);
@@ -216,16 +217,16 @@ public class DashBoardPanel extends JPanel {
 
 	            @Override
 	            public void actionPerformed(ActionEvent ae) {
-	            
-	            	
-	            	//cl.show(panel_3,"4");	
+
+
+	            	//cl.show(panel_3,"4");
 	            	OpenCardListener opencard = new OpenCardListener(2);
-	        		panel_3.add(opencard,"10") ;	
+	        		panel_3.add(opencard,"10") ;
 	        		cl.show(panel_3,"10");
-	            	
-	               	
+
+
 	            }});
-		 
+
 		//card panel for minutes
 		 JPanel pl2= new JPanel();
 		 pl2.setOpaque(false);
@@ -238,26 +239,27 @@ public class DashBoardPanel extends JPanel {
 		 minExit.addActionListener(new java.awt.event.ActionListener() {
 	            @Override
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            	
+
 	    	            	 cardPanel.remove( minutesButton);
 	    	            	 cardPanel.invalidate();
 	    	            	 cardPanel.repaint();
 	            }
-	    	         
+
 	        });
-		 
-		 
+
+
 		 minExit .setContentAreaFilled(false);
 		 minExit .setBorder(null);
+		 minExit.setBorderPainted(false);
 		 minExit .setIcon(exitIcon);
-		 
+
 		 //the label for the title of the minutes card
 		 JLabel lblMinutes = new JLabel("Minutes");
 		 lblMinutes.setFont(new Font("Verdana", Font.BOLD, 13));
 		 lblMinutes.setForeground(new Color(255, 255, 255));
 		 lblMinutes.setIcon(minutesIcon);
-		 
-		
+
+
 		 GroupLayout gl_pl2 = new GroupLayout(pl2);
 		 gl_pl2.setHorizontalGroup(
 		 	gl_pl2.createParallelGroup(Alignment.LEADING)
@@ -276,13 +278,13 @@ public class DashBoardPanel extends JPanel {
 		 				.addComponent(minExit)))
 		 );
 		 pl2.setLayout(gl_pl2);
-		 
-		 
-		 
+
+
+
 		 /*Movement card */
-		 
+
 		 //Movement Button
-		 JButton movementButton = new JButton("");
+		final JButton movementButton = new JButton("");
 		 movementButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 movementButton.setContentAreaFilled(false);
 		 movementButton.setBorder(null);
@@ -293,42 +295,43 @@ public class DashBoardPanel extends JPanel {
 
 	            @Override
 	            public void actionPerformed(ActionEvent ae) {
-	           
-	             	//cl.show(panel_3,"6");	
+
+	             	//cl.show(panel_3,"6");
 	            	OpenCardListener opencard = new OpenCardListener(3);
-	        		panel_3.add(opencard,"10") ;	
+	        		panel_3.add(opencard,"10") ;
 	        		cl.show(panel_3,"10");
-	            	
+
 	            }});
-		
-		 
+
+
 		 //card panel for movement
 		 JPanel pl3= new JPanel();
 		 pl3.setOpaque(false);
 		 movementButton.add(pl3, BorderLayout.NORTH);
-		 
+
 		 //the label for the title of the movements card
 		 JLabel lblMovements = new JLabel("Movements");
 		 lblMovements.setForeground(new Color(255, 255, 255));
 		 lblMovements.setFont(new Font("Verdana", Font.BOLD, 13));
 		 lblMovements.setIcon(movementIcon);
-		  
-		 
+
+
 		 //exit button for movement
 		 JButton moveExit = new JButton("");
 		 moveExit. addActionListener(new java.awt.event.ActionListener() {
 	            @Override
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            	
+
 	    	            	 cardPanel.remove( movementButton);
 	    	            	 cardPanel.invalidate();
 	    	            	 cardPanel.repaint();
 	            }
-	    	         
+
 	        });
 		 moveExit.setContentAreaFilled(false);
 		 moveExit.setBorder(null);
 		 moveExit.setIcon(exitIcon);
+		 moveExit.setBorderPainted(false);
 		 GroupLayout gl_pl3 = new GroupLayout(pl3);
 		 gl_pl3.setHorizontalGroup(
 		 	gl_pl3.createParallelGroup(Alignment.LEADING)
@@ -347,18 +350,18 @@ public class DashBoardPanel extends JPanel {
 		 				.addComponent(moveExit)))
 		 );
 		 pl3.setLayout(gl_pl3);
-		 
-		
-		 
-		
+
+
+
+
 		 cardPanel.add(movementButton);;
-			 
-		
+
+
 		 /*Lifetime  card*/
-		 
-		 
+
+
 		 //Lifetime button
-		 JButton lifetimeButton = new JButton("");
+		final JButton lifetimeButton = new JButton("");
 		 lifetimeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		 lifetimeButton.setContentAreaFilled(false);
 		 lifetimeButton.setBorder(null);
@@ -368,44 +371,45 @@ public class DashBoardPanel extends JPanel {
 
 		            @Override
 		            public void actionPerformed(ActionEvent ae) {
-		            	
-		            	//cl.show(panel_3,"7");	
+
+		            	//cl.show(panel_3,"7");
 		            	OpenCardListener opencard = new OpenCardListener(4);
-		        		panel_3.add(opencard,"10") ;	
+		        		panel_3.add(opencard,"10") ;
 		        		cl.show(panel_3,"10");
 		            }});
-			 
-			 
-			
-	   //card panel for lifetime 
+
+
+
+	   //card panel for lifetime
 		 JPanel pl4= new JPanel();
 		 pl4.setOpaque(false);
 		 pl4.setFont(new Font("Verdana", Font.BOLD, 13));
 		 pl4.setForeground(new Color(255, 255, 255));
 		 lifetimeButton.add(pl4,BorderLayout.NORTH);
-		 
+
 		//the label for the title of the lifetime card
 		 JLabel lblLifetime_1 = new JLabel("Lifetime");
 		 lblLifetime_1.setForeground(new Color(255, 255, 255));
 		 lblLifetime_1.setFont(new Font("Verdana", Font.BOLD, 13));
 		 lblLifetime_1.setIcon(lifetimeIcon);
-		 
+
 		 //exit button for lifetime card
-		 JButton lifeExit= new JButton("");
+		 final JButton lifeExit= new JButton("");
 		 lifeExit.setContentAreaFilled(false);
 		 lifeExit. addActionListener(new java.awt.event.ActionListener() {
 	            @Override
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            	
+
 	    	            	 cardPanel.remove(lifetimeButton);
 	    	            	 cardPanel.invalidate();
 	    	            	 //cardPanel.revalidate();
 	    	                 cardPanel.repaint();
 	            }
-	    	         
+
 	        });
 		 lifeExit.setIcon(exitIcon);
 		 lifeExit.setBorder(null);
+		 lifeExit.setBorderPainted(false);
 		 GroupLayout gl_pl4 = new GroupLayout(pl4);
 		 gl_pl4.setHorizontalGroup(
 		 	gl_pl4.createParallelGroup(Alignment.LEADING)
@@ -425,11 +429,11 @@ public class DashBoardPanel extends JPanel {
 		 );
 		 pl4.setLayout(gl_pl4);
 			 cardPanel.add(lifetimeButton);;
-			 
+
 			 /*Time Series card*/
-			 
+
 			 //Time Series button
-			 JButton timeseriesButton = new JButton("");
+			final JButton timeseriesButton = new JButton("");
 			 timeseriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			 timeseriesButton.setContentAreaFilled(false);
 			 timeseriesButton.setBorder(null);
@@ -439,44 +443,45 @@ public class DashBoardPanel extends JPanel {
 
 		            @Override
 		            public void actionPerformed(ActionEvent ae) {
-		            
+
 		            	//cl.show(panel_3,"8");
 		            	OpenCardListener opencard = new OpenCardListener(5);
-		        		panel_3.add(opencard,"10") ;	
+		        		panel_3.add(opencard,"10") ;
 		        		cl.show(panel_3,"10");
-		            	
+
 		            }});
-			 
-			 
+
+
 			//card panel for time series
-			 JPanel pl5= new JPanel();
+			JPanel pl5= new JPanel();
 			 pl5.setOpaque(false);
 			 pl5.setFont(new Font("Verdana", Font.BOLD, 13));
 			 pl5.setForeground(new Color(255, 255, 255));
-			
+
 			 timeseriesButton.add(pl5,BorderLayout.NORTH);
-			
+
 			//the label for the title of the time series card
 			JLabel lblTimeSeries = new JLabel("Time Series");
 			lblTimeSeries.setForeground(Color.WHITE);
 			lblTimeSeries.setFont(new Font("Verdana", Font.BOLD, 13));
 			lblTimeSeries.setIcon(timeseriesIcon);
-			
+
 			//Exit button for time series card
 			JButton timeExit = new JButton("");
 			timeExit. addActionListener(new java.awt.event.ActionListener() {
 	            @Override
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	            	
+
 	    	            	 cardPanel.remove( timeseriesButton);
 	    	            	 cardPanel.invalidate();
 	    	                cardPanel.repaint();
 	            }
-	    	         
+
 	        });
 			timeExit.setContentAreaFilled(false);
 			timeExit.setIcon(exitIcon);
 			timeExit.setBorder(null);
+			timeExit.setBorderPainted(false);
 			GroupLayout gl_pl5 = new GroupLayout(pl5);
 			gl_pl5.setHorizontalGroup(
 				gl_pl5.createParallelGroup(Alignment.LEADING)
@@ -495,61 +500,62 @@ public class DashBoardPanel extends JPanel {
 							.addComponent(timeExit)))
 			);
 			pl5.setLayout(gl_pl5);
-			 
+
 			 cardPanel.add(timeseriesButton);
-			
+
 			 /*Best Days*/
-			 
-			 
+
+
 			 //Best Days button
-			 
-			 JButton bestdayButton = new JButton("");
+
+			final JButton bestdayButton = new JButton("");
 			 bestdayButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			 bestdayButton.setContentAreaFilled(false);
 			 bestdayButton.setBorder(null);
 			 bestdayButton.setIcon(cardIcon);
 			 bestdayButton.setLayout(new BorderLayout());
-			 bestdayButton .addActionListener(new ActionListener() {
+			 bestdayButton.addActionListener(new ActionListener() {
 
 		            @Override
 		            public void actionPerformed(ActionEvent ae) {
-		            	
-		               	
-		            	//cl.show(panel_3,"9");	
+
+
+		            	//cl.show(panel_3,"9");
 		            	OpenCardListener opencard = new OpenCardListener(6);
-		        		panel_3.add(opencard,"10") ;	
+		        		panel_3.add(opencard,"10") ;
 		        		cl.show(panel_3,"10");
-		            	
+
 		            }});
-			 
+
 			//card panel for best day
 			 JPanel pl6= new JPanel();
 			 pl6.setOpaque(false);
 			 pl6.setFont(new Font("Verdana", Font.BOLD, 13));
 			 pl6.setForeground(new Color(255, 255, 255));
 			 bestdayButton.add(pl6,BorderLayout.NORTH);
-			 
+
 			//the label for the title of the best days card
 			 JLabel lblBestDays_1 = new JLabel("Best Days");
 			 lblBestDays_1.setFont(new Font("Verdana", Font.BOLD, 13));
 			 lblBestDays_1.setForeground(Color.WHITE);
 			 lblBestDays_1.setIcon(bestdayIcon);
-			 
+
 			 //exit button for best days card
 			 JButton bestExit = new JButton("");
 			 bestExit. addActionListener(new java.awt.event.ActionListener() {
 		            @Override
 		            public void actionPerformed(java.awt.event.ActionEvent evt) {
-		            	
+
 		    	            	 cardPanel.remove( bestdayButton);
 		    	            	 cardPanel.invalidate();
 		    	                 cardPanel.repaint();
 		            }
-		    	         
+
 		        });
 			 bestExit.setContentAreaFilled(false);
 			 bestExit.setBorder(null);
 			 bestExit.setIcon(exitIcon);
+			 bestExit.setBorderPainted(false);
 			 GroupLayout gl_pl6 = new GroupLayout(pl6);
 			 gl_pl6.setHorizontalGroup(
 			 	gl_pl6.createParallelGroup(Alignment.LEADING)
@@ -569,34 +575,36 @@ public class DashBoardPanel extends JPanel {
 			 );
 			 pl6.setLayout(gl_pl6);
 			 cardPanel.add(bestdayButton);
-		
-		//Left Arrow	 
+
+		//Left Arrow
 		JButton leftarrow = new JButton("");
 		leftarrow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		leftarrow.setBorder(null);
+		leftarrow.setBorderPainted(false);
 		leftarrow.setContentAreaFilled(false);
 		leftarrow.setOpaque(false);
 		leftarrow.setIcon(leftarrowIcon);
 		dashPanel.add(leftarrow, BorderLayout.WEST);
-		
-		
+
+
 		//RightArrow
 		JButton rightarrow = new JButton("");
 		rightarrow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rightarrow.setBorder(null);
 		rightarrow.setContentAreaFilled(false);
+		rightarrow.setBorderPainted(false);
 		rightarrow.setOpaque(false);
 		rightarrow.setIcon(rightarrowIcon);
 		dashPanel.add(rightarrow, BorderLayout.EAST);
-		
-		
+
+
 		/*Trophy*/
-		
+
 		//setting the panel for trophy
 		JPanel panel_15 = new JPanel();
 		panel_15.setOpaque(false);
 		dashPanel.add(panel_15, BorderLayout.SOUTH);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(105, 105, 105,180));
 		GroupLayout gl_panel_15 = new GroupLayout(panel_15);
@@ -620,8 +628,9 @@ public class DashBoardPanel extends JPanel {
 		trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		trophyButton.setBorder(null);
-		trophyButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Trophy2.png"));
-		
+		trophyButton.setBorderPainted(false);
+		trophyButton.setIcon(new ImageIcon("../src/main/resources/Trophy2.png"));
+
 		JButton btnJodimarie = new JButton("Jodi-Marie");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		btnJodimarie.setForeground(new Color(255, 255, 255));
@@ -653,23 +662,23 @@ public class DashBoardPanel extends JPanel {
 	                trophyframe.setVisible(true);
 	                trophyframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	             	JPanel trophypanel=new JPanel();
-	             	
-	              
-	            	trophyframe.getContentPane().add(trophypanel);      	
-	            	
+
+
+	            	trophyframe.getContentPane().add(trophypanel);
+
 	            	trophyframe.pack();
 	            	trophyframe.setSize(600,600);
-	               	
+
 	            }});
 		panel_15.setLayout(gl_panel_15);
-		
+
 		JPanel panel_16 = new JPanel();
 		panel_16.setOpaque(false);
 		panel_16.setBackground(new Color(169, 169, 169,100));
-		
-	
+
+
 		/*Today Title*/
-		
+
 		Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
 		dashPanel.add(panel_16, BorderLayout.NORTH);
 		JLabel lblToday = new JLabel("Today");
@@ -690,14 +699,15 @@ public class DashBoardPanel extends JPanel {
 					.addContainerGap(71, Short.MAX_VALUE))
 		);
 		panel_16.setLayout(gl_panel_16);
-		
+
 		//CaloriesPanel panel_1 = new CaloriesPanel();
 		//panel_3.add(panel_1, "5");
-		
+
 		JButton settingsbutton = new JButton("");
 		settingsbutton.setContentAreaFilled(false);
 		settingsbutton.setBorder(null);
-		settingsbutton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\Gear-icon2.png"));
+		settingsbutton.setBorderPainted(false);
+		settingsbutton.setIcon(new ImageIcon("../src/main/resources/Gear-icon2.png"));
 		GroupLayout gl_panel1= new GroupLayout(panel);
 		gl_panel1.setHorizontalGroup(
 			gl_panel1.createParallelGroup(Alignment.TRAILING)
@@ -719,7 +729,7 @@ public class DashBoardPanel extends JPanel {
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel1);
-		
+
 	}
 
 }

@@ -1,4 +1,4 @@
-
+package ca.uwo.csd.cs2212.team12;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -45,7 +45,7 @@ public class minpanel extends JPanel{
     protected Color shadowColor = Color.black;
     protected Dimension arcs = new Dimension(20, 20);
     protected int shadowGap = 5;
-   
+
 	/**
 	 * Create the application.
 	 */
@@ -57,7 +57,7 @@ public class minpanel extends JPanel{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
+
 		//main frame
 		/*frame = new JFrame();
 		frame.setResizable(false);
@@ -80,12 +80,12 @@ public class minpanel extends JPanel{
 		cardPanel.setBounds(new Rectangle(200, 200, 200, 200));
 		paneldash.setLayout(new BorderLayout(0, 0));
 		paneldash.add(cardPanel, BorderLayout.CENTER);;;;
-		
-		
-		
-		
+
+
+
+
 		cardPanel.setLayout(new BorderLayout(0, 0));
-		
+
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportBorder(null);
@@ -96,13 +96,13 @@ public class minpanel extends JPanel{
 		scrollPane.setOpaque(false);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		 scrollPane.getVerticalScrollBar().setUI(new MyScrollbarUI());
-		 
-	
-	
-		
+
+
+
+
 		scrollPane.setOpaque(false);
 		scrollPane.getViewport().setOpaque(false);
-		
+
 		JViewport viewport = new JViewport();
 		JPanel panel_8 = new JPanel();
 		panel_8.setOpaque(false);
@@ -114,7 +114,7 @@ public class minpanel extends JPanel{
 		gbl_panel_8.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_8.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel_8.setLayout(gbl_panel_8);
-		
+
 		JPanel panel_9 = new JPanel() {
 		     @Override
 		     protected void paintComponent(Graphics g) {
@@ -126,7 +126,7 @@ public class minpanel extends JPanel{
 		         shadowColor.getGreen(), shadowColor.getBlue(), 150);
 		         Graphics2D graphics = (Graphics2D) g;
 
-		        
+
 		         //Draws shadow borders if any.
 		         if (true) {
 		             graphics.setColor(shadowColorA);
@@ -163,20 +163,20 @@ public class minpanel extends JPanel{
 		gbc_panel_9.gridy = 1;
 		panel_8.add(panel_9, gbc_panel_9);
 		panel_9.setLayout(new BorderLayout(0, 0));
-		
+
 		JLabel lblNewLabel = new JLabel("Minutes");
 		panel_9.add(lblNewLabel, BorderLayout.NORTH);
 		lblNewLabel.setHorizontalAlignment(JLabel.LEFT);
-		
+
 				lblNewLabel.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 128, 0), new Color(0, 255, 0), new Color(255, 250, 250), new Color(210, 105, 30)));
-				lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\TimeIcon2.png"));
+				lblNewLabel.setIcon(new ImageIcon("../src/main/resources/TimeIcon2.png"));
 				lblNewLabel.setBackground(new Color(128, 128, 128));
 				lblNewLabel.setBorder(new LineBorder(new Color(0, 128, 0), 24, true));
-				
+
 				lblNewLabel.setBorder(null);
 				lblNewLabel.setForeground(new Color(255, 255, 255));
 				lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-			
+
 		JPanel panel_10 = new JPanel() {
 			  @Override
 			     protected void paintComponent(Graphics g) {
@@ -188,7 +188,7 @@ public class minpanel extends JPanel{
 			         shadowColor.getGreen(), shadowColor.getBlue(), 150);
 			         Graphics2D graphics = (Graphics2D) g;
 
-			        
+
 			         //Draws shadow borders if any.
 			         if (true) {
 			             graphics.setColor(shadowColorA);
@@ -215,7 +215,7 @@ public class minpanel extends JPanel{
 			         graphics.setStroke(new BasicStroke());
 			     }
 			  };
-			 
+
 		panel_10.setOpaque(false);
 		panel_10.setBackground(new Color(105, 105, 105, 180));
 		panel_10.setPreferredSize(new Dimension(400, 600));
@@ -227,8 +227,8 @@ public class minpanel extends JPanel{
 		panel_8.add(panel_10, gbc_panel_10);
 		panel_10.setLayout(new BorderLayout(0, 0));
 
-		
-		
+
+
 		JPanel panel_11 = new JPanel(){
 			  @Override
 			     protected void paintComponent(Graphics g) {
@@ -240,7 +240,7 @@ public class minpanel extends JPanel{
 			         shadowColor.getGreen(), shadowColor.getBlue(), 150);
 			         Graphics2D graphics = (Graphics2D) g;
 
-			        
+
 			         //Draws shadow borders if any.
 			         if (true) {
 			             graphics.setColor(shadowColorA);
@@ -269,9 +269,9 @@ public class minpanel extends JPanel{
 			  };
 		//panel_11.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(211, 211, 211,100), new Color(211, 211, 211,100), new Color(169, 169, 169,100), new Color(169, 169, 169,100)));
 		panel_11.setOpaque(false);
-			 
+
 				panel_11.setBackground(new Color(169, 169, 169,120));
-		
+
 		//panel_11.setBackground(new Color(105, 105, 105, 180));
 		panel_11.setPreferredSize(new Dimension(400, 600));
 		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
@@ -281,31 +281,31 @@ public class minpanel extends JPanel{
 		gbc_panel_11.gridy = 5;
 		panel_8.add(panel_11, gbc_panel_11);
 		panel_11.setLayout(new BorderLayout(0, 0));
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\Pictures\\Saved Pictures\\FireIcon2.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("../src/main/resources/FireIcon2.png"));
 		lblNewLabel_1.setBackground(new Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		panel_11.add(lblNewLabel_1, BorderLayout.NORTH);
   	    viewport.setOpaque(false);
         scrollPane.setViewport(viewport);
-		
+
         scrollPane.setBackground(new Color(105, 105, 105));
 		//scrollPane.setScrollPosition(new Point(20, 20));
 		scrollPane.setSize(new Dimension(5, 5));
 		scrollPane.setMinimumSize(new Dimension(5, 5));
 		scrollPane.setPreferredSize(new Dimension(1000, 200));
 		cardPanel.add(scrollPane, BorderLayout.CENTER);
-		
-	
+
+
 		/*Today Title*/
-		
+
 		Date dateAndTime = Calendar.getInstance().getTime();
-		
-		
-		
+
+
+
 	}
-	
- 
+
+
 }
