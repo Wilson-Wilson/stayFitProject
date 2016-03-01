@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.io.*;
 
 public class UserInfo implements Serializable {
 
@@ -42,10 +43,10 @@ public class UserInfo implements Serializable {
 
 	//The following methods are used to persist UserInfo object between runs
 
-	private static void storeUser(){
+	private static void storeUser(UserInfo userInf){
 		try{
 			ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-			out.writeObject(this);
+			out.writeObject(userInf);
 			out.close();
 				} catch(IOException e){
 						System.out.println("User could not be saved to disk. IO error occured.");
@@ -63,8 +64,13 @@ public class UserInfo implements Serializable {
 			in.close();
 				} catch (IOException e){
 						System.out.println("User could not be loaded from disk. IO error occured.");
-						e.printStackTrace;
+						e.printStackTrace();
 					}
+			catch (ClassNotFoundException e){
+    		System.out.println("Class could not be Found!");
+            e.printStackTrace();
+    	}
+		
 		}
 
 

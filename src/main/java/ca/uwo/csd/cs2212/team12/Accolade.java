@@ -70,7 +70,7 @@ public class Accolade implements Serializable{
 	* Returns value of userObtained
 	* @return
 	*/
-	public boolean isUserObtained() {
+	public boolean getUserObtained() {
 		return userObtained;
 	}
 

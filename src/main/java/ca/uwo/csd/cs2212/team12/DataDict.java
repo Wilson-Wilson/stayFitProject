@@ -1,15 +1,16 @@
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.*;
+
+public class DataDict implements Serializable{
 
   private String user;
   private List<DataEntry> collection;
-  //We may need to change our collection object to a more efficient one if we decide to store many days at a time
 
   private static final long serialVersionUID= 1L;
   private static final String FILENAME= "dailydata.boop";
-
-public class DataDict implements Serializable{
+  //We may need to change our collection object to a more efficient one if we decide to store many days at a time
 
   public DataDict(){
     collection= new ArrayList<DataEntry>();
@@ -42,10 +43,10 @@ public class DataDict implements Serializable{
 
   //The following methods are used to persist DataDict object between runs
 
-  private static void storeData(){
+  private static void storeData(DataDict dat){
     try{
       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-      out.writeObject(this);
+      out.writeObject(dat);
       out.close();
         } catch(IOException e){
             System.out.println("DataDict could not be saved to disk. IO error occured.");
@@ -63,13 +64,12 @@ public class DataDict implements Serializable{
       in.close();
         } catch (IOException e){
             System.out.println("DataDict could not be loaded from disk. IO error occured.");
-            e.printStackTrace;
+            e.printStackTrace();
           }
+    	catch (ClassNotFoundException e){
+    		System.out.println("Class could not be Found!");
+            e.printStackTrace();
+    	}
     }
 
   }
-
-
-
-
-}

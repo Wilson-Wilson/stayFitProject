@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.*;
 
 public class AccoDict implements Serializable {
 
@@ -14,7 +15,7 @@ public class AccoDict implements Serializable {
   }
 
   public boolean userHasAcco(int accoID){
-    if(this.get(accoID).userObtained == true){
+    if(accoList.get(accoID).getUserObtained() == true){
       return true;
     }
 
@@ -24,10 +25,10 @@ public class AccoDict implements Serializable {
 
   //The following methods are used to persist AccoDict object between runs
 
-  private static void storeAccolades(){
+  private static void storeAccolades(AccoDict accos){
     try{
       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-      out.writeObject(this);
+      out.writeObject(accos);
       out.close();
         } catch(IOException e){
             System.out.println("Accolades could not be saved to disk. IO error occured.");
@@ -45,8 +46,12 @@ public class AccoDict implements Serializable {
       in.close();
         } catch (IOException e){
             System.out.println("Accolades could not be loaded from disk. IO error occured.");
-            e.printStackTrace;
+            e.printStackTrace();
           }
+    	catch (ClassNotFoundException e){
+    		System.out.println("The class could not be found.");
+    		e.printStackTrace();
+    	}
     }
 
 }
