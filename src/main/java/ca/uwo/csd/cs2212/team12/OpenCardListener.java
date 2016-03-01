@@ -290,7 +290,7 @@ public class OpenCardListener extends JPanel{
 		homebutton.setContentAreaFilled(false);
 		homebutton.setIcon(new ImageIcon("../src/main/resources/home2.png"));
 		homebutton.setBorder(null);
-		homeButton.setBorderPainted(false);
+		homebutton.setBorderPainted(false);
 		 homebutton .addActionListener(new ActionListener() {
 
 	            @Override

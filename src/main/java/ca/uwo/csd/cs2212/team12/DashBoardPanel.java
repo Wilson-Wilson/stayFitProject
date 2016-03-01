@@ -200,7 +200,27 @@ public class DashBoardPanel extends JPanel {
 
 		 cardPanel.add(caloriesButton);
 
+		 JPanel calinfoPanel= new JPanel();
+		 		calinfoPanel.setOpaque(false);
+		 		caloriesButton.add(calinfoPanel, BorderLayout.CENTER);
 
+		 		JLabel lblNewLabel = new JLabel("Calories Burned:");
+		 		lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
+		 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		 		lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		 		lblNewLabel.setForeground(Color.WHITE);
+		 		GroupLayout gl_calinfoPanel = new GroupLayout(calinfoPanel);
+		 		gl_calinfoPanel.setHorizontalGroup(
+		 		 gl_calinfoPanel.createParallelGroup(Alignment.LEADING)
+		 			 .addComponent(lblNewLabel)
+		 		);
+		 		gl_calinfoPanel.setVerticalGroup(
+		 		 gl_calinfoPanel.createParallelGroup(Alignment.LEADING)
+		 			 .addGroup(gl_calinfoPanel.createSequentialGroup()
+		 				 .addGap(5)
+		 				 .addComponent(lblNewLabel))
+		 		);
+		 		calinfoPanel.setLayout(gl_calinfoPanel);
 
 		 /*Minutes card*/
 
@@ -279,7 +299,36 @@ public class DashBoardPanel extends JPanel {
 		 );
 		 pl2.setLayout(gl_pl2);
 
+		 JPanel mininfoPanel= new JPanel();
+		 		 mininfoPanel.setOpaque(false);
+		 		 minutesButton.add(mininfoPanel, BorderLayout.CENTER);
 
+		 		 JLabel lblActiveMinutes = new JLabel("Active Minutes:");
+		 		 lblActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		 		 lblActiveMinutes.setForeground(Color.WHITE);
+
+		 		 JLabel lblSedentayr = new JLabel("Sedentary Minutes: ");
+		 		 lblSedentayr.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		 		 lblSedentayr.setForeground(Color.WHITE);
+		 		 GroupLayout gl_mininfoPanel = new GroupLayout(mininfoPanel);
+		 		 gl_mininfoPanel.setHorizontalGroup(
+		 		 	gl_mininfoPanel.createParallelGroup(Alignment.TRAILING)
+		 		 		.addGroup(Alignment.LEADING, gl_mininfoPanel.createSequentialGroup()
+		 		 			.addContainerGap()
+		 		 			.addGroup(gl_mininfoPanel.createParallelGroup(Alignment.LEADING)
+		 		 				.addComponent(lblActiveMinutes, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+		 		 				.addComponent(lblSedentayr, GroupLayout.PREFERRED_SIZE, 123, Short.MAX_VALUE)))
+		 		 );
+		 		 gl_mininfoPanel.setVerticalGroup(
+		 		 	gl_mininfoPanel.createParallelGroup(Alignment.LEADING)
+		 		 		.addGroup(gl_mininfoPanel.createSequentialGroup()
+		 		 			.addGap(21)
+		 		 			.addComponent(lblActiveMinutes, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+		 		 			.addPreferredGap(ComponentPlacement.UNRELATED)
+		 		 			.addComponent(lblSedentayr)
+		 		 			.addContainerGap())
+		 		 );
+		 		 mininfoPanel.setLayout(gl_mininfoPanel);
 
 		 /*Movement card */
 
@@ -356,6 +405,47 @@ public class DashBoardPanel extends JPanel {
 
 		 cardPanel.add(movementButton);;
 
+		 JPanel moveinfoPanel= new JPanel();
+		 		 moveinfoPanel.setOpaque(false);
+		 		 movementButton.add(moveinfoPanel, BorderLayout.CENTER);
+
+		 		 JLabel lblSteps = new JLabel("Steps:");
+		 		 lblSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		 		 lblSteps.setForeground(Color.WHITE);
+
+		 		 JLabel lblFloors = new JLabel("Floors:");
+		 		 lblFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		 		 lblFloors.setForeground(Color.WHITE);
+
+		 		 JLabel lblDistance = new JLabel("Distance:");
+		 		 lblDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		 		 lblDistance.setForeground(Color.WHITE);
+		 		 GroupLayout gl_moveinfoPanel = new GroupLayout(moveinfoPanel);
+		 		 gl_moveinfoPanel.setHorizontalGroup(
+		 		 	gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
+		 		 		.addGroup(gl_moveinfoPanel.createSequentialGroup()
+		 		 			.addContainerGap()
+		 		 			.addGroup(gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
+		 		 				.addGroup(gl_moveinfoPanel.createSequentialGroup()
+		 		 					.addComponent(lblFloors, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+		 		 					.addGap(10))
+		 		 				.addComponent(lblSteps, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+		 		 				.addGroup(gl_moveinfoPanel.createSequentialGroup()
+		 		 					.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+		 		 					.addContainerGap())))
+		 		 );
+		 		 gl_moveinfoPanel.setVerticalGroup(
+		 		 	gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
+		 		 		.addGroup(gl_moveinfoPanel.createSequentialGroup()
+		 		 			.addGap(8)
+		 		 			.addComponent(lblDistance)
+		 		 			.addGap(18)
+		 		 			.addComponent(lblFloors)
+		 		 			.addGap(20)
+		 		 			.addComponent(lblSteps)
+		 		 			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		 		 );
+		 		 moveinfoPanel.setLayout(gl_moveinfoPanel);
 
 		 /*Lifetime  card*/
 
@@ -430,6 +520,48 @@ public class DashBoardPanel extends JPanel {
 		 pl4.setLayout(gl_pl4);
 			 cardPanel.add(lifetimeButton);;
 
+			 JPanel lifeinfoPanel= new JPanel();
+			 		 lifeinfoPanel.setOpaque(false);
+			 		 lifetimeButton.add(lifeinfoPanel, BorderLayout.CENTER);
+
+			 		 JLabel lblNewLabel_2 = new JLabel("Lifetime Floors:");
+			 		 lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+			 		 lblNewLabel_2.setForeground(Color.WHITE);
+
+			 		 JLabel lblNewLabel_1 = new JLabel("Lifetime Steps:");
+			 		 lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+			 		 lblNewLabel_1.setForeground(new Color(255, 255, 255));
+
+			 		 JLabel lblLifetimeCalories = new JLabel("Lifetime Distance:");
+			 		 lblLifetimeCalories.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+			 		 lblLifetimeCalories.setForeground(Color.WHITE);
+			 		 GroupLayout gl_lifeinfoPanel = new GroupLayout(lifeinfoPanel);
+			 		 gl_lifeinfoPanel.setHorizontalGroup(
+			 		 	gl_lifeinfoPanel.createParallelGroup(Alignment.LEADING)
+			 		 		.addGroup(Alignment.TRAILING, gl_lifeinfoPanel.createSequentialGroup()
+			 		 			.addGroup(gl_lifeinfoPanel.createParallelGroup(Alignment.TRAILING)
+			 		 				.addGroup(Alignment.LEADING, gl_lifeinfoPanel.createSequentialGroup()
+			 		 					.addGap(8)
+			 		 					.addComponent(lblNewLabel_2))
+			 		 				.addGroup(Alignment.LEADING, gl_lifeinfoPanel.createSequentialGroup()
+			 		 					.addGap(9)
+			 		 					.addGroup(gl_lifeinfoPanel.createParallelGroup(Alignment.LEADING)
+			 		 						.addComponent(lblLifetimeCalories, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 106, Short.MAX_VALUE)
+			 		 						.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))))
+			 		 			.addGap(0))
+			 		 );
+			 		 gl_lifeinfoPanel.setVerticalGroup(
+			 		 	gl_lifeinfoPanel.createParallelGroup(Alignment.LEADING)
+			 		 		.addGroup(gl_lifeinfoPanel.createSequentialGroup()
+			 		 			.addGap(5)
+			 		 			.addComponent(lblNewLabel_2)
+			 		 			.addGap(21)
+			 		 			.addComponent(lblNewLabel_1)
+			 		 			.addGap(23)
+			 		 			.addComponent(lblLifetimeCalories)
+			 		 			.addContainerGap())
+			 		 );
+			 		 lifeinfoPanel.setLayout(gl_lifeinfoPanel);
 			 /*Time Series card*/
 
 			 //Time Series button
@@ -575,6 +707,51 @@ public class DashBoardPanel extends JPanel {
 			 );
 			 pl6.setLayout(gl_pl6);
 			 cardPanel.add(bestdayButton);
+
+			 JPanel bestinfoPanel= new JPanel();
+						 bestinfoPanel.setOpaque(false);
+						 bestdayButton.add(bestinfoPanel, BorderLayout.CENTER);
+
+						 JLabel lblBestFloors = new JLabel("Best Floors:");
+						 lblBestFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+						 lblBestFloors.setForeground(Color.WHITE);
+
+						 JLabel lblBestSteps = new JLabel("Best Steps:");
+						 lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+						 lblBestSteps.setForeground(Color.WHITE);
+
+						 JLabel lblBestDistance = new JLabel("Best Distance: ");
+						 lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+						 lblBestDistance.setForeground(Color.WHITE);
+						 GroupLayout gl_bestinfoPanel = new GroupLayout(bestinfoPanel);
+						 gl_bestinfoPanel.setHorizontalGroup(
+						 	gl_bestinfoPanel.createParallelGroup(Alignment.LEADING)
+						 		.addGroup(gl_bestinfoPanel.createSequentialGroup()
+						 			.addGap(11)
+						 			.addComponent(lblBestFloors, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						 			.addGap(21))
+						 		.addGroup(gl_bestinfoPanel.createSequentialGroup()
+						 			.addGap(12)
+						 			.addComponent(lblBestSteps, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						 			.addGap(14))
+						 		.addGroup(Alignment.TRAILING, gl_bestinfoPanel.createSequentialGroup()
+						 			.addContainerGap()
+						 			.addComponent(lblBestDistance, GroupLayout.PREFERRED_SIZE, 90, Short.MAX_VALUE)
+						 			.addContainerGap())
+						 );
+						 gl_bestinfoPanel.setVerticalGroup(
+						 	gl_bestinfoPanel.createParallelGroup(Alignment.LEADING)
+						 		.addGroup(gl_bestinfoPanel.createSequentialGroup()
+						 			.addGap(5)
+						 			.addComponent(lblBestFloors)
+						 			.addGap(21)
+						 			.addComponent(lblBestSteps)
+						 			.addGap(25)
+						 			.addComponent(lblBestDistance)
+						 			.addContainerGap())
+						 );
+						 bestinfoPanel.setLayout(gl_bestinfoPanel);
+
 
 		//Left Arrow
 		JButton leftarrow = new JButton("");
