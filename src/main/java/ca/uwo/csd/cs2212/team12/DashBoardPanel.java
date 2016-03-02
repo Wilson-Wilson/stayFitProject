@@ -853,16 +853,9 @@ public class DashBoardPanel extends JPanel {
 
             
             public void actionPerformed(ActionEvent ae) {
-                JFrame trophyframe= new JFrame("Goals and Accolades");
-                trophyframe.setVisible(true);
-                trophyframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                JPanel trophypanel=new JPanel();
-
-
-                trophyframe.getContentPane().add(trophypanel);
-
-                trophyframe.pack();
-                trophyframe.setSize(600,600);
+            	TrophyPanel trophypanel = new TrophyPanel();
+                panel_3.add( trophypanel,"11") ;    
+                cl.show(panel_3,"11");
 
             }});
         panel_15.setLayout(gl_panel_15);
