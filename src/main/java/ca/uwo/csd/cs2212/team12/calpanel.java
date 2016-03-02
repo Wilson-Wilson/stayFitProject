@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class calpanel extends JPanel{
+public class CalPanel extends JPanel{
 
 	private JFrame frame;
 
@@ -23,7 +23,7 @@ public class calpanel extends JPanel{
 	/**
 	 * Create the application.
 	 */
-	public calpanel() {
+	public CalPanel() {
 		initialize();
 	}
 

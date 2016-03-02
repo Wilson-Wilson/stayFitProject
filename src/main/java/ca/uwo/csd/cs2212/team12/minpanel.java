@@ -39,7 +39,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 
 
-public class minpanel extends JPanel{
+public class MinPanel extends JPanel{
 
 	private JFrame frame;
     protected Color shadowColor = Color.black;
@@ -49,7 +49,7 @@ public class minpanel extends JPanel{
 	/**
 	 * Create the application.
 	 */
-	public minpanel() {
+	public MinPanel() {
 		initialize();
 	}
 

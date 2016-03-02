@@ -9,7 +9,7 @@ import java.util.Date;
 
 
 
-public class bestpanel extends JPanel{
+public class BestPanel extends JPanel{
 
 	private JFrame frame;
 
@@ -24,7 +24,7 @@ public class bestpanel extends JPanel{
 	/**
 	 * Create the application.
 	 */
-	public bestpanel() {
+	public BestPanel() {
 		initialize();
 	}
 

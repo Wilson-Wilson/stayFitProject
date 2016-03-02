@@ -42,7 +42,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 
 
-public class timepanel extends JPanel{
+public class TimePanel extends JPanel{
 
 	private JFrame frame;
 
@@ -52,9 +52,9 @@ public class timepanel extends JPanel{
     protected int shadAlpha = 150;
 
 	/**
-	 * Creates the panel that hols time focused information
+	 * Creates the panel that holds time focused information
 	 */
-	public timepanel() {
+	public TimePanel() {
 		initialize();
 	}
 

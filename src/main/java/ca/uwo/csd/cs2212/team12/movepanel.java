@@ -41,7 +41,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 
 
-public class movepanel extends JPanel{
+public class MovePanel extends JPanel{
 
 	private JFrame frame;
     protected Color shadowColor = Color.black;
@@ -54,7 +54,7 @@ public class movepanel extends JPanel{
 	/**
 	 * Create the application.
 	 */
-	public movepanel() {
+	public MovePanel() {
 		initialize();
 	}
 
