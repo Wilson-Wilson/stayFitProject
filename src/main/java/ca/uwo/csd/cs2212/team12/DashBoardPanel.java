@@ -37,7 +37,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class DashBoardPanel extends JPanel {
 
     private JFrame frame;
-    private API api = new RealAPI();
+    private static API api = new RealAPI();
 
     public void setAPI(API api) {
         this.api = api;
