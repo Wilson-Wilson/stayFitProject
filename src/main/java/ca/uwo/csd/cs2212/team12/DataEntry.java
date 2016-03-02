@@ -1,3 +1,4 @@
+package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 
 public class DataEntry implements Serializable {

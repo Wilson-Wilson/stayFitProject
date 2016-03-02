@@ -1,3 +1,4 @@
+package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 import java.io.*;
 
@@ -70,7 +71,7 @@ public class UserInfo implements Serializable {
     		System.out.println("Class could not be Found!");
             e.printStackTrace();
     	}
-		
+
 		}
 
 

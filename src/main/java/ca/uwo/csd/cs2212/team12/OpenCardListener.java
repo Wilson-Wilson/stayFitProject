@@ -1,4 +1,4 @@
-
+package ca.uwo.csd.cs2212.team12;
 
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -41,55 +41,12 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 public class OpenCardListener extends JPanel{
 
-	private JFrame frame;
-    /** Stroke size. it is recommended to set it to 1 for better view */
-    protected int strokeSize = 1;
-    /** Color of shadow */
-    protected Color shadowColor = Color.black;
-    /** Sets if it drops shadow */
-    protected boolean shady = true;
-    /** Sets if it has an High Quality view */
-    protected boolean highQuality = true;
-    /** Double values for Horizontal and Vertical radius of corner arcs */
-    protected Dimension arcs = new Dimension(20, 20);
-    /** Distance between shadow border and opaque panel border */
-    protected int shadowGap = 5;
-    /** The offset of shadow.  */
-    protected int shadowOffset = 4;
-    /** The transparency value of shadow. ( 0 - 255) */
-    protected int shadowAlpha = 150;
-	
+
+
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/background.jpg");
-	ImageIcon caloriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png");
-	ImageIcon minutesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/TimeIcon2.png");
-	ImageIcon movementIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/RunningIcon2.png");
-	ImageIcon lifetimeIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png");
-	ImageIcon timeseriesIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BarGraphIcon2.png");
-	ImageIcon bestdayIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BlueStarIcon2.png");
-	ImageIcon exitIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/closebutton2.png");
-	ImageIcon rightarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/rightArrow2.png");
-	ImageIcon leftarrowIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/leftArrow2.png");
-	ImageIcon trophyIcon = new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy.png");
-	ImageIcon cardIcon =new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/dash.png");
-	
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CaloriesPanel window = new CaloriesPanel();
-					window.frame.setSize(1000,600);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+	ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
+
+
 	/**
 	 * Create the application.
 	 */
@@ -101,16 +58,16 @@ public class OpenCardListener extends JPanel{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(int num) {
-		
+
 		//main frame
 		/*frame = new JFrame();
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-		CardLayout cl = new CardLayout(0,0);
+		final CardLayout cl = new CardLayout(0,0);
 		this.setLayout(new CardLayout(0,0));
-		JPanel panel_3 = new JPanel();
+		final JPanel panel_3 = new JPanel();
 		this.add(panel_3, "3");
 		panel_3.setLayout(cl);
 		cl.show(panel_3, "2");
@@ -118,18 +75,18 @@ public class OpenCardListener extends JPanel{
 		dashPanel.setBackground(new Color(0, 128, 0));
 		panel_3.add(dashPanel, "2");
 		JPanel cardPanel= new JPanel();
-		
-		
+
+
 		if (num==1){
 			calpanel calPanel = new calpanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			calPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
 			dashPanel.add(calPanel, BorderLayout.CENTER);;;;
-			
-	         
+
+
 			cardPanel.setLayout(new BorderLayout(0, 0));
-			
+
 			}
 
 		if (num==2){
@@ -137,60 +94,60 @@ public class OpenCardListener extends JPanel{
 			minPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(minPanel, BorderLayout.CENTER);       
+			dashPanel.add(minPanel, BorderLayout.CENTER);
 			cardPanel.setLayout(new BorderLayout(0, 0));
-			
+
 			}
-		
+
 		if (num==3){
 			movepanel movePanel = new movepanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			movePanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(movePanel, BorderLayout.CENTER);       
+			dashPanel.add(movePanel, BorderLayout.CENTER);
 			cardPanel.setLayout(new BorderLayout(0, 0));
-			
+
 			}
-		
-		
-		
+
+
+
 		if (num==4){
 		lifepanel life = new lifepanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 		life.setOpaque(false);
 		//cardPanel.add(life, "9");
 		dashPanel.setLayout(new BorderLayout(0, 0));
 		dashPanel.add(life, BorderLayout.CENTER);;;;
-		
+
 		cardPanel.setLayout(new BorderLayout(0, 0));
-		
+
 		}
 		if (num==5){
 			timepanel timePanel = new timepanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			timePanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(timePanel, BorderLayout.CENTER);       
+			dashPanel.add(timePanel, BorderLayout.CENTER);
 			cardPanel.setLayout(new BorderLayout(0, 0));
-			
+
 			}
-		
+
 		if (num==6){
 			bestpanel bestPanel = new bestpanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			bestPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(bestPanel, BorderLayout.CENTER);       
+			dashPanel.add(bestPanel, BorderLayout.CENTER);
 			cardPanel.setLayout(new BorderLayout(0, 0));
-			
+
 			}
-		
+
 		/*Trophy*/
-		
+
 		//setting the panel for trophy
 		JPanel panel_15 = new JPanel();
 		panel_15.setOpaque(false);
 		dashPanel.add(panel_15, BorderLayout.SOUTH);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(105, 105, 105,180));
 		JButton trophyButton = new JButton("");
@@ -203,137 +160,148 @@ public class OpenCardListener extends JPanel{
 		trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
 		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		trophyButton.setBorder(null);
-		trophyButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/Trophy2.png"));
-		
+		trophyButton.setBorderPainted(false);
+
+		trophyButton.setIcon(new ImageIcon("../src/main/resources/Trophy2.png"));
+
 		JButton btnJodimarie = new JButton("Jodi-Marie");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		btnJodimarie.setForeground(new Color(255, 255, 255));
 		btnJodimarie.setContentAreaFilled(false);
 		btnJodimarie.setBorder(null);
-		
+		btnJodimarie.setBorderPainted(false);
+
 		JButton timeseriesButton = new JButton("");
 		timeseriesButton.setContentAreaFilled(false);
-		timeseriesButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BarGraphIcon2.png"));
+		timeseriesButton.setIcon(new ImageIcon("../src/main/resources/BarGraphIcon2.png"));
 		timeseriesButton.setBorder(null);
+		timeseriesButton.setBorderPainted(false);
 		timeseriesButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"2");	
+                //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(5);
-        		panel_3.add(opencard,"10") ;	
+        		panel_3.add(opencard,"10") ;
         		cl.show(panel_3,"10");
-            	
+
             }});
-		
-		
+
+
 		JButton bestButton = new JButton("");
 		bestButton.setBorder(null);
-		bestButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/BlueStarIcon2.png"));
+		bestButton.setIcon(new ImageIcon("../src/main/resources/BlueStarIcon2.png"));
 		bestButton.setContentAreaFilled(false);
+		btnJodimarie.setBorder(null);
+		btnJodimarie.setBorderPainted(false);
 		bestButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"2");	
+                //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(6);
-        		panel_3.add(opencard,"10") ;	
+        		panel_3.add(opencard,"10") ;
         		cl.show(panel_3,"10");
-            	
+
             }});
-		
-		
-		
+
+
+
 		JButton caloriesButton = new JButton("");
-		caloriesButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/FireIcon2.png"));
+		caloriesButton.setIcon(new ImageIcon("../src/main/resources/FireIcon2.png"));
 		caloriesButton.setContentAreaFilled(false);
 		caloriesButton.setBorder(null);
+		caloriesButton.setBorderPainted(false);
 		caloriesButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"2");	
+                //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(1);
-        		panel_3.add(opencard,"10") ;	
+        		panel_3.add(opencard,"10") ;
         		cl.show(panel_3,"10");
-            	
+
             }});
-		
+
 		JButton movementButton = new JButton("");
 		movementButton.setContentAreaFilled(false);
 		movementButton.setBorder(null);
-		movementButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/RunningIcon2.png"));
+		movementButton.setBorderPainted(false);
+		movementButton.setIcon(new ImageIcon("../src/main/resources/RunningIcon2.png"));
 		movementButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"2");	
+                //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(3);
-        		panel_3.add(opencard,"10") ;	
+        		panel_3.add(opencard,"10") ;
         		cl.show(panel_3,"10");
-            	
+
             }});
-		
-		
+
+
 		JButton minutesButton = new JButton("");
-		minutesButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/TimeIcon2.png"));
+		minutesButton.setIcon(new ImageIcon("../src/main/resources/TimeIcon2.png"));
 		minutesButton.setBorder(null);
+		minutesButton.setBorderPainted(false);
 		minutesButton.setContentAreaFilled(false);
 		minutesButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"2");	
+                //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(2);
-        		panel_3.add(opencard,"10") ;	
+        		panel_3.add(opencard,"10") ;
         		cl.show(panel_3,"10");
-            	
+
             }});
-		
+
 		JButton lifetimeButton = new JButton("");
 		lifetimeButton.setContentAreaFilled(false);
 		lifetimeButton.setBorder(null);
-		lifetimeButton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/StarIcon2.png"));
+		lifetimeButton.setBorderPainted(false);
+		lifetimeButton.setIcon(new ImageIcon("../src/main/resources/StarIcon2.png"));
 		lifetimeButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"2");	
-            	OpenCardListener opencard = new OpenCardListener(2);
-        		panel_3.add(opencard,"10") ;	
+                //cl.show(panel_3,"2");
+            	OpenCardListener opencard = new OpenCardListener(4);
+        		panel_3.add(opencard,"10") ;
         		cl.show(panel_3,"10");
-            	
+
             }});
-		
-		
-		
+
+
+
 		JButton homebutton = new JButton("");
 		homebutton.addActionListener(new ActionListener() {
 
 	            @Override
 	            public void actionPerformed(ActionEvent ae) {
-	                //cl.show(panel_3,"2");	
+	                //cl.show(panel_3,"2");
 	            	DashBoardPanel dash= new DashBoardPanel();
-	        		panel_3.add(dash,"11");	
+	        		panel_3.add(dash,"11");
 	        		cl.show(panel_3,"11");
-	            	
+
 	            }});
-		
-		
+
+
 		homebutton.setContentAreaFilled(false);
-		homebutton.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/home2.png"));
+		homebutton.setIcon(new ImageIcon("../src/main/resources/home2.png"));
 		homebutton.setBorder(null);
+		homebutton.setBorderPainted(false);
 		 homebutton .addActionListener(new ActionListener() {
 
 	            @Override
 	            public void actionPerformed(ActionEvent ae) {
-	            	
-	               	
-	            	//cl.show(panel_3,"9");	
+
+
+	            	//cl.show(panel_3,"9");
 	            	OpenCardListener opencard = new OpenCardListener(6);
-	        		panel_3.add(opencard,"10") ;	
+	        		panel_3.add(opencard,"10") ;
 	        		cl.show(panel_3,"10");
-	            	
+
 	            }});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -382,32 +350,33 @@ public class OpenCardListener extends JPanel{
 	                trophyframe.setVisible(true);
 	                trophyframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	             	JPanel trophypanel=new JPanel();
-	             	
-	              
-	            	trophyframe.getContentPane().add(trophypanel);      	
-	            	
+
+
+	            	trophyframe.getContentPane().add(trophypanel);
+
 	            	trophyframe.pack();
 	            	trophyframe.setSize(600,600);
-	               	
+
 	            }});
 		panel_15.setLayout(new BorderLayout(0, 0));
 		panel_15.add(panel);
-		
+
 		JPanel panel_16 = new JPanel();
 		panel_16.setBackground(new Color(105, 105, 105,180));
-		
-	
+
+
 		/*Today Title*/
-		
+
 		Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
 		dashPanel.add(panel_16, BorderLayout.NORTH);
 		panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JButton button_6 = new JButton("");
 		button_6.setContentAreaFilled(false);
 		button_6.setBorder(null);
+		button_6.setBorderPainted(false);
 		button_6.setOpaque(false);
-		button_6.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/smallleftarrow.png"));
+		button_6.setIcon(new ImageIcon("../src/main/resources/smallleftarrow.png"));
 		panel_16.add(button_6);
 		JLabel lblToday = new JLabel("Today");
 		lblToday.setBackground(new Color(105, 105, 105,180));
@@ -415,18 +384,19 @@ public class OpenCardListener extends JPanel{
 		lblToday.setHorizontalAlignment(SwingConstants.CENTER);
 		lblToday.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		panel_16.add(lblToday);
-		
+
 		JButton button_7 = new JButton("");
 		button_7.setContentAreaFilled(false);
 		button_7.setBorder(null);
-		button_7.setIcon(new ImageIcon("C:/Users/Wilson/courses/cs2212/labs/team12/src/main/resources/smallrightarrow.png"));
+		button_7.setBorderPainted(false);
+		button_7.setIcon(new ImageIcon("../src/main/resources/smallrightarrow.png"));
 		panel_16.add(button_7);
-		
-		
-		
+
+
+
 	}
-	
- 
+
+
 }
 class MyScrollbarUI extends MetalScrollBarUI {
 
