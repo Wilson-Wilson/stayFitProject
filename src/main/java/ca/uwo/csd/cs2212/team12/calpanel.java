@@ -28,7 +28,7 @@ public class calpanel extends JPanel{
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the panels; sub-panels, labels, borders and etc.
 	 */
 	private void initialize() {
 

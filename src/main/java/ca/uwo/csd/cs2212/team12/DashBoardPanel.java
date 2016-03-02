@@ -55,9 +55,7 @@ public class DashBoardPanel extends JPanel {
     ImageIcon trophyIcon = new ImageIcon("../src/main/resources/Trophy.png");
     ImageIcon cardIcon =new ImageIcon("../src/main/resources/dash.png");
 
-    /**
-     * Launch the application.
-     */
+    
 /*    public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -79,14 +77,19 @@ public class DashBoardPanel extends JPanel {
     public DashBoardPanel() {
         initialize();
     }
-
+    
+    /**
+     * Sets the API the dashboard will get values from.
+     * 
+     * @param api an interface that can be used as either the test API or the realAPI
+     */
     public DashBoardPanel(API api) {
         this.api = api;
         initialize();
     }
 
     /**
-     * Initialize the contents of the frame.
+     * Initialize the contents of the panels; sub-panels, labels, borders and etc.
      */
     private void initialize() {
 
@@ -106,8 +109,10 @@ public class DashBoardPanel extends JPanel {
         panel_3.add(dashPanel,"1");
 
 
-
-        final JPanel cardPanel = new JPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+        /**Note the card panel holds all the card its at the center of the dash panel,
+         * the arrows, trophy and etc are on other sub-panels of the dashpanel
+         */
+        final JPanel cardPanel = new JPanel();
         cardPanel.setOpaque(false);
         cardPanel.setBounds(new Rectangle(200, 200, 200, 200));
         dashPanel.setLayout(new BorderLayout(0, 0));
@@ -116,8 +121,13 @@ public class DashBoardPanel extends JPanel {
         //bi.setNorthPane(null);
         cardPanel.setLayout(new GridLayout(2, 3, 20, 20));
         cardPanel.setLayout(new GridLayout(2, 3, 20, 50));;
-
-		/*Calories card*/
+        
+        /**
+         *These are the individual cards, which are buttons with nested components.
+         *each of these are on the card panel.         * 
+         */
+		
+        /*Calories card*/
 
         //Calories Button
         final  JButton caloriesButton = new JButton("");
@@ -759,8 +769,17 @@ public class DashBoardPanel extends JPanel {
                                 .addContainerGap())
         );
         bestinfoPanel.setLayout(gl_bestinfoPanel);
+        /**
+         * End of the card panel and it's subcomponent set up.
+         */
 
-
+        
+        
+        /**
+         * The left and right arrows are on the actual daspanel,
+         * in the west and east borers of it's layout respectively.         * 
+         */
+        
         //Left Arrow
         JButton leftarrow = new JButton("");
         leftarrow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -782,7 +801,13 @@ public class DashBoardPanel extends JPanel {
         rightarrow.setIcon(rightarrowIcon);
         dashPanel.add(rightarrow, BorderLayout.EAST);
 
-
+        
+        
+        /**
+         *panel_15 is a panel that acts as a taskbar in the south border of the dashpanel, 
+         *holding the settings, trophy and other buttons 
+         */
+        
 		/*Trophy*/
 
         //setting the panel for trophy
@@ -856,7 +881,16 @@ public class DashBoardPanel extends JPanel {
 
             }});
         panel_15.setLayout(gl_panel_15);
-
+        /**
+         * End of panel_15 set up
+         */
+        
+        
+        
+        /**
+         * panel_16 acts as a title bar,
+         * holding the date in the north border of the dashpanel.         * 
+         */
         JPanel panel_16 = new JPanel();
         panel_16.setOpaque(false);
         panel_16.setBackground(new Color(169, 169, 169,100));
@@ -884,6 +918,9 @@ public class DashBoardPanel extends JPanel {
                                 .addContainerGap(71, Short.MAX_VALUE))
         );
         panel_16.setLayout(gl_panel_16);
+        /**
+         * End of panel_16 set up 
+         */
 
         //CaloriesPanel panel_1 = new CaloriesPanel();
         //panel_3.add(panel_1, "5");
