@@ -37,7 +37,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class DashBoardPanel extends JPanel {
 
     private JFrame frame;
-    private API api;
+    private API api = new RealAPI();
 
     public void setAPI(API api) {
         this.api = api;
@@ -130,10 +130,11 @@ public class DashBoardPanel extends JPanel {
         caloriesButton.setBorder(BorderFactory.createEmptyBorder());
         caloriesButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
                 OpenCardListener opencard = new OpenCardListener(1);
+                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -150,7 +151,7 @@ public class DashBoardPanel extends JPanel {
         //exit button for the calories card
         JButton calExit = new JButton("");
         calExit. addActionListener(new java.awt.event.ActionListener() {
-            @Override
+            
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( caloriesButton);
@@ -192,7 +193,7 @@ public class DashBoardPanel extends JPanel {
         );
         pl.setLayout(gl_pl);
         calExit. addActionListener(new java.awt.event.ActionListener() {
-            @Override
+            
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( caloriesButton);
@@ -240,12 +241,13 @@ public class DashBoardPanel extends JPanel {
         minutesButton.setLayout(new BorderLayout());
         minutesButton .addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
 
 
                 //cl.show(panel_3,"4");
                 OpenCardListener opencard = new OpenCardListener(2);
+                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -262,7 +264,7 @@ public class DashBoardPanel extends JPanel {
         //button for minute exit
         JButton minExit = new JButton("");
         minExit.addActionListener(new java.awt.event.ActionListener() {
-            @Override
+            
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( minutesButton);
@@ -347,11 +349,12 @@ public class DashBoardPanel extends JPanel {
         movementButton.setLayout(new BorderLayout());
         movementButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
 
                 //cl.show(panel_3,"6");
                 OpenCardListener opencard = new OpenCardListener(3);
+                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -373,7 +376,7 @@ public class DashBoardPanel extends JPanel {
         //exit button for movement
         JButton moveExit = new JButton("");
         moveExit. addActionListener(new java.awt.event.ActionListener() {
-            @Override
+            
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( movementButton);
@@ -464,11 +467,12 @@ public class DashBoardPanel extends JPanel {
         lifetimeButton.setLayout(new BorderLayout());
         lifetimeButton .addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
 
                 //cl.show(panel_3,"7");
                 OpenCardListener opencard = new OpenCardListener(4);
+                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
             }});
@@ -492,7 +496,7 @@ public class DashBoardPanel extends JPanel {
         final JButton lifeExit= new JButton("");
         lifeExit.setContentAreaFilled(false);
         lifeExit. addActionListener(new java.awt.event.ActionListener() {
-            @Override
+            
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove(lifetimeButton);
@@ -578,11 +582,12 @@ public class DashBoardPanel extends JPanel {
         timeseriesButton.setLayout(new BorderLayout());
         timeseriesButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
 
                 //cl.show(panel_3,"8");
                 OpenCardListener opencard = new OpenCardListener(5);
+                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -606,7 +611,7 @@ public class DashBoardPanel extends JPanel {
         //Exit button for time series card
         JButton timeExit = new JButton("");
         timeExit. addActionListener(new java.awt.event.ActionListener() {
-            @Override
+            
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( timeseriesButton);
@@ -653,12 +658,13 @@ public class DashBoardPanel extends JPanel {
         bestdayButton.setLayout(new BorderLayout());
         bestdayButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
 
 
                 //cl.show(panel_3,"9");
                 OpenCardListener opencard = new OpenCardListener(6);
+                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -680,7 +686,7 @@ public class DashBoardPanel extends JPanel {
         //exit button for best days card
         JButton bestExit = new JButton("");
         bestExit. addActionListener(new java.awt.event.ActionListener() {
-            @Override
+            
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( bestdayButton);
@@ -838,7 +844,7 @@ public class DashBoardPanel extends JPanel {
         panel.setLayout(gl_panel);
         trophyButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 JFrame trophyframe= new JFrame("Goals and Accolades");
                 trophyframe.setVisible(true);
