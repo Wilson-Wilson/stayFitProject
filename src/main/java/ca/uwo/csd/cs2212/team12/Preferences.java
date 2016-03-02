@@ -1,7 +1,7 @@
 
 package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
-
+//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
 public class Preferences implements Serializable{
 
   private boolean showCaloriesCard;
@@ -12,7 +12,10 @@ public class Preferences implements Serializable{
   private boolean showBestDaysCard;
 
   private String preferredUnits;
-
+  
+  /**
+   * This would be the default layout of the dashboard
+   */
   public Preferences(){
     showCaloriesCard= true;
     showMinutesCard= true;
@@ -25,7 +28,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Returns value of showCaloriesCard
-	* @return
+	* @return boolean lets the programme know this card's display status
 	*/
 	public boolean isShowCaloriesCard() {
 		return showCaloriesCard;
@@ -33,7 +36,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Sets new value of showCaloriesCard
-	* @param
+	* @param showCaloriesCard determines whether this card will be displayed or not
 	*/
 	public void setShowCaloriesCard(boolean showCaloriesCard) {
 		this.showCaloriesCard = showCaloriesCard;
@@ -41,7 +44,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Returns value of showMinutesCard
-	* @return
+	* @return lets the programme know this card's display status
 	*/
 	public boolean isShowMinutesCard() {
 		return showMinutesCard;
@@ -49,7 +52,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Sets new value of showMinutesCard
-	* @param
+	* @param showMinutesCard determines whether this card will be displayed or not
 	*/
 	public void setShowMinutesCard(boolean showMinutesCard) {
 		this.showMinutesCard = showMinutesCard;
@@ -57,7 +60,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Returns value of showMovementsCard
-	* @return
+	* @return lets the programme know this card's display status
 	*/
 	public boolean isShowMovementsCard() {
 		return showMovementsCard;
@@ -65,7 +68,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Sets new value of showMovementsCard
-	* @param
+	* @param showMovementsCard determines whether this card will be displayed or not
 	*/
 	public void setShowMovementsCard(boolean showMovementsCard) {
 		this.showMovementsCard = showMovementsCard;
@@ -73,7 +76,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Returns value of showLifetimeCard
-	* @return
+	* @return lets the programme know this card's display status
 	*/
 	public boolean isShowLifetimeCard() {
 		return showLifetimeCard;
@@ -81,7 +84,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Sets new value of showLifetimeCard
-	* @param
+	* @param showLifetimeCard determines whether this card will be displayed or not
 	*/
 	public void setShowLifetimeCard(boolean showLifetimeCard) {
 		this.showLifetimeCard = showLifetimeCard;
@@ -89,7 +92,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Returns value of showTimeSeriesCard
-	* @return
+	* @return lets the programme know this card's display status
 	*/
 	public boolean isShowTimeSeriesCard() {
 		return showTimeSeriesCard;
@@ -97,7 +100,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Sets new value of showTimeSeriesCard
-	* @param
+	* @param showTimeSeriesCard determines whether this card will be displayed or not
 	*/
 	public void setShowTimeSeriesCard(boolean showTimeSeriesCard) {
 		this.showTimeSeriesCard = showTimeSeriesCard;
@@ -105,7 +108,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Returns value of showBestDaysCard
-	* @return
+	* @return lets the programme know this card's display status
 	*/
 	public boolean isShowBestDaysCard() {
 		return showBestDaysCard;
@@ -113,7 +116,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Sets new value of showBestDaysCard
-	* @param
+	* @param showBestDaysCard determines whether this card will be displayed or not
 	*/
 	public void setShowBestDaysCard(boolean showBestDaysCard) {
 		this.showBestDaysCard = showBestDaysCard;
@@ -121,7 +124,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Returns value of preferredUnits
-	* @return
+	* @return lets the programme know what unit sthe user wants the data in
 	*/
 	public String getPreferredUnits() {
 		return preferredUnits;
@@ -129,7 +132,7 @@ public class Preferences implements Serializable{
 
 	/**
 	* Sets new value of preferredUnits
-	* @param
+	* @param preferredUnits determines what units the valu of the cards will be shown in
 	*/
 	public void setPreferredUnits(String preferredUnits) {
 		this.preferredUnits = preferredUnits;

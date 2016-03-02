@@ -52,14 +52,14 @@ public class timepanel extends JPanel{
     protected int shadAlpha = 150;
 
 	/**
-	 * Create the application.
+	 * Creates the panel that hols time focused information
 	 */
 	public timepanel() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the panel; sub-panels, labels, borders and etc.
 	 */
 	private void initialize() {
 

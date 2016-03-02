@@ -59,7 +59,7 @@ public class movepanel extends JPanel{
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the panel; sub-panels, labels, borders and etc.
 	 */
 	private void initialize() {
 

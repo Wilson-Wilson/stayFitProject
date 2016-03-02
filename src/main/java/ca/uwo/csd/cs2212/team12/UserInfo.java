@@ -2,6 +2,8 @@ package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 import java.io.*;
 
+//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
+//ITS MAIN PURPOSE IS TO SERVE AS A REFERENCE FOR FUTURE CLASSES
 public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID= 1L;

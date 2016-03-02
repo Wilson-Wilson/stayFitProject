@@ -41,7 +41,7 @@ public class DashBoardPanel extends JPanel {
     public void setAPI(API api){
         this.api = api;}
 
-    //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
+    //Images from the resource folder used throughout the programme
     ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
     ImageIcon caloriesIcon = new ImageIcon("../src/main/resources/FireIcon2.png");
     ImageIcon minutesIcon = new ImageIcon("../src/main/resources/TimeIcon2.png");
@@ -55,21 +55,6 @@ public class DashBoardPanel extends JPanel {
     ImageIcon trophyIcon = new ImageIcon("../src/main/resources/Trophy.png");
     ImageIcon cardIcon =new ImageIcon("../src/main/resources/dash.png");
 
-    
-/*    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    DashBoardPanel window = new DashBoardPanel();
-                    window.setAPI(api);
-                    window.frame.setSize(1000,600);
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }*/
 
     /**
      * Create the application.
