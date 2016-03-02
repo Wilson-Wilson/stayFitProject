@@ -41,8 +41,6 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 public class OpenCardListener extends JPanel{
 
-
-
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
 	ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
 
@@ -178,7 +176,7 @@ public class OpenCardListener extends JPanel{
 		timeseriesButton.setBorderPainted(false);
 		timeseriesButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(5);
@@ -196,7 +194,7 @@ public class OpenCardListener extends JPanel{
 		btnJodimarie.setBorderPainted(false);
 		bestButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(6);
@@ -214,7 +212,7 @@ public class OpenCardListener extends JPanel{
 		caloriesButton.setBorderPainted(false);
 		caloriesButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(1);
@@ -230,7 +228,7 @@ public class OpenCardListener extends JPanel{
 		movementButton.setIcon(new ImageIcon("../src/main/resources/RunningIcon2.png"));
 		movementButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(3);
@@ -247,7 +245,7 @@ public class OpenCardListener extends JPanel{
 		minutesButton.setContentAreaFilled(false);
 		minutesButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(2);
@@ -263,7 +261,7 @@ public class OpenCardListener extends JPanel{
 		lifetimeButton.setIcon(new ImageIcon("../src/main/resources/StarIcon2.png"));
 		lifetimeButton.addActionListener(new ActionListener() {
 
-            @Override
+            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(4);
@@ -277,7 +275,7 @@ public class OpenCardListener extends JPanel{
 		JButton homebutton = new JButton("");
 		homebutton.addActionListener(new ActionListener() {
 
-	            @Override
+	            
 	            public void actionPerformed(ActionEvent ae) {
 	                //cl.show(panel_3,"2");
 	            	DashBoardPanel dash= new DashBoardPanel();
@@ -293,7 +291,7 @@ public class OpenCardListener extends JPanel{
 		homebutton.setBorderPainted(false);
 		 homebutton .addActionListener(new ActionListener() {
 
-	            @Override
+	            
 	            public void actionPerformed(ActionEvent ae) {
 
 
@@ -344,7 +342,7 @@ public class OpenCardListener extends JPanel{
 		panel.setLayout(gl_panel);
 		trophyButton.addActionListener(new ActionListener() {
 
-	            @Override
+	            
 	            public void actionPerformed(ActionEvent ae) {
 	            	JFrame trophyframe= new JFrame("Goals and Accolades");
 	                trophyframe.setVisible(true);
@@ -403,7 +401,7 @@ class MyScrollbarUI extends MetalScrollBarUI {
     private Image imageThumb, imageTrack;
     private JButton b = new JButton() {
 
-        @Override
+        
         public Dimension getPreferredSize() {
             return new Dimension(0, 0);
         }
@@ -415,25 +413,25 @@ class MyScrollbarUI extends MetalScrollBarUI {
         imageTrack = ScrollbarImage.create(32, 32, Color.gray.darker());
     }
 
-    @Override
+    
     protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
         g.setColor(Color.white);
         ((Graphics2D) g).drawImage(imageThumb,
             r.x, r.y, r.width, r.height, null);
     }
 
-    @Override
+    
     protected void paintTrack(Graphics g, JComponent c, Rectangle r) {
         ((Graphics2D) g).drawImage(imageTrack,
             r.x, r.y, r.width, r.height, null);
     }
 
-    @Override
+    
     protected JButton createDecreaseButton(int orientation) {
         return b;
     }
 
-    @Override
+    
     protected JButton createIncreaseButton(int orientation) {
         return b;
     }
