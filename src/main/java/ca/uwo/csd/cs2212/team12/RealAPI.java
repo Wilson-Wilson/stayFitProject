@@ -1,7 +1,7 @@
 package ca.uwo.csd.cs2212.team12;
 
 /**
- * An API for offline testing of the StayFit application
+ * An API for offline real use of the StayFit application
  *
  * @author  Team 12
  * @version 1.0
@@ -17,7 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class TestAPI implements API {
+public class RealAPI implements API {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,89 +27,80 @@ public class TestAPI implements API {
      * This method is used to fetch the number of calories burned.
      * @return int This returns the number of calories burned.
      */
-    public  int getCalBurned() {return getDat("calories");}
+    public  int getCalBurned() {return 0;}
 
     /**
      * This method is used to fetch the number of active minutes.
      * @return int This returns the number of active minutes.
      */
-    public  int getActiveMinutes() {return getDat("activeMinutes");}
+    public  int getActiveMinutes() {return 0;}
 
     /**
      * This method is used to fetch the number of sedentary minutes.
      * @return int This returns the number of sedentary minutes.
      */
-    public  int getSedentaryMinutes() {return getDat("sedentaryMinutes");}
+    public  int getSedentaryMinutes() {return 0;}
 
     /**
      * This method is used to fetch the distance travelled.
      * @return int This returns the distance travelled.
      */
-    public  int getDistance() {return getDat("distance");}
+    public  int getDistance() {return 0;}
 
     /**
      * This method is used to fetch the number of floors climbed.
      * @return int This returns the number of floors climbed.
      */
-    public  int getFloors() {return getDat("floors");}
+    public  int getFloors() {return 0;}
 
     /**
      * This method is used to fetch the number of steps.
      * @return int This returns the number of steps.
      */
-    public  int getSteps() {return getDat("steps");}
+    public  int getSteps() {return 0;}
 
     /**
      * This method is used to fetch the number of floors climbed in total.
      * @return int This returns the number of floors climbed in total.
      */
-    public  int getLifeTimeFloors() {return getDat("lifetimeFloors");}
+    public  int getLifeTimeFloors() {return 0;}
 
     /**
      * This method is used to fetch the number of steps total.
      * @return int This returns the number of steps total.
      */
-    public  int getLifetimeSteps() {return getDat("lifetimeSteps");}
+    public  int getLifetimeSteps() {return 0;}
 
     /**
      * This method is used to fetch the total distance travelled.
      * @return int This returns the total distance travelled.
      */
-    public  int getLifetimeDistance() {return getDat("lifetimeDistance");}
+    public  int getLifetimeDistance() {return 0;}
 
     /**
      * This method is used to fetch the best number of floors climbed.
      * @return int This returns the best number of floors climbed.
      */
-    public  int getBestFloors() {return getDat("bestFloors");}
+    public  int getBestFloors() {return 0;}
 
     /**
      * This method is used to fetch the best number of steps.
      * @return int This returns the best number of steps.
      */
-    public  int getBestSteps() {return getDat("bestSteps");}
+    public  int getBestSteps() {return 0;}
 
     /**
      * This method is used to fetch the best distance travelled.
      * @return int This returns the best distance travelled.
      */
-    public  int getBestDistance() {return getDat("bestDistance");}
+    public  int getBestDistance() {return 0;}
 
     /**
      * This method searches the JSON object for the required value.
      * @param dat The value required from the JSON object
      * @return int The integer requested.
      */
-    private  int getDat(String dat) {
-        int integerData = 0;
-        try {
-            String jsonStr = "{\"summary\":{\"calories\":2300,\"activeMinutes\":119,\"sedentaryMinutes\":439,\"distance\":1324,\"floors\":14,\"steps\":14,\"lifetimeFloors\":1400,\"lifetimeSteps\":140321,\"lifetimeDistance\":14000,\"bestFloors\":21,\"bestSteps\":14000,\"bestDistance\":25000}}";
-            JSONObject o = new JSONObject(jsonStr);
-            JSONObject element =  o.getJSONObject("summary");
-            integerData = element.getInt(dat);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return integerData;
+    private int getDat(String dat) {
+        return 0;
     }
 }
