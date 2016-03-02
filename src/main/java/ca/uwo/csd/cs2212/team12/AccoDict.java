@@ -10,11 +10,19 @@ public class AccoDict implements Serializable {
 
   private static final long serialVersionUID= 1L;
   private static final String FILENAME= "accolades.boop";
-
+  
+  /**
+   * Creates an AccoDict Object and initializes accoList = new ArrayList<Accolade>()
+   */
   public AccoDict(){
     accoList= new ArrayList<Accolade>();
   }
-
+  
+  /**
+   * Returns boolean value showing if the user has Accolades.
+   * @param accoID int The unique accoladeID.
+   * @return boolean This returns a value indicating if the user has Accolades.
+   */
   public boolean userHasAcco(int accoID){
     if(accoList.get(accoID).getUserObtained() == true){
       return true;
@@ -25,7 +33,11 @@ public class AccoDict implements Serializable {
 
 
   //The following methods are used to persist AccoDict object between runs
-
+  
+  /**
+	 * Saves the user's Accolade information to disk.
+	 * @param accos AccoDict an instance of the AccoDict object to be stored.
+	 */
   private static void storeAccolades(AccoDict accos){
     try{
       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
@@ -38,7 +50,9 @@ public class AccoDict implements Serializable {
 
     }
 
-
+  /**
+	 * Loads user's Accolade information from disk into an instance of AccoDict.
+	 */
   private static void loadAccolades(){
     try{
       ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));

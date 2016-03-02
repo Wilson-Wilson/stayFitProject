@@ -41,7 +41,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 
 
-public class lifepanel extends JPanel{
+public class LifePanel extends JPanel{
 
 	private JFrame frame;
 
@@ -53,12 +53,12 @@ public class lifepanel extends JPanel{
 	/**
 	 * Create the application.
 	 */
-	public lifepanel() {
+	public LifePanel() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the panel; sub-panels, labels, borders and etc.
 	 */
 	private void initialize() {
 

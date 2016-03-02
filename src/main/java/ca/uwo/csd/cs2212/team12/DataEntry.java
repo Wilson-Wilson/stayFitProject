@@ -1,6 +1,9 @@
 package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 
+//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
+//PLEASE NOTE THIS SPECIFIC CLASS MOST LIKELY WON'T BE USED IN FURTHER STAGES
+//ITS MAIN PURPOSE IS TO SERVE AS A REFERENCE FOR FUTURE DATASTORES
 public class DataEntry implements Serializable {
 
 		private int calBurned;
@@ -10,7 +13,17 @@ public class DataEntry implements Serializable {
 		private int actMins;
 		private int sedMins;
 		private String date;
-
+		
+		/**
+		 * Takes integers and stores them
+		 * @param cal
+		 * @param dist
+		 * @param floors
+		 * @param steps
+		 * @param actMinutes
+		 * @param sedMinutes
+		 * @param theDate
+		 */
 		public DataEntry(int cal, int dist, int floors, int steps, int actMinutes, int sedMinutes, String theDate){
 			 calBurned= cal;
 			 distanceTravelled= dist;

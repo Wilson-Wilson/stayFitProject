@@ -3,7 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StayFit {
-
+	
+	/**
+	 * This is the main method that start the whole programme
+	 * 
+	 * @param args command line arguments letting the programme know which mode to run
+	 */
     public static void main(String[] args) {
 
         final boolean isTest = (args.length!=0 && args[0].equals("test"));

@@ -50,10 +50,11 @@ public class OpenCardListener extends JPanel{
 	 */
 	public OpenCardListener(int num) {
 		initialize(num);
-	}
+	} 
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the panel; sub-panels, labels, borders and etc.
+	 * @param num int used to choose which details of the panel to display 
 	 */
 	private void initialize(int num) {
 
@@ -74,9 +75,11 @@ public class OpenCardListener extends JPanel{
 		panel_3.add(dashPanel, "2");
 		JPanel cardPanel= new JPanel();
 
-
+		/**
+		 * The details aforementioned being; calories, minutes, floors and etc.
+		 */
 		if (num==1){
-			calpanel calPanel = new calpanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+			CalPanel calPanel = new CalPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			calPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
@@ -88,7 +91,7 @@ public class OpenCardListener extends JPanel{
 			}
 
 		if (num==2){
-			minpanel minPanel = new minpanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+			MinPanel minPanel = new MinPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			minPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
@@ -98,7 +101,7 @@ public class OpenCardListener extends JPanel{
 			}
 
 		if (num==3){
-			movepanel movePanel = new movepanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+			MovePanel movePanel = new MovePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			movePanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
@@ -110,7 +113,7 @@ public class OpenCardListener extends JPanel{
 
 
 		if (num==4){
-		lifepanel life = new lifepanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+		LifePanel life = new LifePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 		life.setOpaque(false);
 		//cardPanel.add(life, "9");
 		dashPanel.setLayout(new BorderLayout(0, 0));
@@ -120,7 +123,7 @@ public class OpenCardListener extends JPanel{
 
 		}
 		if (num==5){
-			timepanel timePanel = new timepanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+			TimePanel timePanel = new TimePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			timePanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
@@ -130,7 +133,7 @@ public class OpenCardListener extends JPanel{
 			}
 
 		if (num==6){
-			bestpanel bestPanel = new bestpanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+			BestPanel bestPanel = new BestPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			bestPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
@@ -138,7 +141,15 @@ public class OpenCardListener extends JPanel{
 			cardPanel.setLayout(new BorderLayout(0, 0));
 
 			}
-
+		/**
+		 * End of the list of possible detaials to display
+		 */
+		
+		
+		/**
+         *panel_15 is a panel that acts as a taskbar in the south border of the dashpanel, 
+         *holding the trophy, home and other buttons.
+         */
 		/*Trophy*/
 
 		//setting the panel for trophy
@@ -358,6 +369,9 @@ public class OpenCardListener extends JPanel{
 	            }});
 		panel_15.setLayout(new BorderLayout(0, 0));
 		panel_15.add(panel);
+		/**
+         * End of panel_15 set up
+         */
 
 		JPanel panel_16 = new JPanel();
 		panel_16.setBackground(new Color(105, 105, 105,180));
