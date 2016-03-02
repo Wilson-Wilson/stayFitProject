@@ -59,20 +59,20 @@ public class DashBoardPanel extends JPanel {
     /**
      * Launch the application.
      */
-//    public static void main(String[] args) {
-//        EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    DashBoardPanel window = new DashBoardPanel();
-//                    window.setAPI(api);
-//                    window.frame.setSize(1000,600);
-//                    window.frame.setVisible(true);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
+/*    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    DashBoardPanel window = new DashBoardPanel();
+                    window.setAPI(api);
+                    window.frame.setSize(1000,600);
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }*/
 
     /**
      * Create the application.
