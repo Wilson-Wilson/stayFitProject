@@ -6,13 +6,14 @@ public class StayFit{
 
     public static void main(String[] args) {
 
+        final boolean isTest = (args.length>0 && args[0]== "test");
 
 
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     API api;
-                    if(args.length>0 && args[0]== "test"){
+                    if(isTest){
                         api= new TestAPI();
                     }
                     else{
