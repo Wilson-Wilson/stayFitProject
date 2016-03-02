@@ -524,7 +524,7 @@ public class DashBoardPanel extends JPanel {
         lifeinfoPanel.setOpaque(false);
         lifetimeButton.add(lifeinfoPanel, BorderLayout.CENTER);
 
-        JLabel lblNewLabel_2 = new JLabel("Lifetime Floors: "   + TestAPI.getLifetimeFloors());
+        JLabel lblNewLabel_2 = new JLabel("Lifetime Floors: "   + TestAPI.getLifeTimeFloors());
         lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         lblNewLabel_2.setForeground(Color.WHITE);
 
@@ -720,7 +720,7 @@ public class DashBoardPanel extends JPanel {
         lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         lblBestSteps.setForeground(Color.WHITE);
 
-        JLabel lblBestDistance = new JLabel("Best Distance: "   + TestAPI.getBestMinutes());
+        JLabel lblBestDistance = new JLabel("Best Distance: "   + TestAPI.getBestDistance());
         lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         lblBestDistance.setForeground(Color.WHITE);
         GroupLayout gl_bestinfoPanel = new GroupLayout(bestinfoPanel);
