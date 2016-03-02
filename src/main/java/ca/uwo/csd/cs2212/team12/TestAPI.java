@@ -1,4 +1,4 @@
-package ca.uwo.csd.cs2212.team12;
+//package ca.uwo.csd.cs2212.team12;
 
 /**
  * An API for offline testing of the StayFit application
@@ -18,12 +18,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TestAPI {
-
-    /**
-     * The JSON data to be used in the testing mode.
-     */
-    private static String jsonStr = "{\"summary\":{\"calories\":2300,\"activeMinutes\":119,\"sedentaryMinutes\":439,\"distance\":1324,\"floors\":14,\"steps\":14,\"lifetimeFloors\":1400,\"lifetimeSteps\":140321,\"lifetimeDistance\":14000,\"bestFloors\":21,\"bestSteps\":14000,\"bestDistance\":25000}}";
-    private static JSONObject o = new JSONObject(jsonStr);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -109,6 +103,8 @@ public class TestAPI {
     private static int getDat(String dat) {
         int integerData = 0;
         try {
+            String jsonStr = "{\"summary\":{\"calories\":2300,\"activeMinutes\":119,\"sedentaryMinutes\":439,\"distance\":1324,\"floors\":14,\"steps\":14,\"lifetimeFloors\":1400,\"lifetimeSteps\":140321,\"lifetimeDistance\":14000,\"bestFloors\":21,\"bestSteps\":14000,\"bestDistance\":25000}}";
+            JSONObject o = new JSONObject(jsonStr);
             JSONObject element =  o.getJSONObject("summary");
             integerData = element.getInt(dat);
         } catch (JSONException e) {
