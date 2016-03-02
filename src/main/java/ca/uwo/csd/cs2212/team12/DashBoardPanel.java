@@ -66,6 +66,7 @@ public class DashBoardPanel extends JPanel {
             public void run() {
                 try {
                     DashBoardPanel window = new DashBoardPanel();
+                    window.setAPI(api);
                     window.frame.setSize(1000,600);
                     window.frame.setVisible(true);
                 } catch (Exception e) {
