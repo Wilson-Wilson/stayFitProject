@@ -7,9 +7,10 @@ import java.awt.*;
 
 public class MWindow {
 
-    private API api;
+    private API api = new RealAPI();
 
     public void setAPI(API api) {
+        System.out.println("SETTING API MWINDOW");
         this.api = api;
     }
 
@@ -34,7 +35,8 @@ public class MWindow {
     /**
      * Create the application.
      */
-    public MWindow() {
+    public MWindow(API api) {
+        this.setAPI(api);
         initialize();
     }
 
@@ -60,7 +62,7 @@ public class MWindow {
 
 
 
-        DashBoardPanel dash= new DashBoardPanel();
+        DashBoardPanel dash= new DashBoardPanel(api);
         dash.setAPI(api);
         panel_3.add(dash,"2");
 

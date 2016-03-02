@@ -41,12 +41,6 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 public class OpenCardListener extends JPanel{
 
-	private API api;
-
-	public void setAPI(API api) {
-		this.api = api;
-	}
-
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
 	ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
 
@@ -285,7 +279,6 @@ public class OpenCardListener extends JPanel{
 	            public void actionPerformed(ActionEvent ae) {
 	                //cl.show(panel_3,"2");
 	            	DashBoardPanel dash= new DashBoardPanel();
-					dash.setAPI(api);
 	        		panel_3.add(dash,"11");
 	        		cl.show(panel_3,"11");
 

@@ -38,11 +38,9 @@ public class DashBoardPanel extends JPanel {
 
     private JFrame frame;
     private API api = new RealAPI();
-
-    public void setAPI(API api) {
-        this.api = api;
-    }
-
+    public void setAPI(API api){
+        System.out.println("setting api dashboard");
+        this.api = api;}
 
     //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
     ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
@@ -61,25 +59,30 @@ public class DashBoardPanel extends JPanel {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    DashBoardPanel window = new DashBoardPanel();
-                    window.setAPI(api);
-                    window.frame.setSize(1000,600);
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//                    DashBoardPanel window = new DashBoardPanel();
+//                    window.setAPI(api);
+//                    window.frame.setSize(1000,600);
+//                    window.frame.setVisible(true);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 
     /**
      * Create the application.
      */
     public DashBoardPanel() {
+        initialize();
+    }
+
+    public DashBoardPanel(API api) {
+        this.api = api;
         initialize();
     }
 
@@ -135,7 +138,6 @@ public class DashBoardPanel extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
                 OpenCardListener opencard = new OpenCardListener(1);
-                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -248,7 +250,6 @@ public class DashBoardPanel extends JPanel {
 
                 //cl.show(panel_3,"4");
                 OpenCardListener opencard = new OpenCardListener(2);
-                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -355,7 +356,6 @@ public class DashBoardPanel extends JPanel {
 
                 //cl.show(panel_3,"6");
                 OpenCardListener opencard = new OpenCardListener(3);
-                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -473,7 +473,6 @@ public class DashBoardPanel extends JPanel {
 
                 //cl.show(panel_3,"7");
                 OpenCardListener opencard = new OpenCardListener(4);
-                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
             }});
@@ -588,7 +587,6 @@ public class DashBoardPanel extends JPanel {
 
                 //cl.show(panel_3,"8");
                 OpenCardListener opencard = new OpenCardListener(5);
-                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
@@ -665,7 +663,6 @@ public class DashBoardPanel extends JPanel {
 
                 //cl.show(panel_3,"9");
                 OpenCardListener opencard = new OpenCardListener(6);
-                opencard.setAPI(api);
                 panel_3.add(opencard,"10") ;
                 cl.show(panel_3,"10");
 
