@@ -10,7 +10,6 @@ public class MWindow {
     private API api = new RealAPI();
 
     public void setAPI(API api) {
-        System.out.println("SETTING API MWINDOW");
         this.api = api;
     }
 

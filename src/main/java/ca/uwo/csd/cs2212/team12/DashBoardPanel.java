@@ -39,7 +39,6 @@ public class DashBoardPanel extends JPanel {
     private JFrame frame;
     private API api = new RealAPI();
     public void setAPI(API api){
-        System.out.println("setting api dashboard");
         this.api = api;}
 
     //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
