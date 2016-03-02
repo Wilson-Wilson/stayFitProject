@@ -1,4 +1,4 @@
-//package ca.uwo.csd.cs2212.team12;
+package ca.uwo.csd.cs2212.team12;
 
 /**
  * An API for offline testing of the StayFit application
