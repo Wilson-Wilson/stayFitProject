@@ -210,7 +210,7 @@ public class DashBoardPanel extends JPanel {
         JLabel lblNewLabel = new JLabel("Calories Burned: " + api.getCalBurned());
         lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel.setForeground(Color.WHITE);
         GroupLayout gl_calinfoPanel = new GroupLayout(calinfoPanel);
         gl_calinfoPanel.setHorizontalGroup(
@@ -307,11 +307,11 @@ public class DashBoardPanel extends JPanel {
         minutesButton.add(mininfoPanel, BorderLayout.CENTER);
 
         JLabel lblActiveMinutes = new JLabel("Active Minutes: " + api.getActiveMinutes());
-        lblActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblActiveMinutes.setFont(new Font("Arial", Font.PLAIN, 15));
         lblActiveMinutes.setForeground(Color.WHITE);
 
         JLabel lblSedentayr = new JLabel("Sedentary Minutes: "  + api.getSedentaryMinutes());
-        lblSedentayr.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblSedentayr.setFont(new Font("Arial", Font.PLAIN, 15));
         lblSedentayr.setForeground(Color.WHITE);
         GroupLayout gl_mininfoPanel = new GroupLayout(mininfoPanel);
         gl_mininfoPanel.setHorizontalGroup(
@@ -413,15 +413,15 @@ public class DashBoardPanel extends JPanel {
         movementButton.add(moveinfoPanel, BorderLayout.CENTER);
 
         JLabel lblSteps = new JLabel("Steps: " + api.getSteps());
-        lblSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblSteps.setFont(new Font("Arial", Font.PLAIN, 15));
         lblSteps.setForeground(Color.WHITE);
 
         JLabel lblFloors = new JLabel("Floors: "   + api.getFloors());
-        lblFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblFloors.setFont(new Font("Arial", Font.PLAIN, 15));
         lblFloors.setForeground(Color.WHITE);
 
         JLabel lblDistance = new JLabel("Distance: "   + api.getDistance());
-        lblDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblDistance.setFont(new Font("Arial", Font.PLAIN, 15));
         lblDistance.setForeground(Color.WHITE);
         GroupLayout gl_moveinfoPanel = new GroupLayout(moveinfoPanel);
         gl_moveinfoPanel.setHorizontalGroup(
@@ -528,15 +528,15 @@ public class DashBoardPanel extends JPanel {
         lifetimeButton.add(lifeinfoPanel, BorderLayout.CENTER);
 
         JLabel lblNewLabel_2 = new JLabel("Lifetime Floors: "   + api.getLifeTimeFloors());
-        lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel_2.setForeground(Color.WHITE);
 
         JLabel lblNewLabel_1 = new JLabel("Lifetime Steps: "   + api.getLifetimeSteps());
-        lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
 
         JLabel lblLifetimeCalories = new JLabel("Lifetime Distance: "   + api.getLifetimeDistance());
-        lblLifetimeCalories.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblLifetimeCalories.setFont(new Font("Arial", Font.PLAIN, 15));
         lblLifetimeCalories.setForeground(Color.WHITE);
         GroupLayout gl_lifeinfoPanel = new GroupLayout(lifeinfoPanel);
         gl_lifeinfoPanel.setHorizontalGroup(
@@ -716,15 +716,15 @@ public class DashBoardPanel extends JPanel {
         bestdayButton.add(bestinfoPanel, BorderLayout.CENTER);
 
         JLabel lblBestFloors = new JLabel("Best Floors: "   + api.getBestFloors());
-        lblBestFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblBestFloors.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestFloors.setForeground(Color.WHITE);
 
         JLabel lblBestSteps = new JLabel("Best Steps: "   + api.getBestSteps());
-        lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblBestSteps.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestSteps.setForeground(Color.WHITE);
 
         JLabel lblBestDistance = new JLabel("Best Distance: "   + api.getBestDistance());
-        lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblBestDistance.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestDistance.setForeground(Color.WHITE);
         GroupLayout gl_bestinfoPanel = new GroupLayout(bestinfoPanel);
         gl_bestinfoPanel.setHorizontalGroup(
@@ -883,7 +883,7 @@ public class DashBoardPanel extends JPanel {
         lblToday.setOpaque(true);
         lblToday.setForeground(new Color(255, 255, 255));
         lblToday.setHorizontalAlignment(SwingConstants.CENTER);
-        lblToday.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+        lblToday.setFont(new Font("Arial", Font.BOLD, 20));
         GroupLayout gl_panel_16 = new GroupLayout(panel_16);
         gl_panel_16.setHorizontalGroup(
                 gl_panel_16.createParallelGroup(Alignment.LEADING)
