@@ -22,17 +22,7 @@ import java.util.Date;
 
 //import net.miginfocom.swing.MigLayout;
 
-
-
-
-
-
-
-
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-
-
 
 public class DashBoardPanel extends JPanel {
 
@@ -162,7 +152,7 @@ public class DashBoardPanel extends JPanel {
 
 
         //the label for the title of the calories card
-        RichJLabel lblCalories_1 = new RichJLabel("Calories", 0, 16);
+        RichJLabel lblCalories_1 = new RichJLabel("Calories", 16);
         lblCalories_1.setOutline(new Color(0, 0, 0, 180));
         lblCalories_1.setIcon(caloriesIcon);
         lblCalories_1.setForeground(new Color(255, 255, 255));
@@ -210,8 +200,8 @@ public class DashBoardPanel extends JPanel {
         JLabel lblNewLabel = new JLabel("Calories Burned: " + api.getCalBurned());
         lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel.setForeground(Color.WHITE);
+        lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
         GroupLayout gl_calinfoPanel = new GroupLayout(calinfoPanel);
         gl_calinfoPanel.setHorizontalGroup(
                 gl_calinfoPanel.createParallelGroup(Alignment.LEADING)
@@ -277,7 +267,7 @@ public class DashBoardPanel extends JPanel {
         minExit .setIcon(exitIcon);
 
         //the label for the title of the minutes card
-        RichJLabel lblMinutes = new RichJLabel("Minutes", 0, 16);
+        RichJLabel lblMinutes = new RichJLabel("Minutes", 16);
         lblMinutes.setOutline(new Color(0, 0, 0, 180));
         lblMinutes.setForeground(new Color(255, 255, 255));
         lblMinutes.setIcon(minutesIcon);
@@ -362,7 +352,7 @@ public class DashBoardPanel extends JPanel {
         movementButton.add(pl3, BorderLayout.NORTH);
 
         //the label for the title of the movements card
-        RichJLabel lblMovements = new RichJLabel("Movements", 0, 16);
+        RichJLabel lblMovements = new RichJLabel("Movements", 16);
         lblMovements.setOutline(new Color(0, 0, 0, 180));
         lblMovements.setForeground(new Color(255, 255, 255));
         lblMovements.setIcon(movementIcon);
@@ -481,7 +471,7 @@ public class DashBoardPanel extends JPanel {
         lifetimeButton.add(pl4,BorderLayout.NORTH);
 
         //the label for the title of the lifetime card
-        RichJLabel lblLifetime_1 = new RichJLabel("Lifetime", 0, 16);
+        RichJLabel lblLifetime_1 = new RichJLabel("Lifetime", 16);
         lblLifetime_1.setOutline(new Color(0, 0, 0, 180));
         lblLifetime_1.setForeground(new Color(255, 255, 255));
         lblLifetime_1.setIcon(lifetimeIcon);
@@ -596,7 +586,7 @@ public class DashBoardPanel extends JPanel {
         timeseriesButton.add(pl5,BorderLayout.NORTH);
 
         //the label for the title of the time series card
-        RichJLabel lblTimeSeries = new RichJLabel("Time Series", 0, 16);
+        RichJLabel lblTimeSeries = new RichJLabel("Time Series", 16);
         lblTimeSeries.setOutline(new Color(0, 0, 0, 180));
         lblTimeSeries.setForeground(new Color(255, 255, 255));
         lblTimeSeries.setIcon(timeseriesIcon);
@@ -670,7 +660,7 @@ public class DashBoardPanel extends JPanel {
         bestdayButton.add(pl6,BorderLayout.NORTH);
 
         //the label for the title of the best days card
-        RichJLabel lblBestDays_1 = new RichJLabel("Best Days", 0, 16);
+        RichJLabel lblBestDays_1 = new RichJLabel("Best Days", 16);
         lblBestDays_1.setOutline(new Color(0, 0, 0, 180));
         lblBestDays_1.setForeground(new Color(255, 255, 255));
         lblBestDays_1.setIcon(bestdayIcon);

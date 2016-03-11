@@ -4,15 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.font.*;
 
+/*
+ * A Label intended for titles. Has the ability to be outlined with a specified color. Anti-aliases text.
+ */
 public class RichJLabel extends JLabel {
 
-    private int tracking;
+    private int tracking = 0;
     private int left_x, left_y, right_x, right_y;
     private Color outlineColor;
 
-    public RichJLabel(String text, int tracking, int fontSize) {
+    public RichJLabel(String text, int fontSize) {
         super(text);
-        this.tracking = tracking;
         this.setFont(new Font("Arial", Font.BOLD, fontSize));
     }
 
@@ -22,7 +24,7 @@ public class RichJLabel extends JLabel {
         outlineColor = color;
     }
 
-    public Dimension getPreferredSize() {
+    @Override public Dimension getPreferredSize() {
         String text = getText();
         FontMetrics fm = this.getFontMetrics(this.getFont());
 
@@ -79,16 +81,16 @@ public class RichJLabel extends JLabel {
 
     }
 
-    int ShiftNorth(int p, int distance) {
+    private int ShiftNorth(int p, int distance) {
         return (p - distance);
     }
-    int ShiftSouth(int p, int distance) {
+    private int ShiftSouth(int p, int distance) {
         return (p + distance);
     }
-    int ShiftEast(int p, int distance) {
+    private int ShiftEast(int p, int distance) {
         return (p + distance);
     }
-    int ShiftWest(int p, int distance) {
+    private int ShiftWest(int p, int distance) {
         return (p - distance);
     }
 }
