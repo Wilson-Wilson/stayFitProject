@@ -22,17 +22,7 @@ import java.util.Date;
 
 //import net.miginfocom.swing.MigLayout;
 
-
-
-
-
-
-
-
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-
-
 
 public class DashBoardPanel extends JPanel {
 
@@ -106,12 +96,12 @@ public class DashBoardPanel extends JPanel {
         //bi.setNorthPane(null);
         cardPanel.setLayout(new GridLayout(2, 3, 20, 20));
         cardPanel.setLayout(new GridLayout(2, 3, 20, 50));;
-        
+
         /**
          *These are the individual cards, which are buttons with nested components.
-         *each of these are on the card panel.         * 
+         *each of these are on the card panel.         *
          */
-		
+
         /*Calories card*/
 
         //Calories Button
@@ -128,7 +118,7 @@ public class DashBoardPanel extends JPanel {
         caloriesButton.setBorder(BorderFactory.createEmptyBorder());
         caloriesButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
                 OpenCardListener opencard = new OpenCardListener(1);
@@ -148,7 +138,7 @@ public class DashBoardPanel extends JPanel {
         //exit button for the calories card
         JButton calExit = new JButton("");
         calExit. addActionListener(new java.awt.event.ActionListener() {
-            
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( caloriesButton);
@@ -162,10 +152,10 @@ public class DashBoardPanel extends JPanel {
 
 
         //the label for the title of the calories card
-        JLabel lblCalories_1 = new JLabel("Calories");
-        lblCalories_1.setFont(new Font("Verdana", Font.BOLD, 14));
-        lblCalories_1.setForeground(new Color(255, 255, 255));
+        RichJLabel lblCalories_1 = new RichJLabel("Calories", 16);
+        lblCalories_1.setOutline(new Color(0, 0, 0, 180));
         lblCalories_1.setIcon(caloriesIcon);
+        lblCalories_1.setForeground(new Color(255, 255, 255));
         calExit.setContentAreaFilled(false);
         calExit.setBorder(null);
         calExit.setBorderPainted(false);
@@ -190,7 +180,7 @@ public class DashBoardPanel extends JPanel {
         );
         pl.setLayout(gl_pl);
         calExit. addActionListener(new java.awt.event.ActionListener() {
-            
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( caloriesButton);
@@ -210,8 +200,8 @@ public class DashBoardPanel extends JPanel {
         JLabel lblNewLabel = new JLabel("Calories Burned: " + api.getCalBurned());
         lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
         lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         lblNewLabel.setForeground(Color.WHITE);
+        lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
         GroupLayout gl_calinfoPanel = new GroupLayout(calinfoPanel);
         gl_calinfoPanel.setHorizontalGroup(
                 gl_calinfoPanel.createParallelGroup(Alignment.LEADING)
@@ -238,7 +228,7 @@ public class DashBoardPanel extends JPanel {
         minutesButton.setLayout(new BorderLayout());
         minutesButton .addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
 
 
@@ -260,7 +250,7 @@ public class DashBoardPanel extends JPanel {
         //button for minute exit
         JButton minExit = new JButton("");
         minExit.addActionListener(new java.awt.event.ActionListener() {
-            
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( minutesButton);
@@ -277,8 +267,8 @@ public class DashBoardPanel extends JPanel {
         minExit .setIcon(exitIcon);
 
         //the label for the title of the minutes card
-        JLabel lblMinutes = new JLabel("Minutes");
-        lblMinutes.setFont(new Font("Verdana", Font.BOLD, 13));
+        RichJLabel lblMinutes = new RichJLabel("Minutes", 16);
+        lblMinutes.setOutline(new Color(0, 0, 0, 180));
         lblMinutes.setForeground(new Color(255, 255, 255));
         lblMinutes.setIcon(minutesIcon);
 
@@ -307,11 +297,11 @@ public class DashBoardPanel extends JPanel {
         minutesButton.add(mininfoPanel, BorderLayout.CENTER);
 
         JLabel lblActiveMinutes = new JLabel("Active Minutes: " + api.getActiveMinutes());
-        lblActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblActiveMinutes.setFont(new Font("Arial", Font.PLAIN, 15));
         lblActiveMinutes.setForeground(Color.WHITE);
 
         JLabel lblSedentayr = new JLabel("Sedentary Minutes: "  + api.getSedentaryMinutes());
-        lblSedentayr.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblSedentayr.setFont(new Font("Arial", Font.PLAIN, 15));
         lblSedentayr.setForeground(Color.WHITE);
         GroupLayout gl_mininfoPanel = new GroupLayout(mininfoPanel);
         gl_mininfoPanel.setHorizontalGroup(
@@ -345,7 +335,7 @@ public class DashBoardPanel extends JPanel {
         movementButton.setLayout(new BorderLayout());
         movementButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
 
                 //cl.show(panel_3,"6");
@@ -362,16 +352,16 @@ public class DashBoardPanel extends JPanel {
         movementButton.add(pl3, BorderLayout.NORTH);
 
         //the label for the title of the movements card
-        JLabel lblMovements = new JLabel("Movements");
+        RichJLabel lblMovements = new RichJLabel("Movements", 16);
+        lblMovements.setOutline(new Color(0, 0, 0, 180));
         lblMovements.setForeground(new Color(255, 255, 255));
-        lblMovements.setFont(new Font("Verdana", Font.BOLD, 13));
         lblMovements.setIcon(movementIcon);
 
 
         //exit button for movement
         JButton moveExit = new JButton("");
         moveExit. addActionListener(new java.awt.event.ActionListener() {
-            
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( movementButton);
@@ -413,15 +403,15 @@ public class DashBoardPanel extends JPanel {
         movementButton.add(moveinfoPanel, BorderLayout.CENTER);
 
         JLabel lblSteps = new JLabel("Steps: " + api.getSteps());
-        lblSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblSteps.setFont(new Font("Arial", Font.PLAIN, 15));
         lblSteps.setForeground(Color.WHITE);
 
         JLabel lblFloors = new JLabel("Floors: "   + api.getFloors());
-        lblFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblFloors.setFont(new Font("Arial", Font.PLAIN, 15));
         lblFloors.setForeground(Color.WHITE);
 
         JLabel lblDistance = new JLabel("Distance: "   + api.getDistance());
-        lblDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblDistance.setFont(new Font("Arial", Font.PLAIN, 15));
         lblDistance.setForeground(Color.WHITE);
         GroupLayout gl_moveinfoPanel = new GroupLayout(moveinfoPanel);
         gl_moveinfoPanel.setHorizontalGroup(
@@ -462,7 +452,7 @@ public class DashBoardPanel extends JPanel {
         lifetimeButton.setLayout(new BorderLayout());
         lifetimeButton .addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
 
                 //cl.show(panel_3,"7");
@@ -481,16 +471,16 @@ public class DashBoardPanel extends JPanel {
         lifetimeButton.add(pl4,BorderLayout.NORTH);
 
         //the label for the title of the lifetime card
-        JLabel lblLifetime_1 = new JLabel("Lifetime");
+        RichJLabel lblLifetime_1 = new RichJLabel("Lifetime", 16);
+        lblLifetime_1.setOutline(new Color(0, 0, 0, 180));
         lblLifetime_1.setForeground(new Color(255, 255, 255));
-        lblLifetime_1.setFont(new Font("Verdana", Font.BOLD, 13));
         lblLifetime_1.setIcon(lifetimeIcon);
 
         //exit button for lifetime card
         final JButton lifeExit= new JButton("");
         lifeExit.setContentAreaFilled(false);
         lifeExit. addActionListener(new java.awt.event.ActionListener() {
-            
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove(lifetimeButton);
@@ -528,15 +518,15 @@ public class DashBoardPanel extends JPanel {
         lifetimeButton.add(lifeinfoPanel, BorderLayout.CENTER);
 
         JLabel lblNewLabel_2 = new JLabel("Lifetime Floors: "   + api.getLifeTimeFloors());
-        lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel_2.setForeground(Color.WHITE);
 
         JLabel lblNewLabel_1 = new JLabel("Lifetime Steps: "   + api.getLifetimeSteps());
-        lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
 
         JLabel lblLifetimeCalories = new JLabel("Lifetime Distance: "   + api.getLifetimeDistance());
-        lblLifetimeCalories.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblLifetimeCalories.setFont(new Font("Arial", Font.PLAIN, 15));
         lblLifetimeCalories.setForeground(Color.WHITE);
         GroupLayout gl_lifeinfoPanel = new GroupLayout(lifeinfoPanel);
         gl_lifeinfoPanel.setHorizontalGroup(
@@ -576,7 +566,7 @@ public class DashBoardPanel extends JPanel {
         timeseriesButton.setLayout(new BorderLayout());
         timeseriesButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
 
                 //cl.show(panel_3,"8");
@@ -596,15 +586,15 @@ public class DashBoardPanel extends JPanel {
         timeseriesButton.add(pl5,BorderLayout.NORTH);
 
         //the label for the title of the time series card
-        JLabel lblTimeSeries = new JLabel("Time Series");
-        lblTimeSeries.setForeground(Color.WHITE);
-        lblTimeSeries.setFont(new Font("Verdana", Font.BOLD, 13));
+        RichJLabel lblTimeSeries = new RichJLabel("Time Series", 16);
+        lblTimeSeries.setOutline(new Color(0, 0, 0, 180));
+        lblTimeSeries.setForeground(new Color(255, 255, 255));
         lblTimeSeries.setIcon(timeseriesIcon);
 
         //Exit button for time series card
         JButton timeExit = new JButton("");
         timeExit. addActionListener(new java.awt.event.ActionListener() {
-            
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( timeseriesButton);
@@ -651,7 +641,7 @@ public class DashBoardPanel extends JPanel {
         bestdayButton.setLayout(new BorderLayout());
         bestdayButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
 
 
@@ -670,15 +660,15 @@ public class DashBoardPanel extends JPanel {
         bestdayButton.add(pl6,BorderLayout.NORTH);
 
         //the label for the title of the best days card
-        JLabel lblBestDays_1 = new JLabel("Best Days");
-        lblBestDays_1.setFont(new Font("Verdana", Font.BOLD, 13));
-        lblBestDays_1.setForeground(Color.WHITE);
+        RichJLabel lblBestDays_1 = new RichJLabel("Best Days", 16);
+        lblBestDays_1.setOutline(new Color(0, 0, 0, 180));
+        lblBestDays_1.setForeground(new Color(255, 255, 255));
         lblBestDays_1.setIcon(bestdayIcon);
 
         //exit button for best days card
         JButton bestExit = new JButton("");
         bestExit. addActionListener(new java.awt.event.ActionListener() {
-            
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 cardPanel.remove( bestdayButton);
@@ -716,15 +706,15 @@ public class DashBoardPanel extends JPanel {
         bestdayButton.add(bestinfoPanel, BorderLayout.CENTER);
 
         JLabel lblBestFloors = new JLabel("Best Floors: "   + api.getBestFloors());
-        lblBestFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblBestFloors.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestFloors.setForeground(Color.WHITE);
 
         JLabel lblBestSteps = new JLabel("Best Steps: "   + api.getBestSteps());
-        lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblBestSteps.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestSteps.setForeground(Color.WHITE);
 
         JLabel lblBestDistance = new JLabel("Best Distance: "   + api.getBestDistance());
-        lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        lblBestDistance.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestDistance.setForeground(Color.WHITE);
         GroupLayout gl_bestinfoPanel = new GroupLayout(bestinfoPanel);
         gl_bestinfoPanel.setHorizontalGroup(
@@ -758,13 +748,13 @@ public class DashBoardPanel extends JPanel {
          * End of the card panel and it's subcomponent set up.
          */
 
-        
-        
+
+
         /**
          * The left and right arrows are on the actual daspanel,
-         * in the west and east borers of it's layout respectively.         * 
+         * in the west and east borers of it's layout respectively.         *
          */
-        
+
         //Left Arrow
         JButton leftarrow = new JButton("");
         leftarrow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -786,13 +776,13 @@ public class DashBoardPanel extends JPanel {
         rightarrow.setIcon(rightarrowIcon);
         dashPanel.add(rightarrow, BorderLayout.EAST);
 
-        
-        
+
+
         /**
-         *panel_15 is a panel that acts as a taskbar in the south border of the dashpanel, 
-         *holding the settings, trophy and other buttons 
+         *panel_15 is a panel that acts as a taskbar in the south border of the dashpanel,
+         *holding the settings, trophy and other buttons
          */
-        
+
 		/*Trophy*/
 
         //setting the panel for trophy
@@ -851,10 +841,10 @@ public class DashBoardPanel extends JPanel {
         panel.setLayout(gl_panel);
         trophyButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
             	TrophyPanel trophypanel = new TrophyPanel();
-                panel_3.add( trophypanel,"11") ;    
+                panel_3.add( trophypanel,"11") ;
                 cl.show(panel_3,"11");
 
             }});
@@ -862,12 +852,12 @@ public class DashBoardPanel extends JPanel {
         /**
          * End of panel_15 set up
          */
-        
-        
-        
+
+
+
         /**
          * panel_16 acts as a title bar,
-         * holding the date in the north border of the dashpanel.         * 
+         * holding the date in the north border of the dashpanel.         *
          */
         JPanel panel_16 = new JPanel();
         panel_16.setOpaque(false);
@@ -883,7 +873,7 @@ public class DashBoardPanel extends JPanel {
         lblToday.setOpaque(true);
         lblToday.setForeground(new Color(255, 255, 255));
         lblToday.setHorizontalAlignment(SwingConstants.CENTER);
-        lblToday.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+        lblToday.setFont(new Font("Arial", Font.BOLD, 20));
         GroupLayout gl_panel_16 = new GroupLayout(panel_16);
         gl_panel_16.setHorizontalGroup(
                 gl_panel_16.createParallelGroup(Alignment.LEADING)
@@ -897,7 +887,7 @@ public class DashBoardPanel extends JPanel {
         );
         panel_16.setLayout(gl_panel_16);
         /**
-         * End of panel_16 set up 
+         * End of panel_16 set up
          */
 
         //CaloriesPanel panel_1 = new CaloriesPanel();
