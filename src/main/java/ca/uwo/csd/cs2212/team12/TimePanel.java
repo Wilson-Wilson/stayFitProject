@@ -169,7 +169,7 @@ public class TimePanel extends JPanel{
 		lblNewLabel.setHorizontalAlignment(JLabel.LEFT);
 
 				lblNewLabel.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 128, 0), new Color(0, 255, 0), new Color(255, 250, 250), new Color(210, 105, 30)));
-				lblNewLabel.setIcon(new ImageIcon("../src/main/resources/BarGraphIcon2.png"));
+				lblNewLabel.setIcon(new ImageIcon("src/main/resources/BarGraphIcon2.png"));
 				lblNewLabel.setBackground(new Color(128, 128, 128));
 				lblNewLabel.setBorder(new LineBorder(new Color(0, 128, 0), 24, true));
 
@@ -283,7 +283,7 @@ public class TimePanel extends JPanel{
 		panel_11.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(new ImageIcon("../src/main/resources/FireIcon2.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
 		lblNewLabel_1.setBackground(new Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));

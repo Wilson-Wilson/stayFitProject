@@ -5,9 +5,9 @@ import java.awt.*;
 public class StayFit {
 	
 	/**
-	 * This is the main method that start the whole programme
+	 * This is the main method that start the whole program
 	 * 
-	 * @param args command line arguments letting the programme know which mode to run
+	 * @param args command line arguments letting the program know which mode to run
 	 */
     public static void main(String[] args) {
 
