@@ -32,18 +32,18 @@ public class DashBoardPanel extends JPanel {
         this.api = api;}
 
     //Images from the resource folder used throughout the programme
-    ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
-    ImageIcon caloriesIcon = new ImageIcon("../src/main/resources/FireIcon2.png");
-    ImageIcon minutesIcon = new ImageIcon("../src/main/resources/TimeIcon2.png");
-    ImageIcon movementIcon = new ImageIcon("../src/main/resources/RunningIcon2.png");
-    ImageIcon lifetimeIcon = new ImageIcon("../src/main/resources/StarIcon2.png");
-    ImageIcon timeseriesIcon = new ImageIcon("../src/main/resources/BarGraphIcon2.png");
-    ImageIcon bestdayIcon = new ImageIcon("../src/main/resources/BlueStarIcon2.png");
-    ImageIcon exitIcon = new ImageIcon("../src/main/resources/closebutton2.png");
-    ImageIcon rightarrowIcon = new ImageIcon("../src/main/resources/rightArrow2.png");
-    ImageIcon leftarrowIcon = new ImageIcon("../src/main/resources/leftArrow2.png");
-    ImageIcon trophyIcon = new ImageIcon("../src/main/resources/Trophy.png");
-    ImageIcon cardIcon =new ImageIcon("../src/main/resources/dash.png");
+    ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
+    ImageIcon caloriesIcon = new ImageIcon("src/main/resources/FireIcon2.png");
+    ImageIcon minutesIcon = new ImageIcon("src/main/resources/TimeIcon2.png");
+    ImageIcon movementIcon = new ImageIcon("src/main/resources/RunningIcon2.png");
+    ImageIcon lifetimeIcon = new ImageIcon("src/main/resources/StarIcon2.png");
+    ImageIcon timeseriesIcon = new ImageIcon("src/main/resources/BarGraphIcon2.png");
+    ImageIcon bestdayIcon = new ImageIcon("src/main/resources/BlueStarIcon2.png");
+    ImageIcon exitIcon = new ImageIcon("src/main/resources/closebutton2.png");
+    ImageIcon rightarrowIcon = new ImageIcon("src/main/resources/rightArrow2.png");
+    ImageIcon leftarrowIcon = new ImageIcon("src/main/resources/leftArrow2.png");
+    ImageIcon trophyIcon = new ImageIcon("src/main/resources/Trophy.png");
+    ImageIcon cardIcon =new ImageIcon("src/main/resources/dash.png");
 
 
     /**
@@ -814,7 +814,7 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
         trophyButton.setBorder(null);
         trophyButton.setBorderPainted(false);
-        trophyButton.setIcon(new ImageIcon("../src/main/resources/Trophy2.png"));
+        trophyButton.setIcon(new ImageIcon("src/main/resources/Trophy2.png"));
 
         JButton btnJodimarie = new JButton("Jodi-Marie");
         btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -897,7 +897,7 @@ public class DashBoardPanel extends JPanel {
         settingsbutton.setContentAreaFilled(false);
         settingsbutton.setBorder(null);
         settingsbutton.setBorderPainted(false);
-        settingsbutton.setIcon(new ImageIcon("../src/main/resources/Gear-icon2.png"));
+        settingsbutton.setIcon(new ImageIcon("src/main/resources/Gear-icon2.png"));
         GroupLayout gl_panel1= new GroupLayout(panel);
         gl_panel1.setHorizontalGroup(
                 gl_panel1.createParallelGroup(Alignment.TRAILING)

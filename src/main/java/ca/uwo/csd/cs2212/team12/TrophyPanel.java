@@ -94,7 +94,7 @@ public class TrophyPanel extends JPanel{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
 		CardLayout cl = new CardLayout(0,0);
 		this.setLayout(new CardLayout(0,0));
-		BackgroundPanel panel_3 = new BackgroundPanel(new ImageIcon("../src/main/resources/background.jpg"));
+		BackgroundPanel panel_3 = new BackgroundPanel(new ImageIcon("src/main/resources/background.jpg"));
 		panel_3.setOpaque(false);
 		this.add(panel_3, "3");
 		panel_3.setLayout(cl);
@@ -119,7 +119,7 @@ public class TrophyPanel extends JPanel{
 		cardPanel.add(panel_13, BorderLayout.NORTH);
 		
 		JLabel lblTrophy = new JLabel("Trophy");
-		lblTrophy.setIcon(new ImageIcon("../src/main/resources/Trophy.png"));
+		lblTrophy.setIcon(new ImageIcon("src/main/resources/Trophy.png"));
 		lblTrophy.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
 		lblTrophy.setForeground(new Color(255, 255, 255));
 		panel_13.add(lblTrophy);

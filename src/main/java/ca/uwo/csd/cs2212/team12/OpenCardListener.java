@@ -42,7 +42,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 public class OpenCardListener extends JPanel{
 
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("../src/main/resources/background.jpg");
+	ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
 
 
 	/**
@@ -171,7 +171,7 @@ public class OpenCardListener extends JPanel{
 		trophyButton.setBorder(null);
 		trophyButton.setBorderPainted(false);
 
-		trophyButton.setIcon(new ImageIcon("../src/main/resources/Trophy2.png"));
+		trophyButton.setIcon(new ImageIcon("src/main/resources/Trophy2.png"));
 
 		JButton btnJodimarie = new JButton("Jodi-Marie");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -182,7 +182,7 @@ public class OpenCardListener extends JPanel{
 
 		JButton timeseriesButton = new JButton("");
 		timeseriesButton.setContentAreaFilled(false);
-		timeseriesButton.setIcon(new ImageIcon("../src/main/resources/BarGraphIcon2.png"));
+		timeseriesButton.setIcon(new ImageIcon("src/main/resources/BarGraphIcon2.png"));
 		timeseriesButton.setBorder(null);
 		timeseriesButton.setBorderPainted(false);
 		timeseriesButton.addActionListener(new ActionListener() {
@@ -199,7 +199,7 @@ public class OpenCardListener extends JPanel{
 
 		JButton bestButton = new JButton("");
 		bestButton.setBorder(null);
-		bestButton.setIcon(new ImageIcon("../src/main/resources/BlueStarIcon2.png"));
+		bestButton.setIcon(new ImageIcon("src/main/resources/BlueStarIcon2.png"));
 		bestButton.setContentAreaFilled(false);
 		btnJodimarie.setBorder(null);
 		btnJodimarie.setBorderPainted(false);
@@ -217,7 +217,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton caloriesButton = new JButton("");
-		caloriesButton.setIcon(new ImageIcon("../src/main/resources/FireIcon2.png"));
+		caloriesButton.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
 		caloriesButton.setContentAreaFilled(false);
 		caloriesButton.setBorder(null);
 		caloriesButton.setBorderPainted(false);
@@ -236,7 +236,7 @@ public class OpenCardListener extends JPanel{
 		movementButton.setContentAreaFilled(false);
 		movementButton.setBorder(null);
 		movementButton.setBorderPainted(false);
-		movementButton.setIcon(new ImageIcon("../src/main/resources/RunningIcon2.png"));
+		movementButton.setIcon(new ImageIcon("src/main/resources/RunningIcon2.png"));
 		movementButton.addActionListener(new ActionListener() {
 
             
@@ -250,7 +250,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton minutesButton = new JButton("");
-		minutesButton.setIcon(new ImageIcon("../src/main/resources/TimeIcon2.png"));
+		minutesButton.setIcon(new ImageIcon("src/main/resources/TimeIcon2.png"));
 		minutesButton.setBorder(null);
 		minutesButton.setBorderPainted(false);
 		minutesButton.setContentAreaFilled(false);
@@ -269,7 +269,7 @@ public class OpenCardListener extends JPanel{
 		lifetimeButton.setContentAreaFilled(false);
 		lifetimeButton.setBorder(null);
 		lifetimeButton.setBorderPainted(false);
-		lifetimeButton.setIcon(new ImageIcon("../src/main/resources/StarIcon2.png"));
+		lifetimeButton.setIcon(new ImageIcon("src/main/resources/StarIcon2.png"));
 		lifetimeButton.addActionListener(new ActionListener() {
 
             
@@ -297,7 +297,7 @@ public class OpenCardListener extends JPanel{
 
 
 		homebutton.setContentAreaFilled(false);
-		homebutton.setIcon(new ImageIcon("../src/main/resources/home2.png"));
+		homebutton.setIcon(new ImageIcon("src/main/resources/home2.png"));
 		homebutton.setBorder(null);
 		homebutton.setBorderPainted(false);
 		 homebutton .addActionListener(new ActionListener() {
@@ -388,7 +388,7 @@ public class OpenCardListener extends JPanel{
 		button_6.setBorder(null);
 		button_6.setBorderPainted(false);
 		button_6.setOpaque(false);
-		button_6.setIcon(new ImageIcon("../src/main/resources/smallleftarrow.png"));
+		button_6.setIcon(new ImageIcon("src/main/resources/smallleftarrow.png"));
 		panel_16.add(button_6);
 		JLabel lblToday = new JLabel("Today");
 		lblToday.setBackground(new Color(105, 105, 105,180));
@@ -401,7 +401,7 @@ public class OpenCardListener extends JPanel{
 		button_7.setContentAreaFilled(false);
 		button_7.setBorder(null);
 		button_7.setBorderPainted(false);
-		button_7.setIcon(new ImageIcon("../src/main/resources/smallrightarrow.png"));
+		button_7.setIcon(new ImageIcon("src/main/resources/smallrightarrow.png"));
 		panel_16.add(button_7);
 
 

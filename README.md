@@ -17,10 +17,6 @@ mvn package
 
 ### Run StayFit 
 
-```
-cd target
-```
-
 In normal mode:
 
 ```
