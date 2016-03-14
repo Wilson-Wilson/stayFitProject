@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
 import java.io.*;
 
 public class DataDict implements Serializable{
@@ -14,7 +13,9 @@ public class DataDict implements Serializable{
   /**
    * Declare theDictionary to store data entries	
    */
-  private HashMap<String,DataEntry> theDictionary;  
+  private HashMap<String,DataEntry> theDictionary;
+  private String earliest, latest;
+  
   private static final long serialVersionUID= 1L;
   private static final String FILENAME= "dailydata.boop";
   
@@ -33,8 +34,11 @@ public class DataDict implements Serializable{
    */
   public DataDict(JSONArray calories, JSONArray distance, JSONArray floors, JSONArray steps, JSONArray activeMins, JSONArray sedMins) throws JSONException{
 	  
-	  theDictionary = new HashMap<String,DataEntry>();  
+	  this.theDictionary = new HashMap<String,DataEntry>();
 	  int numdays = calories.length();
+	  this.earliest = sedMins.getJSONObject(0).getString("dateTime");
+	  this.latest = sedMins.getJSONObject(numdays-1).getString("dateTime");
+	  
 	  
 	  for(int i=0; i < numdays; i++){
 		  
@@ -48,7 +52,7 @@ public class DataDict implements Serializable{
 		  
 		  DataEntry addMe = new DataEntry(addCal, addDistance, addFloors, addSteps, addActive, addSedentary, addDate);
 		  
-		  theDictionary.put(addDate, addMe);
+		  this.theDictionary.put(addDate, addMe);
 		   
 	  }	   
     
