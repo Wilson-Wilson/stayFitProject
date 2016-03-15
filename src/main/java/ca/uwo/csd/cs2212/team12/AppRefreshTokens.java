@@ -19,6 +19,7 @@ import java.awt.Desktop;
 import java.net.URI;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AppRefreshTokens
@@ -150,17 +151,23 @@ public class AppRefreshTokens
 
    //Example request:
    //    This is always the prefix (for my account)
-   Date date = new Date();
-   String frmt = String.format("%tF", date);
+   Date enDate = new Date();
+   Calendar calndr = Calendar.getInstance();
+   calndr.setTime(enDate);
+   calndr.add(calndr.MONTH, -1);
+   Date baseDate = calndr.getTime();
+   //Date basedate = da
+   String frmt1 = String.format("%tF", enDate);
+   String frmt2 = String.format("%tF", baseDate);
    String requestUrlPrefix = "https://api.fitbit.com/1/user/3WGW2P/";
-   String requestsumUrlSuffix = "activities/date/"+frmt+".json";
+   String requestsumUrlSuffix = "activities/date/"+frmt1+".json";
    
-   String requestcalYearUrlSuffix = "activities/calories/date/2015-02-20/"+frmt+".json";
-   String requestfloorsYearUrlSuffix = "activities/floors/date/2016-02-29/"+frmt+".json";
-   String requestsedYearUrlSuffix = "activities/minutesSedentary/date/2016-02-29/"+frmt+".json";
-   String requeststepsYearUrlSuffix = "activities/steps/date/2016-02-29/"+frmt+".json";
-   String requestfairYearUrlSuffix = "activities/minutesFairlyActive/date/2016-02-29/"+frmt+".json";
-   //String requeststepsYearUrlSuffix = "activities//date/2016-02-29/"+frmt+".json";
+   String requestcalYearUrlSuffix = "activities/calories/date/"+frmt2+"/"+frmt1+".json";
+   String requestfloorsYearUrlSuffix = "activities/floors/date/"+frmt2+"/"+frmt1+".json";
+   String requestsedYearUrlSuffix = "activities/minutesSedentary/date/"+frmt2+"/"+frmt1+".json";
+   String requeststepsYearUrlSuffix = "activities/steps/date/"+frmt2+"/"+frmt1+".json";
+   String requestfairYearUrlSuffix = "activities/minutesFairlyActive/date/"+frmt2+"/"+frmt1+".json";
+     
    String requestcalYearUrl;
    String requeststepsYearUrl;
    String requestfloorsYearUrl;
@@ -212,16 +219,16 @@ public class AppRefreshTokens
    switch(statusCode){
    case 200:
    System.out.println("Success!");
-   System.out.println("HTTP response body:\n"+response.getBody());
+   System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
    break;
    case 400:
    System.out.println("Bad Request - may have to talk to Beth");
-   System.out.println("HTTP response body:\n"+response.getBody());
+   System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
    break;
    case 401:
    System.out.println("Likely Expired Token");
    System.out.println("HTTP response body:\n"+response.getBody()); 
-   System.out.println("Try to refresh");
+   System.out.println("Try to refresh");System.out.println("\n\n");
    // This uses the refresh token to get a completely new accessToken object
    //   See:  https://dev.fitbit.com/docs/oauth2/#refreshing-tokens           
    // This accessToken is now the current one, and the old ones will not work
@@ -238,192 +245,192 @@ public class AppRefreshTokens
  break;
                          case 429:
  System.out.println("Rate limit exceeded");
- System.out.println("HTTP response body:\n"+response.getBody());
+ System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
  break;
 
  default:
  System.out.println("HTTP response code: "+response.getCode());
- System.out.println("HTTP response body:\n"+response.getBody());
+ System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
  }
 
    System.out.println("\n\n\n\n");
    
  //  The HTTP response from fitbit will be in HTTP format, meaning that it has a numeric code indicating
    //     whether is was successful (200) or not (400's or 500's), each code has a different meaning
-   System.out.println();
-   System.out.println("HTTP response code: "+response2.getCode());
-   int statusCode2 = response.getCode();
-   switch(statusCode2){
-   case 200:
-   System.out.println("Success!");
-   System.out.println("HTTP response body:\n"+response2.getBody());
-   break;
-   case 400:
-   System.out.println("Bad Request - may have to talk to Beth");
-   System.out.println("HTTP response body:\n"+response2.getBody());
-   break;
-   case 401:
-   System.out.println("Likely Expired Token");
-   System.out.println("HTTP response body:\n"+response2.getBody()); 
-   System.out.println("Try to refresh");
+   //System.out.println();
+   //System.out.println("HTTP response code: "+response2.getCode());
+   //int statusCode2 = response2.getCode();
+   //switch(statusCode2){
+   //case 200:
+   //System.out.println("Success!");
+   //System.out.println("HTTP response body:\n"+response2.getBody());System.out.println("\n\n");
+   //break;
+   //case 400:
+   //System.out.println("Bad Request - may have to talk to Beth");
+   //System.out.println("HTTP response body:\n"+response2.getBody());System.out.println("\n\n");
+   //break;
+   //case 401:
+   //System.out.println("Likely Expired Token");
+   //System.out.println("HTTP response body:\n"+response2.getBody());
+   //System.out.println("Try to refresh");System.out.println("\n\n");
    // This uses the refresh token to get a completely new accessToken object
    //   See:  https://dev.fitbit.com/docs/oauth2/#refreshing-tokens           
    // This accessToken is now the current one, and the old ones will not work
    //   again.  You should save the contents of accessToken.
-   accessToken2 = service.refreshOAuth2AccessToken(accessToken2);
+   //accessToken2 = service.refreshOAuth2AccessToken(accessToken2);
    // Now we can try to access the service again
    // Make sure you create a new OAuthRequest object each time!
-   request2 = new OAuthRequest(Verb.GET, requeststepsYearUrl, service);
-   service.signRequest(accessToken2, request2);
-   response2 = request2.send();
+   //request2 = new OAuthRequest(Verb.GET, requeststepsYearUrl, service);
+   //service.signRequest(accessToken2, request2);
+   //response2 = request2.send();
    // Hopefully got a response this time:
-                         System.out.println("HTTP response code: "+response2.getCode());
- System.out.println("HTTP response body:\n"+response2.getBody());
- break;
-                         case 429:
- System.out.println("Rate limit exceeded");
- System.out.println("HTTP response body:\n"+response2.getBody());
- break;
+   //                      System.out.println("HTTP response code: "+response2.getCode());
+   //System.out.println("HTTP response body:\n"+response2.getBody());System.out.println("\n\n");
+   //break;
+   //                      case 429:
+   //System.out.println("Rate limit exceeded");
+   //System.out.println("HTTP response body:\n"+response2.getBody());System.out.println("\n\n");
+   //break;
 
- default:
- System.out.println("HTTP response code: "+response2.getCode());
- System.out.println("HTTP response body:\n"+response2.getBody());
- }  
+   //default:
+   //System.out.println("HTTP response code: "+response2.getCode());
+   //System.out.println("HTTP response body:\n"+response2.getBody());System.out.println("\n\n");
+   //}  
    
    
  //  The HTTP response from fitbit will be in HTTP format, meaning that it has a numeric code indicating
    //     whether is was successful (200) or not (400's or 500's), each code has a different meaning
-   System.out.println();
-   System.out.println("HTTP response code: "+response3.getCode());
-   int statusCode3 = response3.getCode();
-   switch(statusCode3){
-   case 200:
-   System.out.println("Success!");
-   System.out.println("HTTP response body:\n"+response3.getBody());
-   break;
-   case 400:
-   System.out.println("Bad Request - may have to talk to Beth");
-   System.out.println("HTTP response body:\n"+response3.getBody());
-   break;
-   case 401:
-   System.out.println("Likely Expired Token");
+   //System.out.println();
+   //System.out.println("HTTP response code: "+response3.getCode());
+   //int statusCode3 = response3.getCode();
+   //switch(statusCode3){
+   //case 200:
+   //System.out.println("Success!");
+   //System.out.println("HTTP response body:\n"+response3.getBody());System.out.println("\n\n");
+   //break;
+   //case 400:
+   //System.out.println("Bad Request - may have to talk to Beth");
+   //System.out.println("HTTP response body:\n"+response3.getBody());System.out.println("\n\n");
+ /*  break;
+   case 401:*/
+   /*System.out.println("Likely Expired Token");
    System.out.println("HTTP response body:\n"+response3.getBody()); 
-   System.out.println("Try to refresh");
+   System.out.println("Try to refresh");System.out.println("\n\n");*/
    // This uses the refresh token to get a completely new accessToken object
    //   See:  https://dev.fitbit.com/docs/oauth2/#refreshing-tokens           
    // This accessToken is now the current one, and the old ones will not work
    //   again.  You should save the contents of accessToken.
-   accessToken3 = service.refreshOAuth2AccessToken(accessToken3);
+   //accessToken3 = service.refreshOAuth2AccessToken(accessToken3);
    // Now we can try to access the service again
    // Make sure you create a new OAuthRequest object each time!
-   request3 = new OAuthRequest(Verb.GET, requestfloorsYearUrl, service);
+   /*request3 = new OAuthRequest(Verb.GET, requestfloorsYearUrl, service);
    service.signRequest(accessToken3, request3);
-   response3 = request3.send();
+   response3 = request3.send();*/
    // Hopefully got a response this time:
-                         System.out.println("HTTP response code: "+response3.getCode());
- System.out.println("HTTP response body:\n"+response3.getBody());
+                         /*System.out.println("HTTP response code: "+response3.getCode());
+ System.out.println("HTTP response body:\n"+response3.getBody());System.out.println("\n\n");
  break;
                          case 429:
  System.out.println("Rate limit exceeded");
- System.out.println("HTTP response body:\n"+response3.getBody());
+ System.out.println("HTTP response body:\n"+response3.getBody());System.out.println("\n\n");
  break;
 
  default:
  System.out.println("HTTP response code: "+response3.getCode());
- System.out.println("HTTP response body:\n"+response3.getBody());
+ System.out.println("HTTP response body:\n"+response3.getBody());System.out.println("\n\n");
  }  
    
    
-  System.out.println("\n\n\n\n");
+  System.out.println("\n\n\n\n");*/
   
   
   //  The HTTP response from fitbit will be in HTTP format, meaning that it has a numeric code indicating
    //     whether is was successful (200) or not (400's or 500's), each code has a different meaning
-   System.out.println();
+   /*System.out.println();
    System.out.println("HTTP response code: "+response4.getCode());
    int statusCode4 = response4.getCode();
    switch(statusCode4){
    case 200:
    System.out.println("Success!");
-   System.out.println("HTTP response body:\n"+response4.getBody());
+   System.out.println("HTTP response body:\n"+response4.getBody());System.out.println("\n\n");
    break;
    case 400:
    System.out.println("Bad Request - may have to talk to Beth");
-   System.out.println("HTTP response body:\n"+response4.getBody());
+   System.out.println("HTTP response body:\n"+response4.getBody());System.out.println("\n\n");
    break;
    case 401:
    System.out.println("Likely Expired Token");
    System.out.println("HTTP response body:\n"+response4.getBody()); 
-   System.out.println("Try to refresh");
+   System.out.println("Try to refresh");*/
    // This uses the refresh token to get a completely new accessToken object
    //   See:  https://dev.fitbit.com/docs/oauth2/#refreshing-tokens           
    // This accessToken is now the current one, and the old ones will not work
    //   again.  You should save the contents of accessToken.
-   accessToken4 = service.refreshOAuth2AccessToken(accessToken4);
+   //accessToken4 = service.refreshOAuth2AccessToken(accessToken4);
    // Now we can try to access the service again
    // Make sure you create a new OAuthRequest object each time!
-   request4 = new OAuthRequest(Verb.GET, requestsedYearUrl, service);
+   /*request4 = new OAuthRequest(Verb.GET, requestsedYearUrl, service);
    service.signRequest(accessToken4, request4);
-   response4 = request4.send();
+   response4 = request4.send();*/
    // Hopefully got a response this time:
-                         System.out.println("HTTP response code: "+response4.getCode());
- System.out.println("HTTP response body:\n"+response4.getBody());
+                         /*System.out.println("HTTP response code: "+response4.getCode());
+ System.out.println("HTTP response body:\n"+response4.getBody());System.out.println("\n\n");
  break;
                          case 429:
  System.out.println("Rate limit exceeded");
- System.out.println("HTTP response body:\n"+response4.getBody());
+ System.out.println("HTTP response body:\n"+response4.getBody());System.out.println("\n\n");
  break;
 
  default:
  System.out.println("HTTP response code: "+response4.getCode());
- System.out.println("HTTP response body:\n"+response4.getBody());
+ System.out.println("HTTP response body:\n"+response4.getBody());System.out.println("\n\n");
  }
    
    
-   System.out.println("\n\n\n\n");
+   System.out.println("\n\n\n\n");*/
    
    
    //  The HTTP response from fitbit will be in HTTP format, meaning that it has a numeric code indicating
    //     whether is was successful (200) or not (400's or 500's), each code has a different meaning
-   System.out.println();
+   /*System.out.println();
    System.out.println("HTTP response code: "+response5.getCode());
    int statusCode5 = response5.getCode();
    switch(statusCode5){
    case 200:
    System.out.println("Success!");
-   System.out.println("HTTP response body:\n"+response5.getBody());
+   System.out.println("HTTP response body:\n"+response5.getBody());System.out.println("\n\n");
    break;
    case 400:
    System.out.println("Bad Request - may have to talk to Beth");
-   System.out.println("HTTP response body:\n"+response5.getBody());
+   System.out.println("HTTP response body:\n"+response5.getBody());System.out.println("\n\n");
    break;
    case 401:
    System.out.println("Likely Expired Token");
    System.out.println("HTTP response body:\n"+response5.getBody()); 
-   System.out.println("Try to refresh");
+   System.out.println("Try to refresh");*/
    // This uses the refresh token to get a completely new accessToken object
    //   See:  https://dev.fitbit.com/docs/oauth2/#refreshing-tokens           
    // This accessToken is now the current one, and the old ones will not work
    //   again.  You should save the contents of accessToken.
-   accessToken5 = service.refreshOAuth2AccessToken(accessToken5);
+   //accessToken5 = service.refreshOAuth2AccessToken(accessToken5);
    // Now we can try to access the service again
    // Make sure you create a new OAuthRequest object each time!
-   request5 = new OAuthRequest(Verb.GET, requestfairYearUrl, service);
+   /*request5 = new OAuthRequest(Verb.GET, requestfairYearUrl, service);
    service.signRequest(accessToken5, request5);
-   response5 = request5.send();
+   response5 = request5.send();*/
    // Hopefully got a response this time:
-                         System.out.println("HTTP response code: "+response5.getCode());
- System.out.println("HTTP response body:\n"+response5.getBody());
+                         /*System.out.println("HTTP response code: "+response5.getCode());
+ System.out.println("HTTP response body:\n"+response5.getBody());System.out.println("\n\n");
  break;
                          case 429:
  System.out.println("Rate limit exceeded");
- System.out.println("HTTP response body:\n"+response5.getBody());
+ System.out.println("HTTP response body:\n"+response5.getBody());System.out.println("\n\n");
  break;
 
  default:
  System.out.println("HTTP response code: "+response5.getCode());
- System.out.println("HTTP response body:\n"+response5.getBody());
- }
+ System.out.println("HTTP response body:\n"+response5.getBody());System.out.println("\n\n");
+ }*/
    
    
  BufferedWriter bufferedWriter=null;

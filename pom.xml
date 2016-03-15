@@ -84,7 +84,7 @@
     </descriptorRefs>
     <archive>
       <manifest>
-        <mainClass>ca.uwo.csd.cs2212.team12.AppRefreshTokens</mainClass>
+        <mainClass>ca.uwo.csd.cs2212.team12.TestGetters</mainClass>
       </manifest>
     </archive>
   </configuration>
