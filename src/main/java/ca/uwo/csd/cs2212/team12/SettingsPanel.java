@@ -1,7 +1,12 @@
 package ca.uwo.csd.cs2212.team12;
+import Preferences;
+
 import javax.swing.GroupLayout.Alignment;
+
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
@@ -56,153 +61,325 @@ public class SettingsPanel extends JPanel {
 		panel_2.setBackground(new Color(0, 0, 0, 100));
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(new Color(192, 192, 192));
 		tabbedPane.setBorder(null);
 		tabbedPane.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(new Color(105, 105, 105));
-		tabbedPane.addTab("Goals Settings", null, panel_7, null);
+		JPanel goalSettings = new JPanel();
+		goalSettings.setBackground(new Color(105, 105, 105));
+		tabbedPane.addTab("Goals Settings", null, goalSettings, null);
 		tabbedPane.setBackgroundAt(0, new Color(105, 105, 105));
-		panel_7.setLayout(new BorderLayout(0, 0));
+		goalSettings.setLayout(new BorderLayout(0, 0));
 
-		JLabel lblThemes = new JLabel("Themes ");
+		JLabel lblThemes = new JLabel("Set Your Goals!");
+		lblThemes.setFont(new Font("Trebuchet MS", Font.BOLD, 19));
+		lblThemes.setForeground(new Color(255, 255, 255));
 		lblThemes.setBackground(new Color(255, 255, 255));
-		panel_7.add(lblThemes, BorderLayout.NORTH);
+		goalSettings.add(lblThemes, BorderLayout.NORTH);
 
 		JPanel panel_8 = new JPanel();
 		panel_8.setOpaque(false);
-		panel_7.add(panel_8, BorderLayout.CENTER);
+		goalSettings.add(panel_8, BorderLayout.CENTER);
 
-		JLabel lblCards = new JLabel("5 Cards ");
+		JLabel lblCards = new JLabel("Steps:");
+		lblCards.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		lblCards.setForeground(new Color(255, 255, 255));
 
-		JLabel lblCards_1 = new JLabel("4 cards");
+		JLabel lblCards_1 = new JLabel("Floors:");
+		lblCards_1.setForeground(new Color(255, 255, 255));
+		lblCards_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		
+		JLabel lblNewLabel = new JLabel("Distance: ");
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		
+		JEditorPane editorPane = new JEditorPane();
+		
+		JEditorPane editorPane_1 = new JEditorPane();
+		
+		JEditorPane editorPane_2 = new JEditorPane();
+		
+		JLabel lblCalories = new JLabel("Calories:");
+		lblCalories.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		lblCalories.setForeground(new Color(255, 255, 255));
+		
+		JEditorPane editorPane_3 = new JEditorPane();
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
-		gl_panel_8.setHorizontalGroup(gl_panel_8.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_8
-						.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(
-								gl_panel_8
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblCards)
-										.addComponent(lblCards_1))
-						.addContainerGap(317, Short.MAX_VALUE)));
-		gl_panel_8.setVerticalGroup(gl_panel_8.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_8.createSequentialGroup().addContainerGap()
-						.addComponent(lblCards).addGap(18)
-						.addComponent(lblCards_1)
-						.addContainerGap(91, Short.MAX_VALUE)));
+		gl_panel_8.setHorizontalGroup(
+			gl_panel_8.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel_8.createSequentialGroup()
+							.addComponent(lblCards, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(editorPane)
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(gl_panel_8.createSequentialGroup()
+							.addComponent(lblCards_1, GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+							.addGap(18)
+							.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+								.addComponent(editorPane_2)
+								.addComponent(editorPane_1))))
+					.addGap(409))
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addComponent(lblCalories)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(editorPane_3)
+					.addGap(410))
+		);
+		gl_panel_8.setVerticalGroup(
+			gl_panel_8.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCards, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(editorPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCards_1, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(editorPane_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+						.addComponent(editorPane_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel))
+					.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblCalories)
+						.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+		);
 		panel_8.setLayout(gl_panel_8);
 
-		JPanel panel_6 = new JPanel();
-		panel_6.setOpaque(false);
-		tabbedPane.addTab("DashBoard Settings ", null, panel_6, null);
+		JPanel dashboardSettings = new JPanel();
+		dashboardSettings.setBackground(new Color(105, 105, 105));
+		tabbedPane.addTab("DashBoard Settings ", null, dashboardSettings, null);
 		tabbedPane.setForegroundAt(1, new Color(255, 255, 255));
 		tabbedPane.setBackgroundAt(1, new Color(105, 105, 105));
-		panel_6.setLayout(new GridLayout(0, 4, 0, 0));
 
 		JCheckBox caloriesCheckBox = new JCheckBox("Calories");
+		caloriesCheckBox.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		caloriesCheckBox.setForeground(new Color(255, 255, 255));
 		caloriesCheckBox.setHorizontalAlignment(SwingConstants.LEFT);
 		caloriesCheckBox.setOpaque(false);
 
 		caloriesCheckBox.setSelected(Preferences.isShowCaloriesCard());
-		panel_6.add(caloriesCheckBox);
-
-		JLabel label = new JLabel("");
-		panel_6.add(label);
+		caloriesCheckBox.addItemListener(new ItemListener() {
+	    	    @Override
+	        
+	        	    public void itemStateChanged(ItemEvent e) {
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+	        	        	Preferences.setShowCaloriesCard(false);
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.setShowCaloriesCard(true);
+	        	        };
+	        	    }
+	        });
 
 		JLabel label_1 = new JLabel("");
-		panel_6.add(label_1);
 
 		JLabel label_2 = new JLabel("");
-		panel_6.add(label_2);
 
 		JCheckBox MinutesCheckBox = new JCheckBox("Minutes");
+		MinutesCheckBox.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		MinutesCheckBox.setForeground(new Color(255, 255, 255));
 		MinutesCheckBox.setOpaque(false);
 		MinutesCheckBox.setSelected(Preferences.isShowMinutesCard());
-		panel_6.add(MinutesCheckBox);
-
-		JLabel label_3 = new JLabel("");
-		panel_6.add(label_3);
-
-		JLabel label_4 = new JLabel("");
-		panel_6.add(label_4);
+		MinutesCheckBox.addItemListener(new ItemListener() {
+	    	    @Override
+	        
+	        	    public void itemStateChanged(ItemEvent e) {
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+	        	        	Preferences.setShowMinutesCard(false);
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.setShowMinutesCard(true);
+	        	        };
+	        	    }
+	        });
 
 		JLabel label_5 = new JLabel("");
-		panel_6.add(label_5);
 
-		JCheckBox MovementCheckBox = new JCheckBox("Movements");
-		MovementCheckBox.setOpaque(false);
-		MovementCheckBox.setSelected(Preferences.isShowMovementsCard());
-		panel_6.add(MovementCheckBox);
-
-		JLabel label_6 = new JLabel("");
-		panel_6.add(label_6);
-
-		JLabel label_7 = new JLabel("");
-		panel_6.add(label_7);
-
-		JLabel label_8 = new JLabel("");
-		panel_6.add(label_8);
+		JCheckBox MovementsCheckBox = new JCheckBox("Movements");
+		MovementsCheckBox.setOpaque(false);
+		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
+		MovementsCheckBox.addItemListener(new ItemListener() {
+	    	    @Override
+	        
+	        	    public void itemStateChanged(ItemEvent e) {
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+	        	        	Preferences.setShowMovementsCard(false);
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.setShowMovementsCard(true);
+	        	        };
+	        	    }
+	        });
+		dashboardSettings.add(MovementsCheckBox);
 
 		JCheckBox LifetimeCheckBox = new JCheckBox("Lifetime");
+		LifetimeCheckBox.setForeground(new Color(255, 255, 255));
+		LifetimeCheckBox.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		LifetimeCheckBox.setOpaque(false);
 		LifetimeCheckBox.setSelected(Preferences.isShowLifetimeCard());
-		panel_6.add(LifetimeCheckBox);
-
-		JLabel label_9 = new JLabel("");
-		panel_6.add(label_9);
+		LifetimeCheckBox.addItemListener(new ItemListener() {
+	    	    @Override
+	        
+	        	    public void itemStateChanged(ItemEvent e) {
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+	        	        	Preferences.setShowLifetimeCard(false);
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.setShowLifetimeCard(true);
+	        	        };
+	        	    }
+	        });
 
 		JLabel label_10 = new JLabel("");
-		panel_6.add(label_10);
 
 		JLabel label_11 = new JLabel("");
-		panel_6.add(label_11);
 
 		JCheckBox TimeseriesCheckBox = new JCheckBox("Time Series");
+		TimeseriesCheckBox.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		TimeseriesCheckBox.setForeground(new Color(255, 255, 255));
 		TimeseriesCheckBox.setOpaque(false);
 		TimeseriesCheckBox.setSelected(Preferences.isShowTimeSeriesCard());
-		panel_6.add(TimeseriesCheckBox);
+		TimeseriesCheckBox.addItemListener(new ItemListener() {
+	    	    public void itemStateChanged(ItemEvent e) {
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+	        	        	Preferences.setShowTimeSeriesCard(false);
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.setShowTimeSeriesCard(true);
+	        	        };
+	        	    }
+	        });
 
 		JLabel label_12 = new JLabel("");
-		panel_6.add(label_12);
 
 		JLabel label_13 = new JLabel("");
-		panel_6.add(label_13);
 
 		JLabel label_14 = new JLabel("");
-		panel_6.add(label_14);
 
 		JCheckBox BestdaysCheckBox = new JCheckBox("Best Days");
+		BestdaysCheckBox.setForeground(new Color(255, 255, 255));
+		BestdaysCheckBox.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		BestdaysCheckBox.setOpaque(false);
 		BestdaysCheckBox.setSelected(Preferences.isShowBestDaysCard());
-		BestdaysCheckBox.panel_6.add(BestdaysCheckBox);
+		BestdaysCheckBox.addItemListener(new ItemListener() {
+	    	    @Override
+	        
+	        	    public void itemStateChanged(ItemEvent e) {
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+	        	        	Preferences.setShowTimeSeriesCard(false);
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.setShowTimeSeriesCard(true);
+	        	        };
+	        	    }
+	        });
 
 		JLabel label_15 = new JLabel("");
-		panel_6.add(label_15);
 
 		JLabel label_16 = new JLabel("");
-		panel_6.add(label_16);
 
 		JLabel label_17 = new JLabel("");
-		panel_6.add(label_17);
+		
+		JCheckBox chckbxMovements = new JCheckBox("Movements");
+		chckbxMovements.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		chckbxMovements.setOpaque(false);
+		chckbxMovements.setForeground(new Color(255, 255, 255));
+		GroupLayout gl_dashboardSettings = new GroupLayout(dashboardSettings);
+		gl_dashboardSettings.setHorizontalGroup(
+			gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_dashboardSettings.createSequentialGroup()
+					.addGap(1)
+					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_dashboardSettings.createSequentialGroup()
+							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+								.addComponent(caloriesCheckBox, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+								.addGroup(gl_dashboardSettings.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(chckbxMovements, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+									.addGap(31)))
+							.addGap(57)
+							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+							.addGap(76))
+						.addGroup(gl_dashboardSettings.createSequentialGroup()
+							.addComponent(MinutesCheckBox, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+							.addGap(132)
+							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+							.addGap(75))
+						.addGroup(Alignment.TRAILING, gl_dashboardSettings.createSequentialGroup()
+							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.TRAILING)
+								.addComponent(LifetimeCheckBox, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+								.addComponent(TimeseriesCheckBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(BestdaysCheckBox, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+							.addGap(8)
+							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+								.addGroup(Alignment.TRAILING, gl_dashboardSettings.createSequentialGroup()
+									.addComponent(label_15, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_dashboardSettings.createSequentialGroup()
+											.addComponent(label_16, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+											.addComponent(label_17, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_dashboardSettings.createSequentialGroup()
+											.addComponent(label_12, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+											.addComponent(label_13, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+											.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)))
+									.addGap(42))
+								.addGroup(Alignment.TRAILING, gl_dashboardSettings.createSequentialGroup()
+									.addComponent(label_10, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+									.addComponent(label_11, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+									.addGap(113))))))
+		);
+		gl_dashboardSettings.setVerticalGroup(
+			gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_dashboardSettings.createSequentialGroup()
+					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_dashboardSettings.createSequentialGroup()
+							.addComponent(caloriesCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(chckbxMovements)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(MinutesCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_10, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_11, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(LifetimeCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+						.addComponent(TimeseriesCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_12, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_13, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+						.addComponent(BestdaysCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_15, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_16, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_17, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		dashboardSettings.setLayout(gl_dashboardSettings);
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(gl_panel_2.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_2
-						.createSequentialGroup()
-						.addGap(107)
-						.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE,
-								236, Short.MAX_VALUE).addGap(107)));
-		gl_panel_2.setVerticalGroup(gl_panel_2.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_panel_2
-						.createSequentialGroup()
-						.addGap(61)
-						.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE,
-								179, Short.MAX_VALUE).addGap(60)));
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(107)
+					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 236, Short.MAX_VALUE)
+					.addGap(107))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+					.addGap(61)
+					.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 179, Short.MAX_VALUE)
+					.addGap(60))
+		);
 		panel_2.setLayout(gl_panel_2);
 
 		/* Today Title */
