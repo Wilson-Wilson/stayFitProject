@@ -168,9 +168,14 @@ public class SettingsPanel extends JPanel {
 		caloriesCheckBox.addItemListener(new ItemListener() {
 	    	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.showCaloriesCard=false;
-	        	        } else {//checkbox has been deselected
 	        	        	Preferences.showCaloriesCard=true;
+	        	        	System.out.println("SELECTED!!");
+	        	        	System.out.println(Preferences.isShowCaloriesCard());
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.showCaloriesCard=false;
+	        	        	System.out.println("DESELCTED");
+	        	        	System.out.println(Preferences.isShowCaloriesCard());
+
 	        	        };
 	        	    }
 	        });
@@ -188,28 +193,32 @@ public class SettingsPanel extends JPanel {
 	        
 	        	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.showMinutesCard=false;
-	        	        } else {//checkbox has been deselected
 	        	        	Preferences.showMinutesCard=true;
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.showMinutesCard=false;
 	        	        };
 	        	    }
 	        });
 
 		JLabel label_5 = new JLabel("");
 
-		JCheckBox MovementsCheckBox = new JCheckBox("Movements");
+	/*	JCheckBox MovementsCheckBox = new JCheckBox("Movements");
 		MovementsCheckBox.setOpaque(false);
 		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
 		MovementsCheckBox.addItemListener(new ItemListener() {
-	    	    public void itemStateChanged(ItemEvent e) {
-	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.showMovementsCard=false;
-	        	        } else {//checkbox has been deselected
-	        	        	Preferences.showMovementsCard=true;
-	        	        };
-	        	    }
-	        });
-		dashboardSettings.add(MovementsCheckBox);
+	        
+    	    public void itemStateChanged(ItemEvent e) {
+    	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+    	        	Preferences.showMovementsCard=true;
+    	        	System.out.println("HELLO");
+    	        } else {//checkbox has been deselected
+    	        	Preferences.showMovementsCard=false;
+    	        };
+    	    }
+    });
+		//dashboardSettings.add(MovementsCheckBox);
+		 * 
+		 */
 
 		JCheckBox LifetimeCheckBox = new JCheckBox("Lifetime");
 		LifetimeCheckBox.setForeground(new Color(255, 255, 255));
@@ -221,9 +230,9 @@ public class SettingsPanel extends JPanel {
 	        
 	        	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.showLifetimeCard=false;
-	        	        } else {//checkbox has been deselected
 	        	        	Preferences.showLifetimeCard=true;
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.showLifetimeCard=false;
 	        	        };
 	        	    }
 	        });
@@ -240,9 +249,9 @@ public class SettingsPanel extends JPanel {
 		TimeseriesCheckBox.addItemListener(new ItemListener() {
 	    	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.showTimeSeriesCard=false;
-	        	        } else {//checkbox has been deselected
 	        	        	Preferences.showTimeSeriesCard=true;
+	        	        } else {//checkbox has been deselected
+	        	        	Preferences.showTimeSeriesCard=false;
 	        	        };
 	        	    }
 	        });
@@ -261,9 +270,11 @@ public class SettingsPanel extends JPanel {
 		BestdaysCheckBox.addItemListener(new ItemListener() {
 	    	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.showTimeSeriesCard=false;
+	        	        	Preferences.showBestDaysCard=true;
+
 	        	        } else {//checkbox has been deselected
-	        	        	Preferences.showTimeSeriesCard=true;
+	        	        	Preferences.showBestDaysCard=false;
+
 	        	        };
 	        	    }
 	        });
@@ -274,10 +285,24 @@ public class SettingsPanel extends JPanel {
 
 		JLabel label_17 = new JLabel("");
 		
-		JCheckBox chckbxMovements = new JCheckBox("Movements");
-		chckbxMovements.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		chckbxMovements.setOpaque(false);
-		chckbxMovements.setForeground(new Color(255, 255, 255));
+		JCheckBox MovementsCheckBox = new JCheckBox("Movements");
+		MovementsCheckBox.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		MovementsCheckBox.setOpaque(false);
+		MovementsCheckBox.setForeground(new Color(255, 255, 255));
+		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
+		MovementsCheckBox.addItemListener(new ItemListener() {
+	        
+    	    public void itemStateChanged(ItemEvent e) {
+    	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+    	        	Preferences.showMovementsCard=true;
+    	        	System.out.println("HELLO");
+    	        } else {//checkbox has been deselected
+    	        	Preferences.showMovementsCard=false;
+    	        };
+    	    }
+    });
+		
+		
 		GroupLayout gl_dashboardSettings = new GroupLayout(dashboardSettings);
 		gl_dashboardSettings.setHorizontalGroup(
 			gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
@@ -289,7 +314,7 @@ public class SettingsPanel extends JPanel {
 								.addComponent(caloriesCheckBox, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
 								.addGroup(gl_dashboardSettings.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(chckbxMovements, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+									.addComponent(MovementsCheckBox, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
 									.addGap(31)))
 							.addGap(57)
 							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
@@ -333,7 +358,7 @@ public class SettingsPanel extends JPanel {
 						.addGroup(gl_dashboardSettings.createSequentialGroup()
 							.addComponent(caloriesCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(chckbxMovements)))
+							.addComponent(MovementsCheckBox)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
