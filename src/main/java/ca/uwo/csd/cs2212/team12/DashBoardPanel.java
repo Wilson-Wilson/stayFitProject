@@ -897,7 +897,7 @@ public class DashBoardPanel extends JPanel {
         JButton button = new JButton("");
         button.setContentAreaFilled(false);
         button.setBorder(null);
-        button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\refreshIcon.png"));
+        button.setIcon(ImageClass.getRefreshIcon());
 
         JLabel lblTime = new JLabel("Last updated:");
         lblTime.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -950,12 +950,12 @@ public class DashBoardPanel extends JPanel {
         lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
         panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-        JButton btnNewButton = new JButton("");
-        btnNewButton.setIconTextGap(0);
-        btnNewButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\calendarIcon.png"));
-        btnNewButton.setContentAreaFilled(false);
-        btnNewButton.setBorder(null);
-        panel_4.add(btnNewButton);
+        JButton calendarButton = new JButton("");
+        calendarButton.setIconTextGap(0);
+        calendarButton.setIcon(ImageClass.getCalendarIcon());
+        calendarButton.setContentAreaFilled(false);
+        calendarButton.setBorder(null);
+        panel_4.add(calendarButton);
         panel_4.add(lblNewLabel_3);
 
         JPanel panel_5 = new JPanel();
