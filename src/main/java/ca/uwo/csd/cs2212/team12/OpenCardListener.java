@@ -90,7 +90,7 @@ public class OpenCardListener extends JPanel{
 
 			}
 
-		if (num==2){
+		if (num==2 && Preferences.showMinutesCard==true){
 			MinPanel minPanel = new MinPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			minPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
@@ -100,7 +100,7 @@ public class OpenCardListener extends JPanel{
 
 			}
 
-		if (num==3){
+		if (num==3 && Preferences.showMovementsCard==true){
 			MovePanel movePanel = new MovePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			movePanel.setOpaque(false);
 			//cardPanel.add(life, "9");
@@ -112,7 +112,7 @@ public class OpenCardListener extends JPanel{
 
 
 
-		if (num==4){
+		if (num==4 && Preferences.showLifetimeCard==true){
 		LifePanel life = new LifePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 		life.setOpaque(false);
 		//cardPanel.add(life, "9");
@@ -122,7 +122,7 @@ public class OpenCardListener extends JPanel{
 		cardPanel.setLayout(new BorderLayout(0, 0));
 
 		}
-		if (num==5){
+		if (num==5 && Preferences.showTimeSeriesCard==true){
 			TimePanel timePanel = new TimePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			timePanel.setOpaque(false);
 			//cardPanel.add(life, "9");
@@ -132,7 +132,7 @@ public class OpenCardListener extends JPanel{
 
 			}
 
-		if (num==6){
+		if (num==6 && Preferences.showBestDaysCard==true){
 			BestPanel bestPanel = new BestPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			bestPanel.setOpaque(false);
 			//cardPanel.add(life, "9");
@@ -142,7 +142,7 @@ public class OpenCardListener extends JPanel{
 
 			}
 		/**
-		 * End of the list of possible detaials to display
+		 * End of the list of possible details to display
 		 */
 		
 		
@@ -173,7 +173,7 @@ public class OpenCardListener extends JPanel{
 
 		trophyButton.setIcon(new ImageIcon("src/main/resources/Trophy2.png"));
 
-		JButton btnJodimarie = new JButton("Jodi-Marie");
+		JButton btnJodimarie = new JButton("Beth Locke");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		btnJodimarie.setForeground(new Color(255, 255, 255));
 		btnJodimarie.setContentAreaFilled(false);
@@ -292,6 +292,7 @@ public class OpenCardListener extends JPanel{
 	            	DashBoardPanel dash= new DashBoardPanel();
 	        		panel_3.add(dash,"11");
 	        		cl.show(panel_3,"11");
+	        		dash.checkPref();
 
 	            }});
 

@@ -25,6 +25,14 @@ import java.util.Date;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class DashBoardPanel extends JPanel {
+	
+	final JPanel cardPanel = new JPanel();
+    final  JButton caloriesButton = new JButton("");
+    final JButton minutesButton = new JButton("");
+    final JButton movementButton = new JButton("");
+    final JButton lifetimeButton = new JButton("");
+    final JButton timeseriesButton = new JButton("");
+    final JButton bestdayButton = new JButton("");
 
     private JFrame frame;
     private API api = new RealAPI();
@@ -87,7 +95,7 @@ public class DashBoardPanel extends JPanel {
         /**Note the card panel holds all the card its at the center of the dash panel,
          * the arrows, trophy and etc are on other sub-panels of the dashpanel
          */
-        final JPanel cardPanel = new JPanel();
+        
         cardPanel.setOpaque(false);
         cardPanel.setBounds(new Rectangle(200, 200, 200, 200));
         dashPanel.setLayout(new BorderLayout(0, 0));
@@ -105,7 +113,6 @@ public class DashBoardPanel extends JPanel {
         /*Calories card*/
 
         //Calories Button
-        final  JButton caloriesButton = new JButton("");
         caloriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         caloriesButton.setBorder(null);
         caloriesButton.setContentAreaFilled(false);
@@ -144,9 +151,16 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.remove( caloriesButton);
                 cardPanel.invalidate();
                 cardPanel.repaint();
+                Preferences.showCaloriesCard=false;
             }
+            
+            
 
         });
+        
+        
+        
+        
 
 
 
@@ -214,11 +228,11 @@ public class DashBoardPanel extends JPanel {
                                 .addComponent(lblNewLabel))
         );
         calinfoPanel.setLayout(gl_calinfoPanel);
+        
 
 		 /*Minutes card*/
 
         //Minutes Button
-        final JButton minutesButton = new JButton("");
         minutesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         minutesButton.setContentAreaFilled(false);
         minutesButton.setOpaque(false);
@@ -256,6 +270,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.remove( minutesButton);
                 cardPanel.invalidate();
                 cardPanel.repaint();
+                Preferences.showMinutesCard=false;
             }
 
         });
@@ -326,7 +341,6 @@ public class DashBoardPanel extends JPanel {
 		 /*Movement card */
 
         //Movement Button
-        final JButton movementButton = new JButton("");
         movementButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         movementButton.setContentAreaFilled(false);
         movementButton.setBorder(null);
@@ -367,6 +381,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.remove( movementButton);
                 cardPanel.invalidate();
                 cardPanel.repaint();
+                Preferences.showMovementsCard=false;
             }
 
         });
@@ -444,7 +459,6 @@ public class DashBoardPanel extends JPanel {
 
 
         //Lifetime button
-        final JButton lifetimeButton = new JButton("");
         lifetimeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lifetimeButton.setContentAreaFilled(false);
         lifetimeButton.setBorder(null);
@@ -487,6 +501,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 //cardPanel.revalidate();
                 cardPanel.repaint();
+                Preferences.showLifetimeCard=false;
             }
 
         });
@@ -558,7 +573,6 @@ public class DashBoardPanel extends JPanel {
 			 /*Time Series card*/
 
         //Time Series button
-        final JButton timeseriesButton = new JButton("");
         timeseriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         timeseriesButton.setContentAreaFilled(false);
         timeseriesButton.setBorder(null);
@@ -600,6 +614,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.remove( timeseriesButton);
                 cardPanel.invalidate();
                 cardPanel.repaint();
+                Preferences.showTimeSeriesCard=false;
             }
 
         });
@@ -633,7 +648,6 @@ public class DashBoardPanel extends JPanel {
 
         //Best Days button
 
-        final JButton bestdayButton = new JButton("");
         bestdayButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         bestdayButton.setContentAreaFilled(false);
         bestdayButton.setBorder(null);
@@ -674,6 +688,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.remove( bestdayButton);
                 cardPanel.invalidate();
                 cardPanel.repaint();
+                Preferences.showBestDaysCard=false;
             }
 
         });
@@ -816,17 +831,17 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setBorderPainted(false);
         trophyButton.setIcon(new ImageIcon("src/main/resources/Trophy2.png"));
 
-        JButton btnJodimarie = new JButton("Jodi-Marie");
-        btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-        btnJodimarie.setForeground(new Color(255, 255, 255));
-        btnJodimarie.setContentAreaFilled(false);
-        btnJodimarie.setBorder(null);
+        JButton btnUser = new JButton("Beth Locke");
+        btnUser.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        btnUser.setForeground(new Color(255, 255, 255));
+        btnUser.setContentAreaFilled(false);
+        btnUser.setBorder(null);
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(
                 gl_panel.createParallelGroup(Alignment.TRAILING)
                         .addGroup(gl_panel.createSequentialGroup()
                                 .addContainerGap(323, Short.MAX_VALUE)
-                                .addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(ComponentPlacement.RELATED)
                                 .addComponent(trophyButton))
         );
@@ -834,7 +849,7 @@ public class DashBoardPanel extends JPanel {
                 gl_panel.createParallelGroup(Alignment.LEADING)
                         .addGroup(gl_panel.createSequentialGroup()
                                 .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-                                        .addComponent(btnJodimarie, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                                        .addComponent(btnUser, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                                         .addComponent(trophyButton, Alignment.LEADING))
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -892,6 +907,8 @@ public class DashBoardPanel extends JPanel {
 
         //CaloriesPanel panel_1 = new CaloriesPanel();
         //panel_3.add(panel_1, "5");
+        
+        /*SETTINGS*/
 
         JButton settingsbutton = new JButton("");
         settingsbutton.setContentAreaFilled(false);
@@ -903,7 +920,7 @@ public class DashBoardPanel extends JPanel {
                 gl_panel1.createParallelGroup(Alignment.TRAILING)
                         .addGroup(gl_panel1.createSequentialGroup()
                                 .addContainerGap(292, Short.MAX_VALUE)
-                                .addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(ComponentPlacement.RELATED)
                                 .addComponent(settingsbutton)
                                 .addPreferredGap(ComponentPlacement.RELATED)
@@ -915,11 +932,40 @@ public class DashBoardPanel extends JPanel {
                                 .addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
                                         .addComponent(settingsbutton)
                                         .addComponent(trophyButton)
-                                        .addComponent(btnJodimarie, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                                        .addComponent(btnUser, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                                 .addContainerGap())
         );
         panel.setLayout(gl_panel1);
+        
 
+        
+        
+       
+        
     }
+    
+    public void checkPref(){
+    	if(!Preferences.showCaloriesCard){
+    		cardPanel.getComponent(0).setVisible(false);
+    	}
+    	if(!Preferences.showMinutesCard){
+    		cardPanel.getComponent(1).setVisible(false);
+    	}
+    	if(!Preferences.showMovementsCard){
+    		cardPanel.getComponent(2).setVisible(false);
+    	}
+    	if(!Preferences.showLifetimeCard){
+    		cardPanel.getComponent(3).setVisible(false);
+    	}
+    	if(!Preferences.showTimeSeriesCard){
+    		cardPanel.getComponent(4).setVisible(false);
+    	}
+    	if(!Preferences.showBestDaysCard){
+    		cardPanel.getComponent(5).setVisible(false);
+    	}
+    	
+    }
+    
+   
 
 }
