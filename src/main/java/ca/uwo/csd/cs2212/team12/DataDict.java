@@ -57,6 +57,18 @@ public class DataDict implements Serializable{
 	  }	   
     
   }
+  
+  public String getEarliest(){
+	  return this.earliest;
+  }
+  
+  public String getLatest(){
+	  return this.latest;
+  }
+  
+  public HashMap<String, DataEntry> getDictionary(){
+	  return this.theDictionary;
+  }
 
   /**
    * This method is used to persist DataDict object between runs.
