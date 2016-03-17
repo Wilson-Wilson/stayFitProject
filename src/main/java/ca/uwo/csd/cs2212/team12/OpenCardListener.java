@@ -1,5 +1,6 @@
 package ca.uwo.csd.cs2212.team12;
 
+
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -42,7 +43,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 public class OpenCardListener extends JPanel{
 
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
+	ImageIcon backImage = ImageClass.getBackImage();
 
 
 	/**
@@ -58,12 +59,7 @@ public class OpenCardListener extends JPanel{
 	 */
 	private void initialize(int num) {
 
-		//main frame
-		/*frame = new JFrame();
-		frame.setResizable(false);
-		frame.getContentPane().setBackground(Color.DARK_GRAY);
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
+		
 		final CardLayout cl = new CardLayout(0,0);
 		this.setLayout(new CardLayout(0,0));
 		final JPanel panel_3 = new JPanel();
@@ -81,7 +77,6 @@ public class OpenCardListener extends JPanel{
 		if (num==1){
 			CalPanel calPanel = new CalPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
 			calPanel.setOpaque(false);
-			//cardPanel.add(life, "9");
 			dashPanel.setLayout(new BorderLayout(0, 0));
 			dashPanel.add(calPanel, BorderLayout.CENTER);;;;
 
@@ -141,6 +136,16 @@ public class OpenCardListener extends JPanel{
 			cardPanel.setLayout(new BorderLayout(0, 0));
 
 			}
+		if (num==7){
+			SettingsPanel settingsPanel= new SettingsPanel();
+			settingsPanel.setOpaque(false);
+			//cardPanel.add(life, "9");
+			dashPanel.setLayout(new BorderLayout(0, 0));
+			dashPanel.add(settingsPanel, BorderLayout.CENTER);
+			cardPanel.setLayout(new BorderLayout(0, 0));
+
+		}
+		
 		/**
 		 * End of the list of possible details to display
 		 */
@@ -171,7 +176,7 @@ public class OpenCardListener extends JPanel{
 		trophyButton.setBorder(null);
 		trophyButton.setBorderPainted(false);
 
-		trophyButton.setIcon(new ImageIcon("src/main/resources/Trophy2.png"));
+		trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
 		JButton btnJodimarie = new JButton("Beth Locke");
 		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -182,7 +187,7 @@ public class OpenCardListener extends JPanel{
 
 		JButton timeseriesButton = new JButton("");
 		timeseriesButton.setContentAreaFilled(false);
-		timeseriesButton.setIcon(new ImageIcon("src/main/resources/BarGraphIcon2.png"));
+		timeseriesButton.setIcon(ImageClass.getTimeseriesIcon());
 		timeseriesButton.setBorder(null);
 		timeseriesButton.setBorderPainted(false);
 		timeseriesButton.addActionListener(new ActionListener() {
@@ -199,7 +204,7 @@ public class OpenCardListener extends JPanel{
 
 		JButton bestButton = new JButton("");
 		bestButton.setBorder(null);
-		bestButton.setIcon(new ImageIcon("src/main/resources/BlueStarIcon2.png"));
+		bestButton.setIcon(ImageClass.getBestdayIcon());
 		bestButton.setContentAreaFilled(false);
 		btnJodimarie.setBorder(null);
 		btnJodimarie.setBorderPainted(false);
@@ -217,7 +222,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton caloriesButton = new JButton("");
-		caloriesButton.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
+		caloriesButton.setIcon(ImageClass.getCaloriesIcon());
 		caloriesButton.setContentAreaFilled(false);
 		caloriesButton.setBorder(null);
 		caloriesButton.setBorderPainted(false);
@@ -236,7 +241,7 @@ public class OpenCardListener extends JPanel{
 		movementButton.setContentAreaFilled(false);
 		movementButton.setBorder(null);
 		movementButton.setBorderPainted(false);
-		movementButton.setIcon(new ImageIcon("src/main/resources/RunningIcon2.png"));
+		movementButton.setIcon(ImageClass.getMovementIcon());
 		movementButton.addActionListener(new ActionListener() {
 
             
@@ -250,7 +255,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton minutesButton = new JButton("");
-		minutesButton.setIcon(new ImageIcon("src/main/resources/TimeIcon2.png"));
+		minutesButton.setIcon(ImageClass.getMinutesIcon());
 		minutesButton.setBorder(null);
 		minutesButton.setBorderPainted(false);
 		minutesButton.setContentAreaFilled(false);
@@ -269,7 +274,7 @@ public class OpenCardListener extends JPanel{
 		lifetimeButton.setContentAreaFilled(false);
 		lifetimeButton.setBorder(null);
 		lifetimeButton.setBorderPainted(false);
-		lifetimeButton.setIcon(new ImageIcon("src/main/resources/StarIcon2.png"));
+		lifetimeButton.setIcon(ImageClass.getLifetimeIcon());
 		lifetimeButton.addActionListener(new ActionListener() {
 
             
@@ -298,7 +303,7 @@ public class OpenCardListener extends JPanel{
 
 
 		homebutton.setContentAreaFilled(false);
-		homebutton.setIcon(new ImageIcon("src/main/resources/home2.png"));
+		homebutton.setIcon(ImageClass.getHomebuttonIcon());
 		homebutton.setBorder(null);
 		homebutton.setBorderPainted(false);
 		 homebutton .addActionListener(new ActionListener() {
@@ -313,6 +318,11 @@ public class OpenCardListener extends JPanel{
 	        		cl.show(panel_3,"10");
 
 	            }});
+		
+		JButton button = new JButton("");
+		button.setContentAreaFilled(false);
+		button.setBorder(null);
+		button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\Gear-icon2.png"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -333,22 +343,25 @@ public class OpenCardListener extends JPanel{
 					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
 					.addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(trophyButton))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(homebutton, GroupLayout.PREFERRED_SIZE, 31, Short.MAX_VALUE)
-						.addComponent(caloriesButton, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(timeseriesButton, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(Alignment.LEADING, gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(caloriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(timeseriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 							.addComponent(btnJodimarie, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
 							.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addComponent(trophyButton, Alignment.LEADING)
-						.addComponent(lifetimeButton, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(button))
+						.addComponent(trophyButton)
+						.addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
@@ -389,7 +402,7 @@ public class OpenCardListener extends JPanel{
 		button_6.setBorder(null);
 		button_6.setBorderPainted(false);
 		button_6.setOpaque(false);
-		button_6.setIcon(new ImageIcon("src/main/resources/smallleftarrow.png"));
+		button_6.setIcon(ImageClass.getSmallleftarrow());
 		panel_16.add(button_6);
 		JLabel lblToday = new JLabel("Today");
 		lblToday.setBackground(new Color(105, 105, 105,180));
@@ -402,14 +415,12 @@ public class OpenCardListener extends JPanel{
 		button_7.setContentAreaFilled(false);
 		button_7.setBorder(null);
 		button_7.setBorderPainted(false);
-		button_7.setIcon(new ImageIcon("src/main/resources/smallrightarrow.png"));
+		button_7.setIcon(ImageClass.getSmallrightarrow());
 		panel_16.add(button_7);
 
 
 
 	}
-
-
 }
 class MyScrollbarUI extends MetalScrollBarUI {
 
