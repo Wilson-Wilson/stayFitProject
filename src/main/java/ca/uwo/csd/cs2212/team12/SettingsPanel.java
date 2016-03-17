@@ -1,5 +1,5 @@
 package ca.uwo.csd.cs2212.team12;
-import Preferences;
+
 
 import javax.swing.GroupLayout.Alignment;
 
@@ -166,13 +166,11 @@ public class SettingsPanel extends JPanel {
 
 		caloriesCheckBox.setSelected(Preferences.isShowCaloriesCard());
 		caloriesCheckBox.addItemListener(new ItemListener() {
-	    	    @Override
-	        
-	        	    public void itemStateChanged(ItemEvent e) {
+	    	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.setShowCaloriesCard(false);
+	        	        	Preferences.showCaloriesCard=false;
 	        	        } else {//checkbox has been deselected
-	        	        	Preferences.setShowCaloriesCard(true);
+	        	        	Preferences.showCaloriesCard=true;
 	        	        };
 	        	    }
 	        });
@@ -187,13 +185,12 @@ public class SettingsPanel extends JPanel {
 		MinutesCheckBox.setOpaque(false);
 		MinutesCheckBox.setSelected(Preferences.isShowMinutesCard());
 		MinutesCheckBox.addItemListener(new ItemListener() {
-	    	    @Override
 	        
 	        	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.setShowMinutesCard(false);
+	        	        	Preferences.showMinutesCard=false;
 	        	        } else {//checkbox has been deselected
-	        	        	Preferences.setShowMinutesCard(true);
+	        	        	Preferences.showMinutesCard=true;
 	        	        };
 	        	    }
 	        });
@@ -204,13 +201,11 @@ public class SettingsPanel extends JPanel {
 		MovementsCheckBox.setOpaque(false);
 		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
 		MovementsCheckBox.addItemListener(new ItemListener() {
-	    	    @Override
-	        
-	        	    public void itemStateChanged(ItemEvent e) {
-	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.setShowMovementsCard(false);
+	    	    public void itemStateChanged(ItemEvent e) {
+	        	        if(e.getStateChange() == e.SELECTED) {//checkbox has been selected
+	        	        	Preferences.showMovementsCard=false;
 	        	        } else {//checkbox has been deselected
-	        	        	Preferences.setShowMovementsCard(true);
+	        	        	Preferences.showMovementsCard=true;
 	        	        };
 	        	    }
 	        });
@@ -222,13 +217,13 @@ public class SettingsPanel extends JPanel {
 		LifetimeCheckBox.setOpaque(false);
 		LifetimeCheckBox.setSelected(Preferences.isShowLifetimeCard());
 		LifetimeCheckBox.addItemListener(new ItemListener() {
-	    	    @Override
+	    	  
 	        
 	        	    public void itemStateChanged(ItemEvent e) {
-	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.setShowLifetimeCard(false);
+	        	        if(e.getStateChange() == e.SELECTED) {//checkbox has been selected
+	        	        	Preferences.showLifetimeCard=false;
 	        	        } else {//checkbox has been deselected
-	        	        	Preferences.setShowLifetimeCard(true);
+	        	        	Preferences.showLifetimeCard=true;
 	        	        };
 	        	    }
 	        });
@@ -245,9 +240,9 @@ public class SettingsPanel extends JPanel {
 		TimeseriesCheckBox.addItemListener(new ItemListener() {
 	    	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.setShowTimeSeriesCard(false);
+	        	        	Preferences.showTimeSeriesCard=false;
 	        	        } else {//checkbox has been deselected
-	        	        	Preferences.setShowTimeSeriesCard(true);
+	        	        	Preferences.showTimeSeriesCard=true;
 	        	        };
 	        	    }
 	        });
@@ -264,13 +259,11 @@ public class SettingsPanel extends JPanel {
 		BestdaysCheckBox.setOpaque(false);
 		BestdaysCheckBox.setSelected(Preferences.isShowBestDaysCard());
 		BestdaysCheckBox.addItemListener(new ItemListener() {
-	    	    @Override
-	        
-	        	    public void itemStateChanged(ItemEvent e) {
+	    	    public void itemStateChanged(ItemEvent e) {
 	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-	        	        	Preferences.setShowTimeSeriesCard(false);
+	        	        	Preferences.showTimeSeriesCard=false;
 	        	        } else {//checkbox has been deselected
-	        	        	Preferences.setShowTimeSeriesCard(true);
+	        	        	Preferences.showTimeSeriesCard=true;
 	        	        };
 	        	    }
 	        });

@@ -29,7 +29,7 @@ public class Preferences implements Serializable{
 	* Returns value of showCaloriesCard
 	* @return boolean lets the programme know this card's display status
 	*/
-	public boolean isShowCaloriesCard() {
+	public static boolean isShowCaloriesCard() {
 		return showCaloriesCard;
 	}
 
@@ -45,7 +45,7 @@ public class Preferences implements Serializable{
 	* Returns value of showMinutesCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowMinutesCard() {
+	public static boolean isShowMinutesCard() {
 		return showMinutesCard;
 	}
 
@@ -61,7 +61,7 @@ public class Preferences implements Serializable{
 	* Returns value of showMovementsCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowMovementsCard() {
+	public static boolean isShowMovementsCard() {
 		return showMovementsCard;
 	}
 
@@ -77,7 +77,7 @@ public class Preferences implements Serializable{
 	* Returns value of showLifetimeCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowLifetimeCard() {
+	public static boolean isShowLifetimeCard() {
 		return showLifetimeCard;
 	}
 
@@ -93,7 +93,7 @@ public class Preferences implements Serializable{
 	* Returns value of showTimeSeriesCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowTimeSeriesCard() {
+	public static boolean isShowTimeSeriesCard() {
 		return showTimeSeriesCard;
 	}
 
@@ -109,7 +109,7 @@ public class Preferences implements Serializable{
 	* Returns value of showBestDaysCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowBestDaysCard() {
+	public static boolean isShowBestDaysCard() {
 		return showBestDaysCard;
 	}
 
