@@ -7,7 +7,6 @@ import java.awt.*;
 import java.util.Calendar;
 import java.util.Date;
 
-
 public class CalPanel extends JPanel{
 
 	private JFrame frame;

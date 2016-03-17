@@ -10,7 +10,6 @@ package ca.uwo.csd.cs2212.team12;
 
 public interface API {
 
-
     /**
      * This method is used to fetch the number of calories burned.
      * @return int This returns the number of calories burned.

@@ -1,13 +1,9 @@
 package ca.uwo.csd.cs2212.team12;
+
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
-
 import java.awt.*;
-import java.util.Calendar;
-import java.util.Date;
-
-
+import java.util.*;
+import javax.swing.border.*;
 
 public class BestPanel extends JPanel{
 

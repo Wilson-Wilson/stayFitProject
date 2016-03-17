@@ -1,23 +1,12 @@
 package ca.uwo.csd.cs2212.team12;
 
-
 import javax.swing.GroupLayout.Alignment;
-
 import java.awt.*;
-
 import javax.swing.*;
-
 import java.awt.event.*;
-import java.awt.geom.RoundRectangle2D;
-import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import java.util.Date;
-
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.basic.BasicScrollBarUI;
-import javax.swing.plaf.metal.MetalScrollBarUI;
 
 public class SettingsPanel extends JPanel {
 
