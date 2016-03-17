@@ -1,10 +1,12 @@
 package ca.uwo.csd.cs2212.team12;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.io.*;
 
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
-//ITS MAIN PURPOSE IS TO SERVE AS A REFERENCE FOR FUTURE CLASSES
 public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID= 1L;
@@ -13,51 +15,135 @@ public class UserInfo implements Serializable {
 	private String userName;
 	private Preferences userPrefs;
 
-	private int calLife;
 	private int distanceLife;
 	private int floorsLife;
 	private int stepsLife;
-	private int actMinsLife;
-	private int sedMinsLife;
+	private String distanceBest;
+	private String floorsBest;
+	private String stepsBest;
 
 	/**
 	 * Creates the UserInfo Object that stores information from API calls.
 	 * @param name String the name of the user.
 	 * @param pref Preferences the Preference object for the custom dashboard.
-	 * @param cal int the lifetime total for calories.
 	 * @param distance int the lifetime total for distance.
 	 * @param floors the lifetime total for floors.
 	 * @param steps the lifetime total for steps.
-	 * @param actMin the lifetime total for active minutes.
-	 * @param sedMin the lifetime total for sedentary minutes.
 	 */
-
-	public UserInfo(String name, Preferences pref, int cal, int distance, int floors, int steps, int actMin, int sedMin){
-		userName= name;
-		userPrefs= pref;
-		calLife= cal;
-		distanceLife= distance;
-		floorsLife= floors;
-		stepsLife= steps;
-		actMinsLife= actMin;
-		sedMinsLife= sedMin;
+	public UserInfo(String name, Preferences pref, int distance, int floors, int steps, String distanceBest, String floorsBest, String stepsBest){
+		
+		this.userName = name;
+		this.userPrefs = pref;
+		this.distanceLife = distance;
+		this.floorsLife = floors;
+		this.stepsLife = steps;
+		this.distanceBest = distanceBest;
+		this.floorsBest = floorsBest;
+		this.stepsBest = stepsBest;
 	}
 
 	/**
 	 * Constructor for UserInfo without params.
 	 */
 	public UserInfo(){
-		userName= null; //get this and other data from API unless UserInfo is serialized
-		userPrefs= new Preferences();
-		calLife= 0;
-		distanceLife= 0;
-		floorsLife= 0;
-		stepsLife= 0;
-		actMinsLife= 0;
-		sedMinsLife= 0;
+		
+		this.userName= null; //get this and other data from API unless UserInfo is serialized
+		this.userPrefs= new Preferences();
+		this.distanceLife= 0;
+		this.floorsLife= 0;
+		this.stepsLife= 0;
+		this.distanceBest = null;
+		this.floorsBest = null;
+		this.stepsBest = null;
+	}
+	
+	/**
+	* This method returns the value of userName.
+	* @return String This returns the value of userName.
+	*/
+	public String getUserName() {
+		return this.userName;
 	}
 
-	//The following methods are used to persist UserInfo object between runs
+	/**
+	* This method sets this.userName to userName.
+	* @param userName String The new userName.
+	*/
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	/**
+	* This method returns the value of distanceLife.
+	* @return int This returns the value of distanceLife.
+	*/
+	public int getDistanceLife() {
+		return this.distanceLife;
+	}
+
+	/**
+	* This method sets this.distanceLife to distanceLife.
+	* @param distanceLife int The new distanceLife.
+	*/
+	public void setDistanceLife(int distanceLife) {
+		this.distanceLife = distanceLife;
+	}
+
+	/**
+	* This method returns the value of floorsLife.
+	* @return int This returns the value of floorsLife.
+	*/
+	public int getFloorsLife() {
+		return this.floorsLife;
+	}
+
+	/**
+	* This method sets this.floorsLife to floorsLife.
+	* @param floorsLife int The new floorsLife.
+	*/
+	public void setFloorsLife(int floorsLife) {
+		this.floorsLife = floorsLife;
+	}
+
+	/**
+	* This method returns the value of stepsLife.
+	* @return int This returns the value of stepsLife.
+	*/
+	public int getStepsLife() {
+		return this.stepsLife;
+	}
+
+	/**
+	* This method sets this.stepsLife to stepsLife.
+	* @param stepsLife int The new stepsLife.
+	*/
+	public void setStepsLife(int stepsLife) {
+		this.stepsLife = stepsLife;
+	}
+	
+	/**
+	* This method returns the value of distanceBest.
+	* @return String This returns the value of distanceBest.
+	*/
+	public String getDistanceBest(){
+		return this.distanceBest;
+	}
+	
+	/**
+	* This method returns the value of floorsBest.
+	* @return String This returns the value of floorsBest.
+	*/
+	public String getFloorsBest(){
+		return this.floorsBest;
+	}
+	
+	/**
+	* This method returns the value of stepsBest.
+	* @return String This returns the value of stepsBest.
+	*/
+	public String getStepsBest(){
+		return this.stepsBest;
+	}
 	
 	/**
 	 * Saves the user information to disk.
@@ -93,119 +179,6 @@ public class UserInfo implements Serializable {
             e.printStackTrace();
     	}
 
-		}
-
-
-	/**
-	* This method returns the value of userName.
-	* @return String This returns the value of userName.
-	*/
-	public String getUserName() {
-		return userName;
-	}
-
-	/**
-	* This method sets this.userName to userName.
-	* @param userName String The new userName.
-	*/
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	/**
-	* This method returns the value of calLife.
-	* @return int This returns the value of calLife.
-	*/
-	public int getCalLife() {
-		return calLife;
-	}
-
-	/**
-	* This method sets this.calLife to calLife.
-	* @param calLife int The new calLife.
-	*/
-	public void setCalLife(int calLife) {
-		this.calLife = calLife;
-	}
-
-	/**
-	* This method returns the value of distanceLife.
-	* @return int This returns the value of distanceLife.
-	*/
-	public int getDistanceLife() {
-		return distanceLife;
-	}
-
-	/**
-	* This method sets this.distanceLife to distanceLife.
-	* @param distanceLife int The new distanceLife.
-	*/
-	public void setDistanceLife(int distanceLife) {
-		this.distanceLife = distanceLife;
-	}
-
-	/**
-	* This method returns the value of floorsLife.
-	* @return int This returns the value of floorsLife.
-	*/
-	public int getFloorsLife() {
-		return floorsLife;
-	}
-
-	/**
-	* This method sets this.floorsLife to floorsLife.
-	* @param floorsLife int The new floorsLife.
-	*/
-	public void setFloorsLife(int floorsLife) {
-		this.floorsLife = floorsLife;
-	}
-
-	/**
-	* This method returns the value of stepsLife.
-	* @return int This returns the value of stepsLife.
-	*/
-	public int getStepsLife() {
-		return stepsLife;
-	}
-
-	/**
-	* This method sets this.stepsLife to stepsLife.
-	* @param stepsLife int The new stepsLife.
-	*/
-	public void setStepsLife(int stepsLife) {
-		this.stepsLife = stepsLife;
-	}
-
-	/**
-	* This method returns the value of actMinsLife.
-	* @return int This returns the value of actMinsLife.
-	*/
-	public int getActMinsLife() {
-		return actMinsLife;
-	}
-
-	/**
-	* This method sets this.actMinsLife to actMinsLife.
-	* @param actMinsLife int The new actMinsLife.
-	*/
-	public void setActMinsLife(int actMinsLife) {
-		this.actMinsLife = actMinsLife;
-	}
-
-	/**
-	* This method returns the value of sedMinsLife.
-	* @return int This returns the value of sedMinsLife.
-	*/
-	public int getSedMinsLife() {
-		return sedMinsLife;
-	}
-
-	/**
-	* This method sets this.sedMinsLife to sedMinsLife.
-	* @param sedMinsLife int The new sedMinsLife.
-	*/
-	public void setSedMinsLife(int sedMinsLife) {
-		this.sedMinsLife = sedMinsLife;
 	}
 
 }
