@@ -1,38 +1,17 @@
 package ca.uwo.csd.cs2212.team12;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.Date;
-
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
 import javax.swing.BorderFactory;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-//import net.miginfocom.swing.MigLayout;
-
-
+import javax.swing.GroupLayout.*;
+import javax.swing.*;
+import javax.swing.LayoutStyle.*;
 
 public class DashBoardPanel extends JPanel {
 
 	final JPanel cardPanel = new JPanel();
-    final  JButton caloriesButton = new JButton("");
+    final JButton caloriesButton = new JButton("");
     final JButton minutesButton = new JButton("");
     final JButton movementButton = new JButton("");
     final JButton lifetimeButton = new JButton("");

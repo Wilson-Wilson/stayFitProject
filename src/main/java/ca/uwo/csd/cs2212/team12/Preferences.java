@@ -1,5 +1,5 @@
-
 package ca.uwo.csd.cs2212.team12;
+
 import java.io.Serializable;
 //NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
 public class Preferences implements Serializable{
