@@ -1,5 +1,5 @@
 package ca.uwo.csd.cs2212.team12;
-;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,14 +11,14 @@ public class Controller {
 	private API theAPI;
 	//private UI, theUI
 	
-	//Add UI parameter and create initializeController() method that creates 
+	//Add UI parameter and create initializeController() method in Stayfit that creates 
 	//a controller object and calls onStartUp()
 	public Controller(API theAPI, DataDict theDictionary){
 		this.theAPI = theAPI;
 		this.theDictionary = theDictionary;		
 	}
 	
-	public static void changeDate(String newer, String older){
+	public void changeDate(String newer, String older){
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate newDate = LocalDate.parse(newer, formatter);
@@ -53,33 +53,27 @@ public class Controller {
 		}
 		
 	}
-	/**
-	 * 
-	 * When will the application require the API?
-	 * 
-	 * Application starts up w internet
-	 * 
-	 * User presses refresh
-	 * Application closes
-	 */
 	
-	/**
-	 * 
-	 * When will the application require the local data?
-	 * 
-	 * Application starts up without internet
-	 */
+	public void refresh(){
+	}
 	
-	/**
-	 * When will the application require serialization shit?
-	 * 
-	 * 
-	 * Application starts up
-	 * Application closes
-	 * @throws ParseException 
-	 * 
-	 * 
-	 */
+	public void onStartUp(){
+		//Call API if connects
+		//refresh dictionary
+		
+		//If no connect restore serialized data
+	}
+	
+	public void onClose(){
+		
+		//serialize current dictionary, accolades/goal and user prefs
+		
+	}
+	
+	public void pushGoals(){
+		
+	}
+	
 	private static int[] getDayData(LocalDate theDate){
 		
 		int [] dayValues = new int[6];
@@ -193,7 +187,7 @@ public class Controller {
 	private static boolean isSameWeek(LocalDate newer, LocalDate older){
 		//A week is defined as Sunday - Saturday
 		
-		LocalDate startOfWeek, endOfWeek;
+		LocalDate startOfWeek = null, endOfWeek = null;
 		
 		//Define the Sunday and Saturday corresponding to the week of the older date
 		switch(older.getDayOfWeek()){
