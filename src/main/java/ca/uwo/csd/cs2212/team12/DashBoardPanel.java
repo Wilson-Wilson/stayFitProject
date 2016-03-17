@@ -8,6 +8,10 @@ import javax.swing.GroupLayout.*;
 import javax.swing.*;
 import javax.swing.LayoutStyle.*;
 
+import org.jdesktop.swingx.JXDatePicker;
+
+import no.tornado.databinding.support.jxdatepicker.*;
+
 public class DashBoardPanel extends JPanel {
 
 	final JPanel cardPanel = new JPanel();
@@ -48,6 +52,7 @@ public class DashBoardPanel extends JPanel {
      * Initialize the contents of the panels; sub-panels, labels, borders and etc.
      */
     private void initialize() {
+    	
 
         //main frame
 
@@ -928,14 +933,27 @@ public class DashBoardPanel extends JPanel {
         lblNewLabel_3.setForeground(new Color(255, 255, 255));
         lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
         panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        
+        JXDatePicker datePicker= new JXDatePicker();
 
         JButton calendarButton = new JButton("");
         calendarButton.setIconTextGap(0);
         calendarButton.setIcon(ImageClass.getCalendarIcon());
         calendarButton.setContentAreaFilled(false);
         calendarButton.setBorder(null);
+        calendarButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+								
+			}
+        });
+        
+		panel_4.add(datePicker);
         panel_4.add(calendarButton);
         panel_4.add(lblNewLabel_3);
+        
+        
+        
 
         JPanel panel_5 = new JPanel();
         panel_5.setOpaque(false);

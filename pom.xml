@@ -16,6 +16,11 @@
   <version> 2.0-beta9 </version>
  </dependency>
 <dependency>
+ <groupId>no.tornado.databinding</groupId>
+ <artifactId>jxdatepicker-support</artifactId>
+ <version>1.0</version>
+</dependency>
+<dependency>
 <groupId>org.json</groupId>
 <artifactId>json</artifactId>
 <version>20090211</version>
