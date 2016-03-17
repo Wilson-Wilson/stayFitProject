@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 public class ImageClass {
 	    static ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
 	    static ImageIcon caloriesIcon = new ImageIcon("src/main/resources/FireIcon2.png");
-	    static  ImageIcon minutesIcon = new ImageIcon("src/main/resources/TimeIcon2.png");
+	    static ImageIcon minutesIcon = new ImageIcon("src/main/resources/TimeIcon2.png");
 	    static ImageIcon movementIcon = new ImageIcon("src/main/resources/RunningIcon2.png");
 	    static ImageIcon lifetimeIcon = new ImageIcon("src/main/resources/StarIcon2.png");
 	    static ImageIcon timeseriesIcon = new ImageIcon("src/main/resources/BarGraphIcon2.png");
@@ -22,6 +22,7 @@ public class ImageClass {
 		static ImageIcon homebuttonIcon= new ImageIcon("src/main/resources/home2.png");
 	    static ImageIcon smallleftarrow= new ImageIcon("src/main/resources/smallleftarrow.png");
 	    static ImageIcon refreshIcon = new ImageIcon("src/main/resources/refreshIcon.png");
+	    static ImageIcon calendarIcon= new ImageIcon("src/main/resources/calendarIcon.png");
 	    static public ImageIcon getBackImage() {
 			return backImage;
 		}
@@ -79,6 +80,9 @@ public class ImageClass {
 		public static ImageIcon getSmallrightarrow() {
 			return smallrightarrow;
 			
+		}
+		public static ImageIcon getCalendarIcon(){
+			return calendarIcon;
 		}
 		
 

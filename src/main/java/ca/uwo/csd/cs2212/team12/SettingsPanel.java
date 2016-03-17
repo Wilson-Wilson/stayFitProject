@@ -202,7 +202,7 @@ public class SettingsPanel extends JPanel {
 		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
 		MovementsCheckBox.addItemListener(new ItemListener() {
 	    	    public void itemStateChanged(ItemEvent e) {
-	        	        if(e.getStateChange() == e.SELECTED) {//checkbox has been selected
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
 	        	        	Preferences.showMovementsCard=false;
 	        	        } else {//checkbox has been deselected
 	        	        	Preferences.showMovementsCard=true;
@@ -220,7 +220,7 @@ public class SettingsPanel extends JPanel {
 	    	  
 	        
 	        	    public void itemStateChanged(ItemEvent e) {
-	        	        if(e.getStateChange() == e.SELECTED) {//checkbox has been selected
+	        	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
 	        	        	Preferences.showLifetimeCard=false;
 	        	        } else {//checkbox has been deselected
 	        	        	Preferences.showLifetimeCard=true;
