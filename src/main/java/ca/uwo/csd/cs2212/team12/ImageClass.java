@@ -23,6 +23,7 @@ public class ImageClass {
 	    static ImageIcon smallleftarrow= new ImageIcon("src/main/resources/smallleftarrow.png");
 	    static ImageIcon refreshIcon = new ImageIcon("src/main/resources/refreshIcon.png");
 	    static ImageIcon calendarIcon= new ImageIcon("src/main/resources/calendarIcon.png");
+	    
 	    static public ImageIcon getBackImage() {
 			return backImage;
 		}
@@ -83,6 +84,9 @@ public class ImageClass {
 		}
 		public static ImageIcon getCalendarIcon(){
 			return calendarIcon;
+		}
+		public static ImageIcon getRefreshIcon(){
+			return refreshIcon;
 		}
 		
 

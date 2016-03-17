@@ -897,7 +897,7 @@ public class DashBoardPanel extends JPanel {
         JButton button = new JButton("");
         button.setContentAreaFilled(false);
         button.setBorder(null);
-        button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\refreshIcon.png"));
+        button.setIcon(ImageClass.getRefreshIcon());
 
         JLabel lblTime = new JLabel("Last updated:");
         lblTime.setHorizontalTextPosition(SwingConstants.RIGHT);
