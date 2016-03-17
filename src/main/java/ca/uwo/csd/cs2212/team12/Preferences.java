@@ -4,14 +4,13 @@ import java.io.Serializable;
 //NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
 public class Preferences implements Serializable{
 
-  private boolean showCaloriesCard;
-  private boolean showMinutesCard;
-  private boolean showMovementsCard;
-  private boolean showLifetimeCard;
-  private boolean showTimeSeriesCard;
-  private boolean showBestDaysCard;
-
-  private String preferredUnits;
+  public static boolean showCaloriesCard;
+  public static boolean showMinutesCard;
+  public static boolean showMovementsCard;
+  public static boolean showLifetimeCard;
+  public static boolean showTimeSeriesCard;
+  public static boolean showBestDaysCard;
+  public static String preferredUnits;
   
   /**
    * This would be the default layout of the dashboard

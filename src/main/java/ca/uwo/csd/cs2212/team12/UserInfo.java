@@ -46,8 +46,8 @@ public class UserInfo implements Serializable {
 	 * Constructor for UserInfo without params.
 	 */
 	public UserInfo(){
-		userName= null;
-		userPrefs= null;
+		userName= null; //get this and other data from API unless UserInfo is serialized
+		userPrefs= new Preferences();
 		calLife= 0;
 		distanceLife= 0;
 		floorsLife= 0;
