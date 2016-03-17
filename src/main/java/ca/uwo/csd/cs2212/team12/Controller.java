@@ -13,9 +13,9 @@ public class Controller {
 	
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 	//a controller object and calls onStartUp()
-	public Controller(API theAPI, DataDict theDictionary){
-		this.theAPI = theAPI;
-		this.theDictionary = theDictionary;		
+	public Controller(API apiParam, DataDict dictionaryParam){
+		this.theAPI = apiParam;
+		theDictionary = dictionaryParam;		
 	}
 	
 	public void changeDate(String newer, String older){
@@ -24,33 +24,34 @@ public class Controller {
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
-		if (!isWithinRange(newDate)){
+		//
+		if (!isWithinRange(newDate)){}
 			
-			// update day data
-			int [] dayValues = getDayData(newDate); 
-			/* 
-			 * UI.setCaloriesVariable(dayValues[0]);
+				// Guaranteed to have the new date in dictionary
+		// update day data
+		int [] dayValues = getDayData(newDate); 
+		/* 
+		 * UI.setCaloriesVariable(dayValues[0]);
+		*/
+		
+		//update week data if different week
+		if(!isSameWeek(newDate, oldDate)){
+			int[] weekValues = getWeekData(newDate);
+			/*UI.setCaloriesVariable(weekValues[0]);
+			...
 			*/
-			
-			//update week data if different week
-			if(!isSameWeek(newDate, oldDate)){
-				int[] weekValues = getWeekData(newDate);
-				/*UI.setCaloriesVariable(weekValues[0]);
-				...
-				*/
-			}
-			
-			//update month data if different month
-			if(!isSameMonth(newDate, oldDate)){
-				int[] monthValues = getMonthData(newDate);
-				/*UI.setCaloriesVariable(weekValues[0]);
-				...
-				*/
-			}
-
-			
-			//update data from UserInfo class
 		}
+		
+		//update month data if different month
+		if(!isSameMonth(newDate, oldDate)){
+			int[] monthValues = getMonthData(newDate);
+			/*UI.setCaloriesVariable(weekValues[0]);
+			...
+			*/
+		}
+
+		
+		//update data from UserInfo class
 		
 	}
 	
@@ -94,7 +95,7 @@ public class Controller {
 	
 	private static int[] getWeekData(LocalDate theDate){
 		
-		LocalDate dayObject;
+		LocalDate dayObject = null;
 		String dayString;
 		DataEntry currentDay;
 		int i;
@@ -123,7 +124,7 @@ public class Controller {
 		
 		for (i = 0; i < 7; i++){
 			
-			currentDay = theDictionary.getDictionary.get(dayString);
+			currentDay = theDictionary.getDictionary().get(dayString);
 			
 			weekValues[0] += currentDay.getCalBurned();
 			weekValues[1] += currentDay.getDistanceTravelled();
@@ -149,10 +150,11 @@ public class Controller {
 		
 		//get first day of the month
 		dayObject = theDate.withDayOfMonth(1);
+		dayString = dayObject.toString();
 		
 		while(dayObject.getMonthValue()==currentMonth){
 			
-			currentDay = theDictionary.getDictionary.get(dayString);
+			currentDay = theDictionary.getDictionary().get(dayString);
 			
 			monthValues[0] += currentDay.getCalBurned();
 			monthValues[1] += currentDay.getDistanceTravelled();
@@ -165,6 +167,7 @@ public class Controller {
 			dayString = dayObject.toString();
 			
 		}
+		return monthValues;
 	}
 	
 	private static boolean isWithinRange(LocalDate theDate){
