@@ -8,13 +8,25 @@ public class TestGetters {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Date dat = new Date();
-		realAPI testVar = new realAPI(dat);
+		RealAPI testVar = new RealAPI(dat);
 
-		realApi.setCalories();
+		testVar.setCalories();
+		testVar.getResults();
 		testVar.setSteps();
+		testVar.getResults();
 		testVar.setFloors();
+		testVar.getResults();
 		testVar.setSedMins();
+		testVar.getResults();
 		testVar.setFairlyMins();
+		testVar.getResults();
+		testVar.getGoals();
+		testVar.getResults();
+		testVar.setLifetime();
+		testVar.getResults();
+		testVar.setGoals();
+		testVar.getGoals();
+		testVar.getResults();
 		
 	}
 

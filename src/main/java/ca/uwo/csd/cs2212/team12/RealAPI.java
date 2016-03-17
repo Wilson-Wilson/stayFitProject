@@ -135,6 +135,7 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   request.
 		   }
 		   
 		   public void setSteps(){
@@ -211,7 +212,6 @@
 			   requestUrlSuffix = "activities/goals/daily.json";
 			   requestUrl = requestUrlPrefix + requestUrlSuffix;
 			   request = new OAuthRequest(Verb.POST.caloriesOut, requestUrl, service);
-			   request.addBody("calOut; 666".getBytes())
 			   response = request.send();
 		   }
 		   
