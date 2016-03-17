@@ -15,13 +15,16 @@
 	import com.github.scribejava.core.model.*;
 	import com.github.scribejava.core.oauth.OAuth20Service;
 	import com.github.scribejava.apis.service.FitbitOAuth20ServiceImpl;
+	import com.github.scribejava.core.model.OAuthRequest;
 	import java.awt.Desktop;
 	import java.net.URI;
 	import org.json.JSONObject;
 	import org.json.JSONArray;
+
+	import java.util.Arrays;
 	import java.util.Calendar;
 	import java.util.Date;
-	
+		
 	public class RealAPI
 	{
 		private static String CALL_BACK_URI="http://localhost:8080";
@@ -67,7 +70,7 @@
 			   
 			   try {
 			   // File with service credentials.
-			   FileReader fileReader = new FileReader("C:/Users/Shanice/courses/cs2212/labs/shanlon/BATut/src/main/resources/Team12Credentials.txt");
+			   FileReader fileReader = new FileReader("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Credentials.txt");
 			   
 			   bufferedReader = new BufferedReader(fileReader);
 			   clientID= bufferedReader.readLine();
@@ -75,7 +78,7 @@
 			   apiSecret = bufferedReader.readLine();
 			   bufferedReader.close();
 	
-			   fileReader = new FileReader("C:/Users/Shanice/courses/cs2212/labs/shanlon/BATut/src/main/resources/Team12Tokens.txt");
+			   fileReader = new FileReader("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Tokens.txt");
 			   bufferedReader = new BufferedReader(fileReader);
 			   accessTokenItself = bufferedReader.readLine();
 			   tokenType = bufferedReader.readLine();
@@ -126,7 +129,7 @@
 		
 		public void setCalories(){
 			calndr.setTime(enDate);   
-			calndr.add(calndr.MONTH, -1);
+			calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
 			   frmt1 = String.format("%tF", enDate);
 			   frmt2 = String.format("%tF", baseDate);
@@ -136,10 +139,23 @@
 			   service.signRequest(accessToken, request);
 			   response = request.send();
 		   }
+		
+		public void setCaloriesSeries(){
+			calndr.setTime(enDate);   
+			calndr.add(calndr.YEAR, -1);
+			   baseDate = calndr.getTime();
+			   frmt1 = String.format("%tF", enDate);
+			   frmt2 = String.format("%tF", baseDate);
+			   requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/15min.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   service.signRequest(accessToken, request);
+			   response = request.send();
+		   }
 		   
 		   public void setSteps(){
 			   calndr.setTime(enDate);
-			   calndr.add(calndr.MONTH, -1);
+			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
 			   frmt1 = String.format("%tF", enDate);
 			   frmt2 = String.format("%tF", baseDate);
@@ -148,12 +164,24 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
-			  // calndr.add(calndr.MONTH, 1);
+		   }
+		   
+		   public void setStepsSeries(){
+			   calndr.setTime(enDate);
+			   calndr.add(calndr.YEAR, -1);
+			   baseDate = calndr.getTime();
+			   frmt1 = String.format("%tF", enDate);
+			   frmt2 = String.format("%tF", baseDate);
+			   requestUrlSuffix = "activities/steps/date/"+frmt1+"/1d/15min.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   service.signRequest(accessToken, request);
+			   response = request.send();
 		   }
 		   
 		   public void setFloors(){
 			   calndr.setTime(enDate);
-			   calndr.add(calndr.MONTH, -1);
+			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
 			   frmt1 = String.format("%tF", enDate);
 			   frmt2 = String.format("%tF", baseDate);
@@ -162,12 +190,24 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
-			  // calndr.add(calndr.MONTH, 1);
-		   }   
+		   }
+		   
+		   public void setFloorsSeries(){
+			   calndr.setTime(enDate);
+			   calndr.add(calndr.YEAR, -1);
+			   baseDate = calndr.getTime();
+			   frmt1 = String.format("%tF", enDate);
+			   frmt2 = String.format("%tF", baseDate);
+			   requestUrlSuffix = "activities/floors/date/"+frmt1+"/1d/15min.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   service.signRequest(accessToken, request);
+			   response = request.send();
+		   }
 		   
 		   public void setSedMins(){
 			   calndr.setTime(enDate);
-			   calndr.add(calndr.MONTH, -1);
+			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
 			   frmt1 = String.format("%tF", enDate);
 			   frmt2 = String.format("%tF", baseDate);
@@ -176,12 +216,24 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
-			   //calndr.add(calndr.MONTH, 1);
+		   }
+		   
+		   public void setSedMinsSeries(){
+			   calndr.setTime(enDate);
+			   calndr.add(calndr.YEAR, -1);
+			   baseDate = calndr.getTime();
+			   frmt1 = String.format("%tF", enDate);
+			   frmt2 = String.format("%tF", baseDate);
+			   requestUrlSuffix = "activities/minutesSedentary/date/"+frmt1+"/1d/15min.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   service.signRequest(accessToken, request);
+			   response = request.send();
 		   }
 		   
 		   public void setFairlyMins(){
 			   calndr.setTime(enDate);
-			   calndr.add(calndr.MONTH, -1);
+			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
 			   frmt1 = String.format("%tF", enDate);
 			   frmt2 = String.format("%tF", baseDate);
@@ -189,7 +241,18 @@
 			   requestUrl = requestUrlPrefix + requestUrlSuffix;
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   response = request.send();
-			   //calndr.add(calndr.MONTH, 1);
+		   }
+		   
+		   public void setFairlyMinsSeries(){
+			   calndr.setTime(enDate);
+			   calndr.add(calndr.YEAR, -1);
+			   baseDate = calndr.getTime();
+			   frmt1 = String.format("%tF", enDate);
+			   frmt2 = String.format("%tF", baseDate);
+			   requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
 		   }
 		   
 		   public void setLifetime(){
@@ -197,23 +260,8 @@
 			   requestUrl = requestUrlPrefix + requestUrlSuffix;
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   response = request.send();
-			   //calndr.add(calndr.MONTH, 1);
 		   }
 		   
-		   public void getGoals(){
-			   requestUrlSuffix = "activities/goals/daily.json";
-			   requestUrl = requestUrlPrefix + requestUrlSuffix;
-			   request = new OAuthRequest(Verb.GET, requestUrl, service);
-			   response = request.send();
-		   }
-		   
-		   public void setGoals(){
-			   requestUrlSuffix = "activities/goals/daily.json";
-			   requestUrl = requestUrlPrefix + requestUrlSuffix;
-			   request = new OAuthRequest(Verb.POST.caloriesOut, requestUrl, service);
-			   request.addBody("calOut; 666".getBytes())
-			   response = request.send();
-		   }
 		   
 		   public void getResults(){
 			   System.out.println();
@@ -267,7 +315,7 @@
 	
 			  try {
 				  FileWriter fileWriter; 
-				  fileWriter = new FileWriter("C:/Users/Shanice/courses/cs2212/labs/shanlon/BATut/src/main/resources/Team12Tokens.txt");
+				  fileWriter = new FileWriter("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Tokens.txt");
 				  bufferedWriter = new BufferedWriter(fileWriter);
 				  bufferedWriter.write(accessToken.getToken());
 				  bufferedWriter.newLine();

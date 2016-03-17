@@ -20,14 +20,8 @@ public class TestGetters {
 		testVar.getResults();
 		testVar.setFairlyMins();
 		testVar.getResults();
-		testVar.getGoals();
-		testVar.getResults();
-		testVar.setLifetime();
-		testVar.getResults();
-		testVar.setGoals();
-		testVar.getGoals();
-		testVar.getResults();
-		
+		testVar.setLifetime(); //this also has the best days you gotta oarse it twice
+		testVar.getResults();		
 	}
 
 }
