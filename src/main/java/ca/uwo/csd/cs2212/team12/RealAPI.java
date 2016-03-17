@@ -120,66 +120,7 @@
 					   tokenType,
 					   refreshToken,
 					   expiresIn,
-					   rawResponse);
-	
-			   //  Create the Fitbit service - you will ask this to ask for access/refresh pairs
-			   //     and to add authorization information to the requests to the API
-			   
-			   
-			   
-			   
-			   
-			 		   
-			   
-			   // Now let's go and ask for a protected resource!
-			   /*System.out.println("Now we're going to access a protected resource...");
-			   System.out.println();
-	*/
-			   //Example request:
-			   //    This is always the prefix (for my account)
-			   
-		
-			   //    The URL from this point is how you ask for different information
-			  // requestUrl = requestUrlPrefix + requestsumUrlSuffix;
-			   //System.out.println("\n\n");	   
-			   //service.signRequest(accessToken, request);
-			   
-			   
-	
-			   // This actually generates an HTTP request from the URL
-			   //    -it has a header, body ect.
-			   /*OAuthRequest request = new OAuthRequest(Verb.GET, requestcalYearUrl, service);
-			   OAuthRequest request2 = new OAuthRequest(Verb.GET, requeststepsYearUrl, service);
-			   OAuthRequest request3 = new OAuthRequest(Verb.GET, requestfloorsYearUrl, service);
-			   OAuthRequest request4 = new OAuthRequest(Verb.GET, requestsedYearUrl, service);
-			   OAuthRequest request5 = new OAuthRequest(Verb.GET, requestfairYearUrl, service);*/
-			   // This adds the information required by Fitbit to add the authorization information to the HTTP request
-			   // You must do this before the request will work
-			   // See: https://dev.fitbit.com/docs/oauth2/#making-requests
-			   /*service.signRequest(accessToken, request);
-			   service.signRequest(accessToken2, request2);
-			   service.signRequest(accessToken3, request3);
-			   service.signRequest(accessToken4, request4);
-			   service.signRequest(accessToken5, request5);*/
-	
-			   //  If you are curious
-			 /*  System.out.println(request.toString());
-			   System.out.println(request.getHeaders());
-			   System.out.println(request.getBodyContents());*/
-	
-			   //  This actually sends the request:
-			   /*Response response = request.send();
-			   Response response2 = request2.send();
-			   Response response3 = request3.send();
-			   Response response4 = request4.send();
-			   Response response5 = request5.send();*/
-	
-			   //  The HTTP response from fitbit will be in HTTP format, meaning that it has a numeric code indicating
-			   //     whether is was successful (200) or not (400's or 500's), each code has a different meaning
-			   
-			 
-			
-			 
+					   rawResponse);		 
 			 }
 		
 		
@@ -194,6 +135,7 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   request.
 		   }
 		   
 		   public void setSteps(){
@@ -249,6 +191,28 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   response = request.send();
 			   //calndr.add(calndr.MONTH, 1);
+		   }
+		   
+		   public void setLifetime(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			   //calndr.add(calndr.MONTH, 1);
+		   }
+		   
+		   public void getGoals(){
+			   requestUrlSuffix = "activities/goals/daily.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+		   }
+		   
+		   public void setGoals(){
+			   requestUrlSuffix = "activities/goals/daily.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.POST.caloriesOut, requestUrl, service);
+			   response = request.send();
 		   }
 		   
 		   public void getResults(){

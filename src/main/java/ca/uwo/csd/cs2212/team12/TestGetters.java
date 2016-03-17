@@ -19,7 +19,15 @@ public class TestGetters {
 		testVar.setSedMins();
 		testVar.getResults();
 		testVar.setFairlyMins();
-		testVar.getResults(); 
+		testVar.getResults();
+		testVar.getGoals();
+		testVar.getResults();
+		testVar.setLifetime();
+		testVar.getResults();
+		testVar.setGoals();
+		testVar.getGoals();
+		testVar.getResults();
+		
 		
 	}
 
