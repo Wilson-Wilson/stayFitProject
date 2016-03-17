@@ -1,30 +1,34 @@
 package ca.uwo.csd.cs2212.team12;
 
-import javax.swing.GroupLayout.Alignment;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.awt.*;
-
-import javax.swing.*;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.CardLayout;
-import java.awt.Font;
-import java.awt.event.*;
-import java.util.Calendar;
-import java.util.Date;
-
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 //import net.miginfocom.swing.MigLayout;
 
-import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class DashBoardPanel extends JPanel {
+class DashBoardPanel extends JPanel {
 
     private JFrame frame;
     private API api = new RealAPI();
@@ -32,18 +36,7 @@ public class DashBoardPanel extends JPanel {
         this.api = api;}
 
     //Images from the resource folder used throughout the programme
-    ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
-    ImageIcon caloriesIcon = new ImageIcon("src/main/resources/FireIcon2.png");
-    ImageIcon minutesIcon = new ImageIcon("src/main/resources/TimeIcon2.png");
-    ImageIcon movementIcon = new ImageIcon("src/main/resources/RunningIcon2.png");
-    ImageIcon lifetimeIcon = new ImageIcon("src/main/resources/StarIcon2.png");
-    ImageIcon timeseriesIcon = new ImageIcon("src/main/resources/BarGraphIcon2.png");
-    ImageIcon bestdayIcon = new ImageIcon("src/main/resources/BlueStarIcon2.png");
-    ImageIcon exitIcon = new ImageIcon("src/main/resources/closebutton2.png");
-    ImageIcon rightarrowIcon = new ImageIcon("src/main/resources/rightArrow2.png");
-    ImageIcon leftarrowIcon = new ImageIcon("src/main/resources/leftArrow2.png");
-    ImageIcon trophyIcon = new ImageIcon("src/main/resources/Trophy.png");
-    ImageIcon cardIcon =new ImageIcon("src/main/resources/dash.png");
+  
 
 
     /**
@@ -79,7 +72,7 @@ public class DashBoardPanel extends JPanel {
         //panel_1.setBackground(Color.RED);
 
 
-        BackgroundPanel dashPanel = new BackgroundPanel(backImage);
+        BackgroundPanel dashPanel = new BackgroundPanel(ImageClass.getBackImage());
         //dashPanel.setBackground(new Color(0, 128, 0));
         panel_3.add(dashPanel,"1");
 
@@ -113,10 +106,11 @@ public class DashBoardPanel extends JPanel {
         caloriesButton.setMinimumSize(new Dimension(15, 11));
         caloriesButton.setMaximumSize(new Dimension(15, 11));
         caloriesButton.setPreferredSize(new Dimension(15, 11));
-        caloriesButton.setIcon(cardIcon);
+        caloriesButton.setIcon(ImageClass.getCardIcon());
         caloriesButton.setLayout(new BorderLayout());
         caloriesButton.setBorder(BorderFactory.createEmptyBorder());
         caloriesButton.addActionListener(new ActionListener() {
+        	
 
 
             public void actionPerformed(ActionEvent ae) {
@@ -154,12 +148,12 @@ public class DashBoardPanel extends JPanel {
         //the label for the title of the calories card
         RichJLabel lblCalories_1 = new RichJLabel("Calories", 16);
         lblCalories_1.setOutline(new Color(0, 0, 0, 180));
-        lblCalories_1.setIcon(caloriesIcon);
+        lblCalories_1.setIcon(ImageClass.getCaloriesIcon());
         lblCalories_1.setForeground(new Color(255, 255, 255));
         calExit.setContentAreaFilled(false);
         calExit.setBorder(null);
         calExit.setBorderPainted(false);
-        calExit.setIcon(exitIcon);
+        calExit.setIcon(ImageClass.getExitIcon());
         GroupLayout gl_pl = new GroupLayout(pl);
         gl_pl.setHorizontalGroup(
                 gl_pl.createParallelGroup(Alignment.LEADING)
@@ -223,7 +217,7 @@ public class DashBoardPanel extends JPanel {
         minutesButton.setContentAreaFilled(false);
         minutesButton.setOpaque(false);
         minutesButton.setBorder(null);
-        minutesButton.setIcon(cardIcon);
+        minutesButton.setIcon(ImageClass.getCardIcon());
         minutesButton.setBorder(null);
         minutesButton.setLayout(new BorderLayout());
         minutesButton .addActionListener(new ActionListener() {
@@ -264,13 +258,13 @@ public class DashBoardPanel extends JPanel {
         minExit .setContentAreaFilled(false);
         minExit .setBorder(null);
         minExit.setBorderPainted(false);
-        minExit .setIcon(exitIcon);
+        minExit .setIcon(ImageClass.getExitIcon());
 
         //the label for the title of the minutes card
         RichJLabel lblMinutes = new RichJLabel("Minutes", 16);
         lblMinutes.setOutline(new Color(0, 0, 0, 180));
         lblMinutes.setForeground(new Color(255, 255, 255));
-        lblMinutes.setIcon(minutesIcon);
+        lblMinutes.setIcon(ImageClass.getMinutesIcon());
 
 
         GroupLayout gl_pl2 = new GroupLayout(pl2);
@@ -330,7 +324,7 @@ public class DashBoardPanel extends JPanel {
         movementButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         movementButton.setContentAreaFilled(false);
         movementButton.setBorder(null);
-        movementButton.setIcon(cardIcon);
+        movementButton.setIcon(ImageClass.getCardIcon());
         movementButton.setBorder(null);
         movementButton.setLayout(new BorderLayout());
         movementButton.addActionListener(new ActionListener() {
@@ -355,7 +349,7 @@ public class DashBoardPanel extends JPanel {
         RichJLabel lblMovements = new RichJLabel("Movements", 16);
         lblMovements.setOutline(new Color(0, 0, 0, 180));
         lblMovements.setForeground(new Color(255, 255, 255));
-        lblMovements.setIcon(movementIcon);
+        lblMovements.setIcon(ImageClass.getMovementIcon());
 
 
         //exit button for movement
@@ -372,7 +366,7 @@ public class DashBoardPanel extends JPanel {
         });
         moveExit.setContentAreaFilled(false);
         moveExit.setBorder(null);
-        moveExit.setIcon(exitIcon);
+        moveExit.setIcon(ImageClass.getExitIcon());
         moveExit.setBorderPainted(false);
         GroupLayout gl_pl3 = new GroupLayout(pl3);
         gl_pl3.setHorizontalGroup(
@@ -448,7 +442,7 @@ public class DashBoardPanel extends JPanel {
         lifetimeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lifetimeButton.setContentAreaFilled(false);
         lifetimeButton.setBorder(null);
-        lifetimeButton.setIcon(cardIcon);
+        lifetimeButton.setIcon(ImageClass.getCardIcon());
         lifetimeButton.setLayout(new BorderLayout());
         lifetimeButton .addActionListener(new ActionListener() {
 
@@ -474,7 +468,7 @@ public class DashBoardPanel extends JPanel {
         RichJLabel lblLifetime_1 = new RichJLabel("Lifetime", 16);
         lblLifetime_1.setOutline(new Color(0, 0, 0, 180));
         lblLifetime_1.setForeground(new Color(255, 255, 255));
-        lblLifetime_1.setIcon(lifetimeIcon);
+        lblLifetime_1.setIcon(ImageClass.getLifetimeIcon());
 
         //exit button for lifetime card
         final JButton lifeExit= new JButton("");
@@ -490,7 +484,7 @@ public class DashBoardPanel extends JPanel {
             }
 
         });
-        lifeExit.setIcon(exitIcon);
+        lifeExit.setIcon(ImageClass.getExitIcon());
         lifeExit.setBorder(null);
         lifeExit.setBorderPainted(false);
         GroupLayout gl_pl4 = new GroupLayout(pl4);
@@ -562,7 +556,7 @@ public class DashBoardPanel extends JPanel {
         timeseriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         timeseriesButton.setContentAreaFilled(false);
         timeseriesButton.setBorder(null);
-        timeseriesButton.setIcon(cardIcon);
+        timeseriesButton.setIcon(ImageClass.getCardIcon());
         timeseriesButton.setLayout(new BorderLayout());
         timeseriesButton.addActionListener(new ActionListener() {
 
@@ -589,7 +583,7 @@ public class DashBoardPanel extends JPanel {
         RichJLabel lblTimeSeries = new RichJLabel("Time Series", 16);
         lblTimeSeries.setOutline(new Color(0, 0, 0, 180));
         lblTimeSeries.setForeground(new Color(255, 255, 255));
-        lblTimeSeries.setIcon(timeseriesIcon);
+        lblTimeSeries.setIcon(ImageClass.getTimeseriesIcon());
 
         //Exit button for time series card
         JButton timeExit = new JButton("");
@@ -604,7 +598,7 @@ public class DashBoardPanel extends JPanel {
 
         });
         timeExit.setContentAreaFilled(false);
-        timeExit.setIcon(exitIcon);
+        timeExit.setIcon(ImageClass.getExitIcon());
         timeExit.setBorder(null);
         timeExit.setBorderPainted(false);
         GroupLayout gl_pl5 = new GroupLayout(pl5);
@@ -637,7 +631,7 @@ public class DashBoardPanel extends JPanel {
         bestdayButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         bestdayButton.setContentAreaFilled(false);
         bestdayButton.setBorder(null);
-        bestdayButton.setIcon(cardIcon);
+        bestdayButton.setIcon(ImageClass.getCardIcon());
         bestdayButton.setLayout(new BorderLayout());
         bestdayButton.addActionListener(new ActionListener() {
 
@@ -663,7 +657,7 @@ public class DashBoardPanel extends JPanel {
         RichJLabel lblBestDays_1 = new RichJLabel("Best Days", 16);
         lblBestDays_1.setOutline(new Color(0, 0, 0, 180));
         lblBestDays_1.setForeground(new Color(255, 255, 255));
-        lblBestDays_1.setIcon(bestdayIcon);
+        lblBestDays_1.setIcon(ImageClass.getBestdayIcon());
 
         //exit button for best days card
         JButton bestExit = new JButton("");
@@ -679,7 +673,7 @@ public class DashBoardPanel extends JPanel {
         });
         bestExit.setContentAreaFilled(false);
         bestExit.setBorder(null);
-        bestExit.setIcon(exitIcon);
+        bestExit.setIcon(ImageClass.getExitIcon());
         bestExit.setBorderPainted(false);
         GroupLayout gl_pl6 = new GroupLayout(pl6);
         gl_pl6.setHorizontalGroup(
@@ -762,7 +756,7 @@ public class DashBoardPanel extends JPanel {
         leftarrow.setBorderPainted(false);
         leftarrow.setContentAreaFilled(false);
         leftarrow.setOpaque(false);
-        leftarrow.setIcon(leftarrowIcon);
+        leftarrow.setIcon(ImageClass.getLeftarrowIcon());
         dashPanel.add(leftarrow, BorderLayout.WEST);
 
 
@@ -773,7 +767,7 @@ public class DashBoardPanel extends JPanel {
         rightarrow.setContentAreaFilled(false);
         rightarrow.setBorderPainted(false);
         rightarrow.setOpaque(false);
-        rightarrow.setIcon(rightarrowIcon);
+        rightarrow.setIcon(ImageClass.getRightarrowIcon());
         dashPanel.add(rightarrow, BorderLayout.EAST);
 
 
@@ -794,14 +788,14 @@ public class DashBoardPanel extends JPanel {
         panel.setBackground(new Color(105, 105, 105,180));
         GroupLayout gl_panel_15 = new GroupLayout(panel_15);
         gl_panel_15.setHorizontalGroup(
-                gl_panel_15.createParallelGroup(Alignment.LEADING)
-                        .addComponent(panel, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+        	gl_panel_15.createParallelGroup(Alignment.LEADING)
+        		.addComponent(panel, GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
         gl_panel_15.setVerticalGroup(
-                gl_panel_15.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_panel_15.createSequentialGroup()
-                                .addContainerGap(41, Short.MAX_VALUE)
-                                .addComponent(panel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+        	gl_panel_15.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, gl_panel_15.createSequentialGroup()
+        			.addContainerGap(31, Short.MAX_VALUE)
+        			.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
         JButton trophyButton = new JButton("");
         trophyButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
@@ -814,7 +808,7 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
         trophyButton.setBorder(null);
         trophyButton.setBorderPainted(false);
-        trophyButton.setIcon(new ImageIcon("src/main/resources/Trophy2.png"));
+        trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
         JButton btnJodimarie = new JButton("Jodi-Marie");
         btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
@@ -868,23 +862,98 @@ public class DashBoardPanel extends JPanel {
 
         Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
         dashPanel.add(panel_16, BorderLayout.NORTH);
-        JLabel lblToday = new JLabel("Today");
-        lblToday.setBackground(new Color(105, 105, 105,180));
-        lblToday.setOpaque(true);
-        lblToday.setForeground(new Color(255, 255, 255));
-        lblToday.setHorizontalAlignment(SwingConstants.CENTER);
-        lblToday.setFont(new Font("Arial", Font.BOLD, 20));
+        
+        JPanel panel_1 = new JPanel();
+        panel_1.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+        panel_1.setBackground(new Color(105, 105, 105,180));
         GroupLayout gl_panel_16 = new GroupLayout(panel_16);
         gl_panel_16.setHorizontalGroup(
-                gl_panel_16.createParallelGroup(Alignment.LEADING)
-                        .addComponent(lblToday, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+        	gl_panel_16.createParallelGroup(Alignment.LEADING)
+        		.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         gl_panel_16.setVerticalGroup(
-                gl_panel_16.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_panel_16.createSequentialGroup()
-                                .addComponent(lblToday, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(71, Short.MAX_VALUE))
+        	gl_panel_16.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel_16.createSequentialGroup()
+        			.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(59, Short.MAX_VALUE))
         );
+        
+        JButton button = new JButton("");
+        button.setContentAreaFilled(false);
+        button.setBorder(null);
+        button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\refreshIcon.png"));
+        
+        JLabel lblTime = new JLabel("Last updated:");
+        lblTime.setHorizontalTextPosition(SwingConstants.RIGHT);
+        lblTime.setForeground(new Color(255, 255, 255));
+        lblTime.setBackground(new Color(255, 255, 255));
+        
+        JPanel panel_2 = new JPanel();
+        panel_2.setOpaque(false);
+        panel_2.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        panel_2.setSize(new Dimension(10, 10));
+        panel_2.setMaximumSize(new Dimension(10, 10));
+        panel_2.setPreferredSize(new Dimension(5, 5));
+        GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+        gl_panel_1.setHorizontalGroup(
+        	gl_panel_1.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(gl_panel_1.createSequentialGroup()
+        			.addGap(166)
+        			.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+        			.addGap(58)
+        			.addComponent(lblTime, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(button))
+        );
+        gl_panel_1.setVerticalGroup(
+        	gl_panel_1.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel_1.createSequentialGroup()
+        			.addComponent(button)
+        			.addContainerGap())
+        		.addGroup(gl_panel_1.createSequentialGroup()
+        			.addGap(2)
+        			.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE)
+        			.addGap(2))
+        		.addGroup(gl_panel_1.createSequentialGroup()
+        			.addComponent(lblTime)
+        			.addContainerGap())
+        );
+        panel_2.setLayout(new CardLayout(0, 0));
+        
+        JPanel panel_4 = new JPanel();
+        panel_2.add(panel_4, "name_142783788052135");
+        panel_4.setOpaque(false);
+        
+        JLabel lblNewLabel_3 = new JLabel("Today");
+        lblNewLabel_3.setVerticalTextPosition(SwingConstants.TOP);
+        lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
+        lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_3.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblNewLabel_3.setBackground(new Color(105, 105, 105));
+        lblNewLabel_3.setForeground(new Color(255, 255, 255));
+        lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+        panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        
+        JButton btnNewButton = new JButton("");
+        btnNewButton.setIconTextGap(0);
+        btnNewButton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\calendarIcon.png"));
+        btnNewButton.setContentAreaFilled(false);
+        btnNewButton.setBorder(null);
+        panel_4.add(btnNewButton);
+        panel_4.add(lblNewLabel_3);
+        
+        JPanel panel_5 = new JPanel();
+        panel_5.setOpaque(false);
+        
+      
+       
+        
+        
+        
+        
+        panel_5.setAlignmentY(Component.TOP_ALIGNMENT);
+        panel_2.add(panel_5, "name_142649790155166");
+        panel_1.setLayout(gl_panel_1);
         panel_16.setLayout(gl_panel_16);
         /**
          * End of panel_16 set up
@@ -897,7 +966,22 @@ public class DashBoardPanel extends JPanel {
         settingsbutton.setContentAreaFilled(false);
         settingsbutton.setBorder(null);
         settingsbutton.setBorderPainted(false);
-        settingsbutton.setIcon(new ImageIcon("src/main/resources/Gear-icon2.png"));
+        settingsbutton.setIcon(ImageClass.getSettingsIcon());
+        settingsbutton.addActionListener(new ActionListener() {
+
+
+            public void actionPerformed(ActionEvent ae) {
+
+
+                //cl.show(panel_3,"9");
+                OpenCardListener opencard = new OpenCardListener(7);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
+
+            }});
+
+        
+        
         GroupLayout gl_panel1= new GroupLayout(panel);
         gl_panel1.setHorizontalGroup(
                 gl_panel1.createParallelGroup(Alignment.TRAILING)
@@ -921,5 +1005,4 @@ public class DashBoardPanel extends JPanel {
         panel.setLayout(gl_panel1);
 
     }
-
 }
