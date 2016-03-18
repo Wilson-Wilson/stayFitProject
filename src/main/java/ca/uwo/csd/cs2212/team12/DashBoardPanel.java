@@ -812,7 +812,7 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
         JButton btnUser = new JButton("Beth Locke");
-        btnUser.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        btnUser.setFont(new Font("Arial", Font.PLAIN, 15));
         btnUser.setForeground(new Color(255, 255, 255));
         btnUser.setContentAreaFilled(false);
         btnUser.setBorder(null);
