@@ -2,8 +2,14 @@ package ca.uwo.csd.cs2212.team12;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.*;
+
+import javafx.stage.Stage;
+
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.GroupLayout.*;
 import javax.swing.*;
 import javax.swing.LayoutStyle.*;
@@ -22,6 +28,9 @@ public class DashBoardPanel extends JPanel {
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
 
+    static String date;
+    
+    
     private JFrame frame;
     private API api = new RealAPI();
     public void setAPI(API api){
@@ -38,6 +47,22 @@ public class DashBoardPanel extends JPanel {
         initialize();
     }
 
+    public static String getDate (final JXDatePicker datePicker){
+    final String s = null;
+    	
+        datePicker.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.out.println("vV");
+				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
+			  String s = formatter.format(datePicker.getDate());
+				 System.out.println(s);
+        	}
+        	
+        	
+        });
+        return s;
+    };
+    
     /**
      * Sets the API the dashboard will get values from.
      *
@@ -47,7 +72,13 @@ public class DashBoardPanel extends JPanel {
         this.api = api;
         initialize();
     }
-
+    public static void setDate(String daten){
+		System.out.println(daten);
+       date= daten;
+	}
+    
+    
+    
     /**
      * Initialize the contents of the panels; sub-panels, labels, borders and etc.
      */
@@ -888,7 +919,7 @@ public class DashBoardPanel extends JPanel {
         lblTime.setForeground(new Color(255, 255, 255));
         lblTime.setBackground(new Color(255, 255, 255));
 
-        JPanel panel_2 = new JPanel();
+        final JPanel panel_2 = new JPanel();
         panel_2.setOpaque(false);
         panel_2.setAlignmentX(Component.RIGHT_ALIGNMENT);
         panel_2.setSize(new Dimension(10, 10));
@@ -918,13 +949,18 @@ public class DashBoardPanel extends JPanel {
         			.addComponent(lblTime)
         			.addContainerGap())
         );
-        panel_2.setLayout(new CardLayout(0, 0));
+        final CardLayout cl3 = new CardLayout(0,0);
+        panel_2.setLayout(cl3);
 
-        JPanel panel_4 = new JPanel();
-        panel_2.add(panel_4, "name_142783788052135");
+        final JPanel panel_4 = new JPanel();
+        final JPanel panel_5 = new JPanel();
+       
         panel_4.setOpaque(false);
-
-        JLabel lblNewLabel_3 = new JLabel("Today");
+        DateandTime dates=new DateandTime();
+        //System.out.println("GG"+dates.getDate());
+        final JXDatePicker datePicker= new JXDatePicker();
+        DashBoardPanel.getDate(datePicker);
+        JLabel lblNewLabel_3 = new JLabel(DateandTime.getDate());
         lblNewLabel_3.setVerticalTextPosition(SwingConstants.TOP);
         lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -934,7 +970,7 @@ public class DashBoardPanel extends JPanel {
         lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
         panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
-        JXDatePicker datePicker= new JXDatePicker();
+        
 
         JButton calendarButton = new JButton("");
         calendarButton.setIconTextGap(0);
@@ -944,28 +980,33 @@ public class DashBoardPanel extends JPanel {
         calendarButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-								
+				panel_2.add(panel_5, "calendarpanel");
+				cl3.show(panel_2,"calendarpanel");			
 			}
         });
-        
-		panel_4.add(datePicker);
         panel_4.add(calendarButton);
         panel_4.add(lblNewLabel_3);
         
-        
-        
-
-        JPanel panel_5 = new JPanel();
+             
         panel_5.setOpaque(false);
-
-
-
-
-
-
-
         panel_5.setAlignmentY(Component.TOP_ALIGNMENT);
-        panel_2.add(panel_5, "name_142649790155166");
+        panel_2.add(panel_4, "datepanel");
+        panel_2.add(panel_5, "calendarpanel");
+        
+        JButton okbutton = new JButton("");
+        okbutton.setContentAreaFilled(false);
+        okbutton.setBorder(null);
+        okbutton.setIcon(ImageClass.getOkIcon());
+        okbutton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				panel_2.add(panel_4, "datepanel");
+				cl3.show(panel_2,"datepanel");			
+			}
+        });
+        panel_5.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        panel_5.add(datePicker);
+        panel_5.add(okbutton);
         panel_1.setLayout(gl_panel_1);
         panel_16.setLayout(gl_panel_16);
         /**
@@ -1047,5 +1088,51 @@ public class DashBoardPanel extends JPanel {
     	}
 
     }
-    
+}
+class DateandTime2  {
+static String date;
+static int i=0;
+public String date2;
+
+	public DateandTime2() { 
+		
+		final JLabel label = new JLabel(); 
+		label.setText("Choose Date by selecting below."); 
+
+		final JXDatePicker datePicker = new JXDatePicker(); 
+		Date date1=datePicker.getDate();
+		date=String.format("%tF",date1);
+		 
+	
+		datePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("vV"+date);
+				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
+				String s = formatter.format(datePicker.getDate());
+				 System.out.println(s);
+				label.setText(datePicker.getDate().toString());
+				
+				setDate(s);
+			}
+		});
+		
+		
+					
+      
+} 
+	
+	public static void intialize(){};
+	public static void setDate(String daten){
+		
+       date= daten;
+         //System.out.println(date);
+       getDate();
+	}
+	public static String getDate(){
+		System.out.println("vV"+date);
+		return date;
+	}
+
+	
+	
 }
