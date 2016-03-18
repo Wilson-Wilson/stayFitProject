@@ -12,6 +12,8 @@ public class Preferences implements Serializable{
   public static boolean showBestDaysCard;
   public static String preferredUnits;
   
+  private static final long serialVersionUID= 1L;
+  
   /**
    * This would be the default layout of the dashboard
    */

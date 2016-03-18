@@ -3,12 +3,9 @@ package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 import java.io.*;
 
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
-//ITS MAIN PURPOSE IS TO SERVE AS A REFERENCE FOR FUTURE CLASSES
 public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID= 1L;
-	private static final String FILENAME= "userinfo.boop";
 
 	private String userName;
 	private Preferences userPrefs;
@@ -56,45 +53,6 @@ public class UserInfo implements Serializable {
 		actMinsLife= 0;
 		sedMinsLife= 0;
 	}
-
-	//The following methods are used to persist UserInfo object between runs
-	
-	/**
-	 * Saves the user information to disk.
-	 * @param userInf UserInfo an instance of the UserInfo object to be stored.
-	 */
-	private static void storeUser(UserInfo userInf){
-		try{
-			ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-			out.writeObject(userInf);
-			out.close();
-				} catch(IOException e){
-						System.out.println("User could not be saved to disk. IO error occured.");
-						e.printStackTrace();
-					}
-
-		}
-
-	/**
-	 * Loads user information from disk into an instance of UserInfo.
-	 */
-	private static void loadUser(){
-		try{
-			ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
-			UserInfo user= (UserInfo) in.readObject();
-
-			in.close();
-				} catch (IOException e){
-						System.out.println("User could not be loaded from disk. IO error occured.");
-						e.printStackTrace();
-					}
-			catch (ClassNotFoundException e){
-    		System.out.println("Class could not be Found!");
-            e.printStackTrace();
-    	}
-
-		}
-
 
 	/**
 	* This method returns the value of userName.

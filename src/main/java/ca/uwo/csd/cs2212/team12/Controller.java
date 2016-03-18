@@ -19,7 +19,9 @@ public class Controller {
 	//private UI theUI
 	
 	private static final long serialVersionUID= 1L;
-	private static final String DATADICT= "DataDict.boop";
+	private static final String DATADICT= "datadict.boop";
+	private static final String TIMESERIES= "timeseries.boop";
+	private static final String USERINFO= "userinfo.boop";
 	  
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 	//a controller object and calls onStartUp()
@@ -314,5 +316,83 @@ public class Controller {
 		}
 		return null;
     }
+   
+   /**
+    * This method is used to persist TimeSeriesData object between runs.
+    * 
+    * @param dat the TimeSeriesData to be stored/serialized to a file
+    */
+    private static void storeTimeSeries(TimeSeriesData dat){
+     try{
+       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(TIMESERIES));
+       out.writeObject(dat);
+       out.close();
+         } catch(IOException e){
+             System.out.println("TimeSeriesData could not be saved to disk. IO error occured.");
+             e.printStackTrace();
+           }
+
+     }
+
+   /**
+    * This method loads serialized objects from a file
+    */
+   private static TimeSeriesData loadTimeSeries(){
+     try{
+       ObjectInputStream in= new ObjectInputStream( new FileInputStream(TIMESERIES));
+       TimeSeriesData data= (TimeSeriesData) in.readObject();
+
+       in.close();
+       return data;
+         } catch (IOException e){
+             System.out.println("TimeSeriesData could not be loaded from disk. IO error occured.");
+             e.printStackTrace();
+           }
+     	catch (ClassNotFoundException e){
+     		System.out.println("Class could not be Found!");
+             e.printStackTrace();
+     	}
+     return null;
+   }
+   
+   /**
+    * This method is used to persist UserInfo object between runs.
+    * 
+    * @param dat the UserInfo to be stored/serialized to a file
+    */
+    private static void storeUserInfo(UserInfo dat){
+     try{
+       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(USERINFO));
+       out.writeObject(dat);
+       out.close();
+         } catch(IOException e){
+             System.out.println("UserInfo could not be saved to disk. IO error occured.");
+             e.printStackTrace();
+           }
+
+     }
+
+   /**
+    * This method loads serialized objects from a file
+    */
+   private static UserInfo loadUserInfo(){
+     try{
+       ObjectInputStream in= new ObjectInputStream( new FileInputStream(USERINFO));
+       UserInfo data= (UserInfo) in.readObject();
+
+       in.close();
+       return data;
+         } catch (IOException e){
+             System.out.println("TimeSeriesData could not be loaded from disk. IO error occured.");
+             e.printStackTrace();
+           }
+     	catch (ClassNotFoundException e){
+     		System.out.println("Class could not be Found!");
+             e.printStackTrace();
+     	}
+     return null;
+   }
+   
+   
 }
 
