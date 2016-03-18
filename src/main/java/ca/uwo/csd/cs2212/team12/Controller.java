@@ -6,23 +6,18 @@ import java.net.Socket;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import org.omg.CORBA.INITIALIZE;
-
 public class Controller {
 
 	private DataDict theDictionary;
 	private API theAPI;
 	private UserInfo theUserInfo;
-	//private UI, theUI
+	private TimeSeriesData timeSeries;
+	//private UI theUI
 	
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 	//a controller object and calls onStartUp()
 	public Controller(API apiParam){
 		this.theAPI = apiParam;		
-	}
-	
-	public Controller(){
-		
 	}
 	
 	public void changeDate(String newer, String older){
@@ -62,9 +57,6 @@ public class Controller {
 		
 	}
 	
-	public void refresh(){
-	}
-	
 	public void onStartUp() throws IOException{
 		
 		if(testInet()){
@@ -72,12 +64,12 @@ public class Controller {
 			LocalDate back = now.minusDays(365);
 			String curDate = now.toString();
 			String earlyDate = back.toString();
-			//pass in curDate and earlyDate to API request
-			//theDictionary = ()
+			//pass in curDate and earlyDate to API requests
+			//theDictionary = new Dictionary (returned JSONArrays)
+			//timeSeries = new TimeSeriesData (JSONarrays)
 			
+			//create a new UserInfo object, TimeSeriesData, goals and accolade shit
 		}
-			//get a new dictionary
-			//create a new UserInfo object
 		
 		//If no connect restore serialized data
 	}
@@ -253,7 +245,7 @@ public class Controller {
 		
 	}
 	
-	public static boolean testInet() {
+	private static boolean testInet() {
 	    Socket sock = new Socket();
 	    InetSocketAddress addr = new InetSocketAddress("https://api.fitbit.com/ca",80);
 	    try {
