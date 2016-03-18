@@ -1,5 +1,6 @@
 package ca.uwo.csd.cs2212.team12;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class Controller {
 	private DataDict theDictionary;
 	private API theAPI;
 	private UserInfo theUserInfo;
-	private TimeSeriesData timeSeries;
+	private TimeSeriesData theTimeSeries;
 	//private UI theUI
 	
 	private static final long serialVersionUID= 1L;
@@ -75,22 +76,32 @@ public class Controller {
 			String earlyDate = back.toString();
 			//pass in curDate and earlyDate to API requests
 			//theDictionary = new Dictionary (returned JSONArrays)
-			//timeSeries = new TimeSeriesData (JSONarrays)
+			//theTimeSeries = new TimeSeriesData (JSONarrays)
 			
 			//create a new UserInfo object, goals and accolade shit
 		}
 		else{
+			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
 			
+			if(f.exists() && g.exists() && h.exists()) { 
+				this.theDictionary = loadDataDict();
+				this.theUserInfo = loadUserInfo();
+				this.theTimeSeries = loadTimeSeries();
+			}
+			else{
+				//this.theDictionary = new Dictionary (fake Json arrays)
+				//this.theTimeSeries = new TimeSeriesData (fake Json arrays)
+				
+			}				
 		}
-		
-		//If no connection
-			//if serialized data...
-			//else if no serialized data...
 	}
 	
 	public void onClose(){
 		
-		//serialize current dictionary, accolades/goal and user prefs
+		storeDataDict(this.theDictionary);
+		storeUserInfo(this.theUserInfo);
+		storeTimeSeries(this.theTimeSeries);
+		//store methods for goals and accolades
 		
 	}
 	 
@@ -276,8 +287,6 @@ public class Controller {
 	    }
 	}
 	
-
-	
 	 /**
 	   * This method is used to persist DataDict object between runs.
 	   * 
@@ -392,7 +401,6 @@ public class Controller {
      	}
      return null;
    }
-   
    
 }
 

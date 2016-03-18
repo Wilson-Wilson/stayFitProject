@@ -52,6 +52,8 @@ public class DataDict implements Serializable{
 	  }	   
     
   }
+  public DataDict(){
+  }
   
   public String getEarliest(){
 	  return this.earliest;
