@@ -126,6 +126,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showCaloriesCard=false;
+                dialogHandler();
             }
 
 
@@ -245,6 +246,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMinutesCard=false;
+                dialogHandler();
             }
 
         });
@@ -356,6 +358,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMovementsCard=false;
+                dialogHandler();
             }
 
         });
@@ -476,6 +479,7 @@ public class DashBoardPanel extends JPanel {
                 //cardPanel.revalidate();
                 cardPanel.repaint();
                 Preferences.showLifetimeCard=false;
+                dialogHandler();
             }
 
         });
@@ -589,6 +593,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showTimeSeriesCard=false;
+                dialogHandler();
             }
 
         });
@@ -663,6 +668,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showBestDaysCard=false;
+                dialogHandler();
             }
 
         });
@@ -1028,6 +1034,12 @@ public class DashBoardPanel extends JPanel {
     		cardPanel.getComponent(5).setVisible(false);
     	}
 
+    }
+
+    private void dialogHandler() {
+        if (Preferences.noCardsShowing()) {
+            JOptionPane.showMessageDialog(frame, "To Restore Your Dashboard Cards, Go To Settings and Click on the Dashboard Settings Tab.");
+        }
     }
     
 }
