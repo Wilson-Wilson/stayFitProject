@@ -1,5 +1,8 @@
 package ca.uwo.csd.cs2212.team12;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -7,7 +10,7 @@ import org.omg.CORBA.INITIALIZE;
 
 public class Controller {
 
-	private static DataDict theDictionary;
+	private DataDict theDictionary;
 	private API theAPI;
 	private UserInfo theUserInfo;
 	//private UI, theUI
@@ -18,26 +21,30 @@ public class Controller {
 		this.theAPI = apiParam;		
 	}
 	
+	public Controller(){
+		
+	}
+	
 	public void changeDate(String newer, String older){
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
-		if (!isWithinRange(newDate)){
+		if (!this.isWithinRange(newDate)){
 			
 		}
 			
 				// Guaranteed to have the new date in dictionary
 		// update day data
-		int [] dayValues = getDayData(newDate); 
+		int [] dayValues = this.getDayData(newDate); 
 		/* 
 		 * UI.setCaloriesVariable(dayValues[0]);
 		*/
 		
 		//update week data if different week
 		if(!isSameWeek(newDate, oldDate)){
-			int[] weekValues = getWeekData(newDate);
+			int[] weekValues = this.getWeekData(newDate);
 			/*UI.setCaloriesVariable(weekValues[0]);
 			...
 			*/
@@ -45,21 +52,30 @@ public class Controller {
 		
 		//update month data if different month
 		if(!isSameMonth(newDate, oldDate)){
-			int[] monthValues = getMonthData(newDate);
+			int[] monthValues = this.getMonthData(newDate);
 			/*UI.setCaloriesVariable(weekValues[0]);
 			...
 			*/
 		}
 
-		//update data from UserInfo class, Accolades, Goals
+		//update data from UserInfo class, Accolades, Goals, TimeSeries
 		
 	}
 	
 	public void refresh(){
 	}
 	
-	public void onStartUp(){
-		//Call API if connects
+	public void onStartUp() throws IOException{
+		
+		if(testInet()){
+			LocalDate now = LocalDate.now();
+			LocalDate back = now.minusDays(365);
+			String curDate = now.toString();
+			String earlyDate = back.toString();
+			//pass in curDate and earlyDate to API request
+			//theDictionary = ()
+			
+		}
 			//get a new dictionary
 			//create a new UserInfo object
 		
@@ -72,16 +88,13 @@ public class Controller {
 		
 	}
 	
-	public void pushGoals(){
-		
-	}
 	
-	private static int[] getDayData(LocalDate theDate){
+	private int[] getDayData(LocalDate theDate){
 		
 		int [] dayValues = new int[6];
 		
 		String dayString = theDate.toString();
-		DataEntry theDay = theDictionary.getDictionary().get(dayString);
+		DataEntry theDay = this.theDictionary.getDictionary().get(dayString);
 		
 		dayValues[0] = theDay.getCalBurned();
 		dayValues[1] = theDay.getDistanceTravelled();
@@ -94,7 +107,7 @@ public class Controller {
 		
 	}
 	
-	private static int[] getWeekData(LocalDate theDate){
+	private int[] getWeekData(LocalDate theDate){
 		
 		LocalDate dayObject = null;
 		String dayString;
@@ -125,7 +138,7 @@ public class Controller {
 		
 		for (i = 0; i < 7; i++){
 			
-			currentDay = theDictionary.getDictionary().get(dayString);
+			currentDay = this.theDictionary.getDictionary().get(dayString);
 			
 			weekValues[0] += currentDay.getCalBurned();
 			weekValues[1] += currentDay.getDistanceTravelled();
@@ -141,7 +154,7 @@ public class Controller {
 		return weekValues;
 	}
 	
-	private static int[] getMonthData(LocalDate theDate){
+	private int[] getMonthData(LocalDate theDate){
 		
 		LocalDate dayObject;
 		String dayString;
@@ -155,7 +168,7 @@ public class Controller {
 		
 		while(dayObject.getMonthValue()==currentMonth){
 			
-			currentDay = theDictionary.getDictionary().get(dayString);
+			currentDay = this.theDictionary.getDictionary().get(dayString);
 			
 			monthValues[0] += currentDay.getCalBurned();
 			monthValues[1] += currentDay.getDistanceTravelled();
@@ -171,12 +184,12 @@ public class Controller {
 		return monthValues;
 	}
 	
-	private static boolean isWithinRange(LocalDate theDate){
+	private boolean isWithinRange(LocalDate theDate){
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-    	LocalDate earliest = LocalDate.parse(theDictionary.getEarliest(), formatter);
-    	LocalDate latest = LocalDate.parse(theDictionary.getLatest(), formatter);
+    	LocalDate earliest = LocalDate.parse(this.theDictionary.getEarliest(), formatter);
+    	LocalDate latest = LocalDate.parse(this.theDictionary.getLatest(), formatter);
     	
 
     	if(theDate.isAfter(earliest) && theDate.isBefore(latest))
@@ -238,6 +251,23 @@ public class Controller {
 		else
 			return false;
 		
+	}
+	
+	public static boolean testInet() {
+	    Socket sock = new Socket();
+	    InetSocketAddress addr = new InetSocketAddress("https://api.fitbit.com/ca",80);
+	    try {
+	        sock.connect(addr,3000);
+	        return true;
+	    } catch (IOException e) {
+	        return false;
+	    } finally {
+	        try {sock.close();}
+	        catch (IOException e) {}
+	    }
+	}
+	
+	public static void main (String args[]){
 	}
 }
 

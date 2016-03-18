@@ -17,7 +17,7 @@ public class DataDict implements Serializable{
   private String earliest, latest;
   
   private static final long serialVersionUID= 1L;
-  private static final String FILENAME= "dailydata.boop";
+  private static final String FILENAME= "DataDict.boop";
   
   /**
    * Constructor.
@@ -34,7 +34,7 @@ public class DataDict implements Serializable{
    */
   public DataDict(JSONArray calories, JSONArray distance, JSONArray floors, JSONArray steps, JSONArray activeMins, JSONArray sedMins) throws JSONException{
 	  
-	  this.theDictionary = new HashMap<String,DataEntry>();
+	  this.theDictionary = new HashMap<String,DataEntry>(365);
 	  int numdays = calories.length();
 	  this.earliest = sedMins.getJSONObject(0).getString("dateTime");
 	  this.latest = sedMins.getJSONObject(numdays-1).getString("dateTime");
@@ -85,7 +85,6 @@ public class DataDict implements Serializable{
             System.out.println("DataDict could not be saved to disk. IO error occured.");
             e.printStackTrace();
           }
-
     }
 
   /**
@@ -94,7 +93,7 @@ public class DataDict implements Serializable{
   private static void loadData(){
     try{
       ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
-      DataEntry data= (DataEntry) in.readObject();
+      DataDict data= (DataDict) in.readObject();
 
       in.close();
         } catch (IOException e){
@@ -106,5 +105,5 @@ public class DataDict implements Serializable{
             e.printStackTrace();
     	}
     }
-
+  
   }
