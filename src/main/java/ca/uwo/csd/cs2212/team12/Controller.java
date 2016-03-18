@@ -68,10 +68,12 @@ public class Controller {
 			//theDictionary = new Dictionary (returned JSONArrays)
 			//timeSeries = new TimeSeriesData (JSONarrays)
 			
-			//create a new UserInfo object, TimeSeriesData, goals and accolade shit
+			//create a new UserInfo object, goals and accolade shit
 		}
 		
-		//If no connect restore serialized data
+		//If no connection
+			//if serialized data...
+			//else if no serialized data...
 	}
 	
 	public void onClose(){
@@ -79,8 +81,7 @@ public class Controller {
 		//serialize current dictionary, accolades/goal and user prefs
 		
 	}
-	
-	
+	 
 	private int[] getDayData(LocalDate theDate){
 		
 		int [] dayValues = new int[6];
@@ -99,6 +100,7 @@ public class Controller {
 		
 	}
 	
+	//TODO: what if week data is requested at either end of the datadict
 	private int[] getWeekData(LocalDate theDate){
 		
 		LocalDate dayObject = null;
@@ -146,6 +148,9 @@ public class Controller {
 		return weekValues;
 	}
 	
+	//TODO: what if week data is requested at either end of the datadict
+			//Case 1, back end, there are missing entries from the first month
+			//Case 2, front end, there are missing entries from the most recent month
 	private int[] getMonthData(LocalDate theDate){
 		
 		LocalDate dayObject;
