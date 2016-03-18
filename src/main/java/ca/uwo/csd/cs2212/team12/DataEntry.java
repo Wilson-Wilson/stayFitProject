@@ -10,6 +10,7 @@ public class DataEntry implements Serializable {
 	private int actMins;
 	private int sedMins;
 	private String date;
+	private static final long serialVersionUID= 1L;
 	
 	/**
 	 * Takes integers and stores them

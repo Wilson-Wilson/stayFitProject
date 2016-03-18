@@ -1,10 +1,7 @@
 package ca.uwo.csd.cs2212.team12;
 
-import java.util.HashMap;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.*;
 

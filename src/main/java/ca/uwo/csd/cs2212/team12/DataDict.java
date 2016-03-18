@@ -4,9 +4,6 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.*;
 
 public class DataDict implements Serializable{
  
@@ -15,9 +12,7 @@ public class DataDict implements Serializable{
    */
   private HashMap<String,DataEntry> theDictionary;
   private String earliest, latest;
-  
   private static final long serialVersionUID= 1L;
-  private static final String FILENAME= "DataDict.boop";
   
   /**
    * Constructor.
@@ -70,40 +65,4 @@ public class DataDict implements Serializable{
 	  return this.theDictionary;
   }
 
-  /**
-   * This method is used to persist DataDict object between runs.
-   * 
-   * @param dat the DataDict to be stored/serialized to a file
-   */
- 
-  private static void storeData(DataDict dat){
-    try{
-      ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-      out.writeObject(dat);
-      out.close();
-        } catch(IOException e){
-            System.out.println("DataDict could not be saved to disk. IO error occured.");
-            e.printStackTrace();
-          }
-    }
-
-  /**
-   * This method loads serialized objects from a file
-   */
-  private static void loadData(){
-    try{
-      ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
-      DataDict data= (DataDict) in.readObject();
-
-      in.close();
-        } catch (IOException e){
-            System.out.println("DataDict could not be loaded from disk. IO error occured.");
-            e.printStackTrace();
-          }
-    	catch (ClassNotFoundException e){
-    		System.out.println("Class could not be Found!");
-            e.printStackTrace();
-    	}
-    }
-  
-  }
+}

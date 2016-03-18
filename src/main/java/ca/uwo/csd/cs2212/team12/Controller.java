@@ -1,6 +1,10 @@
 package ca.uwo.csd.cs2212.team12;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.time.LocalDate;
@@ -14,6 +18,9 @@ public class Controller {
 	private TimeSeriesData timeSeries;
 	//private UI theUI
 	
+	private static final long serialVersionUID= 1L;
+	private static final String DATADICT= "DataDict.boop";
+	  
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 	//a controller object and calls onStartUp()
 	public Controller(API apiParam){
@@ -69,6 +76,9 @@ public class Controller {
 			//timeSeries = new TimeSeriesData (JSONarrays)
 			
 			//create a new UserInfo object, goals and accolade shit
+		}
+		else{
+			
 		}
 		
 		//If no connection
@@ -264,7 +274,45 @@ public class Controller {
 	    }
 	}
 	
-	public static void main (String args[]){
-	}
+
+	
+	 /**
+	   * This method is used to persist DataDict object between runs.
+	   * 
+	   * @param dat the DataDict to be stored/serialized to a file
+	   */
+ 
+	private static void storeDataDict(DataDict dat){
+	    try{
+	      ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(DATADICT));
+	      out.writeObject(dat);
+	      out.close();
+	     } 
+	    catch(IOException e){
+		    System.out.println("DataDict could not be saved to disk. IO error occured.");
+		    e.printStackTrace();
+		 }
+	 }
+
+	  /**
+	   * This method loads serialized objects from a file
+	   */
+   private static DataDict loadDataDict(){
+	    try{
+	      ObjectInputStream in= new ObjectInputStream( new FileInputStream(DATADICT));
+	      DataDict data= (DataDict) in.readObject();
+	      in.close();
+	      return data;
+	    } 
+	    catch (IOException e){
+		    System.out.println("DataDict could not be loaded from disk. IO error occured.");
+		    e.printStackTrace();
+		  }
+		catch (ClassNotFoundException e){
+			System.out.println("Class could not be Found!");
+	        e.printStackTrace();
+		}
+		return null;
+    }
 }
 
