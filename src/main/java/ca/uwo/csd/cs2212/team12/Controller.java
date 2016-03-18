@@ -9,13 +9,13 @@ public class Controller {
 
 	private static DataDict theDictionary;
 	private API theAPI;
+	private UserInfo theUserInfo;
 	//private UI, theUI
 	
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 	//a controller object and calls onStartUp()
-	public Controller(API apiParam, DataDict dictionaryParam){
-		this.theAPI = apiParam;
-		theDictionary = dictionaryParam;		
+	public Controller(API apiParam){
+		this.theAPI = apiParam;		
 	}
 	
 	public void changeDate(String newer, String older){
@@ -24,8 +24,9 @@ public class Controller {
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
-		//
-		if (!isWithinRange(newDate)){}
+		if (!isWithinRange(newDate)){
+			
+		}
 			
 				// Guaranteed to have the new date in dictionary
 		// update day data
@@ -50,8 +51,7 @@ public class Controller {
 			*/
 		}
 
-		
-		//update data from UserInfo class
+		//update data from UserInfo class, Accolades, Goals
 		
 	}
 	
@@ -60,7 +60,8 @@ public class Controller {
 	
 	public void onStartUp(){
 		//Call API if connects
-		//refresh dictionary
+			//get a new dictionary
+			//create a new UserInfo object
 		
 		//If no connect restore serialized data
 	}
