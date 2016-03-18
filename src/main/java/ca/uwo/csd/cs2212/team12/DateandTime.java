@@ -22,36 +22,40 @@ public class DateandTime  extends javafx.application.Application {
 static String date;
 static int i=0;
 public String date2;
+static JXDatePicker datePicker;
 
-	public DateandTime() { 
-		
-		
 
+	public DateandTime(JXDatePicker jxdatePicker) { 
 		
+		datePicker=jxdatePicker;
+		System.out.println("In Dateandtime constructor");
+
 					intialize();
+					
       
 } 
 	
 	public static void intialize(){
-		final JXDatePicker datePicker = new JXDatePicker(); 
-		Date date1=datePicker.getDate();
-		date=String.format("%tF",date1);
-		
+		 
+	//	Date date1=datePicker.getDate();
+	//date=String.format("%tF",date1);
+		 System.out.println("In iniatialize");
 		datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("vV");
+				 System.out.println("In datepicker.addactionlistener");
 				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
 				String s = formatter.format(datePicker.getDate());
-				 System.out.println("s");
+				
 				//label.setText(datePicker.getDate().toString());
 				setDate(s);
 			}
 		});
+		
 		};
 	public static void setDate(String daten){
 		
        date= daten;
-         //System.out.println(date);
+         System.out.println("insetdate");
        getDate();
 	}
 	public static String getDate(){

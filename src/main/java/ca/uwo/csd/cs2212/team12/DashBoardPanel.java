@@ -28,8 +28,9 @@ public class DashBoardPanel extends JPanel {
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
 
-    static String date;
-    
+    static Date date;
+    static String s;
+    static String datestring;
     
     private JFrame frame;
     private API api = new RealAPI();
@@ -47,22 +48,7 @@ public class DashBoardPanel extends JPanel {
         initialize();
     }
 
-    public static String getDate (final JXDatePicker datePicker){
-    final String s = null;
-    	
-        datePicker.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		System.out.println("vV");
-				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
-			  String s = formatter.format(datePicker.getDate());
-				 System.out.println(s);
-        	}
-        	
-        	
-        });
-        return s;
-    };
-    
+  
     /**
      * Sets the API the dashboard will get values from.
      *
@@ -72,10 +58,7 @@ public class DashBoardPanel extends JPanel {
         this.api = api;
         initialize();
     }
-    public static void setDate(String daten){
-		System.out.println(daten);
-       date= daten;
-	}
+  
     
     
     
@@ -956,11 +939,23 @@ public class DashBoardPanel extends JPanel {
         final JPanel panel_5 = new JPanel();
        
         panel_4.setOpaque(false);
-        DateandTime dates=new DateandTime();
-        //System.out.println("GG"+dates.getDate());
-        final JXDatePicker datePicker= new JXDatePicker();
-        DashBoardPanel.getDate(datePicker);
-        JLabel lblNewLabel_3 = new JLabel(DateandTime.getDate());
+      
+        final JXDatePicker datePicker = new JXDatePicker();
+        final JLabel lblNewLabel_3 = new JLabel(dateAndTime.toString());
+        datePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
+				s = formatter.format(datePicker.getDate());
+				// System.out.println("s");
+				lblNewLabel_3.setText(s);
+			 date=datePicker.getDate();
+			 datestring=s;
+				
+			}
+		});
+    
+        System.out.println(datestring);
         lblNewLabel_3.setVerticalTextPosition(SwingConstants.TOP);
         lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1088,51 +1083,7 @@ public class DashBoardPanel extends JPanel {
     	}
 
     }
-}
-class DateandTime2  {
-static String date;
-static int i=0;
-public String date2;
 
-	public DateandTime2() { 
-		
-		final JLabel label = new JLabel(); 
-		label.setText("Choose Date by selecting below."); 
 
-		final JXDatePicker datePicker = new JXDatePicker(); 
-		Date date1=datePicker.getDate();
-		date=String.format("%tF",date1);
-		 
-	
-		datePicker.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("vV"+date);
-				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
-				String s = formatter.format(datePicker.getDate());
-				 System.out.println(s);
-				label.setText(datePicker.getDate().toString());
-				
-				setDate(s);
-			}
-		});
-		
-		
-					
-      
-} 
-	
-	public static void intialize(){};
-	public static void setDate(String daten){
-		
-       date= daten;
-         //System.out.println(date);
-       getDate();
-	}
-	public static String getDate(){
-		System.out.println("vV"+date);
-		return date;
-	}
-
-	
 	
 }
