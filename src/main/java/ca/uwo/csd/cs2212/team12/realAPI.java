@@ -127,7 +127,7 @@
 			 }
 		
 		
-		public void setCalories(){
+		public int getCalBurned(){
 			calndr.setTime(enDate);   
 			calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -138,9 +138,11 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
+			   //probly have to change the return type for all these methods seeing as we're getting a year's woth of data and not just a day's
 		   }
 		
-		public void setCaloriesSeries(){
+		public int getCalSeries(){
 			calndr.setTime(enDate);   
 			calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -151,9 +153,10 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setSteps(){
+		   public int getSteps(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -164,9 +167,10 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setStepsSeries(){
+		   public int getStepsSeries(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -177,9 +181,10 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setFloors(){
+		   public int getFloors(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -190,9 +195,10 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setFloorsSeries(){
+		   public int getFloorsSeries(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -203,9 +209,10 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setSedMins(){
+		   public int getSedentaryMinutes(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -216,9 +223,10 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setSedMinsSeries(){
+		   public int getSedentaryMinutesSeries(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -229,9 +237,10 @@
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   service.signRequest(accessToken, request);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setFairlyMins(){
+		   public int getActiveMinutesMins(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -241,9 +250,10 @@
 			   requestUrl = requestUrlPrefix + requestUrlSuffix;
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setFairlyMinsSeries(){
+		   public int getActiveMinutesSeries(){
 			   calndr.setTime(enDate);
 			   calndr.add(calndr.YEAR, -1);
 			   baseDate = calndr.getTime();
@@ -253,15 +263,111 @@
 			   requestUrl = requestUrlPrefix + requestUrlSuffix;
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   response = request.send();
+			   //return getDat("");
 		   }
 		   
-		   public void setLifetime(){
+		   public int getDistance(){
+			   calndr.setTime(enDate);
+			   calndr.add(calndr.YEAR, -1);
+			   baseDate = calndr.getTime();
+			   frmt1 = String.format("%tF", enDate);
+			   frmt2 = String.format("%tF", baseDate);
+			   requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt2+"/"+frmt1+".json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			   //return getDat("");
+		   }
+		   
+		   public int getDistanceSeries(){
+			   calndr.setTime(enDate);
+			   calndr.add(calndr.YEAR, -1);
+			   baseDate = calndr.getTime();
+			   frmt1 = String.format("%tF", enDate);
+			   frmt2 = String.format("%tF", baseDate);
+			   requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			   //return getDat("");
+		   }
+		   
+		   public int getLifetimeCal(){
 			   requestUrlSuffix = "activities.json";
 			   requestUrl = requestUrlPrefix + requestUrlSuffix;
 			   request = new OAuthRequest(Verb.GET, requestUrl, service);
 			   response = request.send();
+			 //return getDat("");
 		   }
 		   
+		   public int getLifetimeDistance(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			 //return getDat("");
+		   }
+		   
+		   public int getLifetimeSteps(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			 //return getDat("");
+		   }
+		   
+		   public int getLifeTimeFloors(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			 //return getDat("");
+		   }
+		   
+		   public int getBestCal(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			 //return getDat("");
+		   }
+		   
+		   public int getBestDistance(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			 //return getDat("");
+		   }
+		   
+		   public int getBestSteps(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			 //return getDat("");
+		   }
+		   
+		   public int getBestFloors(){
+			   requestUrlSuffix = "activities.json";
+			   requestUrl = requestUrlPrefix + requestUrlSuffix;
+			   request = new OAuthRequest(Verb.GET, requestUrl, service);
+			   response = request.send();
+			 //return getDat("");
+		   }
+		   
+		   private  int getDat(String dat) {
+		        int integerData = 0;
+		        try {
+		            String jsonStr = response.getBody();
+		            JSONObject o = new JSONObject(jsonStr);
+		            JSONObject element =  o.getJSONObject("summary");//needs to be edited to look through response json
+		            integerData = element.getInt(dat);
+		        } catch (JSONException e) {
+		            e.printStackTrace();
+		        }
+		        return integerData; //needs to return an array probably
+		    }
 		   
 		   public void getResults(){
 			   System.out.println();
