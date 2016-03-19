@@ -1,4 +1,4 @@
-package team12;
+package ca.uwo.csd.cs2212.team12;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -12,15 +12,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class Graph2 {
+public class Graph {
 	
-	public Graph2() {
+	public Graph() {
 		
     }
 	
@@ -38,7 +41,6 @@ public class Graph2 {
         final JFXPanel fxPanel = new JFXPanel();
     
         Platform.runLater(new Runnable() {
-        	@Override
         	public void run() {
         		final CategoryAxis xAxis = new CategoryAxis();
                 final NumberAxis yAxis = new NumberAxis();
@@ -201,5 +203,3 @@ public class Graph2 {
     }*/
     
 }
-
-
