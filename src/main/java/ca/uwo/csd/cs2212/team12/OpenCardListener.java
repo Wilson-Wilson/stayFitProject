@@ -178,12 +178,12 @@ public class OpenCardListener extends JPanel{
 
 		trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
-		JButton btnJodimarie = new JButton("Beth Locke");
-		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		btnJodimarie.setForeground(new Color(255, 255, 255));
-		btnJodimarie.setContentAreaFilled(false);
-		btnJodimarie.setBorder(null);
-		btnJodimarie.setBorderPainted(false);
+		JButton btnUser = new JButton("Beth Locke");
+		btnUser.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		btnUser.setForeground(new Color(255, 255, 255));
+		btnUser.setContentAreaFilled(false);
+		btnUser.setBorder(null);
+		btnUser.setBorderPainted(false);
 
 		JButton timeseriesButton = new JButton("");
 		timeseriesButton.setContentAreaFilled(false);
@@ -206,8 +206,8 @@ public class OpenCardListener extends JPanel{
 		bestButton.setBorder(null);
 		bestButton.setIcon(ImageClass.getBestdayIcon());
 		bestButton.setContentAreaFilled(false);
-		btnJodimarie.setBorder(null);
-		btnJodimarie.setBorderPainted(false);
+		btnUser.setBorder(null);
+		btnUser.setBorderPainted(false);
 		bestButton.addActionListener(new ActionListener() {
 
             
@@ -319,10 +319,7 @@ public class OpenCardListener extends JPanel{
 
 	            }});
 		
-		JButton button = new JButton("");
-		button.setContentAreaFilled(false);
-		button.setBorder(null);
-		button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\Gear-icon2.png"));
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -341,9 +338,9 @@ public class OpenCardListener extends JPanel{
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(homebutton)
 					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-					.addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button)
+					
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(trophyButton))
 		);
@@ -355,11 +352,11 @@ public class OpenCardListener extends JPanel{
 						.addComponent(caloriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(timeseriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnJodimarie, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+							.addComponent(btnUser, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
 							.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(button))
+							)
 						.addComponent(trophyButton)
 						.addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())

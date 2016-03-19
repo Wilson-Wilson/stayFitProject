@@ -27,10 +27,11 @@ public class DashBoardPanel extends JPanel {
     final JButton lifetimeButton = new JButton("");
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
-
-    static Date date;
-    static String s;
-    static String datestring;
+    
+	final Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
+    static Date date= new Date();
+    static Calendar cal;
+    String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
     
     private JFrame frame;
     private API api = new RealAPI();
@@ -233,6 +234,8 @@ public class DashBoardPanel extends JPanel {
         minutesButton.setIcon(ImageClass.getCardIcon());
         minutesButton.setBorder(null);
         minutesButton.setLayout(new BorderLayout());
+        
+        
         minutesButton .addActionListener(new ActionListener() {
 
 
@@ -874,7 +877,10 @@ public class DashBoardPanel extends JPanel {
 
 		/*Today Title*/
 
-        Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
+		 
+        
+		
+       
         dashPanel.add(panel_16, BorderLayout.NORTH);
 
         JPanel panel_1 = new JPanel();
@@ -939,23 +945,25 @@ public class DashBoardPanel extends JPanel {
         final JPanel panel_5 = new JPanel();
        
         panel_4.setOpaque(false);
+        
+        
+        
       
         final JXDatePicker datePicker = new JXDatePicker();
-        final JLabel lblNewLabel_3 = new JLabel(dateAndTime.toString());
+        final JLabel lblNewLabel_3 = new JLabel(dateString);
         datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
-				s = formatter.format(datePicker.getDate());
-				// System.out.println("s");
-				lblNewLabel_3.setText(s);
-			 date=datePicker.getDate();
-			 datestring=s;
+				dateString = formatter.format(datePicker.getDate());
+				
+				
+				lblNewLabel_3.setText(dateString);
+			 
+			 
 				
 			}
 		});
     
-        System.out.println(datestring);
         lblNewLabel_3.setVerticalTextPosition(SwingConstants.TOP);
         lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
