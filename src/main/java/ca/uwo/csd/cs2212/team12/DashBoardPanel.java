@@ -607,7 +607,7 @@ public class DashBoardPanel extends JPanel {
         plh5.setFont(new Font("Verdana", Font.BOLD, 13));
         plh5.setForeground(new Color(255, 255, 255));
         
-        graph_panel = graph.ShowGUI2();
+        graph_panel = graph.setAllTest();
         plh1.add(graph_panel, BorderLayout.CENTER);
         plh1.add(plh2,BorderLayout.WEST);
         plh1.add(plh3,BorderLayout.EAST);
