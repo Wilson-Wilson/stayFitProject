@@ -2,6 +2,8 @@ package ca.uwo.csd.cs2212.team12;
 
 import java.awt.*;
 
+import javax.swing.SwingUtilities;
+
 public class StayFit {
 	
 	/**
@@ -14,7 +16,7 @@ public class StayFit {
         final boolean isTest = (args.length!=0 && args[0].equals("test"));
         UserInfo uInfo= new UserInfo();
 
-        EventQueue.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
                     API api;
