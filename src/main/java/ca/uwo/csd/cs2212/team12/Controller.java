@@ -42,7 +42,7 @@ public class Controller implements Serializable{
 			String curDate = newDate.toString();
 			String earlyDate = back.toString();
 			
-			//request to api using curdate
+			//timeseries data request to api using curdate
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
 			
 			if (!this.isWithinRange(newDate)){
@@ -53,8 +53,6 @@ public class Controller implements Serializable{
 				// goals and accolade shit
 			}
 		}
-
-
 			
 		int [] dayValues = this.getDayData(newDate); 
 		/* 
@@ -74,8 +72,6 @@ public class Controller implements Serializable{
 			...
 			*/
 		}
-
-		//Accolades, Goals
 		
 	}
 	
@@ -86,9 +82,13 @@ public class Controller implements Serializable{
 			LocalDate back = now.minusDays(365);
 			String curDate = now.toString();
 			String earlyDate = back.toString();
-			//pass in curDate and earlyDate to API requests
+			//pass in curDate and earlyDate to datadict data API requests
+			//pass in curdate for timeseries data request
+			//pass in cur date for userinfo data request
+			
 			//theDictionary = new Dictionary (returned JSONArrays)
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
+			//theUserInfo = new UserInfo(JSONarray)
 			
 			//create a new UserInfo object, goals and accolade shit
 		}
