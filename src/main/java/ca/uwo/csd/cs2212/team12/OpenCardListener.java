@@ -175,21 +175,23 @@ public class OpenCardListener extends JPanel{
 		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		trophyButton.setBorder(null);
 		trophyButton.setBorderPainted(false);
+		trophyButton.setToolTipText("Goals & Accolades");
 
 		trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
-		JButton btnJodimarie = new JButton("Beth Locke");
-		btnJodimarie.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		btnJodimarie.setForeground(new Color(255, 255, 255));
-		btnJodimarie.setContentAreaFilled(false);
-		btnJodimarie.setBorder(null);
-		btnJodimarie.setBorderPainted(false);
+		JButton userButton = new JButton("Beth Locke");
+		userButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		userButton.setForeground(new Color(255, 255, 255));
+		userButton.setContentAreaFilled(false);
+		userButton.setBorder(null);
+		userButton.setBorderPainted(false);
 
 		JButton timeseriesButton = new JButton("");
 		timeseriesButton.setContentAreaFilled(false);
 		timeseriesButton.setIcon(ImageClass.getTimeseriesIcon());
 		timeseriesButton.setBorder(null);
 		timeseriesButton.setBorderPainted(false);
+		timeseriesButton.setToolTipText("Time Series");
 		timeseriesButton.addActionListener(new ActionListener() {
 
             
@@ -206,8 +208,9 @@ public class OpenCardListener extends JPanel{
 		bestButton.setBorder(null);
 		bestButton.setIcon(ImageClass.getBestdayIcon());
 		bestButton.setContentAreaFilled(false);
-		btnJodimarie.setBorder(null);
-		btnJodimarie.setBorderPainted(false);
+		bestButton.setToolTipText("Best Days");
+		userButton.setBorder(null);
+		userButton.setBorderPainted(false);
 		bestButton.addActionListener(new ActionListener() {
 
             
@@ -226,6 +229,7 @@ public class OpenCardListener extends JPanel{
 		caloriesButton.setContentAreaFilled(false);
 		caloriesButton.setBorder(null);
 		caloriesButton.setBorderPainted(false);
+		caloriesButton.setToolTipText("Calories");
 		caloriesButton.addActionListener(new ActionListener() {
 
             
@@ -242,6 +246,7 @@ public class OpenCardListener extends JPanel{
 		movementButton.setBorder(null);
 		movementButton.setBorderPainted(false);
 		movementButton.setIcon(ImageClass.getMovementIcon());
+		movementButton.setToolTipText("Movement");
 		movementButton.addActionListener(new ActionListener() {
 
             
@@ -259,6 +264,7 @@ public class OpenCardListener extends JPanel{
 		minutesButton.setBorder(null);
 		minutesButton.setBorderPainted(false);
 		minutesButton.setContentAreaFilled(false);
+		minutesButton.setToolTipText("Minutes");
 		minutesButton.addActionListener(new ActionListener() {
 
             
@@ -275,6 +281,7 @@ public class OpenCardListener extends JPanel{
 		lifetimeButton.setBorder(null);
 		lifetimeButton.setBorderPainted(false);
 		lifetimeButton.setIcon(ImageClass.getLifetimeIcon());
+		lifetimeButton.setToolTipText("Lifetime");
 		lifetimeButton.addActionListener(new ActionListener() {
 
             
@@ -289,6 +296,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton homebutton = new JButton("");
+		homebutton.setToolTipText("Home");
 		homebutton.addActionListener(new ActionListener() {
 
 	            
@@ -341,7 +349,7 @@ public class OpenCardListener extends JPanel{
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(homebutton)
 					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-					.addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(userButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(button)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -355,7 +363,7 @@ public class OpenCardListener extends JPanel{
 						.addComponent(caloriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(timeseriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnJodimarie, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+							.addComponent(userButton, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
 							.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

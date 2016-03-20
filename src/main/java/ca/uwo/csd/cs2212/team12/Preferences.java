@@ -100,6 +100,18 @@ public class Preferences implements Serializable{
 	}
 
 	/**
+	 * Returns value of noCardsShowing
+	 * @return lets the program know if any cards are visible onscreen.
+	 */
+
+	public static boolean noCardsShowing() {
+		if (!showBestDaysCard && !showCaloriesCard && !showLifetimeCard && !showMinutesCard && !showMovementsCard && !showTimeSeriesCard) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	* Sets new value of showTimeSeriesCard
 	* @param showTimeSeriesCard determines whether this card will be displayed or not
 	*/

@@ -305,6 +305,27 @@ public class Controller implements Serializable{
 		
 	}
 	
+	public void accoCheck(String theDate){
+		  for (int i = 0; i < 20; i++){
+			  
+			  String theType = theAccoDict.getList[i].getType();
+			  
+			  if (theType.equals("steps")){
+				  
+			  }
+			  else if(theType.equals("calories")){
+			  }
+			  else if(theType.equals("distance")){
+			  }
+			  else if(theType.equals("floors")){
+			  }
+			  else if(theType.equals("activeMins")){
+			  }
+			  else{
+			  }
+		  }
+	  }
+	
 	private static boolean testInet() {
 	    Socket sock = new Socket();
 	    InetSocketAddress addr = new InetSocketAddress("https://api.fitbit.com/ca",80);

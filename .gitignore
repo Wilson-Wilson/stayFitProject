@@ -6,5 +6,5 @@ target/
 .settings
 .idea/
 out/
-team12.iml
+*.iml
 .boop
