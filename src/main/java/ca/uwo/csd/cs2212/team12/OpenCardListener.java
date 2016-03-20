@@ -51,15 +51,15 @@ public class OpenCardListener extends JPanel{
 	 */
 	public OpenCardListener(int num) {
 		initialize(num);
-	} 
+	}
 
 	/**
 	 * Initialize the contents of the panel; sub-panels, labels, borders and etc.
-	 * @param num int used to choose which details of the panel to display 
+	 * @param num int used to choose which details of the panel to display
 	 */
 	private void initialize(int num) {
 
-		
+
 		final CardLayout cl = new CardLayout(0,0);
 		this.setLayout(new CardLayout(0,0));
 		final JPanel panel_3 = new JPanel();
@@ -145,12 +145,12 @@ public class OpenCardListener extends JPanel{
 			cardPanel.setLayout(new BorderLayout(0, 0));
 
 		}
-		
+
 		/**
 		 * End of the list of possible details to display
 		 */
-		
-		
+
+
 		/**
          *panel_15 is a panel that acts as a taskbar in the south border of the dashpanel, 
          *holding the trophy, home and other buttons.
@@ -194,7 +194,7 @@ public class OpenCardListener extends JPanel{
 		timeseriesButton.setToolTipText("Time Series");
 		timeseriesButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(5);
@@ -213,7 +213,7 @@ public class OpenCardListener extends JPanel{
 		userButton.setBorderPainted(false);
 		bestButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(6);
@@ -232,7 +232,7 @@ public class OpenCardListener extends JPanel{
 		caloriesButton.setToolTipText("Calories");
 		caloriesButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(1);
@@ -249,7 +249,7 @@ public class OpenCardListener extends JPanel{
 		movementButton.setToolTipText("Movement");
 		movementButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(3);
@@ -267,7 +267,7 @@ public class OpenCardListener extends JPanel{
 		minutesButton.setToolTipText("Minutes");
 		minutesButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(2);
@@ -284,7 +284,7 @@ public class OpenCardListener extends JPanel{
 		lifetimeButton.setToolTipText("Lifetime");
 		lifetimeButton.addActionListener(new ActionListener() {
 
-            
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
             	OpenCardListener opencard = new OpenCardListener(4);
@@ -299,7 +299,7 @@ public class OpenCardListener extends JPanel{
 		homebutton.setToolTipText("Home");
 		homebutton.addActionListener(new ActionListener() {
 
-	            
+
 	            public void actionPerformed(ActionEvent ae) {
 	                //cl.show(panel_3,"2");
 	            	DashBoardPanel dash= new DashBoardPanel();
@@ -316,7 +316,7 @@ public class OpenCardListener extends JPanel{
 		homebutton.setBorderPainted(false);
 		 homebutton .addActionListener(new ActionListener() {
 
-	            
+
 	            public void actionPerformed(ActionEvent ae) {
 
 
@@ -326,7 +326,7 @@ public class OpenCardListener extends JPanel{
 	        		cl.show(panel_3,"10");
 
 	            }});
-		
+
 		JButton button = new JButton("");
 		button.setContentAreaFilled(false);
 		button.setBorder(null);
@@ -375,7 +375,7 @@ public class OpenCardListener extends JPanel{
 		panel.setLayout(gl_panel);
 		trophyButton.addActionListener(new ActionListener() {
 
-	            
+
 	            public void actionPerformed(ActionEvent ae) {
 	            	JFrame trophyframe= new JFrame("Goals and Accolades");
 	                trophyframe.setVisible(true);
@@ -435,51 +435,48 @@ class MyScrollbarUI extends MetalScrollBarUI {
     private Image imageThumb, imageTrack;
     private JButton b = new JButton() {
 
-        
+
         public Dimension getPreferredSize() {
             return new Dimension(0, 0);
         }
 
     };
 
-    MyScrollbarUI() {
-        imageThumb = ScrollbarImage.create(32, 32, Color.darkGray);
-        imageTrack = ScrollbarImage.create(32, 32, Color.gray.darker());
-    }
-
-    
-    protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
-        g.setColor(Color.white);
-        ((Graphics2D) g).drawImage(imageThumb,
-            r.x, r.y, r.width, r.height, null);
-    }
-
-    
-    protected void paintTrack(Graphics g, JComponent c, Rectangle r) {
-        ((Graphics2D) g).drawImage(imageTrack,
-            r.x, r.y, r.width, r.height, null);
-    }
-
-    
-    protected JButton createDecreaseButton(int orientation) {
-        return b;
-    }
-
-    
-    protected JButton createIncreaseButton(int orientation) {
-        return b;
-    }
-}
-
-class ScrollbarImage {
-
-    static public Image create(int w, int h, Color c) {
+    static public Image createScollbarImage(int w, int h, Color c) {
         BufferedImage bi = new BufferedImage(
-            w, h, BufferedImage.TYPE_INT_ARGB);
+                w, h, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bi.createGraphics();
         g2d.setPaint(c);
         g2d.fillRect(0, 0, w, h);
         g2d.dispose();
         return bi;
     }
+
+    MyScrollbarUI() {
+        imageThumb = createScollbarImage(32, 32, Color.darkGray);
+        imageTrack = createScollbarImage(32, 32, Color.gray.darker());
+    }
+
+    protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
+        g.setColor(Color.white);
+        ((Graphics2D) g).drawImage(imageThumb,
+            r.x, r.y, r.width, r.height, null);
+    }
+
+    protected void paintTrack(Graphics g, JComponent c, Rectangle r) {
+        ((Graphics2D) g).drawImage(imageTrack,
+            r.x, r.y, r.width, r.height, null);
+    }
+
+    protected JButton createDecreaseButton(int orientation) {
+        return b;
+    }
+
+    protected JButton createIncreaseButton(int orientation) {
+        return b;
+    }
 }
+
+
+
+
