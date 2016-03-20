@@ -14,21 +14,23 @@ import java.time.format.DateTimeFormatter;
 
 public class Controller implements Serializable{
 
-	private DataDict theDictionary;
-	private API theAPI;
-	private UserInfo theUserInfo;
-	private TimeSeriesData theTimeSeries;
+	private static DataDict theDictionary;
+	private static API theAPI;
+	private static UserInfo theUserInfo;
+	private static TimeSeriesData theTimeSeries;
+	private static Preferences thePreferences;
 	//private UI theUI
 	
 	private static final long serialVersionUID= 1L;
 	private static final String DATADICT= "datadict.boop";
 	private static final String TIMESERIES= "timeseries.boop";
 	private static final String USERINFO= "userinfo.boop";
+	private static final String PREFERENCES= "preferences.boop";
 	  
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 	//a controller object and calls onStartUp()
 	public Controller(API apiParam){
-		this.theAPI = apiParam;		
+		theAPI = apiParam;		
 	}
 	
 	public void changeDate(String newer, String older){
@@ -45,7 +47,7 @@ public class Controller implements Serializable{
 			//timeseries data request to api using curdate
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
 			
-			if (!this.isWithinRange(newDate)){
+			if (!isWithinRange(newDate)){
 				
 				//pass in curDate and earlyDate to API requests
 				//theDictionary = new Dictionary (returned JSONArrays)
@@ -54,20 +56,20 @@ public class Controller implements Serializable{
 			}
 		}
 			
-		int [] dayValues = this.getDayData(newDate); 
+		int [] dayValues = getDayData(newDate); 
 		/* 
 		 * UI.setCaloriesVariable(dayValues[0]);
 		*/
 		
 		if(!isSameWeek(newDate, oldDate)){
-			int[] weekValues = this.getWeekData(newDate);
+			int[] weekValues = getWeekData(newDate);
 			/*UI.setCaloriesVariable(weekValues[0]);
 			...
 			*/
 		}
 		
 		if(!isSameMonth(newDate, oldDate)){
-			int[] monthValues = this.getMonthData(newDate);
+			int[] monthValues = getMonthData(newDate);
 			/*UI.setCaloriesVariable(weekValues[0]);
 			...
 			*/
@@ -75,10 +77,17 @@ public class Controller implements Serializable{
 		
 	}
 	
-	public void onStartUp() throws IOException{
+	public static void onStartUp() throws IOException{
 		
 		
-		//Preferences 
+		File e = new File("../preferences.boop");
+		if (e.exists()){
+			thePreferences = loadPreferences();
+		}
+		else{
+			thePreferences = new Preferences();
+		}
+		
 		if(testInet()){
 			LocalDate now = LocalDate.now();
 			LocalDate back = now.minusDays(365);
@@ -90,41 +99,42 @@ public class Controller implements Serializable{
 			
 			//theDictionary = new Dictionary (returned JSONArrays)
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
-			//theUserInfo = new UserInfo(Preferences, JSONObject, JSONarray)
+			//theUserInfo = new UserInfo(JSONObject, JSONarray)
 			
-			//create a new UserInfo object, goals and accolade shit
+			// goals and accolade shit
 		}
 		else{
 			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
 			
 			if(f.exists() && g.exists() && h.exists()) { 
-				this.theDictionary = loadDataDict();
-				this.theUserInfo = loadUserInfo();
-				this.theTimeSeries = loadTimeSeries();
+				theDictionary = loadDataDict();
+				theUserInfo = loadUserInfo();
+				theTimeSeries = loadTimeSeries();
 			}
 			else{
 				//this.theDictionary = new Dictionary (fake Json arrays)
 				//this.theTimeSeries = new TimeSeriesData (fake Json arrays)
-				
+				//theUserInfo = new UserInfo (fake shit)
 			}				
 		}
 	}
 	
-	public void onClose(){
+	public static void onClose(){
 		
-		storeDataDict(this.theDictionary);
-		storeUserInfo(this.theUserInfo);
-		storeTimeSeries(this.theTimeSeries);
+		storeDataDict(theDictionary);
+		storeUserInfo(theUserInfo);
+		storeTimeSeries(theTimeSeries);
+		storePreferences(thePreferences);
 		//store methods for goals and accolades
 		
 	}
 	 
-	private int[] getDayData(LocalDate theDate){
+	private static int[] getDayData(LocalDate theDate){
 		
 		int [] dayValues = new int[6];
 		
 		String dayString = theDate.toString();
-		DataEntry theDay = this.theDictionary.getDictionary().get(dayString);
+		DataEntry theDay = theDictionary.getDictionary().get(dayString);
 		
 		dayValues[0] = theDay.getCalBurned();
 		dayValues[1] = theDay.getDistanceTravelled();
@@ -137,8 +147,7 @@ public class Controller implements Serializable{
 		
 	}
 	
-	//TODO: what if week data is requested at either end of the datadict
-	private int[] getWeekData(LocalDate theDate){
+	private static int[] getWeekData(LocalDate theDate){
 		
 		LocalDate dayObject = null;
 		String dayString;
@@ -169,15 +178,17 @@ public class Controller implements Serializable{
 		
 		for (i = 0; i < 7; i++){
 			
-			currentDay = this.theDictionary.getDictionary().get(dayString);
-			
-			weekValues[0] += currentDay.getCalBurned();
-			weekValues[1] += currentDay.getDistanceTravelled();
-			weekValues[2] += currentDay.getFloorsClimbed();
-			weekValues[3] += currentDay.getStepsTaken();
-			weekValues[4] += currentDay.getActMins();
-			weekValues[5] += currentDay.getSedMins();
-			
+			if (theDictionary.getDictionary().get(dayString) != null)
+			{
+				currentDay = theDictionary.getDictionary().get(dayString);
+				
+				weekValues[0] += currentDay.getCalBurned();
+				weekValues[1] += currentDay.getDistanceTravelled();
+				weekValues[2] += currentDay.getFloorsClimbed();
+				weekValues[3] += currentDay.getStepsTaken();
+				weekValues[4] += currentDay.getActMins();
+				weekValues[5] += currentDay.getSedMins();
+			}
 			dayObject.plusDays(1);
 			dayString = dayObject.toString();
 			
@@ -185,10 +196,7 @@ public class Controller implements Serializable{
 		return weekValues;
 	}
 	
-	//TODO: what if week data is requested at either end of the datadict
-			//Case 1, back end, there are missing entries from the first month
-			//Case 2, front end, there are missing entries from the most recent month
-	private int[] getMonthData(LocalDate theDate){
+	private static int[] getMonthData(LocalDate theDate){
 		
 		LocalDate dayObject;
 		String dayString;
@@ -202,15 +210,17 @@ public class Controller implements Serializable{
 		
 		while(dayObject.getMonthValue()==currentMonth){
 			
-			currentDay = this.theDictionary.getDictionary().get(dayString);
-			
-			monthValues[0] += currentDay.getCalBurned();
-			monthValues[1] += currentDay.getDistanceTravelled();
-			monthValues[2] += currentDay.getFloorsClimbed();
-			monthValues[3] += currentDay.getStepsTaken();
-			monthValues[4] += currentDay.getActMins();
-			monthValues[5] += currentDay.getSedMins();
-			
+			if(theDictionary.getDictionary().get(dayString)!= null)
+			{
+				currentDay = theDictionary.getDictionary().get(dayString);
+				
+				monthValues[0] += currentDay.getCalBurned();
+				monthValues[1] += currentDay.getDistanceTravelled();
+				monthValues[2] += currentDay.getFloorsClimbed();
+				monthValues[3] += currentDay.getStepsTaken();
+				monthValues[4] += currentDay.getActMins();
+				monthValues[5] += currentDay.getSedMins();
+			}
 			dayObject.plusDays(1);
 			dayString = dayObject.toString();
 			
@@ -218,12 +228,12 @@ public class Controller implements Serializable{
 		return monthValues;
 	}
 	
-	private boolean isWithinRange(LocalDate theDate){
+	private static boolean isWithinRange(LocalDate theDate){
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
-    	LocalDate earliest = LocalDate.parse(this.theDictionary.getEarliest(), formatter);
-    	LocalDate latest = LocalDate.parse(this.theDictionary.getLatest(), formatter);
+    	LocalDate earliest = LocalDate.parse(theDictionary.getEarliest(), formatter);
+    	LocalDate latest = LocalDate.parse(theDictionary.getLatest(), formatter);
     	
 
     	if(theDate.isAfter(earliest) && theDate.isBefore(latest))
@@ -306,7 +316,6 @@ public class Controller implements Serializable{
 	   * 
 	   * @param dat the DataDict to be stored/serialized to a file
 	   */
- 
 	private static void storeDataDict(DataDict dat){
 	    try{
 	      ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(DATADICT));
@@ -319,9 +328,9 @@ public class Controller implements Serializable{
 		 }
 	 }
 
-	  /**
-	   * This method loads serialized objects from a file
-	   */
+  /**
+   * This method loads serialized objects from a file
+   */
    private static DataDict loadDataDict(){
 	    try{
 	      ObjectInputStream in= new ObjectInputStream( new FileInputStream(DATADICT));
@@ -416,5 +425,42 @@ public class Controller implements Serializable{
      return null;
    }
    
+   /**
+    * This method is used to persist Preferences object between runs.
+    * 
+    * @param dat the Preferences to be stored/serialized to a file
+    */
+    private static void storePreferences(Preferences dat){
+     try{
+       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(PREFERENCES));
+       out.writeObject(dat);
+       out.close();
+         } catch(IOException e){
+             System.out.println("Preferences could not be saved to disk. IO error occured.");
+             e.printStackTrace();
+           }
+
+     }
+
+   /**
+    * This method loads serialized objects from a file
+    */
+   private static Preferences loadPreferences(){
+     try{
+       ObjectInputStream in= new ObjectInputStream( new FileInputStream(PREFERENCES));
+       Preferences data= (Preferences) in.readObject();
+
+       in.close();
+       return data;
+         } catch (IOException e){
+             System.out.println("Preferences could not be loaded from disk. IO error occured.");
+             e.printStackTrace();
+           }
+     	catch (ClassNotFoundException e){
+     		System.out.println("Class could not be Found!");
+             e.printStackTrace();
+     	}
+     return null;
+   }
 }
 
