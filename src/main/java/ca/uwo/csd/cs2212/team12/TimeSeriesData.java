@@ -5,10 +5,10 @@ import org.json.JSONException;
 
 public class TimeSeriesData {
 	
-	private int [] caloriesSet;
-	private int [] stepsSet;
-	private int [] heartRateSet;
-	private int [] distanceSet;
+	private static int [] caloriesSet;
+	private static int [] stepsSet;
+	private static int [] heartRateSet;
+	private static int [] distanceSet;
 	private static final long serialVersionUID= 1L;
 	
 	public TimeSeriesData(JSONArray calData, JSONArray stepsData, JSONArray heartRateData, JSONArray distanceData) throws JSONException{
@@ -21,27 +21,27 @@ public class TimeSeriesData {
 			addHeartRate = heartRateData.getJSONObject(i).getInt("value");
 			addDistance = distanceData.getJSONObject(i).getInt("value");
 			
-			this.caloriesSet[i] = addCal;
-			this.stepsSet[i] = addSteps;
-			this.heartRateSet[i] = addHeartRate;
-			this.distanceSet[i] = addDistance;
+			caloriesSet[i] = addCal;
+			stepsSet[i] = addSteps;
+			heartRateSet[i] = addHeartRate;
+			distanceSet[i] = addDistance;
 		}
 	}
 	
-	public int[] getCaloriesSet(){
-		return this.caloriesSet;
+	public static int[] getCaloriesSet(){
+		return caloriesSet;
 	}
 	
-	public int[] getStepsSet(){
-		return this.stepsSet;
+	public static int[] getStepsSet(){
+		return stepsSet;
 	}
 	
-	public int[] getHeartRateSet(){
-		return this.heartRateSet;
+	public static int[] getHeartRateSet(){
+		return heartRateSet;
 	}
 	
-	public int[] getDistanceSet(){
-		return this.distanceSet;
+	public static int[] getDistanceSet(){
+		return distanceSet;
 	}
 
 }
