@@ -28,10 +28,15 @@ public class DashBoardPanel extends JPanel {
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
     
+    
 	final Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
     static Date date= new Date();
-    static Calendar cal;
+    
+    
+    
     String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
+    final JLabel lblNewLabel_3 = new JLabel(dateString);
+
     
     private JFrame frame;
     private API api = new RealAPI();
@@ -762,7 +767,7 @@ public class DashBoardPanel extends JPanel {
 
 
         /**
-         * The left and right arrows are on the actual daspanel,
+         * The left and right arrows are on the actual dashPanel,
          * in the west and east borers of it's layout respectively.         *
          */
 
@@ -774,6 +779,22 @@ public class DashBoardPanel extends JPanel {
         leftarrow.setContentAreaFilled(false);
         leftarrow.setOpaque(false);
         leftarrow.setIcon(ImageClass.getLeftarrowIcon());
+        leftarrow.addActionListener(new ActionListener() {
+
+
+            public void actionPerformed(ActionEvent ae) {
+
+            	date= subtractDay(date);
+            	dateString = formatter.format(date);
+				
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+                
+
+            }});
+        
         dashPanel.add(leftarrow, BorderLayout.WEST);
 
 
@@ -785,6 +806,22 @@ public class DashBoardPanel extends JPanel {
         rightarrow.setBorderPainted(false);
         rightarrow.setOpaque(false);
         rightarrow.setIcon(ImageClass.getRightarrowIcon());
+        rightarrow.addActionListener(new ActionListener() {
+
+
+            public void actionPerformed(ActionEvent ae) {
+
+            	date= addDay(date);
+            	dateString = formatter.format(date);
+				
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+                
+
+            }});
+        
         dashPanel.add(rightarrow, BorderLayout.EAST);
 
 
@@ -950,11 +987,13 @@ public class DashBoardPanel extends JPanel {
         
       
         final JXDatePicker datePicker = new JXDatePicker();
-        final JLabel lblNewLabel_3 = new JLabel(dateString);
+        
         datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
 				dateString = formatter.format(datePicker.getDate());
+				date= datePicker.getDate();
+				System.out.println(date.toString());
 				
 				
 				lblNewLabel_3.setText(dateString);
@@ -1068,6 +1107,22 @@ public class DashBoardPanel extends JPanel {
 
 
 
+    }
+    
+    public static Date subtractDay(Date date) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        return cal.getTime();
+    }
+    
+    public static Date addDay(Date date) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, +1);
+        return cal.getTime();
     }
 
     public void checkPref(){
