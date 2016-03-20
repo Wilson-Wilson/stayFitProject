@@ -185,10 +185,10 @@ public class OpenCardListener extends JPanel{
         bestButton.setIcon(ImageClass.getBestdayIcon());
         bestButton.setContentAreaFilled(false);
         bestButton.setToolTipText("Best Days");
-        userButton.setBorder(null);
-        userButton.setBorderPainted(false);
+        bestButton.setBorder(null);
+        bestButton.setBorderPainted(false);
+        bestButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         bestButton.addActionListener(new ActionListener() {
-
 
 
             public void actionPerformed(ActionEvent ae) {
@@ -204,6 +204,7 @@ public class OpenCardListener extends JPanel{
         caloriesButton.setBorder(null);
         caloriesButton.setBorderPainted(false);
         caloriesButton.setToolTipText("Calories");
+        caloriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         caloriesButton.addActionListener(new ActionListener() {
 
 
@@ -220,6 +221,7 @@ public class OpenCardListener extends JPanel{
         movementButton.setBorderPainted(false);
         movementButton.setIcon(ImageClass.getMovementIcon());
         movementButton.setToolTipText("Movement");
+		movementButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         movementButton.addActionListener(new ActionListener() {
 
 
@@ -236,6 +238,7 @@ public class OpenCardListener extends JPanel{
         minutesButton.setBorderPainted(false);
         minutesButton.setContentAreaFilled(false);
         minutesButton.setToolTipText("Minutes");
+		minutesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         minutesButton.addActionListener(new ActionListener() {
 
 
@@ -252,6 +255,7 @@ public class OpenCardListener extends JPanel{
         lifetimeButton.setBorderPainted(false);
         lifetimeButton.setIcon(ImageClass.getLifetimeIcon());
         lifetimeButton.setToolTipText("Lifetime");
+		lifetimeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lifetimeButton.addActionListener(new ActionListener() {
 
 
@@ -264,6 +268,7 @@ public class OpenCardListener extends JPanel{
             }});
         
 		JButton homebutton = new JButton("");
+		homebutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		homebutton.addActionListener(new ActionListener() {
 
 	            
@@ -295,6 +300,13 @@ public class OpenCardListener extends JPanel{
 	            }});
             
 		
+
+		JButton settingsbutton = new JButton("");
+		settingsbutton.setContentAreaFilled(false);
+		settingsbutton.setBorder(null);
+		settingsbutton.setIcon(ImageClass.getSettingsIcon());
+		settingsbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -315,7 +327,7 @@ public class OpenCardListener extends JPanel{
 					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
 					.addComponent(userButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					
+					.addComponent(settingsbutton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(trophyButton))
 		);
@@ -331,26 +343,33 @@ public class OpenCardListener extends JPanel{
 							.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							)
+							.addComponent(settingsbutton))
 						.addComponent(trophyButton)
 						.addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
-		trophyButton.addActionListener(new ActionListener() {
+		final JLabel lblToday = new JLabel("Today");
+		settingsbutton.addActionListener(new ActionListener() {
 
-	            
+
+            public void actionPerformed(ActionEvent ae) {
+
+
+                //cl.show(panel_3,"9");
+                OpenCardListener opencard = new OpenCardListener(7);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
+                lblToday.setText("Settings");
+
+            }});
+		 trophyButton.addActionListener(new ActionListener() {
+
+
 	            public void actionPerformed(ActionEvent ae) {
-	            	JFrame trophyframe= new JFrame("Goals and Accolades");
-	                trophyframe.setVisible(true);
-	                trophyframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	             	JPanel trophypanel=new JPanel();
-
-
-	            	trophyframe.getContentPane().add(trophypanel);
-
-	            	trophyframe.pack();
-	            	trophyframe.setSize(600,600);
+	            	TrophyPanel trophypanel = new TrophyPanel();
+	                panel_3.add( trophypanel,"11") ;
+	                cl.show(panel_3,"11");
 
 	            }});
 		
@@ -369,27 +388,12 @@ public class OpenCardListener extends JPanel{
 		Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
 		dashPanel.add(panel_16, BorderLayout.NORTH);
 		panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		JButton button_6 = new JButton("");
-		button_6.setContentAreaFilled(false);
-		button_6.setBorder(null);
-		button_6.setBorderPainted(false);
-		button_6.setOpaque(false);
-		button_6.setIcon(ImageClass.getSmallleftarrow());
-		panel_16.add(button_6);
-		JLabel lblToday = new JLabel("Today");
+		
 		lblToday.setBackground(new Color(105, 105, 105,180));
 		lblToday.setForeground(new Color(255, 255, 255));
 		lblToday.setHorizontalAlignment(SwingConstants.CENTER);
 		lblToday.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		panel_16.add(lblToday);
-
-		JButton button_7 = new JButton("");
-		button_7.setContentAreaFilled(false);
-		button_7.setBorder(null);
-		button_7.setBorderPainted(false);
-		button_7.setIcon(ImageClass.getSmallrightarrow());
-		panel_16.add(button_7);
 
 
 

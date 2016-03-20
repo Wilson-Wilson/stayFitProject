@@ -48,7 +48,7 @@ public class MWindow {
     private void initialize() {
 
         //main frame
-        frame = new JFrame();
+        frame = new JFrame("STAYFIT");
         frame.setResizable(false);
         frame.getContentPane().setBackground(Color.DARK_GRAY);
         frame.setBounds(100, 100, 450, 300);

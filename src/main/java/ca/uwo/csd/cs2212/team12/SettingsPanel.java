@@ -93,6 +93,12 @@ public class SettingsPanel extends JPanel {
 		lblCalories.setForeground(new Color(255, 255, 255));
 		
 		JEditorPane editorPane_3 = new JEditorPane();
+		
+		JButton button = new JButton("");
+		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		button.setContentAreaFilled(false);
+		button.setBorder(null);
+		button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\ok-button.png"));
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
@@ -115,9 +121,11 @@ public class SettingsPanel extends JPanel {
 					.addContainerGap())
 				.addGroup(gl_panel_8.createSequentialGroup()
 					.addComponent(lblCalories)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(editorPane_3)
-					.addGap(410))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button)
+					.addGap(309))
 		);
 		gl_panel_8.setVerticalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
@@ -134,10 +142,12 @@ public class SettingsPanel extends JPanel {
 					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
 						.addComponent(editorPane_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel))
-					.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+					.addGap(7)
 					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblCalories)
-						.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(button))
+					.addGap(0, 0, Short.MAX_VALUE))
 		);
 		panel_8.setLayout(gl_panel_8);
 
@@ -291,37 +301,47 @@ public class SettingsPanel extends JPanel {
     	    }
     });
 		
+		JLabel lblPleaseCheckThe = new JLabel("Please check the dashboard cards you would like displayed");
+		lblPleaseCheckThe.setFont(new Font("Trebuchet MS", Font.PLAIN, 20));
+		lblPleaseCheckThe.setForeground(Color.WHITE);
+		
 		
 		GroupLayout gl_dashboardSettings = new GroupLayout(dashboardSettings);
 		gl_dashboardSettings.setHorizontalGroup(
 			gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_dashboardSettings.createSequentialGroup()
 					.addGap(1)
-					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_dashboardSettings.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
-								.addComponent(caloriesCheckBox, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+								.addComponent(lblPleaseCheckThe)
 								.addGroup(gl_dashboardSettings.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(MovementsCheckBox, GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-									.addGap(31)))
+									.addComponent(caloriesCheckBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(132)))
 							.addGap(57)
 							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 							.addGap(76))
 						.addGroup(gl_dashboardSettings.createSequentialGroup()
-							.addComponent(MinutesCheckBox, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-							.addGap(132)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_dashboardSettings.createSequentialGroup()
+									.addComponent(MovementsCheckBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(223))
+								.addGroup(gl_dashboardSettings.createSequentialGroup()
+									.addComponent(MinutesCheckBox, GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)))
 							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 							.addGap(75))
-						.addGroup(Alignment.TRAILING, gl_dashboardSettings.createSequentialGroup()
+						.addGroup(gl_dashboardSettings.createSequentialGroup()
 							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.TRAILING)
-								.addComponent(LifetimeCheckBox, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-								.addComponent(TimeseriesCheckBox, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(BestdaysCheckBox, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+								.addComponent(BestdaysCheckBox, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+								.addComponent(LifetimeCheckBox, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+								.addComponent(TimeseriesCheckBox, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
 							.addGap(8)
-							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, gl_dashboardSettings.createSequentialGroup()
+							.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_dashboardSettings.createSequentialGroup()
 									.addComponent(label_15, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.TRAILING)
@@ -333,7 +353,7 @@ public class SettingsPanel extends JPanel {
 											.addComponent(label_13, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 											.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)))
 									.addGap(42))
-								.addGroup(Alignment.TRAILING, gl_dashboardSettings.createSequentialGroup()
+								.addGroup(gl_dashboardSettings.createSequentialGroup()
 									.addComponent(label_10, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 									.addComponent(label_11, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 									.addGap(113))))))
@@ -345,10 +365,12 @@ public class SettingsPanel extends JPanel {
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_dashboardSettings.createSequentialGroup()
+							.addComponent(lblPleaseCheckThe)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(caloriesCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(MovementsCheckBox)))
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(MinutesCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
@@ -365,10 +387,10 @@ public class SettingsPanel extends JPanel {
 						.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_dashboardSettings.createParallelGroup(Alignment.LEADING)
-						.addComponent(BestdaysCheckBox, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_15, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_16, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_17, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_17, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(BestdaysCheckBox, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		dashboardSettings.setLayout(gl_dashboardSettings);
