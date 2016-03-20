@@ -190,6 +190,7 @@ public class OpenCardListener extends JPanel{
         bestButton.addActionListener(new ActionListener() {
 
 
+
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
                 OpenCardListener opencard = new OpenCardListener(6);
@@ -261,125 +262,139 @@ public class OpenCardListener extends JPanel{
                 cl.show(panel_3,"10");
 
             }});
-        JButton homebutton = new JButton("");
-        homebutton.setToolTipText("Home");
-        homebutton.addActionListener(new ActionListener() {
+        
+		JButton homebutton = new JButton("");
+		homebutton.addActionListener(new ActionListener() {
+
+	            
+	            public void actionPerformed(ActionEvent ae) {
+	                //cl.show(panel_3,"2");
+	            	DashBoardPanel dash= new DashBoardPanel();
+	        		panel_3.add(dash,"11");
+	        		cl.show(panel_3,"11");
+	        		dash.checkPref();
+
+	            }});
 
 
-            public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"2");
-                DashBoardPanel dash= new DashBoardPanel();
-                panel_3.add(dash,"11");
-                cl.show(panel_3,"11");
-                dash.checkPref();
+		homebutton.setContentAreaFilled(false);
+		homebutton.setIcon(ImageClass.getHomebuttonIcon());
+		homebutton.setBorder(null);
+		homebutton.setBorderPainted(false);
+		 homebutton .addActionListener(new ActionListener() {
 
-            }});
-        homebutton.setContentAreaFilled(false);
-        homebutton.setIcon(ImageClass.getHomebuttonIcon());
-        homebutton.setBorder(null);
-        homebutton.setBorderPainted(false);
-        homebutton .addActionListener(new ActionListener() {
+	            
+	            public void actionPerformed(ActionEvent ae) {
 
 
-            public void actionPerformed(ActionEvent ae) {
-                //cl.show(panel_3,"9");
-                OpenCardListener opencard = new OpenCardListener(6);
-                panel_3.add(opencard,"10") ;
-                cl.show(panel_3,"10");
-            }});
+	            	//cl.show(panel_3,"9");
+	            	OpenCardListener opencard = new OpenCardListener(6);
+	        		panel_3.add(opencard,"10") ;
+	        		cl.show(panel_3,"10");
 
-        JButton button = new JButton("");
-        button.setContentAreaFilled(false);
-        button.setBorder(null);
-        button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\Gear-icon2.png"));
-        GroupLayout gl_panel = new GroupLayout(panel);
-        gl_panel.setHorizontalGroup(
-                gl_panel.createParallelGroup(Alignment.TRAILING)
-                        .addGroup(gl_panel.createSequentialGroup()
-                                .addComponent(timeseriesButton)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(bestButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(caloriesButton)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(movementButton)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(minutesButton)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(ComponentPlacement.UNRELATED)
-                                .addComponent(homebutton)
-                                .addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                                .addComponent(userButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(button)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(trophyButton))
-        );
-        gl_panel.setVerticalGroup(
-                gl_panel.createParallelGroup(Alignment.TRAILING)
-                        .addGroup(gl_panel.createSequentialGroup()
-                                .addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-                                        .addComponent(homebutton, GroupLayout.PREFERRED_SIZE, 31, Short.MAX_VALUE)
-                                        .addComponent(caloriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(timeseriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                                                .addComponent(userButton, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                                                .addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(button))
-                                        .addComponent(trophyButton)
-                                        .addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addContainerGap())
-        );
-        panel.setLayout(gl_panel);
-        trophyButton.addActionListener(new ActionListener() {
+	            }});
+            
+		
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(timeseriesButton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(caloriesButton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(movementButton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(minutesButton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(homebutton)
+					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+					.addComponent(userButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(trophyButton))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(homebutton, GroupLayout.PREFERRED_SIZE, 31, Short.MAX_VALUE)
+						.addComponent(caloriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(timeseriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(userButton, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+							.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							)
+						.addComponent(trophyButton)
+						.addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		panel.setLayout(gl_panel);
+		trophyButton.addActionListener(new ActionListener() {
+
+	            
+	            public void actionPerformed(ActionEvent ae) {
+	            	JFrame trophyframe= new JFrame("Goals and Accolades");
+	                trophyframe.setVisible(true);
+	                trophyframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	             	JPanel trophypanel=new JPanel();
 
 
-            public void actionPerformed(ActionEvent ae) {
-                JFrame trophyframe= new JFrame("Goals and Accolades");
-                trophyframe.setVisible(true);
-                trophyframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                JPanel trophypanel=new JPanel();
-                trophyframe.getContentPane().add(trophypanel);
-                trophyframe.pack();
-                trophyframe.setSize(600,600);
+	            	trophyframe.getContentPane().add(trophypanel);
 
-            }});
-        panel_15.setLayout(new BorderLayout(0, 0));
-        panel_15.add(panel);
-        /**
+	            	trophyframe.pack();
+	            	trophyframe.setSize(600,600);
+
+	            }});
+		
+		panel_15.setLayout(new BorderLayout(0, 0));
+		panel_15.add(panel);
+		/**
          * End of panel_15 set up
          */
 
-        JPanel panel_16 = new JPanel();
-        panel_16.setBackground(new Color(105, 105, 105,180));
+		JPanel panel_16 = new JPanel();
+		panel_16.setBackground(new Color(105, 105, 105,180));
+
 
 		/*Today Title*/
-        Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
-        dashPanel.add(panel_16, BorderLayout.NORTH);
-        panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-        JButton button_6 = new JButton("");
-        button_6.setContentAreaFilled(false);
-        button_6.setBorder(null);
-        button_6.setBorderPainted(false);
-        button_6.setOpaque(false);
-        button_6.setIcon(ImageClass.getSmallleftarrow());
-        panel_16.add(button_6);
-        JLabel lblToday = new JLabel("Today");
-        lblToday.setBackground(new Color(105, 105, 105,180));
-        lblToday.setForeground(new Color(255, 255, 255));
-        lblToday.setHorizontalAlignment(SwingConstants.CENTER);
-        lblToday.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
-        panel_16.add(lblToday);
+		Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
+		dashPanel.add(panel_16, BorderLayout.NORTH);
+		panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-        JButton button_7 = new JButton("");
-        button_7.setContentAreaFilled(false);
-        button_7.setBorder(null);
-        button_7.setBorderPainted(false);
-        button_7.setIcon(ImageClass.getSmallrightarrow());
-        panel_16.add(button_7);
+		JButton button_6 = new JButton("");
+		button_6.setContentAreaFilled(false);
+		button_6.setBorder(null);
+		button_6.setBorderPainted(false);
+		button_6.setOpaque(false);
+		button_6.setIcon(ImageClass.getSmallleftarrow());
+		panel_16.add(button_6);
+		JLabel lblToday = new JLabel("Today");
+		lblToday.setBackground(new Color(105, 105, 105,180));
+		lblToday.setForeground(new Color(255, 255, 255));
+		lblToday.setHorizontalAlignment(SwingConstants.CENTER);
+		lblToday.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		panel_16.add(lblToday);
+
+		JButton button_7 = new JButton("");
+		button_7.setContentAreaFilled(false);
+		button_7.setBorder(null);
+		button_7.setBorderPainted(false);
+		button_7.setIcon(ImageClass.getSmallrightarrow());
+		panel_16.add(button_7);
+
+
+
+	
+        
     }
-}
+  
+    }
