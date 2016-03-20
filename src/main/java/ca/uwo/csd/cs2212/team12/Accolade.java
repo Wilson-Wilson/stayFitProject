@@ -53,7 +53,7 @@ public class Accolade {
 	* This method sets this.userObtained to userObtained.
 	* @param userObtained boolean The new userObtained.
 	*/
-	public void setUserObtained(boolean status) {
+	public void setObtained(boolean status) {
 		this.obtained = status;
 	}
 }

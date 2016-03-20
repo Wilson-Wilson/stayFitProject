@@ -41,16 +41,15 @@ public class Controller implements Serializable{
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
 		if(testInet()){
-			LocalDate back = newDate.minusDays(365);
-			String curDate = newDate.toString();
-			String earlyDate = back.toString();
+			LocalDate earlyDate = newDate.minusDays(365);
+			String back = earlyDate.toString();
 			
 			//timeseries data request to api using curdate
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
 			
 			if (!isWithinRange(newDate)){
 				
-				//pass in curDate and earlyDate to API requests
+				//pass in newer and back to API requests
 				//theDictionary = new Dictionary (returned JSONArrays)
 			}
 		}
@@ -74,7 +73,7 @@ public class Controller implements Serializable{
 			*/
 		}
 		
-		//theAccoDict.checkAccolades(); 	<-- updates the true/false flags for each accolade
+		accoCheck(newDate);
 		//Some UI action
 		//goalsStuff
 		
@@ -91,11 +90,12 @@ public class Controller implements Serializable{
 			thePreferences = new Preferences();
 		}
 		
+		LocalDate now = LocalDate.now();
+		LocalDate back = now.minusDays(365);
+		String curDate = now.toString();
+		String earlyDate = back.toString();
+		
 		if(testInet()){
-			LocalDate now = LocalDate.now();
-			LocalDate back = now.minusDays(365);
-			String curDate = now.toString();
-			String earlyDate = back.toString();
 			//pass in curDate and earlyDate to datadict data API requests
 			//pass in curDate for timeseries data request
 			//pass in cur date for userinfo data request
@@ -122,7 +122,7 @@ public class Controller implements Serializable{
 		}
 		
 		AccoDict theAccoDict = new AccoDict();
-		//theAccoDict.checkAccolades(); 	<-- updates the true/false flags for each accolade
+		accoCheck(now);
 		//Some UI action
 		
 	}
@@ -305,26 +305,36 @@ public class Controller implements Serializable{
 		
 	}
 	
-	public void accoCheck(String theDate){
-		  for (int i = 0; i < 20; i++){
+	private static void accoCheck(LocalDate theDate){
+		
+		int [] dayValues = getDayData(theDate);
+
+		for (int i = 0; i < 20; i++){
 			  
-			  String theType = theAccoDict.getList[i].getType();
+			  Accolade acco = theAccoDict.getList()[i];
 			  
-			  if (theType.equals("steps")){
-				  
+			  if (acco.getType().equals("steps") && dayValues[3] >= acco.getThreshold()){
+				  acco.setObtained(true);
 			  }
-			  else if(theType.equals("calories")){
+			  else if(acco.getType().equals("calories") && dayValues[0] >= acco.getThreshold()){
+				  acco.setObtained(true);
 			  }
-			  else if(theType.equals("distance")){
+			  else if(acco.getType().equals("distance") && dayValues[1] >= acco.getThreshold()){
+				  acco.setObtained(true);
 			  }
-			  else if(theType.equals("floors")){
+			  else if(acco.getType().equals("floors") && dayValues[2] >= acco.getThreshold()){
+				  acco.setObtained(true);
 			  }
-			  else if(theType.equals("activeMins")){
+			  else if(acco.getType().equals("activeMins") && dayValues[4] >= acco.getThreshold()){
+				  acco.setObtained(true);
 			  }
-			  else{
+			  else {
+				  if(acco.getType().equals("sedentaryMins") && dayValues[5] >= acco.getThreshold()){
+					  acco.setObtained(true);
+				  }
 			  }
 		  }
-	  }
+	}
 	
 	private static boolean testInet() {
 	    Socket sock = new Socket();
