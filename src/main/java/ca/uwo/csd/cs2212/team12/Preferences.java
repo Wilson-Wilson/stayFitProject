@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Preferences implements Serializable{
 
+  private static final long serialVersionUID= 1L;	
   public static boolean showCaloriesCard;
   public static boolean showMinutesCard;
   public static boolean showMovementsCard;
