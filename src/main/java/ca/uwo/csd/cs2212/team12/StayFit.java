@@ -16,7 +16,9 @@ public class StayFit {
         final boolean isTest = (args.length!=0 && args[0].equals("test"));
         UserInfo uInfo= new UserInfo();
 
+
         SwingUtilities.invokeLater(new Runnable() {
+
             public void run() {
                 try {
                     API api;

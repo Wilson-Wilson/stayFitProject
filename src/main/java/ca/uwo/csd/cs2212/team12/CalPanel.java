@@ -20,6 +20,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.GroupLayout.Alignment;
 
 public class CalPanel extends JPanel{
 
@@ -164,6 +165,54 @@ public class CalPanel extends JPanel{
 				lblNewLabel.setBorder(null);
 				lblNewLabel.setForeground(new java.awt.Color(255, 255, 255));
 				lblNewLabel.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+
+				
+				
+				JPanel panel = new JPanel();
+				panel.setOpaque(false);
+				panel_9.add(panel, BorderLayout.CENTER);
+				
+				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:");
+				lblCaloriesBurned.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				lblCaloriesBurned.setForeground(new java.awt.Color(255, 255, 255));
+				
+				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned:");
+				lblCaloriesBurnedFor.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				lblCaloriesBurnedFor.setForeground(new java.awt.Color(255, 255, 255));
+				
+				JLabel lblCaloriesBurnedFor_1 = new JLabel("Month's Calories Burned: ");
+				lblCaloriesBurnedFor_1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 15));
+				lblCaloriesBurnedFor_1.setForeground(new java.awt.Color(255, 255, 255));
+				GroupLayout gl_panel = new GroupLayout(panel);
+				gl_panel.setHorizontalGroup(
+					gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(30)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblCaloriesBurnedFor_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(18))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblCaloriesBurnedFor, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(25))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblCaloriesBurned, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(19)))
+							.addGap(144))
+				);
+				gl_panel.setVerticalGroup(
+					gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(77)
+							.addComponent(lblCaloriesBurned)
+							.addGap(34)
+							.addComponent(lblCaloriesBurnedFor)
+							.addGap(35)
+							.addComponent(lblCaloriesBurnedFor_1)
+							.addContainerGap(152, Short.MAX_VALUE))
+				);
+				panel.setLayout(gl_panel);
+
 
 		JPanel panel_10 = new JPanel() {
 			  @Override

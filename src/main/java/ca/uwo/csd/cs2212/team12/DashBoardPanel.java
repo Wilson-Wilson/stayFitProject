@@ -2,13 +2,23 @@ package ca.uwo.csd.cs2212.team12;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.*;
+
+import javafx.stage.Stage;
+
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.GroupLayout.*;
 import javax.swing.*;
 import javax.swing.LayoutStyle.*;
 
+
 import javafx.embed.swing.JFXPanel;
+import org.jdesktop.swingx.JXDatePicker;
+import no.tornado.databinding.support.jxdatepicker.*;
+
 
 public class DashBoardPanel extends JPanel {
 
@@ -19,7 +29,17 @@ public class DashBoardPanel extends JPanel {
     final JButton lifetimeButton = new JButton("");
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
+    
+    
+	final Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
+    static Date date= new Date();
+    
+    
+    
+    String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
+    final JLabel lblNewLabel_3 = new JLabel(dateString);
 
+    
     private JFrame frame;
     public Graph graph = new Graph();
     public JFXPanel graph_panel;
@@ -38,6 +58,7 @@ public class DashBoardPanel extends JPanel {
         initialize();
     }
 
+  
     /**
      * Sets the API the dashboard will get values from.
      *
@@ -47,11 +68,15 @@ public class DashBoardPanel extends JPanel {
         this.api = api;
         initialize();
     }
-
+  
+    
+    
+    
     /**
      * Initialize the contents of the panels; sub-panels, labels, borders and etc.
      */
     private void initialize() {
+    	
 
         //main frame
 
@@ -130,6 +155,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showCaloriesCard=false;
+                dialogHandler();
             }
 
 
@@ -188,22 +214,23 @@ public class DashBoardPanel extends JPanel {
         JPanel calinfoPanel= new JPanel();
         calinfoPanel.setOpaque(false);
         caloriesButton.add(calinfoPanel, BorderLayout.CENTER);
-
-        JLabel lblNewLabel = new JLabel("Calories Burned: " + api.getCalBurned());
-        lblNewLabel.setHorizontalTextPosition(SwingConstants.LEADING);
-        lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        lblNewLabel.setForeground(Color.WHITE);
-        lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+        
+        JLabel lblCaloriesBurned = new JLabel("Calories Burned: " +api.getCalBurned());
+        lblCaloriesBurned.setForeground(Color.WHITE);
+        lblCaloriesBurned.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         GroupLayout gl_calinfoPanel = new GroupLayout(calinfoPanel);
         gl_calinfoPanel.setHorizontalGroup(
-                gl_calinfoPanel.createParallelGroup(Alignment.LEADING)
-                        .addComponent(lblNewLabel)
+        	gl_calinfoPanel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_calinfoPanel.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(lblCaloriesBurned, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGap(17))
         );
         gl_calinfoPanel.setVerticalGroup(
-                gl_calinfoPanel.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_calinfoPanel.createSequentialGroup()
-                                .addGap(5)
-                                .addComponent(lblNewLabel))
+        	gl_calinfoPanel.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, gl_calinfoPanel.createSequentialGroup()
+        			.addComponent(lblCaloriesBurned)
+        			.addContainerGap(20, Short.MAX_VALUE))
         );
         calinfoPanel.setLayout(gl_calinfoPanel);
 
@@ -218,6 +245,8 @@ public class DashBoardPanel extends JPanel {
         minutesButton.setIcon(ImageClass.getCardIcon());
         minutesButton.setBorder(null);
         minutesButton.setLayout(new BorderLayout());
+        
+        
         minutesButton .addActionListener(new ActionListener() {
 
 
@@ -249,6 +278,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMinutesCard=false;
+                dialogHandler();
             }
 
         });
@@ -288,31 +318,33 @@ public class DashBoardPanel extends JPanel {
         JPanel mininfoPanel= new JPanel();
         mininfoPanel.setOpaque(false);
         minutesButton.add(mininfoPanel, BorderLayout.CENTER);
-
-        JLabel lblActiveMinutes = new JLabel("Active Minutes: " + api.getActiveMinutes());
-        lblActiveMinutes.setFont(new Font("Arial", Font.PLAIN, 15));
+        
+        JLabel lblSedimentaryMinutes = new JLabel("Sedentary Minutes: "+api.getSedentaryMinutes());
+        lblSedimentaryMinutes.setForeground(Color.WHITE);
+        lblSedimentaryMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        
+        JLabel lblActiveMinutes = new JLabel("Active Minutes: " +api.getActiveMinutes());
+        lblActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         lblActiveMinutes.setForeground(Color.WHITE);
-
-        JLabel lblSedentayr = new JLabel("Sedentary Minutes: "  + api.getSedentaryMinutes());
-        lblSedentayr.setFont(new Font("Arial", Font.PLAIN, 15));
-        lblSedentayr.setForeground(Color.WHITE);
         GroupLayout gl_mininfoPanel = new GroupLayout(mininfoPanel);
         gl_mininfoPanel.setHorizontalGroup(
-                gl_mininfoPanel.createParallelGroup(Alignment.TRAILING)
-                        .addGroup(Alignment.LEADING, gl_mininfoPanel.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(gl_mininfoPanel.createParallelGroup(Alignment.LEADING)
-                                        .addComponent(lblActiveMinutes, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                        .addComponent(lblSedentayr, GroupLayout.PREFERRED_SIZE, 123, Short.MAX_VALUE)))
+        	gl_mininfoPanel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_mininfoPanel.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(lblSedimentaryMinutes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addGap(19))
+        		.addGroup(gl_mininfoPanel.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(lblActiveMinutes, GroupLayout.PREFERRED_SIZE, 119, Short.MAX_VALUE)
+        			.addGap(41))
         );
         gl_mininfoPanel.setVerticalGroup(
-                gl_mininfoPanel.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_mininfoPanel.createSequentialGroup()
-                                .addGap(21)
-                                .addComponent(lblActiveMinutes, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(ComponentPlacement.UNRELATED)
-                                .addComponent(lblSedentayr)
-                                .addContainerGap())
+        	gl_mininfoPanel.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, gl_mininfoPanel.createSequentialGroup()
+        			.addComponent(lblActiveMinutes, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(lblSedimentaryMinutes, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(20, Short.MAX_VALUE))
         );
         mininfoPanel.setLayout(gl_mininfoPanel);
 
@@ -360,6 +392,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMovementsCard=false;
+                dialogHandler();
             }
 
         });
@@ -394,7 +427,7 @@ public class DashBoardPanel extends JPanel {
         JPanel moveinfoPanel= new JPanel();
         moveinfoPanel.setOpaque(false);
         movementButton.add(moveinfoPanel, BorderLayout.CENTER);
-
+        
         JLabel lblSteps = new JLabel("Steps: " + api.getSteps());
         lblSteps.setFont(new Font("Arial", Font.PLAIN, 15));
         lblSteps.setForeground(Color.WHITE);
@@ -408,28 +441,28 @@ public class DashBoardPanel extends JPanel {
         lblDistance.setForeground(Color.WHITE);
         GroupLayout gl_moveinfoPanel = new GroupLayout(moveinfoPanel);
         gl_moveinfoPanel.setHorizontalGroup(
-                gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_moveinfoPanel.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
-                                        .addGroup(gl_moveinfoPanel.createSequentialGroup()
-                                                .addComponent(lblFloors, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                                                .addGap(10))
-                                        .addComponent(lblSteps, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                        .addGroup(gl_moveinfoPanel.createSequentialGroup()
-                                                .addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
-                                                .addContainerGap())))
+        	gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_moveinfoPanel.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_moveinfoPanel.createSequentialGroup()
+        					.addComponent(lblFloors, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+        					.addGap(10))
+        				.addComponent(lblSteps, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+        				.addGroup(gl_moveinfoPanel.createSequentialGroup()
+        					.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+        					.addContainerGap())))
         );
         gl_moveinfoPanel.setVerticalGroup(
-                gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_moveinfoPanel.createSequentialGroup()
-                                .addGap(8)
-                                .addComponent(lblDistance)
-                                .addGap(18)
-                                .addComponent(lblFloors)
-                                .addGap(20)
-                                .addComponent(lblSteps)
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_moveinfoPanel.createSequentialGroup()
+        			.addGap(16)
+        			.addComponent(lblDistance)
+        			.addGap(18)
+        			.addComponent(lblFloors)
+        			.addGap(20)
+        			.addComponent(lblSteps)
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         moveinfoPanel.setLayout(gl_moveinfoPanel);
 
@@ -480,6 +513,7 @@ public class DashBoardPanel extends JPanel {
                 //cardPanel.revalidate();
                 cardPanel.repaint();
                 Preferences.showLifetimeCard=false;
+                dialogHandler();
             }
 
         });
@@ -613,10 +647,10 @@ public class DashBoardPanel extends JPanel {
         
         
         //the label for the title of the time series card
-        RichJLabel lblTimeSeries = new RichJLabel("Time Series", 16);
-        lblTimeSeries.setOutline(new Color(0, 0, 0, 180));
-        lblTimeSeries.setForeground(new Color(255, 255, 255));
-        lblTimeSeries.setIcon(ImageClass.getTimeseriesIcon());
+        RichJLabel lastupdatedSeries = new RichJLabel("Time Series", 16);
+        lastupdatedSeries.setOutline(new Color(0, 0, 0, 180));
+        lastupdatedSeries.setForeground(new Color(255, 255, 255));
+        lastupdatedSeries.setIcon(ImageClass.getTimeseriesIcon());
 
         //Exit button for time series card
         JButton timeExit = new JButton("");
@@ -628,6 +662,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showTimeSeriesCard=false;
+                dialogHandler();
             }
 
         });
@@ -640,7 +675,7 @@ public class DashBoardPanel extends JPanel {
                 gl_pl5.createParallelGroup(Alignment.LEADING)
                         .addGroup(gl_pl5.createSequentialGroup()
                                 .addGap(7)
-                                .addComponent(lblTimeSeries)
+                                .addComponent(lastupdatedSeries)
                                 .addGap(105)
                                 .addComponent(timeExit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -649,7 +684,7 @@ public class DashBoardPanel extends JPanel {
                         .addGroup(gl_pl5.createSequentialGroup()
                                 .addGap(4)
                                 .addGroup(gl_pl5.createParallelGroup(Alignment.LEADING)
-                                        .addComponent(lblTimeSeries)
+                                        .addComponent(lastupdatedSeries)
                                         .addComponent(timeExit)))
         );
         pl5.setLayout(gl_pl5);
@@ -702,6 +737,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showBestDaysCard=false;
+                dialogHandler();
             }
 
         });
@@ -779,7 +815,7 @@ public class DashBoardPanel extends JPanel {
 
 
         /**
-         * The left and right arrows are on the actual daspanel,
+         * The left and right arrows are on the actual dashPanel,
          * in the west and east borers of it's layout respectively.         *
          */
 
@@ -791,6 +827,22 @@ public class DashBoardPanel extends JPanel {
         leftarrow.setContentAreaFilled(false);
         leftarrow.setOpaque(false);
         leftarrow.setIcon(ImageClass.getLeftarrowIcon());
+        leftarrow.addActionListener(new ActionListener() {
+
+
+            public void actionPerformed(ActionEvent ae) {
+
+            	date= subtractDay(date);
+            	dateString = formatter.format(date);
+				
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+                
+
+            }});
+        
         dashPanel.add(leftarrow, BorderLayout.WEST);
 
 
@@ -802,6 +854,22 @@ public class DashBoardPanel extends JPanel {
         rightarrow.setBorderPainted(false);
         rightarrow.setOpaque(false);
         rightarrow.setIcon(ImageClass.getRightarrowIcon());
+        rightarrow.addActionListener(new ActionListener() {
+
+
+            public void actionPerformed(ActionEvent ae) {
+
+            	date= addDay(date);
+            	dateString = formatter.format(date);
+				
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+                
+
+            }});
+        
         dashPanel.add(rightarrow, BorderLayout.EAST);
 
 
@@ -845,26 +913,33 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
         JButton btnUser = new JButton("Beth Locke");
-        btnUser.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        btnUser.setFont(new Font("Arial", Font.PLAIN, 15));
         btnUser.setForeground(new Color(255, 255, 255));
         btnUser.setContentAreaFilled(false);
         btnUser.setBorder(null);
+        
+        JLabel lblStayfit = new JLabel("StayFit");
+        lblStayfit.setForeground(Color.WHITE);
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(
-                gl_panel.createParallelGroup(Alignment.TRAILING)
-                        .addGroup(gl_panel.createSequentialGroup()
-                                .addContainerGap(323, Short.MAX_VALUE)
-                                .addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(trophyButton))
+        	gl_panel.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(lblStayfit)
+        			.addPreferredGap(ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
+        			.addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(trophyButton))
         );
         gl_panel.setVerticalGroup(
-                gl_panel.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_panel.createSequentialGroup()
-                                .addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-                                        .addComponent(btnUser, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                                        .addComponent(trophyButton, Alignment.LEADING))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        					.addComponent(btnUser, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+        					.addComponent(lblStayfit))
+        				.addComponent(trophyButton))
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel.setLayout(gl_panel);
         trophyButton.addActionListener(new ActionListener() {
@@ -894,7 +969,10 @@ public class DashBoardPanel extends JPanel {
 
 		/*Today Title*/
 
-        Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
+		 
+        
+		
+       
         dashPanel.add(panel_16, BorderLayout.NORTH);
 
         JPanel panel_1 = new JPanel();
@@ -912,17 +990,25 @@ public class DashBoardPanel extends JPanel {
         			.addContainerGap(59, Short.MAX_VALUE))
         );
 
-        JButton button = new JButton("");
-        button.setContentAreaFilled(false);
-        button.setBorder(null);
-        button.setIcon(ImageClass.getRefreshIcon());
+        JButton refreshbutton = new JButton("");
+        refreshbutton.setContentAreaFilled(false);
+        refreshbutton.setBorder(null);
+        refreshbutton.setIcon(ImageClass.getRefreshIcon());
+        final JLabel lastupdated = new JLabel("Last updated: "+ Calendar.getInstance().getTime());
+        refreshbutton.addActionListener(new ActionListener() {
 
-        JLabel lblTime = new JLabel("Last updated:");
-        lblTime.setHorizontalTextPosition(SwingConstants.RIGHT);
-        lblTime.setForeground(new Color(255, 255, 255));
-        lblTime.setBackground(new Color(255, 255, 255));
 
-        JPanel panel_2 = new JPanel();
+            public void actionPerformed(ActionEvent ae) {
+            	lastupdated.setText("Last updated: "+ Calendar.getInstance().getTime());
+                
+            }});
+
+       
+        lastupdated.setHorizontalTextPosition(SwingConstants.RIGHT);
+        lastupdated.setForeground(new Color(255, 255, 255));
+        lastupdated.setBackground(new Color(255, 255, 255));
+
+        final JPanel panel_2 = new JPanel();
         panel_2.setOpaque(false);
         panel_2.setAlignmentX(Component.RIGHT_ALIGNMENT);
         panel_2.setSize(new Dimension(10, 10));
@@ -933,32 +1019,53 @@ public class DashBoardPanel extends JPanel {
         	gl_panel_1.createParallelGroup(Alignment.TRAILING)
         		.addGroup(gl_panel_1.createSequentialGroup()
         			.addGap(166)
-        			.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+        			.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
         			.addGap(58)
-        			.addComponent(lblTime, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+        			.addComponent(lastupdated, GroupLayout.PREFERRED_SIZE, 84, Short.MAX_VALUE)
         			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(button))
+        			.addComponent(refreshbutton))
         );
         gl_panel_1.setVerticalGroup(
         	gl_panel_1.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panel_1.createSequentialGroup()
-        			.addComponent(button)
+        			.addComponent(refreshbutton)
         			.addContainerGap())
         		.addGroup(gl_panel_1.createSequentialGroup()
         			.addGap(2)
         			.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE)
         			.addGap(2))
         		.addGroup(gl_panel_1.createSequentialGroup()
-        			.addComponent(lblTime)
+        			.addComponent(lastupdated)
         			.addContainerGap())
         );
-        panel_2.setLayout(new CardLayout(0, 0));
+        final CardLayout cl3 = new CardLayout(0,0);
+        panel_2.setLayout(cl3);
 
-        JPanel panel_4 = new JPanel();
-        panel_2.add(panel_4, "name_142783788052135");
+        final JPanel panel_4 = new JPanel();
+        final JPanel panel_5 = new JPanel();
+       
         panel_4.setOpaque(false);
-
-        JLabel lblNewLabel_3 = new JLabel("Today");
+        
+        
+        
+      
+        final JXDatePicker datePicker = new JXDatePicker();
+        
+        datePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				dateString = formatter.format(datePicker.getDate());
+				date= datePicker.getDate();
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+			 
+			 
+				
+			}
+		});
+    
         lblNewLabel_3.setVerticalTextPosition(SwingConstants.TOP);
         lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -967,26 +1074,44 @@ public class DashBoardPanel extends JPanel {
         lblNewLabel_3.setForeground(new Color(255, 255, 255));
         lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
         panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        
+        
 
         JButton calendarButton = new JButton("");
         calendarButton.setIconTextGap(0);
         calendarButton.setIcon(ImageClass.getCalendarIcon());
         calendarButton.setContentAreaFilled(false);
         calendarButton.setBorder(null);
+        calendarButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				panel_2.add(panel_5, "calendarpanel");
+				cl3.show(panel_2,"calendarpanel");			
+			}
+        });
         panel_4.add(calendarButton);
         panel_4.add(lblNewLabel_3);
-
-        JPanel panel_5 = new JPanel();
+        
+             
         panel_5.setOpaque(false);
-
-
-
-
-
-
-
         panel_5.setAlignmentY(Component.TOP_ALIGNMENT);
-        panel_2.add(panel_5, "name_142649790155166");
+        panel_2.add(panel_4, "datepanel");
+        panel_2.add(panel_5, "calendarpanel");
+        
+        JButton okbutton = new JButton("");
+        okbutton.setContentAreaFilled(false);
+        okbutton.setBorder(null);
+        okbutton.setIcon(ImageClass.getOkIcon());
+        okbutton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				panel_2.add(panel_4, "datepanel");
+				cl3.show(panel_2,"datepanel");			
+			}
+        });
+        panel_5.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        panel_5.add(datePicker);
+        panel_5.add(okbutton);
         panel_1.setLayout(gl_panel_1);
         panel_16.setLayout(gl_panel_16);
         /**
@@ -1020,23 +1145,23 @@ public class DashBoardPanel extends JPanel {
 
         GroupLayout gl_panel1= new GroupLayout(panel);
         gl_panel1.setHorizontalGroup(
-                gl_panel1.createParallelGroup(Alignment.TRAILING)
-                        .addGroup(gl_panel1.createSequentialGroup()
-                                .addContainerGap(292, Short.MAX_VALUE)
-                                .addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(settingsbutton)
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(trophyButton))
+        	gl_panel1.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(gl_panel1.createSequentialGroup()
+        			.addContainerGap(346, Short.MAX_VALUE)
+        			.addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(settingsbutton)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(trophyButton))
         );
         gl_panel1.setVerticalGroup(
-                gl_panel1.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_panel1.createSequentialGroup()
-                                .addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
-                                        .addComponent(settingsbutton)
-                                        .addComponent(trophyButton)
-                                        .addComponent(btnUser, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                                .addContainerGap())
+        	gl_panel1.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel1.createSequentialGroup()
+        			.addGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
+        				.addComponent(settingsbutton)
+        				.addComponent(trophyButton)
+        				.addComponent(btnUser, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+        			.addContainerGap())
         );
         panel.setLayout(gl_panel1);
 
@@ -1045,6 +1170,22 @@ public class DashBoardPanel extends JPanel {
 
 
 
+    }
+    
+    public static Date subtractDay(Date date) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        return cal.getTime();
+    }
+    
+    public static Date addDay(Date date) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, +1);
+        return cal.getTime();
     }
 
     public void checkPref(){
@@ -1068,5 +1209,15 @@ public class DashBoardPanel extends JPanel {
     	}
 
     }
+
+
+
+    private void dialogHandler() {
+        if (Preferences.noCardsShowing()) {
+            JOptionPane.showMessageDialog(frame, "To Restore Your Dashboard Cards, Go To Settings and Click on the Dashboard Settings Tab.");
+        }
+    
     
 }
+}
+
