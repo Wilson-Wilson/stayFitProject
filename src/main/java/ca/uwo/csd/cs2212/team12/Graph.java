@@ -23,10 +23,19 @@ import javax.swing.SwingUtilities;
 
 public class Graph {
 	
+	/**
+	 * Constructor creates an instance of Graph
+	 */
+	
 	public Graph() {
 		
     }
 	
+	/**
+	 * Creates a Line Chart with calories data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
 	public JFXPanel setCalories() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
@@ -57,6 +66,12 @@ public class Graph {
         return fxPanel;
     }
 	
+	
+	/**
+	 * Creates a Line Chart with preset calories data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
 	public JFXPanel setCaloriesTest() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
@@ -102,6 +117,12 @@ public class Graph {
         return fxPanel;
     }
 	
+	
+	/**
+	 * Creates a Line Chart with movement data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
 	public JFXPanel setMovement() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
@@ -148,6 +169,12 @@ public class Graph {
         return fxPanel;
     }
 	
+	
+	/**
+	 * Creates a Line Chart with preset movement data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
 	public JFXPanel setMovementTest() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
@@ -241,6 +268,12 @@ public class Graph {
         return fxPanel;
     }
 	
+	
+	/**
+	 * Creates a Line Chart with minutes data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
 	public JFXPanel setMinutes() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
@@ -279,6 +312,12 @@ public class Graph {
         return fxPanel;
     }
 	
+	
+	/**
+	 * Creates a Line Chart with preset minutes data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
 	public JFXPanel setMinutesTest() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
@@ -348,6 +387,12 @@ public class Graph {
         return fxPanel;
     }
 	
+	
+	/**
+	 * Creates a Line Chart with the user's collective data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
 	public JFXPanel setAll() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
@@ -426,7 +471,13 @@ public class Graph {
         return fxPanel;
     }
     
-    public JFXPanel ShowGUI2() {
+	
+	/**
+	 * Creates a Line Chart with the preset collective data, a Scene and a JavaFXPanel,
+	 * then adds the Line Chart to the Scene and the Scene to the JFXPanel.
+	 * @return JFXPanel the newly created JFXPanel is returned
+	 */
+    public JFXPanel setAllTest() {
     	// This method is invoked on the EDT thread
         final JFXPanel fxPanel = new JFXPanel();
     
@@ -498,98 +549,6 @@ public class Graph {
         	}
         });
         return fxPanel;
-
-        /*Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                initFX(fxPanel);
-            }
-       });*/
-        //return fxPanel;
     }
-
-        
-    /*public void initFX2(JFXPanel fxPanel) {
-        // This method is invoked on the JavaFX thread
-        Scene scene = createScene2();
-        fxPanel.setScene(scene);
-    }
-
-        
-    
-    public Scene createScene2() {
-    	final NumberAxis xAxis = new NumberAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Number of Month");
-        //creating the chart
-        final LineChart<Number,Number> lineChart = 
-                new LineChart<Number,Number>(xAxis,yAxis);
-                
-        lineChart.setTitle("Stock Monitoring, 2010");
-        //defining a series
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("Floors");
-        //populating the series with data
-        series1.getData().add(new XYChart.Data(1, 23));
-        series1.getData().add(new XYChart.Data(2, 14));
-        series1.getData().add(new XYChart.Data(3, 15));
-        series1.getData().add(new XYChart.Data(4, 24));
-        series1.getData().add(new XYChart.Data(5, 34));
-        series1.getData().add(new XYChart.Data(6, 36));
-        series1.getData().add(new XYChart.Data(7, 22));
-        series1.getData().add(new XYChart.Data(8, 45));
-        series1.getData().add(new XYChart.Data(9, 43));
-        series1.getData().add(new XYChart.Data(10, 17));
-        series1.getData().add(new XYChart.Data(11, 29));
-        series1.getData().add(new XYChart.Data(12, 25));
-        
-        XYChart.Series series2 = new XYChart.Series();
-        series2.setName("Steps");
-        //populating the series with data
-        series2.getData().add(new XYChart.Data(1, 60));
-        series2.getData().add(new XYChart.Data(2, 14));
-        series2.getData().add(new XYChart.Data(3, 10));
-        series2.getData().add(new XYChart.Data(4, 4));
-        series2.getData().add(new XYChart.Data(5, 34));
-        series2.getData().add(new XYChart.Data(6, 36));
-        series2.getData().add(new XYChart.Data(7, 22));
-        series2.getData().add(new XYChart.Data(8, 52));
-        series2.getData().add(new XYChart.Data(9, 43));
-        series2.getData().add(new XYChart.Data(10, 17));
-        series2.getData().add(new XYChart.Data(11, 22));
-        series2.getData().add(new XYChart.Data(12, 15));
-        
-        XYChart.Series series3 = new XYChart.Series();
-        series3.setName("Calories");
-        //populating the series with data
-        series3.getData().add(new XYChart.Data(1, 0));
-        series3.getData().add(new XYChart.Data(2, 10));
-        series3.getData().add(new XYChart.Data(3, 20));
-        series3.getData().add(new XYChart.Data(4, 30));
-        series3.getData().add(new XYChart.Data(5, 40));
-        series3.getData().add(new XYChart.Data(6, 50));
-        series3.getData().add(new XYChart.Data(7, 20));
-        series3.getData().add(new XYChart.Data(8, 30));
-        series3.getData().add(new XYChart.Data(9, 55));
-        series3.getData().add(new XYChart.Data(10, 45));
-        series3.getData().add(new XYChart.Data(11, 70));
-        series3.getData().add(new XYChart.Data(12, 60));
-        
-        Scene scene  = new Scene(lineChart,800,600);
-        lineChart.getData().addAll(series1, series2, series3);
-    	
-    	Group  root  =  new  Group();
-        Scene  scene  =  new  Scene(root, Color.ALICEBLUE);
-        Text  text  =  new  Text();
-        
-        text.setX(40);
-        text.setY(100);
-        text.setFont(new Font(25));
-        text.setText("Welcome JavaFX!");
-
-        root.getChildren().add(text);
-
-        return (scene);
-    }*/
     
 }

@@ -233,7 +233,7 @@ public class TimePanel extends JPanel{
         plh5.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
         plh5.setForeground(new java.awt.Color(255, 255, 255));
         
-        graph_panel = graph.ShowGUI2();
+        graph_panel = graph.setAllTest();
         plh1.add(graph_panel, BorderLayout.CENTER);
         plh1.add(plh2,BorderLayout.WEST);
         plh1.add(plh3,BorderLayout.EAST);
