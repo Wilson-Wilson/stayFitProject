@@ -2,8 +2,10 @@ package ca.uwo.csd.cs2212.team12;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-
 public class ImageClass {
+	
+	//Image files
+
 	    static ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
 	    static ImageIcon caloriesIcon = new ImageIcon("src/main/resources/FireIcon2.png");
 	    static ImageIcon minutesIcon = new ImageIcon("src/main/resources/TimeIcon2.png");
@@ -26,82 +28,27 @@ public class ImageClass {
 	    static ImageIcon okIcon= new ImageIcon("src/main/resources/ok-button.png");
 	   
 
-		static public ImageIcon getBackImage() {
-			return backImage;
-		}
-	
-		static public ImageIcon getCaloriesIcon() {
-			return caloriesIcon;
-		}
-		
-		static public ImageIcon getMinutesIcon() {
-			return minutesIcon;
-		}
-		
-		static public ImageIcon getMovementIcon() {
-			return movementIcon;
-		}
-		
-		static  ImageIcon getLifetimeIcon() {
-			return lifetimeIcon;
-		}
-		
-		static public ImageIcon getTimeseriesIcon() {
-			return timeseriesIcon;
-		}
-		
-		static public ImageIcon getBestdayIcon() {
-			return bestdayIcon;
-		}
-		
-		static public ImageIcon getExitIcon() {
-			return exitIcon;
-		}
-		
-		static public ImageIcon getRightarrowIcon() {
-			return rightarrowIcon;
-		}
-		
-		static public ImageIcon getLeftarrowIcon() {
-			return leftarrowIcon;
-		}
-		
-		static public ImageIcon getTrophyIcon() {
-			return trophyIcon;
-		}
-		
-		static public ImageIcon getCardIcon() {
-			return cardIcon;
-		}
-		static public ImageIcon getSettingsIcon() {
-				return settingsIcon;
-			}
-	 	public static ImageIcon getTrophyIcon2() {
-			return trophyIcon2;
-		}
-	 
-		public static ImageIcon getSmallrightarrow() {
-			return smallrightarrow;
-			
-		}
-		public static ImageIcon getCalendarIcon(){
-			return calendarIcon;
-		}
-		public static ImageIcon getRefreshIcon(){
-			return refreshIcon;
-		}
-		
 
-		public static ImageIcon getHomebuttonIcon() {
-			return homebuttonIcon;
-		}
+	// Methods to retrieve image files
+	public static ImageIcon getBackImage() 			{return backImage;}
+	public static ImageIcon getCaloriesIcon() 		{return caloriesIcon;}
+	public static ImageIcon getMinutesIcon() 		{return minutesIcon;}
+	public static ImageIcon getMovementIcon() 		{return movementIcon;}
+	public static ImageIcon getLifetimeIcon() 		{return lifetimeIcon;}
+	public static ImageIcon getTimeseriesIcon() 	{return timeseriesIcon;}
+	public static ImageIcon getBestdayIcon() 		{return bestdayIcon;}
+	public static ImageIcon getExitIcon() 			{return exitIcon;}
+	public static ImageIcon getRightarrowIcon() 	{return rightarrowIcon;}
+	public static ImageIcon getLeftarrowIcon() 		{return leftarrowIcon;}
+	public static ImageIcon getTrophyIcon() 		{return trophyIcon;}
+	public static ImageIcon getCardIcon() 			{return cardIcon;}
+	public static ImageIcon getSettingsIcon() 		{return settingsIcon;}
+	public static ImageIcon getTrophyIcon2() 		{return trophyIcon2;}
+	public static ImageIcon getSmallrightarrow() 	{return smallrightarrow;}
+	public static ImageIcon getCalendarIcon()		{return calendarIcon;}
+	public static ImageIcon getRefreshIcon()		{return refreshIcon;}
+	public static ImageIcon getHomebuttonIcon() 	{return homebuttonIcon;}
+	public static ImageIcon getSmallleftarrow() 	{return smallleftarrow;}
+	public static ImageIcon getOkIcon()				{return okIcon;}
 
-		public static ImageIcon getSmallleftarrow() {
-			return smallleftarrow;
-		}
-		 public static ImageIcon getOkIcon() {
-				return okIcon;
-			}
-		
-			
 }

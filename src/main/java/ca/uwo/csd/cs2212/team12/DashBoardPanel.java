@@ -151,6 +151,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showCaloriesCard=false;
+                dialogHandler();
             }
 
 
@@ -272,6 +273,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMinutesCard=false;
+                dialogHandler();
             }
 
         });
@@ -383,6 +385,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMovementsCard=false;
+                dialogHandler();
             }
 
         });
@@ -503,6 +506,7 @@ public class DashBoardPanel extends JPanel {
                 //cardPanel.revalidate();
                 cardPanel.repaint();
                 Preferences.showLifetimeCard=false;
+                dialogHandler();
             }
 
         });
@@ -616,6 +620,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showTimeSeriesCard=false;
+                dialogHandler();
             }
 
         });
@@ -690,6 +695,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showBestDaysCard=false;
+                dialogHandler();
             }
 
         });
@@ -865,7 +871,7 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
         JButton btnUser = new JButton("Beth Locke");
-        btnUser.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        btnUser.setFont(new Font("Arial", Font.PLAIN, 15));
         btnUser.setForeground(new Color(255, 255, 255));
         btnUser.setContentAreaFilled(false);
         btnUser.setBorder(null);
@@ -1148,5 +1154,10 @@ public class DashBoardPanel extends JPanel {
     }
 
 
-	
+    private void dialogHandler() {
+        if (Preferences.noCardsShowing()) {
+            JOptionPane.showMessageDialog(frame, "To Restore Your Dashboard Cards, Go To Settings and Click on the Dashboard Settings Tab.");
+        }
+    }
+    
 }

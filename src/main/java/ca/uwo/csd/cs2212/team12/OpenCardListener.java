@@ -1,6 +1,4 @@
 package ca.uwo.csd.cs2212.team12;
-
-
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -38,256 +36,233 @@ import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.plaf.metal.MetalScrollBarUI;
 
-
-
 public class OpenCardListener extends JPanel{
 
-	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
-	ImageIcon backImage = ImageClass.getBackImage();
+    //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
+    ImageIcon backImage = ImageClass.getBackImage();
 
+    /**
+     * Create the application.
+     */
+    public OpenCardListener(int num) {
+        initialize(num);
+    }
 
-	/**
-	 * Create the application.
-	 */
-	public OpenCardListener(int num) {
-		initialize(num);
-	} 
+    /**
+     * Initialize the contents of the panel; sub-panels, labels, borders and etc.
+     * @param num int used to choose which details of the panel to display
+     */
+    private void initialize(int num) {
 
-	/**
-	 * Initialize the contents of the panel; sub-panels, labels, borders and etc.
-	 * @param num int used to choose which details of the panel to display 
-	 */
-	private void initialize(int num) {
+        final CardLayout cl = new CardLayout(0,0);
+        this.setLayout(new CardLayout(0,0));
+        final JPanel panel_3 = new JPanel();
+        this.add(panel_3, "3");
+        panel_3.setLayout(cl);
+        cl.show(panel_3, "2");
+        BackgroundPanel dashPanel = new BackgroundPanel(backImage);
+        dashPanel.setBackground(new Color(0, 128, 0));
+        panel_3.add(dashPanel, "2");
+        JPanel cardPanel= new JPanel();
 
-		
-		final CardLayout cl = new CardLayout(0,0);
-		this.setLayout(new CardLayout(0,0));
-		final JPanel panel_3 = new JPanel();
-		this.add(panel_3, "3");
-		panel_3.setLayout(cl);
-		cl.show(panel_3, "2");
-		BackgroundPanel dashPanel = new BackgroundPanel(backImage);
-		dashPanel.setBackground(new Color(0, 128, 0));
-		panel_3.add(dashPanel, "2");
-		JPanel cardPanel= new JPanel();
+        /**
+         * The details aforementioned being; calories, minutes, floors and etc.
+         */
+        if (num==1){
+            CalPanel calPanel = new CalPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+            calPanel.setOpaque(false);
+            dashPanel.setLayout(new BorderLayout(0, 0));
+            dashPanel.add(calPanel, BorderLayout.CENTER);;;;
+            cardPanel.setLayout(new BorderLayout(0, 0));
+        }
+        if (num==2 && Preferences.showMinutesCard==true){
+            MinPanel minPanel = new MinPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+            minPanel.setOpaque(false);
+            //cardPanel.add(life, "9");
+            dashPanel.setLayout(new BorderLayout(0, 0));
+            dashPanel.add(minPanel, BorderLayout.CENTER);
+            cardPanel.setLayout(new BorderLayout(0, 0));
+        }
+        if (num==3 && Preferences.showMovementsCard==true){
+            MovePanel movePanel = new MovePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+            movePanel.setOpaque(false);
+            //cardPanel.add(life, "9");
+            dashPanel.setLayout(new BorderLayout(0, 0));
+            dashPanel.add(movePanel, BorderLayout.CENTER);
+            cardPanel.setLayout(new BorderLayout(0, 0));
+        }
+        if (num==4 && Preferences.showLifetimeCard==true){
+            LifePanel life = new LifePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+            life.setOpaque(false);
+            //cardPanel.add(life, "9");
+            dashPanel.setLayout(new BorderLayout(0, 0));
+            dashPanel.add(life, BorderLayout.CENTER);;;;
+            cardPanel.setLayout(new BorderLayout(0, 0));
+        }
+        if (num==5 && Preferences.showTimeSeriesCard==true){
+            TimePanel timePanel = new TimePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+            timePanel.setOpaque(false);
+            //cardPanel.add(life, "9");
+            dashPanel.setLayout(new BorderLayout(0, 0));
+            dashPanel.add(timePanel, BorderLayout.CENTER);
+            cardPanel.setLayout(new BorderLayout(0, 0));
+        }
 
-		/**
-		 * The details aforementioned being; calories, minutes, floors and etc.
-		 */
-		if (num==1){
-			CalPanel calPanel = new CalPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
-			calPanel.setOpaque(false);
-			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(calPanel, BorderLayout.CENTER);;;;
+        if (num==6 && Preferences.showBestDaysCard==true){
+            BestPanel bestPanel = new BestPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
+            bestPanel.setOpaque(false);
+            //cardPanel.add(life, "9");
+            dashPanel.setLayout(new BorderLayout(0, 0));
+            dashPanel.add(bestPanel, BorderLayout.CENTER);
+            cardPanel.setLayout(new BorderLayout(0, 0));
+        }
+        if (num==7){
+            SettingsPanel settingsPanel= new SettingsPanel();
+            settingsPanel.setOpaque(false);
+            //cardPanel.add(life, "9");
+            dashPanel.setLayout(new BorderLayout(0, 0));
+            dashPanel.add(settingsPanel, BorderLayout.CENTER);
+            cardPanel.setLayout(new BorderLayout(0, 0));
 
+        }
 
-			cardPanel.setLayout(new BorderLayout(0, 0));
-
-			}
-
-		if (num==2 && Preferences.showMinutesCard==true){
-			MinPanel minPanel = new MinPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
-			minPanel.setOpaque(false);
-			//cardPanel.add(life, "9");
-			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(minPanel, BorderLayout.CENTER);
-			cardPanel.setLayout(new BorderLayout(0, 0));
-
-			}
-
-		if (num==3 && Preferences.showMovementsCard==true){
-			MovePanel movePanel = new MovePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
-			movePanel.setOpaque(false);
-			//cardPanel.add(life, "9");
-			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(movePanel, BorderLayout.CENTER);
-			cardPanel.setLayout(new BorderLayout(0, 0));
-
-			}
-
-
-
-		if (num==4 && Preferences.showLifetimeCard==true){
-		LifePanel life = new LifePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
-		life.setOpaque(false);
-		//cardPanel.add(life, "9");
-		dashPanel.setLayout(new BorderLayout(0, 0));
-		dashPanel.add(life, BorderLayout.CENTER);;;;
-
-		cardPanel.setLayout(new BorderLayout(0, 0));
-
-		}
-		if (num==5 && Preferences.showTimeSeriesCard==true){
-			TimePanel timePanel = new TimePanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
-			timePanel.setOpaque(false);
-			//cardPanel.add(life, "9");
-			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(timePanel, BorderLayout.CENTER);
-			cardPanel.setLayout(new BorderLayout(0, 0));
-
-			}
-
-		if (num==6 && Preferences.showBestDaysCard==true){
-			BestPanel bestPanel = new BestPanel();//Note the card panel holds all the card its at the center of the dash panel, the arrows and trophy and everything else are on other panels on the dashpanel
-			bestPanel.setOpaque(false);
-			//cardPanel.add(life, "9");
-			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(bestPanel, BorderLayout.CENTER);
-			cardPanel.setLayout(new BorderLayout(0, 0));
-
-			}
-		if (num==7){
-			SettingsPanel settingsPanel= new SettingsPanel();
-			settingsPanel.setOpaque(false);
-			//cardPanel.add(life, "9");
-			dashPanel.setLayout(new BorderLayout(0, 0));
-			dashPanel.add(settingsPanel, BorderLayout.CENTER);
-			cardPanel.setLayout(new BorderLayout(0, 0));
-
-		}
-		
-		/**
-		 * End of the list of possible details to display
-		 */
-		
-		
-		/**
+        /**
+         * End of the list of possible details to display
+         */
+        
+        /**
          *panel_15 is a panel that acts as a taskbar in the south border of the dashpanel, 
          *holding the trophy, home and other buttons.
          */
 		/*Trophy*/
+        //setting the panel for trophy
+        JPanel panel_15 = new JPanel();
+        panel_15.setOpaque(false);
+        dashPanel.add(panel_15, BorderLayout.SOUTH);
 
-		//setting the panel for trophy
-		JPanel panel_15 = new JPanel();
-		panel_15.setOpaque(false);
-		dashPanel.add(panel_15, BorderLayout.SOUTH);
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(105, 105, 105,180));
+        JButton trophyButton = new JButton("");
+        trophyButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+        trophyButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        trophyButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        trophyButton.setHorizontalTextPosition(SwingConstants.RIGHT);
+        trophyButton.setContentAreaFilled(false);
+        trophyButton.setHorizontalAlignment(SwingConstants.RIGHT);
+        trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
+        trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
+        trophyButton.setBorder(null);
+        trophyButton.setBorderPainted(false);
+        trophyButton.setToolTipText("Goals & Accolades");
 
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(105, 105, 105,180));
-		JButton trophyButton = new JButton("");
-		trophyButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-		trophyButton.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		trophyButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		trophyButton.setHorizontalTextPosition(SwingConstants.RIGHT);
-		trophyButton.setContentAreaFilled(false);
-		trophyButton.setHorizontalAlignment(SwingConstants.RIGHT);
-		trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
-		trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
-		trophyButton.setBorder(null);
-		trophyButton.setBorderPainted(false);
+        trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
-		trophyButton.setIcon(ImageClass.getTrophyIcon2());
+        JButton userButton = new JButton("Beth Locke");
+        userButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        userButton.setForeground(new Color(255, 255, 255));
+        userButton.setContentAreaFilled(false);
+        userButton.setBorder(null);
+        userButton.setBorderPainted(false);
 
-		JButton btnUser = new JButton("Beth Locke");
-		btnUser.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-		btnUser.setForeground(new Color(255, 255, 255));
-		btnUser.setContentAreaFilled(false);
-		btnUser.setBorder(null);
-		btnUser.setBorderPainted(false);
+        JButton timeseriesButton = new JButton("");
+        timeseriesButton.setContentAreaFilled(false);
+        timeseriesButton.setIcon(ImageClass.getTimeseriesIcon());
+        timeseriesButton.setBorder(null);
+        timeseriesButton.setBorderPainted(false);
+        timeseriesButton.setToolTipText("Time Series");
+        timeseriesButton.addActionListener(new ActionListener() {
 
-		JButton timeseriesButton = new JButton("");
-		timeseriesButton.setContentAreaFilled(false);
-		timeseriesButton.setIcon(ImageClass.getTimeseriesIcon());
-		timeseriesButton.setBorder(null);
-		timeseriesButton.setBorderPainted(false);
-		timeseriesButton.addActionListener(new ActionListener() {
 
-            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
-            	OpenCardListener opencard = new OpenCardListener(5);
-        		panel_3.add(opencard,"10") ;
-        		cl.show(panel_3,"10");
+                OpenCardListener opencard = new OpenCardListener(5);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
 
             }});
+        JButton bestButton = new JButton("");
+        bestButton.setBorder(null);
+        bestButton.setIcon(ImageClass.getBestdayIcon());
+        bestButton.setContentAreaFilled(false);
+        bestButton.setToolTipText("Best Days");
+        userButton.setBorder(null);
+        userButton.setBorderPainted(false);
+        bestButton.addActionListener(new ActionListener() {
 
 
-		JButton bestButton = new JButton("");
-		bestButton.setBorder(null);
-		bestButton.setIcon(ImageClass.getBestdayIcon());
-		bestButton.setContentAreaFilled(false);
-		btnUser.setBorder(null);
-		btnUser.setBorderPainted(false);
-		bestButton.addActionListener(new ActionListener() {
 
-            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
-            	OpenCardListener opencard = new OpenCardListener(6);
-        		panel_3.add(opencard,"10") ;
-        		cl.show(panel_3,"10");
+                OpenCardListener opencard = new OpenCardListener(6);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
 
             }});
+        JButton caloriesButton = new JButton("");
+        caloriesButton.setIcon(ImageClass.getCaloriesIcon());
+        caloriesButton.setContentAreaFilled(false);
+        caloriesButton.setBorder(null);
+        caloriesButton.setBorderPainted(false);
+        caloriesButton.setToolTipText("Calories");
+        caloriesButton.addActionListener(new ActionListener() {
 
 
-
-		JButton caloriesButton = new JButton("");
-		caloriesButton.setIcon(ImageClass.getCaloriesIcon());
-		caloriesButton.setContentAreaFilled(false);
-		caloriesButton.setBorder(null);
-		caloriesButton.setBorderPainted(false);
-		caloriesButton.addActionListener(new ActionListener() {
-
-            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
-            	OpenCardListener opencard = new OpenCardListener(1);
-        		panel_3.add(opencard,"10") ;
-        		cl.show(panel_3,"10");
+                OpenCardListener opencard = new OpenCardListener(1);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
 
             }});
+        JButton movementButton = new JButton("");
+        movementButton.setContentAreaFilled(false);
+        movementButton.setBorder(null);
+        movementButton.setBorderPainted(false);
+        movementButton.setIcon(ImageClass.getMovementIcon());
+        movementButton.setToolTipText("Movement");
+        movementButton.addActionListener(new ActionListener() {
 
-		JButton movementButton = new JButton("");
-		movementButton.setContentAreaFilled(false);
-		movementButton.setBorder(null);
-		movementButton.setBorderPainted(false);
-		movementButton.setIcon(ImageClass.getMovementIcon());
-		movementButton.addActionListener(new ActionListener() {
 
-            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
-            	OpenCardListener opencard = new OpenCardListener(3);
-        		panel_3.add(opencard,"10") ;
-        		cl.show(panel_3,"10");
+                OpenCardListener opencard = new OpenCardListener(3);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
 
             }});
+        JButton minutesButton = new JButton("");
+        minutesButton.setIcon(ImageClass.getMinutesIcon());
+        minutesButton.setBorder(null);
+        minutesButton.setBorderPainted(false);
+        minutesButton.setContentAreaFilled(false);
+        minutesButton.setToolTipText("Minutes");
+        minutesButton.addActionListener(new ActionListener() {
 
 
-		JButton minutesButton = new JButton("");
-		minutesButton.setIcon(ImageClass.getMinutesIcon());
-		minutesButton.setBorder(null);
-		minutesButton.setBorderPainted(false);
-		minutesButton.setContentAreaFilled(false);
-		minutesButton.addActionListener(new ActionListener() {
-
-            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
-            	OpenCardListener opencard = new OpenCardListener(2);
-        		panel_3.add(opencard,"10") ;
-        		cl.show(panel_3,"10");
+                OpenCardListener opencard = new OpenCardListener(2);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
 
             }});
+        JButton lifetimeButton = new JButton("");
+        lifetimeButton.setContentAreaFilled(false);
+        lifetimeButton.setBorder(null);
+        lifetimeButton.setBorderPainted(false);
+        lifetimeButton.setIcon(ImageClass.getLifetimeIcon());
+        lifetimeButton.setToolTipText("Lifetime");
+        lifetimeButton.addActionListener(new ActionListener() {
 
-		JButton lifetimeButton = new JButton("");
-		lifetimeButton.setContentAreaFilled(false);
-		lifetimeButton.setBorder(null);
-		lifetimeButton.setBorderPainted(false);
-		lifetimeButton.setIcon(ImageClass.getLifetimeIcon());
-		lifetimeButton.addActionListener(new ActionListener() {
 
-            
             public void actionPerformed(ActionEvent ae) {
                 //cl.show(panel_3,"2");
-            	OpenCardListener opencard = new OpenCardListener(4);
-        		panel_3.add(opencard,"10") ;
-        		cl.show(panel_3,"10");
+                OpenCardListener opencard = new OpenCardListener(4);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
 
             }});
-
-
-
+        
 		JButton homebutton = new JButton("");
 		homebutton.addActionListener(new ActionListener() {
 
@@ -318,7 +293,7 @@ public class OpenCardListener extends JPanel{
 	        		cl.show(panel_3,"10");
 
 	            }});
-		
+            
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -338,7 +313,7 @@ public class OpenCardListener extends JPanel{
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(homebutton)
 					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-					.addComponent(btnUser, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(userButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -352,7 +327,7 @@ public class OpenCardListener extends JPanel{
 						.addComponent(caloriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(timeseriesButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(btnUser, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+							.addComponent(userButton, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
 							.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -378,6 +353,7 @@ public class OpenCardListener extends JPanel{
 	            	trophyframe.setSize(600,600);
 
 	            }});
+		
 		panel_15.setLayout(new BorderLayout(0, 0));
 		panel_15.add(panel);
 		/**
@@ -417,58 +393,8 @@ public class OpenCardListener extends JPanel{
 
 
 
-	}
-}
-class MyScrollbarUI extends MetalScrollBarUI {
-
-    private Image imageThumb, imageTrack;
-    private JButton b = new JButton() {
-
+	
         
-        public Dimension getPreferredSize() {
-            return new Dimension(0, 0);
-        }
-
-    };
-
-    MyScrollbarUI() {
-        imageThumb = ScrollbarImage.create(32, 32, Color.darkGray);
-        imageTrack = ScrollbarImage.create(32, 32, Color.gray.darker());
     }
-
-    
-    protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
-        g.setColor(Color.white);
-        ((Graphics2D) g).drawImage(imageThumb,
-            r.x, r.y, r.width, r.height, null);
+  
     }
-
-    
-    protected void paintTrack(Graphics g, JComponent c, Rectangle r) {
-        ((Graphics2D) g).drawImage(imageTrack,
-            r.x, r.y, r.width, r.height, null);
-    }
-
-    
-    protected JButton createDecreaseButton(int orientation) {
-        return b;
-    }
-
-    
-    protected JButton createIncreaseButton(int orientation) {
-        return b;
-    }
-}
-
-class ScrollbarImage {
-
-    static public Image create(int w, int h, Color c) {
-        BufferedImage bi = new BufferedImage(
-            w, h, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = bi.createGraphics();
-        g2d.setPaint(c);
-        g2d.fillRect(0, 0, w, h);
-        g2d.dispose();
-        return bi;
-    }
-}
