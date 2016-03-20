@@ -3,7 +3,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class ImageClass {
-	
+
 	//Image files
 
 	    static ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");

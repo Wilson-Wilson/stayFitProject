@@ -14,9 +14,11 @@ import javax.swing.GroupLayout.*;
 import javax.swing.*;
 import javax.swing.LayoutStyle.*;
 
-import org.jdesktop.swingx.JXDatePicker;
 
+import javafx.embed.swing.JFXPanel;
+import org.jdesktop.swingx.JXDatePicker;
 import no.tornado.databinding.support.jxdatepicker.*;
+
 
 public class DashBoardPanel extends JPanel {
 
@@ -39,6 +41,8 @@ public class DashBoardPanel extends JPanel {
 
     
     private JFrame frame;
+    public Graph graph = new Graph();
+    public JFXPanel graph_panel;
     private API api = new RealAPI();
     public void setAPI(API api){
         this.api = api;}
@@ -604,9 +608,44 @@ public class DashBoardPanel extends JPanel {
         pl5.setOpaque(false);
         pl5.setFont(new Font("Verdana", Font.BOLD, 13));
         pl5.setForeground(new Color(255, 255, 255));
+        
 
         timeseriesButton.add(pl5,BorderLayout.NORTH);
-
+        JPanel plh1= new JPanel();
+        plh1.setOpaque(false);
+        plh1.setFont(new Font("Verdana", Font.BOLD, 13));
+        plh1.setForeground(new Color(255, 255, 255));
+        plh1.setLayout(new BorderLayout());
+        
+        JPanel plh2= new JPanel();
+        plh2.setOpaque(false);
+        plh2.setFont(new Font("Verdana", Font.BOLD, 13));
+        plh2.setForeground(new Color(255, 255, 255));
+        
+        JPanel plh3 = new JPanel();
+        plh3.setOpaque(false);
+        plh3.setFont(new Font("Verdana", Font.BOLD, 13));
+        plh3.setForeground(new Color(255, 255, 255));
+        
+        JPanel plh4 = new JPanel();
+        plh4.setOpaque(false);
+        plh4.setFont(new Font("Verdana", Font.BOLD, 13));
+        plh4.setForeground(new Color(255, 255, 255));
+        
+        JPanel plh5 = new JPanel();
+        plh5.setOpaque(false);
+        plh5.setFont(new Font("Verdana", Font.BOLD, 13));
+        plh5.setForeground(new Color(255, 255, 255));
+        
+        graph_panel = graph.ShowGUI2();
+        plh1.add(graph_panel, BorderLayout.CENTER);
+        plh1.add(plh2,BorderLayout.WEST);
+        plh1.add(plh3,BorderLayout.EAST);
+        plh1.add(plh4,BorderLayout.SOUTH);
+        plh1.add(plh5,BorderLayout.NORTH);
+        timeseriesButton.add(plh1,BorderLayout.CENTER);
+        
+        
         //the label for the title of the time series card
         RichJLabel lastupdatedSeries = new RichJLabel("Time Series", 16);
         lastupdatedSeries.setOutline(new Color(0, 0, 0, 180));

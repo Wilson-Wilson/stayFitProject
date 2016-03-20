@@ -1,30 +1,28 @@
 package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
-//PLEASE NOTE THIS SPECIFIC CLASS MOST LIKELY WON'T BE USED IN FURTHER STAGES
-//ITS MAIN PURPOSE IS TO SERVE AS A REFERENCE FOR FUTURE DATASTORES
 public class DataEntry implements Serializable {
 
-		private int calBurned;
-		private int distanceTravelled;
-		private int floorsClimbed;
-		private int stepsTaken;
-		private int actMins;
-		private int sedMins;
-		private String date;
-		
-		/**
-		 * Takes integers and stores them
-		 * @param cal
-		 * @param dist
-		 * @param floors
-		 * @param steps
-		 * @param actMinutes
-		 * @param sedMinutes
-		 * @param theDate
-		 */
-		public DataEntry(int cal, int dist, int floors, int steps, int actMinutes, int sedMinutes, String theDate){
+	private int calBurned;
+	private int distanceTravelled;
+	private int floorsClimbed;
+	private int stepsTaken;
+	private int actMins;
+	private int sedMins;
+	private String date;
+	private static final long serialVersionUID= 1L;
+	
+	/**
+	 * Takes integers and stores them
+	 * @param cal
+	 * @param dist
+	 * @param floors
+	 * @param steps
+	 * @param actMinutes
+	 * @param sedMinutes
+	 * @param theDate
+	 */
+	public DataEntry(int cal, int dist, int floors, int steps, int actMinutes, int sedMinutes, String theDate){
 			 calBurned= cal;
 			 distanceTravelled= dist;
 			 floorsClimbed= floors;
@@ -34,15 +32,15 @@ public class DataEntry implements Serializable {
 			 date= theDate;
 	}
 
-		public DataEntry(){
-			calBurned=0;
-			distanceTravelled= 0;
-			floorsClimbed= 0;
-			stepsTaken= 0;
-			actMins= 0;
-			sedMins= 0;
-			date= null;
-		}
+	public DataEntry(){
+		calBurned=0;
+		distanceTravelled= 0;
+		floorsClimbed= 0;
+		stepsTaken= 0;
+		actMins= 0;
+		sedMins= 0;
+		date= null;
+	}
 
 	/**
 	* Returns value of calBurned
