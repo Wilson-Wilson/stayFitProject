@@ -442,7 +442,7 @@ class MyScrollbarUI extends MetalScrollBarUI {
 
     };
 
-    static public Image createScollbarImage(int w, int h, Color c) {
+    static public Image createScrollbarImage(int w, int h, Color c) {
         BufferedImage bi = new BufferedImage(
                 w, h, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = bi.createGraphics();
@@ -453,8 +453,8 @@ class MyScrollbarUI extends MetalScrollBarUI {
     }
 
     MyScrollbarUI() {
-        imageThumb = createScollbarImage(32, 32, Color.darkGray);
-        imageTrack = createScollbarImage(32, 32, Color.gray.darker());
+        imageThumb = createScrollbarImage(32, 32, Color.darkGray);
+        imageTrack = createScrollbarImage(32, 32, Color.gray.darker());
     }
 
     protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
