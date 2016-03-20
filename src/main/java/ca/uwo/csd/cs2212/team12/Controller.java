@@ -77,18 +77,20 @@ public class Controller implements Serializable{
 	
 	public void onStartUp() throws IOException{
 		
+		
+		//Preferences 
 		if(testInet()){
 			LocalDate now = LocalDate.now();
 			LocalDate back = now.minusDays(365);
 			String curDate = now.toString();
 			String earlyDate = back.toString();
 			//pass in curDate and earlyDate to datadict data API requests
-			//pass in curdate for timeseries data request
+			//pass in curDate for timeseries data request
 			//pass in cur date for userinfo data request
 			
 			//theDictionary = new Dictionary (returned JSONArrays)
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
-			//theUserInfo = new UserInfo(JSONarray)
+			//theUserInfo = new UserInfo(Preferences, JSONObject, JSONarray)
 			
 			//create a new UserInfo object, goals and accolade shit
 		}
