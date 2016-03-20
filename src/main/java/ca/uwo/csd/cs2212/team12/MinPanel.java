@@ -4,6 +4,8 @@ import java.util.*;
 import javax.swing.border.*;
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MinPanel extends JPanel{
 
@@ -142,6 +144,59 @@ public class MinPanel extends JPanel{
 				lblNewLabel.setBorder(null);
 				lblNewLabel.setForeground(new Color(255, 255, 255));
 				lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+				
+				JPanel panel = new JPanel();
+				panel.setOpaque(false);
+				panel_9.add(panel, BorderLayout.CENTER);
+				
+				JLabel lblActiveMinutes = new JLabel("Active Minutes: ");
+				lblActiveMinutes.setForeground(Color.WHITE);
+				lblActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+				
+				JLabel lblSedentaryMinutes = new JLabel("Sedentary Minutes: ");
+				lblSedentaryMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+				lblSedentaryMinutes.setForeground(Color.WHITE);
+				
+				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week:");
+				lblTotalActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+				lblTotalActiveMinutes.setForeground(Color.WHITE);
+				
+				JLabel lblTotalActiveMinutes_1 = new JLabel("Total Active Minutes for the Month: ");
+				lblTotalActiveMinutes_1.setForeground(Color.WHITE);
+				lblTotalActiveMinutes_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+				GroupLayout gl_panel = new GroupLayout(panel);
+				gl_panel.setHorizontalGroup(
+					gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(44)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblTotalActiveMinutes_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addContainerGap())
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblTotalActiveMinutes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addContainerGap())
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblSedentaryMinutes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addContainerGap())
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblActiveMinutes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGap(206))))
+				);
+				gl_panel.setVerticalGroup(
+					gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(42)
+							.addComponent(lblActiveMinutes)
+							.addGap(11)
+							.addComponent(lblSedentaryMinutes)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(lblTotalActiveMinutes)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(lblTotalActiveMinutes_1)
+							.addContainerGap(189, Short.MAX_VALUE))
+				);
+				panel.setLayout(gl_panel);
 
 		JPanel panel_10 = new JPanel() {
 			  @Override

@@ -186,6 +186,7 @@ public class OpenCardListener extends JPanel{
 		btnJodimarie.setBorderPainted(false);
 
 		JButton timeseriesButton = new JButton("");
+		timeseriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		timeseriesButton.setContentAreaFilled(false);
 		timeseriesButton.setIcon(ImageClass.getTimeseriesIcon());
 		timeseriesButton.setBorder(null);
@@ -203,6 +204,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton bestButton = new JButton("");
+		bestButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		bestButton.setBorder(null);
 		bestButton.setIcon(ImageClass.getBestdayIcon());
 		bestButton.setContentAreaFilled(false);
@@ -222,6 +224,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton caloriesButton = new JButton("");
+		caloriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		caloriesButton.setIcon(ImageClass.getCaloriesIcon());
 		caloriesButton.setContentAreaFilled(false);
 		caloriesButton.setBorder(null);
@@ -238,6 +241,7 @@ public class OpenCardListener extends JPanel{
             }});
 
 		JButton movementButton = new JButton("");
+		movementButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		movementButton.setContentAreaFilled(false);
 		movementButton.setBorder(null);
 		movementButton.setBorderPainted(false);
@@ -255,6 +259,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton minutesButton = new JButton("");
+		minutesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		minutesButton.setIcon(ImageClass.getMinutesIcon());
 		minutesButton.setBorder(null);
 		minutesButton.setBorderPainted(false);
@@ -271,6 +276,7 @@ public class OpenCardListener extends JPanel{
             }});
 
 		JButton lifetimeButton = new JButton("");
+		lifetimeButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lifetimeButton.setContentAreaFilled(false);
 		lifetimeButton.setBorder(null);
 		lifetimeButton.setBorderPainted(false);
@@ -289,6 +295,7 @@ public class OpenCardListener extends JPanel{
 
 
 		JButton homebutton = new JButton("");
+		homebutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		homebutton.addActionListener(new ActionListener() {
 
 	            
@@ -319,10 +326,11 @@ public class OpenCardListener extends JPanel{
 
 	            }});
 		
-		JButton button = new JButton("");
-		button.setContentAreaFilled(false);
-		button.setBorder(null);
-		button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\Gear-icon2.png"));
+		JButton settingsbutton = new JButton("");
+		settingsbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		settingsbutton.setContentAreaFilled(false);
+		settingsbutton.setBorder(null);
+		settingsbutton.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\Gear-icon2.png"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -343,7 +351,7 @@ public class OpenCardListener extends JPanel{
 					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
 					.addComponent(btnJodimarie, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button)
+					.addComponent(settingsbutton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(trophyButton))
 		);
@@ -359,26 +367,33 @@ public class OpenCardListener extends JPanel{
 							.addComponent(bestButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(movementButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(minutesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(button))
+							.addComponent(settingsbutton))
 						.addComponent(trophyButton)
 						.addComponent(lifetimeButton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
-		trophyButton.addActionListener(new ActionListener() {
+		final JLabel lblToday = new JLabel("Today");
+		settingsbutton.addActionListener(new ActionListener() {
 
-	            
+
+            public void actionPerformed(ActionEvent ae) {
+
+
+                //cl.show(panel_3,"9");
+                OpenCardListener opencard = new OpenCardListener(7);
+                panel_3.add(opencard,"10") ;
+                cl.show(panel_3,"10");
+                lblToday.setText("Settings");
+
+            }});
+		 trophyButton.addActionListener(new ActionListener() {
+
+
 	            public void actionPerformed(ActionEvent ae) {
-	            	JFrame trophyframe= new JFrame("Goals and Accolades");
-	                trophyframe.setVisible(true);
-	                trophyframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-	             	JPanel trophypanel=new JPanel();
-
-
-	            	trophyframe.getContentPane().add(trophypanel);
-
-	            	trophyframe.pack();
-	            	trophyframe.setSize(600,600);
+	            	TrophyPanel trophypanel = new TrophyPanel();
+	                panel_3.add( trophypanel,"11") ;
+	                cl.show(panel_3,"11");
 
 	            }});
 		panel_15.setLayout(new BorderLayout(0, 0));
@@ -396,27 +411,12 @@ public class OpenCardListener extends JPanel{
 		Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
 		dashPanel.add(panel_16, BorderLayout.NORTH);
 		panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		JButton button_6 = new JButton("");
-		button_6.setContentAreaFilled(false);
-		button_6.setBorder(null);
-		button_6.setBorderPainted(false);
-		button_6.setOpaque(false);
-		button_6.setIcon(ImageClass.getSmallleftarrow());
-		panel_16.add(button_6);
-		JLabel lblToday = new JLabel("Today");
+		
 		lblToday.setBackground(new Color(105, 105, 105,180));
 		lblToday.setForeground(new Color(255, 255, 255));
 		lblToday.setHorizontalAlignment(SwingConstants.CENTER);
 		lblToday.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		panel_16.add(lblToday);
-
-		JButton button_7 = new JButton("");
-		button_7.setContentAreaFilled(false);
-		button_7.setBorder(null);
-		button_7.setBorderPainted(false);
-		button_7.setIcon(ImageClass.getSmallrightarrow());
-		panel_16.add(button_7);
 
 
 
