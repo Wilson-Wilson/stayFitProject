@@ -24,6 +24,7 @@ public class Preferences implements Serializable{
     showBestDaysCard= true;
     preferredUnits= "metric";
   }
+  
 	/**
 	* Returns value of showCaloriesCard
 	* @return boolean lets the programme know this card's display status

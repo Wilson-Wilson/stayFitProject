@@ -1,10 +1,5 @@
 package ca.uwo.csd.cs2212.team12;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,9 +8,6 @@ import org.json.JSONObject;
 public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID= 1L;
-	private static final String FILENAME= "userinfo.boop";
-
-	private Preferences userPrefs;
 
 	private int distanceLife;
 	private int floorsLife;
@@ -31,7 +23,6 @@ public class UserInfo implements Serializable {
 	 */
 	public UserInfo(Preferences pref, JSONObject lifeTotals, JSONArray bestDays) throws JSONException{
 		
-		this.userPrefs = pref;
 		this.distanceLife = lifeTotals.getInt("distance");
 		this.floorsLife = lifeTotals.getInt("floors");
 		this.stepsLife = lifeTotals.getInt("steps");;
