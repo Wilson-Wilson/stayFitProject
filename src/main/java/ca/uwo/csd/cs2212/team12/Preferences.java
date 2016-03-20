@@ -1,7 +1,7 @@
 package ca.uwo.csd.cs2212.team12;
 
 import java.io.Serializable;
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
+
 public class Preferences implements Serializable{
 
   public static boolean showCaloriesCard;
@@ -24,7 +24,6 @@ public class Preferences implements Serializable{
     showBestDaysCard= true;
     preferredUnits= "metric";
   }
-
 	/**
 	* Returns value of showCaloriesCard
 	* @return boolean lets the programme know this card's display status

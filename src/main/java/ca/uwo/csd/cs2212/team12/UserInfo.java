@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID= 1L;
 	private static final String FILENAME= "userinfo.boop";
 
-	private String userName;
 	private Preferences userPrefs;
 
 	private int distanceLife;
@@ -24,53 +26,24 @@ public class UserInfo implements Serializable {
 
 	/**
 	 * Creates the UserInfo Object that stores information from API calls.
-	 * @param name String the name of the user.
 	 * @param pref Preferences the Preference object for the custom dashboard.
-	 * @param distance int the lifetime total for distance.
-	 * @param floors the lifetime total for floors.
-	 * @param steps the lifetime total for steps.
+	 * @throws JSONException 
 	 */
-	public UserInfo(String name, Preferences pref, int distance, int floors, int steps, String distanceBest, String floorsBest, String stepsBest){
+	public UserInfo(Preferences pref, JSONObject lifeTotals, JSONArray bestDays) throws JSONException{
 		
-		this.userName = name;
 		this.userPrefs = pref;
-		this.distanceLife = distance;
-		this.floorsLife = floors;
-		this.stepsLife = steps;
-		this.distanceBest = distanceBest;
-		this.floorsBest = floorsBest;
-		this.stepsBest = stepsBest;
+		this.distanceLife = lifeTotals.getInt("distance");
+		this.floorsLife = lifeTotals.getInt("floors");
+		this.stepsLife = lifeTotals.getInt("steps");;
+		this.distanceBest = bestDays.getJSONObject(1).getString("date");
+		this.floorsBest = bestDays.getJSONObject(2).getString("date");;
+		this.stepsBest = bestDays.getJSONObject(3).getString("date");;
 	}
 
 	/**
 	 * Constructor for UserInfo without params.
 	 */
 	public UserInfo(){
-		
-		this.userName= null; //get this and other data from API unless UserInfo is serialized
-		this.userPrefs= new Preferences();
-		this.distanceLife= 0;
-		this.floorsLife= 0;
-		this.stepsLife= 0;
-		this.distanceBest = null;
-		this.floorsBest = null;
-		this.stepsBest = null;
-	}
-	
-	/**
-	* This method returns the value of userName.
-	* @return String This returns the value of userName.
-	*/
-	public String getUserName() {
-		return this.userName;
-	}
-
-	/**
-	* This method sets this.userName to userName.
-	* @param userName String The new userName.
-	*/
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	/**
@@ -143,42 +116,6 @@ public class UserInfo implements Serializable {
 	*/
 	public String getStepsBest(){
 		return this.stepsBest;
-	}
-	
-	/**
-	 * Saves the user information to disk.
-	 * @param userInf UserInfo an instance of the UserInfo object to be stored.
-	 */
-	private static void storeUser(UserInfo userInf){
-		try{
-			ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-			out.writeObject(userInf);
-			out.close();
-				} catch(IOException e){
-						System.out.println("User could not be saved to disk. IO error occured.");
-						e.printStackTrace();
-					}
-
-		}
-
-	/**
-	 * Loads user information from disk into an instance of UserInfo.
-	 */
-	private static void loadUser(){
-		try{
-			ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
-			UserInfo user= (UserInfo) in.readObject();
-
-			in.close();
-				} catch (IOException e){
-						System.out.println("User could not be loaded from disk. IO error occured.");
-						e.printStackTrace();
-					}
-			catch (ClassNotFoundException e){
-    		System.out.println("Class could not be Found!");
-            e.printStackTrace();
-    	}
-
 	}
 
 }
