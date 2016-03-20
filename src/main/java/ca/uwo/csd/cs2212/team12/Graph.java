@@ -77,14 +77,15 @@ public class Graph {
                 //populating the series with data
                 int hh = 1;int mm = 0;int hour_check;
                 for(int i : testCal){
-                	if(mm==0 && i == testCal[i]){
+                	if(mm==0 && hh==1){
                 		series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));
                 		mm+=15;
                 	}
                 	else{
                 		if(mm>45){
                 			hh+=1;mm=0;
-                			series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));                			
+                			series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));         
+                			mm+=15;
                 		}
                 		else{
                 			series1.getData().add(new XYChart.Data(hh+":"+mm, i));
@@ -169,14 +170,15 @@ public class Graph {
                 //populating the series with data
                 int hh = 1;int mm = 0;
                 for(int i : testSteps){
-                	if(mm==0){
+                	if(mm==0 && hh==1){
                 		series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));      
                 		mm+=15;
                 	}
                 	else{
                 		if(mm>45){
                 			hh+=1;mm=0;
-                			series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));                			
+                			series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));   
+                			mm+=15;
                 		}
                 		else{
                 			series1.getData().add(new XYChart.Data(hh+":"+mm, i));
@@ -191,14 +193,15 @@ public class Graph {
                 //populating the series with data
                 hh = 1;mm = 0;
                 for(int i : testDistance){
-                	if(mm==0){
+                	if(mm==0 && hh==1){
                 		series2.getData().add(new XYChart.Data(hh+":"+mm+"0", i));    
                 		mm+=15;
                 	}
                 	else{
                 		if(mm>45){
                 			hh+=1;mm=0;
-                			series2.getData().add(new XYChart.Data(hh+":"+mm+"0", i));                			
+                			series2.getData().add(new XYChart.Data(hh+":"+mm+"0", i));
+                			mm+=15;
                 		}
                 		else{
                 			series2.getData().add(new XYChart.Data(hh+":"+mm, i));
@@ -213,14 +216,15 @@ public class Graph {
                 //populating the series with data
                 hh = 1;mm = 0;
                 for(int i : testFloors){
-                	if(mm==0){
+                	if(mm==0 && hh==1){
                 		series3.getData().add(new XYChart.Data(hh+":"+mm+"0", i));   
                 		mm+=15;
                 	}
                 	else{
                 		if(mm>45){
                 			hh+=1;mm=0;
-                			series3.getData().add(new XYChart.Data(hh+":"+mm+"0", i));                			
+                			series3.getData().add(new XYChart.Data(hh+":"+mm+"0", i));  
+                			mm+=15;
                 		}
                 		else{
                 			series3.getData().add(new XYChart.Data(hh+":"+mm, i));
@@ -296,14 +300,15 @@ public class Graph {
                 //populating the series with data
                 int hh = 1;int mm = 0;
                 for(int i : testSedentary){
-                	if(mm==0){
+                	if(mm==0 && hh==1){
                 		series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));   
                 		mm+=15;
                 	}
                 	else{
                 		if(mm>45){
                 			hh+=1;mm=0;
-                			series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));                			
+                			series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));
+                			mm+=15;
                 		}
                 		else{
                 			series1.getData().add(new XYChart.Data(hh+":"+mm, i));
@@ -318,14 +323,15 @@ public class Graph {
                 //populating the series with data
                 hh = 1;mm = 0;
                 for(int i : testActive){
-                	if(mm==0){
+                	if(mm==0 && hh==1){
                 		series2.getData().add(new XYChart.Data(hh+":"+mm+"0", i));    
                 		mm+=15;
                 	}
                 	else{
                 		if(mm>45){
                 			hh+=1;mm=0;
-                			series2.getData().add(new XYChart.Data(hh+":"+mm+"0", i));                			
+                			series2.getData().add(new XYChart.Data(hh+":"+mm+"0", i));
+                			mm+=15;
                 		}
                 		else{
                 			series2.getData().add(new XYChart.Data(hh+":"+mm, i));
