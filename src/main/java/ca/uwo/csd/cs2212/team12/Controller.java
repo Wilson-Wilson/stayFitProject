@@ -19,6 +19,7 @@ public class Controller implements Serializable{
 	private static UserInfo theUserInfo;
 	private static TimeSeriesData theTimeSeries;
 	private static Preferences thePreferences;
+	private static AccoDict	theAccoDict;
 	//private UI theUI
 	
 	private static final long serialVersionUID= 1L;
@@ -51,8 +52,6 @@ public class Controller implements Serializable{
 				
 				//pass in curDate and earlyDate to API requests
 				//theDictionary = new Dictionary (returned JSONArrays)
-				
-				// goals and accolade shit
 			}
 		}
 			
@@ -75,13 +74,17 @@ public class Controller implements Serializable{
 			*/
 		}
 		
+		//theAccoDict.checkAccolades(); 	<-- updates the true/false flags for each accolade
+		//Some UI action
+		//goalsStuff
+		
 	}
 	
 	public static void onStartUp() throws IOException{
 		
 		
-		File e = new File("../preferences.boop");
-		if (e.exists()){
+		File d = new File("../preferences.boop");
+		if (d.exists()){
 			thePreferences = loadPreferences();
 		}
 		else{
@@ -101,7 +104,7 @@ public class Controller implements Serializable{
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
 			//theUserInfo = new UserInfo(JSONObject, JSONarray)
 			
-			// goals and accolade shit
+			// goals
 		}
 		else{
 			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
@@ -117,6 +120,11 @@ public class Controller implements Serializable{
 				//theUserInfo = new UserInfo (fake shit)
 			}				
 		}
+		
+		AccoDict theAccoDict = new AccoDict();
+		//theAccoDict.checkAccolades(); 	<-- updates the true/false flags for each accolade
+		//Some UI action
+		
 	}
 	
 	public static void onClose(){
@@ -125,7 +133,7 @@ public class Controller implements Serializable{
 		storeUserInfo(theUserInfo);
 		storeTimeSeries(theTimeSeries);
 		storePreferences(thePreferences);
-		//store methods for goals and accolades
+		//store methods for goals
 		
 	}
 	 
@@ -462,5 +470,6 @@ public class Controller implements Serializable{
      	}
      return null;
    }
+
 }
 
