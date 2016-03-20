@@ -6,12 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Controller {
+public class Controller implements Serializable{
 
 	private DataDict theDictionary;
 	private API theAPI;
@@ -36,18 +37,30 @@ public class Controller {
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
-		if (!this.isWithinRange(newDate)){
+		if(testInet()){
+			LocalDate back = newDate.minusDays(365);
+			String curDate = newDate.toString();
+			String earlyDate = back.toString();
 			
+			//request to api using curdate
+			//theTimeSeries = new TimeSeriesData (JSONarrays)
+			
+			if (!this.isWithinRange(newDate)){
+				
+				//pass in curDate and earlyDate to API requests
+				//theDictionary = new Dictionary (returned JSONArrays)
+				
+				// goals and accolade shit
+			}
 		}
+
+
 			
-				// Guaranteed to have the new date in dictionary
-		// update day data
 		int [] dayValues = this.getDayData(newDate); 
 		/* 
 		 * UI.setCaloriesVariable(dayValues[0]);
 		*/
 		
-		//update week data if different week
 		if(!isSameWeek(newDate, oldDate)){
 			int[] weekValues = this.getWeekData(newDate);
 			/*UI.setCaloriesVariable(weekValues[0]);
@@ -55,7 +68,6 @@ public class Controller {
 			*/
 		}
 		
-		//update month data if different month
 		if(!isSameMonth(newDate, oldDate)){
 			int[] monthValues = this.getMonthData(newDate);
 			/*UI.setCaloriesVariable(weekValues[0]);
@@ -63,7 +75,7 @@ public class Controller {
 			*/
 		}
 
-		//update data from UserInfo class, Accolades, Goals, TimeSeries
+		//Accolades, Goals
 		
 	}
 	
