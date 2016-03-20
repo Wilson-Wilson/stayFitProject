@@ -27,10 +27,16 @@ public class DashBoardPanel extends JPanel {
     final JButton lifetimeButton = new JButton("");
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
+    
+    
+	final Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
+    static Date date= new Date();
+    
+    
+    
+    String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
+    final JLabel lblNewLabel_3 = new JLabel(dateString);
 
-    static Date date;
-    static String s;
-    static String datestring;
     
     private JFrame frame;
     private API api = new RealAPI();
@@ -145,6 +151,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showCaloriesCard=false;
+                dialogHandler();
             }
 
 
@@ -234,6 +241,8 @@ public class DashBoardPanel extends JPanel {
         minutesButton.setIcon(ImageClass.getCardIcon());
         minutesButton.setBorder(null);
         minutesButton.setLayout(new BorderLayout());
+        
+        
         minutesButton .addActionListener(new ActionListener() {
 
 
@@ -265,6 +274,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMinutesCard=false;
+                dialogHandler();
             }
 
         });
@@ -378,6 +388,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showMovementsCard=false;
+                dialogHandler();
             }
 
         });
@@ -498,6 +509,7 @@ public class DashBoardPanel extends JPanel {
                 //cardPanel.revalidate();
                 cardPanel.repaint();
                 Preferences.showLifetimeCard=false;
+                dialogHandler();
             }
 
         });
@@ -611,6 +623,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showTimeSeriesCard=false;
+                dialogHandler();
             }
 
         });
@@ -685,6 +698,7 @@ public class DashBoardPanel extends JPanel {
                 cardPanel.invalidate();
                 cardPanel.repaint();
                 Preferences.showBestDaysCard=false;
+                dialogHandler();
             }
 
         });
@@ -762,7 +776,7 @@ public class DashBoardPanel extends JPanel {
 
 
         /**
-         * The left and right arrows are on the actual daspanel,
+         * The left and right arrows are on the actual dashPanel,
          * in the west and east borers of it's layout respectively.         *
          */
 
@@ -774,6 +788,22 @@ public class DashBoardPanel extends JPanel {
         leftarrow.setContentAreaFilled(false);
         leftarrow.setOpaque(false);
         leftarrow.setIcon(ImageClass.getLeftarrowIcon());
+        leftarrow.addActionListener(new ActionListener() {
+
+
+            public void actionPerformed(ActionEvent ae) {
+
+            	date= subtractDay(date);
+            	dateString = formatter.format(date);
+				
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+                
+
+            }});
+        
         dashPanel.add(leftarrow, BorderLayout.WEST);
 
 
@@ -785,6 +815,22 @@ public class DashBoardPanel extends JPanel {
         rightarrow.setBorderPainted(false);
         rightarrow.setOpaque(false);
         rightarrow.setIcon(ImageClass.getRightarrowIcon());
+        rightarrow.addActionListener(new ActionListener() {
+
+
+            public void actionPerformed(ActionEvent ae) {
+
+            	date= addDay(date);
+            	dateString = formatter.format(date);
+				
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+                
+
+            }});
+        
         dashPanel.add(rightarrow, BorderLayout.EAST);
 
 
@@ -828,7 +874,7 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setIcon(ImageClass.getTrophyIcon2());
 
         JButton btnUser = new JButton("Beth Locke");
-        btnUser.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+        btnUser.setFont(new Font("Arial", Font.PLAIN, 15));
         btnUser.setForeground(new Color(255, 255, 255));
         btnUser.setContentAreaFilled(false);
         btnUser.setBorder(null);
@@ -884,7 +930,10 @@ public class DashBoardPanel extends JPanel {
 
 		/*Today Title*/
 
-        Date dateAndTime = Calendar.getInstance().getTime();// can be used to display time if added to panel
+		 
+        
+		
+       
         dashPanel.add(panel_16, BorderLayout.NORTH);
 
         JPanel panel_1 = new JPanel();
@@ -957,23 +1006,27 @@ public class DashBoardPanel extends JPanel {
         final JPanel panel_5 = new JPanel();
        
         panel_4.setOpaque(false);
+        
+        
+        
       
         final JXDatePicker datePicker = new JXDatePicker();
-        final JLabel lblNewLabel_3 = new JLabel(dateAndTime.toString());
+        
         datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY"); 
-				s = formatter.format(datePicker.getDate());
-				// System.out.println("s");
-				lblNewLabel_3.setText(s);
-			 date=datePicker.getDate();
-			 datestring=s;
+				dateString = formatter.format(datePicker.getDate());
+				date= datePicker.getDate();
+				System.out.println(date.toString());
+				
+				
+				lblNewLabel_3.setText(dateString);
+			 
+			 
 				
 			}
 		});
     
-        System.out.println(datestring);
         lblNewLabel_3.setVerticalTextPosition(SwingConstants.TOP);
         lblNewLabel_3.setVerticalAlignment(SwingConstants.TOP);
         lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1079,6 +1132,22 @@ public class DashBoardPanel extends JPanel {
 
 
     }
+    
+    public static Date subtractDay(Date date) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        return cal.getTime();
+    }
+    
+    public static Date addDay(Date date) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DAY_OF_MONTH, +1);
+        return cal.getTime();
+    }
 
     public void checkPref(){
     	if(!Preferences.showCaloriesCard){
@@ -1101,4 +1170,15 @@ public class DashBoardPanel extends JPanel {
     	}
 
     }
+
+
+
+    private void dialogHandler() {
+        if (Preferences.noCardsShowing()) {
+            JOptionPane.showMessageDialog(frame, "To Restore Your Dashboard Cards, Go To Settings and Click on the Dashboard Settings Tab.");
+        }
+    
+    
 }
+}
+
