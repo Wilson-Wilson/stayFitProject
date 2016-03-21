@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RealAPI
+public class RealAPI implements API
 {
     private static String CALL_BACK_URI="http://localhost:8080";
     private static int CALL_BACK_PORT=8080;
@@ -70,7 +70,7 @@ public class RealAPI
 
         try {
             // File with service credentials.
-            FileReader fileReader = new FileReader("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Credentials.txt");
+            FileReader fileReader = new FileReader("src/main/resources/Team12Credentials.txt");
 
             bufferedReader = new BufferedReader(fileReader);
             clientID= bufferedReader.readLine();
@@ -78,7 +78,7 @@ public class RealAPI
             apiSecret = bufferedReader.readLine();
             bufferedReader.close();
 
-            fileReader = new FileReader("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Tokens.txt");
+            fileReader = new FileReader("src/main/resources/Team12Tokens.txt");
             bufferedReader = new BufferedReader(fileReader);
             accessTokenItself = bufferedReader.readLine();
             tokenType = bufferedReader.readLine();
@@ -127,7 +127,7 @@ public class RealAPI
     }
 
 
-    public int getCalBurned(){
+    public String getCalBurned(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -138,11 +138,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
-        //probly have to change the return type for all these methods seeing as we're getting a year's woth of data and not just a day's
+        return response.getBody();
     }
 
-    public int getCalSeries(){
+    public String getCalSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -153,10 +152,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getSteps(){
+    public String getSteps(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -167,10 +166,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getStepsSeries(){
+    public String getStepsSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -181,10 +180,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getFloors(){
+    public String getFloors(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -195,10 +194,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getFloorsSeries(){
+    public String getFloorsSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -209,10 +208,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getSedentaryMinutes(){
+    public String getSedentaryMinutes(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -223,10 +222,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getSedentaryMinutesSeries(){
+    public String getSedentaryMinutesSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -237,10 +236,10 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getActiveMinutesMins(){
+    public String getActiveMinutes(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -250,10 +249,10 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getActiveMinutesSeries(){
+    public String getActiveMinutesSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -263,10 +262,10 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getDistance(){
+    public String getDistance(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -276,10 +275,10 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getDistanceSeries(){
+    public String getDistanceSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -289,74 +288,20 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getLifetimeCal(){
+    public String getLifeTime(){
         requestUrlSuffix = "activities.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getLifetimeDistance(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
+    
 
-    public int getLifetimeSteps(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getLifeTimeFloors(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestCal(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestDistance(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestSteps(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestFloors(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    private  int getDat(String dat) {
+    /*private  int getDat(String dat) {
         int integerData = 0;
         try {
             String jsonStr = response.getBody();
@@ -367,8 +312,10 @@ public class RealAPI
             e.printStackTrace();
         }
         return integerData; //needs to return an array probably
-    }
+    }*/
 
+    //we still need to save/refresh the tokens
+    //so either we add it to each method or have a refresh method
     public void getResults(){
         System.out.println();
         System.out.println("HTTP response code: "+response.getCode());
@@ -421,7 +368,7 @@ public class RealAPI
 
         try {
             FileWriter fileWriter;
-            fileWriter = new FileWriter("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Tokens.txt");
+            fileWriter = new FileWriter("src/main/resources/Team12Tokens.txt");
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(accessToken.getToken());
             bufferedWriter.newLine();

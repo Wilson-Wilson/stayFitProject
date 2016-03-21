@@ -5,7 +5,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-class MyScrollbarUI extends MetalScrollBarUI {
+public class MyScrollbarUI extends MetalScrollBarUI {
 
     private Image imageThumb, imageTrack;
     private JButton b = new JButton() {
@@ -16,16 +16,6 @@ class MyScrollbarUI extends MetalScrollBarUI {
         }
 
     };
-
-    static public Image createScrollbarImage(int w, int h, Color c) {
-        BufferedImage bi = new BufferedImage(
-                w, h, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = bi.createGraphics();
-        g2d.setPaint(c);
-        g2d.fillRect(0, 0, w, h);
-        g2d.dispose();
-        return bi;
-    }
 
     MyScrollbarUI() {
         imageThumb = createScrollbarImage(32, 32, Color.darkGray);
@@ -45,4 +35,13 @@ class MyScrollbarUI extends MetalScrollBarUI {
 
     protected JButton createDecreaseButton(int orientation) {return b;}
     protected JButton createIncreaseButton(int orientation) {return b;}
+    public static Image createScrollbarImage(int w, int h, Color c) {
+        BufferedImage bi = new BufferedImage(
+                w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = bi.createGraphics();
+        g2d.setPaint(c);
+        g2d.fillRect(0, 0, w, h);
+        g2d.dispose();
+        return bi;
+    }
 }
