@@ -1,6 +1,7 @@
 package ca.uwo.csd.cs2212.team12;
 
 import java.awt.*;
+import java.util.Date;
 
 import javax.swing.SwingUtilities;
 
@@ -22,12 +23,10 @@ public class StayFit {
             public void run() {
                 try {
                     API api;
-                    if(isTest){
-                        api= new TestAPI();
-                    }
-                    else{
-                        api= new RealAPI();
-                    }
+                    Date thedate = null;
+                    if(isTest)  api= new TestAPI();
+                    else        api= new RealAPI(thedate);
+                    Controller controller;
                     MWindow window = new MWindow(api);
                     window.frame.setSize(1000,600);
                     window.frame.setVisible(true);

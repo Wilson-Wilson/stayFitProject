@@ -5,17 +5,6 @@ import java.awt.*;
 
 public class MWindow {
 
-    private API api = new RealAPI();
-    
-    /**
-     * Sets the API the dashboard will get values from.
-     * 
-     * @param api an interface that can be used as either the test API or the realAPI
-     */
-    public void setAPI(API api) {
-        this.api = api;
-    }
-
     public JFrame frame;
 
     //Make sure to have these initialized with the right icon
@@ -38,7 +27,6 @@ public class MWindow {
      * Create the application.
      */
     public MWindow(API api) {
-        this.setAPI(api);
         initialize();
     }
 
@@ -64,8 +52,7 @@ public class MWindow {
 
 
 
-        DashBoardPanel dash= new DashBoardPanel(api);
-        dash.setAPI(api);
+        DashBoardPanel dash= new DashBoardPanel();
         panel_3.add(dash,"2");
 
     }
