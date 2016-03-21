@@ -81,8 +81,11 @@ public interface API {
      * @return String This returns the best distance travelled.
      */
     public  String getActiveMinutesSeries();
-    
-    
+
+    /**
+     * This method is used to fetch the distance series.
+     * @return String This returns the distance series.
+     */
     public String getDistanceSeries();
 
 
