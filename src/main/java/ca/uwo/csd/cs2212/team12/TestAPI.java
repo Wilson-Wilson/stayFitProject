@@ -8,108 +8,120 @@ package ca.uwo.csd.cs2212.team12;
  * @since   2016-02-27
  */
 
-//<dependency>
-//<groupId>org.json</groupId>
-//<artifactId>json</artifactId>
-//<version>20090211</version>
-//</dependency>
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class TestAPI implements API {
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * This method is used to fetch the number of calories burned.
-     * @return int This returns the number of calories burned.
+     * @return String This returns the number of calories burned.
      */
-    public  int getCalBurned() {return getDat("calories");}
+    public String getCalBurned() {return "test";}
 
     /**
      * This method is used to fetch the number of active minutes.
-     * @return int This returns the number of active minutes.
+     * @return String This returns the number of active minutes.
      */
-    public  int getActiveMinutes() {return getDat("activeMinutes");}
+    public String getActiveMinutes() {return "test";}
 
     /**
      * This method is used to fetch the number of sedentary minutes.
-     * @return int This returns the number of sedentary minutes.
+     * @return String This returns the number of sedentary minutes.
      */
-    public  int getSedentaryMinutes() {return getDat("sedentaryMinutes");}
+    public String getSedentaryMinutes() {return "test";}
 
     /**
      * This method is used to fetch the distance travelled.
-     * @return int This returns the distance travelled.
+     * @return String This returns the distance travelled.
      */
-    public  int getDistance() {return getDat("distance");}
+    public String getDistance() {return "test";}
 
     /**
      * This method is used to fetch the number of floors climbed.
-     * @return int This returns the number of floors climbed.
+     * @return String This returns the number of floors climbed.
      */
-    public  int getFloors() {return getDat("floors");}
+    public String getFloors() {return "test";}
 
     /**
      * This method is used to fetch the number of steps.
-     * @return int This returns the number of steps.
+     * @return String This returns the number of steps.
      */
-    public  int getSteps() {return getDat("steps");}
+    public String getSteps() {return "test";}
 
     /**
      * This method is used to fetch the number of floors climbed in total.
-     * @return int This returns the number of floors climbed in total.
+     * @return String This returns the number of floors climbed in total.
      */
-    public  int getLifeTimeFloors() {return getDat("lifetimeFloors");}
+    public String getLifeTimeFloors() {return "test";}
 
     /**
      * This method is used to fetch the number of steps total.
-     * @return int This returns the number of steps total.
+     * @return String This returns the number of steps total.
      */
-    public  int getLifetimeSteps() {return getDat("lifetimeSteps");}
+    public String getLifetimeSteps() {return "test";}
 
     /**
      * This method is used to fetch the total distance travelled.
-     * @return int This returns the total distance travelled.
+     * @return String This returns the total distance travelled.
      */
-    public  int getLifetimeDistance() {return getDat("lifetimeDistance");}
+    public String getLifetimeDistance() {return "test";}
 
     /**
      * This method is used to fetch the best number of floors climbed.
-     * @return int This returns the best number of floors climbed.
+     * @return String This returns the best number of floors climbed.
      */
-    public  int getBestFloors() {return getDat("bestFloors");}
+    public String getBestFloors() {return "test";}
 
     /**
      * This method is used to fetch the best number of steps.
-     * @return int This returns the best number of steps.
+     * @return String This returns the best number of steps.
      */
-    public  int getBestSteps() {return getDat("bestSteps");}
+    public String getBestSteps() {return "test";}
 
     /**
      * This method is used to fetch the best distance travelled.
-     * @return int This returns the best distance travelled.
+     * @return String This returns the best distance travelled.
      */
-    public  int getBestDistance() {return getDat("bestDistance");}
+    public String getBestDistance() {return "test";}
 
     /**
-     * This method searches the JSON object for the required value.
-     * @param dat The value required from the JSON object
-     * @return int The integer requested.
+     * This method is used to fetch the distance series.
+     * @return String This returns the distance series.
      */
-    private  int getDat(String dat) {
-        int integerData = 0;
-        try {
-            String jsonStr = "{\"summary\":{\"calories\":2300,\"activeMinutes\":119,\"sedentaryMinutes\":439,\"distance\":1324,\"floors\":14,\"steps\":14,\"lifetimeFloors\":1400,\"lifetimeSteps\":140321,\"lifetimeDistance\":14000,\"bestFloors\":21,\"bestSteps\":14000,\"bestDistance\":25000}}";
-            JSONObject o = new JSONObject(jsonStr);
-            JSONObject element =  o.getJSONObject("summary");
-            integerData = element.getInt(dat);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return integerData;
-    }
+    public String getDistanceSeries() {return "test";}
+
+    /**
+     * This method is used to fetch the step series.
+     * @return String This returns the step series.
+     */
+    public String getStepsSeries() {return "test";}
+
+    /**
+    * This method is used to fetch the calorie series.
+    * @return String This returns the calorie series.
+    */
+    public String getCalSeries() {return "test";}
+
+    /**
+    * This method is used to fetch the sedentary minute series.
+    * @return String This returns the sedentary minute series.
+    */
+    public String getSedentaryMinutesSeries() {return "test";}
+
+    /**
+     * This method is used to fetch the floor series.
+     * @return String The floors series.
+     */
+    public String getFloorsSeries() {return "test";}
+
+    /**
+     * This method is used to fetch the lifetime totals.
+     * @return String This returns the lifetime totals.
+     */
+    public String getLifeTime() {return "test";}
+
+    /**
+     * This method is used to fetch the active minute series.
+     * @return String This returns the active minute series.
+     */
+    public String getActiveMinutesSeries() {return "test";}
+
 }
