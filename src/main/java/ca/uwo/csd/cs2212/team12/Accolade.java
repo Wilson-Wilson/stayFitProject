@@ -5,6 +5,9 @@ import java.io.Serializable;
 
 public class Accolade {
 
+	/**
+	 * The data entries for the accolades.
+	 */
 	private String name;
 	private String type;
 	private int threshold;
@@ -12,17 +15,16 @@ public class Accolade {
 	
 	/**
 	 * Creates Accolade object that stores user's accolade information.
+	 * @param name String The name of the accolade.
 	 * @param type String The type of accolade.
 	 * @param thresh int The accolade threshold.
-	 * @param obtained boolean The indicator if the user has achieved the accolade.
+	 * @param userObt boolean The indicator if the user has achieved the accolade.
 	 */
 	public Accolade(String name, String type, int thresh, boolean userObt){
-		
 		this.name = name;
 		this.type= type;
 		this.threshold= thresh;
 		this.obtained= userObt;
-
 	}
 
 	/**
@@ -51,7 +53,7 @@ public class Accolade {
 
 	/**
 	* This method sets this.userObtained to userObtained.
-	* @param userObtained boolean The new userObtained.
+	* @param status  boolean The new userObtained.
 	*/
 	public void setObtained(boolean status) {
 		this.obtained = status;
