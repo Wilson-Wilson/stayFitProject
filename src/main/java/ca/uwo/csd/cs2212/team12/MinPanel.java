@@ -363,7 +363,7 @@ public class MinPanel extends JPanel{
 		panel_11.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(ImageClass.getTrophyIcon());
+		lblNewLabel_1.setIcon(ImageClass.getTrophyIcon2());
 		lblNewLabel_1.setBackground(new java.awt.Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));
