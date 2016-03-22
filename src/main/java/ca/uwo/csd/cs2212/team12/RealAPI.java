@@ -9,6 +9,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import com.github.scribejava.apis.FitbitApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuthService;
@@ -20,6 +24,7 @@ import java.awt.Desktop;
 import java.net.URI;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -63,9 +68,10 @@ public class RealAPI implements API
     OAuth2AccessToken accessToken;
 
 
-    public RealAPI(Date thedate)
+    public RealAPI(String thedate) throws ParseException
     {
-        enDate = thedate;
+    	DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        enDate = formatter.parse(thedate);
         //read credentials from a file
 
         try {
@@ -129,8 +135,9 @@ public class RealAPI implements API
     /**
      * This method is used to fetch the number of calories burned.
      * @return String This returns the number of calories burned.
+     * @throws JSONException 
      */
-    public String getCalBurned(){
+    public JSONArray getCalBurned() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -141,24 +148,24 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getCalSeries(){
-        calndr.setTime(enDate);
-        calndr.add(calndr.YEAR, -1);
-        baseDate = calndr.getTime();
+    public JSONArray getCalSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/15min.json";
+        requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/1min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getSteps(){
+    public JSONArray getSteps() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -169,24 +176,24 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getStepsSeries(){
-        calndr.setTime(enDate);
-        calndr.add(calndr.YEAR, -1);
-        baseDate = calndr.getTime();
+    public JSONArray getStepsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/steps/date/"+frmt1+"/1d/15min.json";
+        requestUrlSuffix = "activities/steps/date/"+frmt1+"/1d/1min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getFloors(){
+    public JSONArray getFloors() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -197,24 +204,24 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getFloorsSeries(){
-        calndr.setTime(enDate);
-        calndr.add(calndr.YEAR, -1);
-        baseDate = calndr.getTime();
+    public JSONArray getFloorsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/floors/date/"+frmt1+"/1d/15min.json";
+        requestUrlSuffix = "activities/floors/date/"+frmt1+"/1d/1min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getSedentaryMinutes(){
+    public JSONArray getSedentaryMinutes() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -225,24 +232,13 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getSedentaryMinutesSeries(){
-        calndr.setTime(enDate);
-        calndr.add(calndr.YEAR, -1);
-        baseDate = calndr.getTime();
-        frmt1 = String.format("%tF", enDate);
-        frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/minutesSedentary/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        service.signRequest(accessToken, request);
-        response = request.send();
-        return response.getBody();
-    }
-
-    public String getActiveMinutes(){
+    
+    public JSONArray getActiveMinutes() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -252,23 +248,12 @@ public class RealAPI implements API
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
-
-    public String getActiveMinutesSeries(){
-        calndr.setTime(enDate);
-        calndr.add(calndr.YEAR, -1);
-        baseDate = calndr.getTime();
-        frmt1 = String.format("%tF", enDate);
-        frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        return response.getBody();
-    }
-
-    public String getDistance(){
+    
+    public JSONArray getDistance() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -278,28 +263,41 @@ public class RealAPI implements API
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getDistanceSeries(){
-        calndr.setTime(enDate);
-        calndr.add(calndr.YEAR, -1);
-        baseDate = calndr.getTime();
+    public JSONArray getDistanceSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
+        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/1min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
+    }
+    
+    public JSONArray getHeartRateSeries() throws JSONException{
+        frmt1 = String.format("%tF", enDate);
+        requestUrlSuffix = "activities/heart/date/"+frmt1+"/1d/1min.json";
+        requestUrl = requestUrlPrefix + requestUrlSuffix;
+        request = new OAuthRequest(Verb.GET, requestUrl, service);
+        response = request.send();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
-    public String getLifeTime(){
+    public JSONArray getLifeTime() throws JSONException{
         requestUrlSuffix = "activities.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        return response.getBody();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
     }
 
     
@@ -319,8 +317,8 @@ public class RealAPI implements API
 
     //we still need to save/refresh the tokens
     //so either we add it to each method or have a refresh method
-    public void getResults(){
-        System.out.println();
+    private void refresh(){
+        /*System.out.println();
         System.out.println("HTTP response code: "+response.getCode());
         int statusCode = response.getCode();
         switch(statusCode){
@@ -361,7 +359,7 @@ public class RealAPI implements API
         }
 
         System.out.println("\n\n\n\n");
-
+*/
 
         BufferedWriter bufferedWriter=null;
         //  Save the current accessToken information for next time

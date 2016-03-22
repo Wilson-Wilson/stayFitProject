@@ -1,5 +1,10 @@
 package ca.uwo.csd.cs2212.team12;
 
+import java.util.Date;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 /**
  * An API Stringerface for offline testing of the StayFit application
  *
@@ -14,83 +19,73 @@ public interface API {
      * This method is used to fetch the number of calories burned.
      * @return String This returns the number of calories burned.
      */
-    public String getCalBurned();
+    public JSONArray getCalBurned() throws JSONException;
 
     /**
      * This method is used to fetch the number of active minutes.
-     * @return String This returns the number of active minutes.
+     * @return JSONArray This returns the number of active minutes.
      */
-    public String getActiveMinutes();
+    public JSONArray getActiveMinutes() throws JSONException;
 
     /**
      * This method is used to fetch the number of sedentary minutes.
-     * @return String This returns the number of sedentary minutes.
+     * @return JSONArray This returns the number of sedentary minutes.
      */
-    public  String getSedentaryMinutes();
+    public  JSONArray getSedentaryMinutes() throws JSONException;
 
     /**
      * This method is used to fetch the distance travelled.
-     * @return String This returns the distance travelled.
+     * @return JSONArray This returns the distance travelled.
      */
 
-    public  String getDistance();
+    public  JSONArray getDistance() throws JSONException;
 
     /**
      * This method is used to fetch the number of floors climbed.
-     * @return String This returns the number of floors climbed.
+     * @return JSONArray This returns the number of floors climbed.
      */
     
-    public  String getFloors();
+    public  JSONArray getFloors() throws JSONException;
 
     /**
      * This method is used to fetch the number of steps.
-     * @return String This returns the number of steps.
+     * @return JSONArray This returns the number of steps.
      */
 
-    public  String getSteps();
+    public  JSONArray getSteps() throws JSONException;
 
     /**
      * This method is used to fetch the number of floors climbed in total.
-     * @return String This returns the number of floors climbed in total.
+     * @return JSONArray This returns the number of floors climbed in total.
      */
 
-    public  String getLifeTime();
+    public  JSONArray getLifeTime() throws JSONException;
 
     /**
      * This method is used to fetch the number of steps total.
-     * @return String This returns the number of steps total.
+     * @return JSONArray This returns the number of steps total.
      */
-    public String getCalSeries();
+    public JSONArray getCalSeries() throws JSONException;
 
     /**
      * This method is used to fetch the total distance travelled.
-     * @return String This returns the total distance travelled.
+     * @return JSONArray This returns the total distance travelled.
      */
-    public  String getStepsSeries();
-
-    /**
-     * This method is used to fetch the best number of floors climbed.
-     * @return String This returns the best number of floors climbed.
-     */
-    public  String getSedentaryMinutesSeries();
+    public  JSONArray getStepsSeries() throws JSONException;
 
     /**
      * This method is used to fetch the best number of steps.
-     * @return String This returns the best number of steps.
+     * @return JSONArray This returns the best number of steps.
      */
-    public  String getFloorsSeries();
-
-    /**
-     * This method is used to fetch the best distance travelled.
-     * @return String This returns the best distance travelled.
-     */
-    public  String getActiveMinutesSeries();
+    public  JSONArray getFloorsSeries() throws JSONException;
 
     /**
      * This method is used to fetch the distance series.
-     * @return String This returns the distance series.
+     * @return JSONArray This returns the distance series.
      */
-    public String getDistanceSeries();
-
+    public JSONArray getDistanceSeries() throws JSONException;
+    
+    
+    public JSONArray getHeartRateSeries() throws JSONException;
 
 }
