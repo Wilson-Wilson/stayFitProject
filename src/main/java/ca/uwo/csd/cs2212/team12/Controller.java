@@ -33,6 +33,7 @@ public class Controller implements Serializable{
 	private static final String TIMESERIES= "timeseries.boop";
 	private static final String USERINFO= "userinfo.boop";
 	private static final String PREFERENCES= "preferences.boop";
+	private static final String GOALS="goaldict.boop";
 	  
 	
 	
@@ -602,5 +603,38 @@ public class Controller implements Serializable{
      	}
      return null;
    }
+   
+   private static void storeGoals(GoalDict goals){
+	     try{
+	       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(GOALS));
+	       out.writeObject(goals);
+	       out.close();
+	         } catch(IOException e){
+	             System.out.println("Goals could not be saved to disk. IO error occured.");
+	             e.printStackTrace();
+	           }
+
+	     }
+
+	   /**
+	    * This method loads serialized objects from a file
+	    */
+	   private static GoalDict loadGoals(){
+	     try{
+	       ObjectInputStream in= new ObjectInputStream( new FileInputStream(GOALS));
+	       GoalDict goals= (GoalDict) in.readObject();
+
+	       in.close();
+	       return goals;
+	         } catch (IOException e){
+	             System.out.println("TimeSeriesData could not be loaded from disk. IO error occured.");
+	             e.printStackTrace();
+	           }
+	     	catch (ClassNotFoundException e){
+	     		System.out.println("Class could not be Found!");
+	             e.printStackTrace();
+	     	}
+	     return null;
+	   }
 
 }
