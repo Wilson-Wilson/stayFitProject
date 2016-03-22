@@ -1,123 +1,4 @@
 package ca.uwo.csd.cs2212.team12;
-<<<<<<< HEAD
-
-/**
- * An API for offline real use of the StayFit application
- *
- * @author  Team 12
- * @version 1.0
- * @since   2016-02-27
- */
-
-//<dependency>
-//<groupId>org.json</groupId>
-//<artifactId>json</artifactId>
-//<version>20090211</version>
-//</dependency>
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class RealAPI implements API {
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * This method is used to fetch the number of calories burned.
-     * @return int This returns the number of calories burned.
-     */
-    public  int getCalBurned() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the number of active minutes.
-     * @return int This returns the number of active minutes.
-     */
-    public  int getActiveMinutes() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the number of sedentary minutes.
-     * @return int This returns the number of sedentary minutes.
-     */
-    public  int getSedentaryMinutes() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the distance travelled.
-     * @return int This returns the distance travelled.
-     */
-    public  int getDistance() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the number of floors climbed.
-     * @return int This returns the number of floors climbed.
-     */
-    public  int getFloors() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the number of steps.
-     * @return int This returns the number of steps.
-     */
-    public  int getSteps() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the number of floors climbed in total.
-     * @return int This returns the number of floors climbed in total.
-     */
-    public  int getLifeTimeFloors() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the number of steps total.
-     * @return int This returns the number of steps total.
-     */
-    public  int getLifetimeSteps() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the total distance travelled.
-     * @return int This returns the total distance travelled.
-     */
-    public  int getLifetimeDistance() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the best number of floors climbed.
-     * @return int This returns the best number of floors climbed.
-     */
-    public  int getBestFloors() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the best number of steps.
-     * @return int This returns the best number of steps.
-     */
-    public  int getBestSteps() {return 0;
-    }
-
-    /**
-     * This method is used to fetch the best distance travelled.
-     * @return int This returns the best distance travelled.
-     */
-    public  int getBestDistance() {return 0;
-    }
-
-    /**
-     * This method searches the JSON object for the required value.
-     * @param dat The value required from the JSON object
-     * @return int The integer requested.
-     */
-    private int getDat(String dat) {
-        return 0;
-    }
-}
-=======
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -144,7 +25,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RealAPI
+public class RealAPI implements API
 {
     private static String CALL_BACK_URI="http://localhost:8080";
     private static int CALL_BACK_PORT=8080;
@@ -181,7 +62,10 @@ public class RealAPI
     FitbitOAuth20ServiceImpl service;
     OAuth2AccessToken accessToken;
 
-
+    /**
+     * Constructs a class to make API calls to the FitBit server based on the date
+     * @param thedate decides the end date for all API calls made
+     */
     public RealAPI(Date thedate)
     {
         enDate = thedate;
@@ -189,7 +73,7 @@ public class RealAPI
 
         try {
             // File with service credentials.
-            FileReader fileReader = new FileReader("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Credentials.txt");
+            FileReader fileReader = new FileReader("src/main/resources/Team12Credentials.txt");
 
             bufferedReader = new BufferedReader(fileReader);
             clientID= bufferedReader.readLine();
@@ -197,7 +81,7 @@ public class RealAPI
             apiSecret = bufferedReader.readLine();
             bufferedReader.close();
 
-            fileReader = new FileReader("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Tokens.txt");
+            fileReader = new FileReader("src/main/resources/Team12Tokens.txt");
             bufferedReader = new BufferedReader(fileReader);
             accessTokenItself = bufferedReader.readLine();
             tokenType = bufferedReader.readLine();
@@ -245,8 +129,12 @@ public class RealAPI
                 rawResponse);
     }
 
-
-    public int getCalBurned(){
+    
+    /**
+     * This method is used to fetch the number of calories burned.
+     * @return String This returns the number of calories burned.
+     */
+    public String getCalBurned(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -257,11 +145,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
-        //probly have to change the return type for all these methods seeing as we're getting a year's woth of data and not just a day's
+        return response.getBody();
     }
-
-    public int getCalSeries(){
+    
+    /**
+     * This method is used to fetch the number of calories burned in a time series format.
+     * @return String This returns the number of calories burned.
+     */
+    public String getCalSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -272,10 +163,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getSteps(){
+    /**
+     * This method is used to fetch the number of steps.
+     * @return String This returns the number of steps.
+     */
+    public String getSteps(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -286,10 +181,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getStepsSeries(){
+    /**
+     * This method is used to fetch the number of steps in a time series format.
+     * @return String This returns the number of steps.
+     */
+    public String getStepsSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -300,10 +199,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getFloors(){
+    /**
+     * This method is used to fetch the number of floors climbed.
+     * @return String This returns the number of floors climbed.
+     */
+    public String getFloors(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -314,10 +217,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getFloorsSeries(){
+    /**
+     * This method is used to fetch the number of floors climbed in a time series format.
+     * @return String This returns the number of floors climbed.
+     */
+    public String getFloorsSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -328,10 +235,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getSedentaryMinutes(){
+    /**
+     * This method is used to fetch the best number of sedentary minutes.
+     * @return String This returns the best number of floors climbed.
+     */
+    public String getSedentaryMinutes(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -342,10 +253,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getSedentaryMinutesSeries(){
+    /**
+     * This method is used to fetch the best number of sedentary minutes in a time series format.
+     * @return String This returns the best number of floors climbed.
+     */
+    public String getSedentaryMinutesSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -356,10 +271,14 @@ public class RealAPI
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getActiveMinutesMins(){
+    /**
+     * This method is used to fetch the number of active minutes.
+     * @return String This returns the number of active minutes.
+     */
+    public String getActiveMinutes(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -369,10 +288,14 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getActiveMinutesSeries(){
+    /**
+     * This method is used to fetch the number of active minutes in a time series format.
+     * @return String This returns the number of active minutes.
+     */
+    public String getActiveMinutesSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -382,10 +305,14 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getDistance(){
+    /**
+     * This method is used to fetch the distance travelled.
+     * @return String This returns the distance travelled.
+     */
+    public String getDistance(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -395,10 +322,14 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getDistanceSeries(){
+    /**
+     * This method is used to fetch the distance travelled in a time series format.
+     * @return String This returns the distance travelled.
+     */
+    public String getDistanceSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -408,74 +339,24 @@ public class RealAPI
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getLifetimeCal(){
+    /**
+     * This method is used to fetch the total number of the user's collective data.
+     * @return String This returns the number of steps total.
+     */
+    public String getLifeTime(){
         requestUrlSuffix = "activities.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        //return getDat("");
+        return response.getBody();
     }
 
-    public int getLifetimeDistance(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
+    
 
-    public int getLifetimeSteps(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getLifeTimeFloors(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestCal(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestDistance(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestSteps(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    public int getBestFloors(){
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        //return getDat("");
-    }
-
-    private  int getDat(String dat) {
+    /*private  int getDat(String dat) {
         int integerData = 0;
         try {
             String jsonStr = response.getBody();
@@ -486,8 +367,10 @@ public class RealAPI
             e.printStackTrace();
         }
         return integerData; //needs to return an array probably
-    }
+    }*/
 
+    //we still need to save/refresh the tokens
+    //so either we add it to each method or have a refresh method
     public void getResults(){
         System.out.println();
         System.out.println("HTTP response code: "+response.getCode());
@@ -540,7 +423,7 @@ public class RealAPI
 
         try {
             FileWriter fileWriter;
-            fileWriter = new FileWriter("C:/Users/Wilson/courses/cs2212/labs/jwils269/BATut/src/main/resources/Team12Tokens.txt");
+            fileWriter = new FileWriter("src/main/resources/Team12Tokens.txt");
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(accessToken.getToken());
             bufferedWriter.newLine();
@@ -571,7 +454,5 @@ public class RealAPI
         }
 
     }
-
 }
 
->>>>>>> feature/W162212T12-64-setup-basic-api-acceess

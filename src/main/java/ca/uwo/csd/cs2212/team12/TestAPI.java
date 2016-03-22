@@ -25,75 +25,78 @@ public class TestAPI implements API {
 
     /**
      * This method is used to fetch the number of calories burned.
-     * @return int This returns the number of calories burned.
+     * @return String This returns the number of calories burned.
      */
-    public  int getCalBurned() {return getDat("calories");}
+    public  String getCalBurned() {return new Integer(getDat("calories")).toString();}
 
     /**
      * This method is used to fetch the number of active minutes.
-     * @return int This returns the number of active minutes.
+     * @return String This returns the number of active minutes.
      */
-    public  int getActiveMinutes() {return getDat("activeMinutes");}
+    public  String getActiveMinutes() {return new Integer(getDat("activeMinutes")).toString();}
 
     /**
      * This method is used to fetch the number of sedentary minutes.
-     * @return int This returns the number of sedentary minutes.
+     * @return String This returns the number of sedentary minutes.
      */
-    public  int getSedentaryMinutes() {return getDat("sedentaryMinutes");}
+    public  String getSedentaryMinutes() {return new Integer(getDat("sedentaryMinutes")).toString();}
 
     /**
      * This method is used to fetch the distance travelled.
-     * @return int This returns the distance travelled.
+     * @return String This returns the distance travelled.
      */
-    public  int getDistance() {return getDat("distance");}
+    public  String getDistance() {return new Integer(getDat("distance")).toString();}
 
     /**
      * This method is used to fetch the number of floors climbed.
-     * @return int This returns the number of floors climbed.
+     * @return String This returns the number of floors climbed.
      */
-    public  int getFloors() {return getDat("floors");}
+    public  String getFloors() {return new Integer(getDat("floors")).toString();}
 
     /**
      * This method is used to fetch the number of steps.
-     * @return int This returns the number of steps.
+     * @return String This returns the number of steps.
      */
-    public  int getSteps() {return getDat("steps");}
+    public  String getSteps() {return new Integer(getDat("steps")).toString();}
 
     /**
      * This method is used to fetch the number of floors climbed in total.
-     * @return int This returns the number of floors climbed in total.
+     * @return String This returns the number of floors climbed in total.
      */
-    public  int getLifeTimeFloors() {return getDat("lifetimeFloors");}
+    public  String getLifeTimeFloors() {return new Integer(getDat("lifetimeFloors")).toString();}
 
     /**
      * This method is used to fetch the number of steps total.
-     * @return int This returns the number of steps total.
+     * @return String This returns the number of steps total.
      */
-    public  int getLifetimeSteps() {return getDat("lifetimeSteps");}
+    public  String getLifetimeSteps() {return new Integer(getDat("lifetimeSteps")).toString();}
 
     /**
      * This method is used to fetch the total distance travelled.
-     * @return int This returns the total distance travelled.
+     * @return String This returns the total distance travelled.
      */
-    public  int getLifetimeDistance() {return getDat("lifetimeDistance");}
+    public  String getLifetimeDistance() {return new Integer(getDat("lifetimeDistance")).toString();}
 
     /**
      * This method is used to fetch the best number of floors climbed.
-     * @return int This returns the best number of floors climbed.
+     * @return String This returns the best number of floors climbed.
      */
-    public  int getBestFloors() {return getDat("bestFloors");}
+    public  String getBestFloors() {return new Integer(getDat("bestFloors")).toString();}
 
     /**
      * This method is used to fetch the best number of steps.
-     * @return int This returns the best number of steps.
+     * @return String This returns the best number of steps.
      */
-    public  int getBestSteps() {return getDat("bestSteps");}
+    public  String getBestSteps() {return new Integer(getDat("bestSteps")).toString();}
 
     /**
      * This method is used to fetch the best distance travelled.
-     * @return int This returns the best distance travelled.
+     * @return String This returns the best distance travelled.
      */
-    public  int getBestDistance() {return getDat("bestDistance");}
+    public  String getBestDistance() {return new Integer(getDat("bestDistance")).toString();}
+    
+    //for the sake of the interface
+    public String getLifeTime(){return null;}
 
     /**
      * This method searches the JSON object for the required value.
