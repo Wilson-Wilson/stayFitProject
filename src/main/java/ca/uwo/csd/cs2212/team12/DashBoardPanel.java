@@ -29,13 +29,10 @@ public class DashBoardPanel extends JPanel {
     final JButton lifetimeButton = new JButton("");
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
-    
-    
+
 	final Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
     static Date date= new Date();
-    
-    
-    
+
     String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
     final JLabel lblNewLabel_3 = new JLabel(dateString);
 

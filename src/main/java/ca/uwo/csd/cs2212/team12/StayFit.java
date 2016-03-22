@@ -27,7 +27,7 @@ public class StayFit {
                     if(isTest)  api= new TestAPI();
                     else        api= new RealAPI(thedate);
                     Controller controller;
-                    MWindow window = new MWindow(api);
+                    MWindow window = new MWindow();
                     window.frame.setSize(1000,600);
                     window.frame.setVisible(true);
                 } catch (Exception e) {
