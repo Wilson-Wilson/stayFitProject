@@ -62,10 +62,7 @@ public class RealAPI implements API
     FitbitOAuth20ServiceImpl service;
     OAuth2AccessToken accessToken;
 
-    /**
-     * Constructs a class to make API calls to the FitBit server based on the date
-     * @param thedate decides the end date for all API calls made
-     */
+
     public RealAPI(Date thedate)
     {
         enDate = thedate;
@@ -128,7 +125,6 @@ public class RealAPI implements API
                 expiresIn,
                 rawResponse);
     }
-
     
     /**
      * This method is used to fetch the number of calories burned.
@@ -147,11 +143,7 @@ public class RealAPI implements API
         response = request.send();
         return response.getBody();
     }
-    
-    /**
-     * This method is used to fetch the number of calories burned in a time series format.
-     * @return String This returns the number of calories burned.
-     */
+
     public String getCalSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -166,10 +158,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the number of steps.
-     * @return String This returns the number of steps.
-     */
     public String getSteps(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -184,10 +172,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the number of steps in a time series format.
-     * @return String This returns the number of steps.
-     */
     public String getStepsSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -202,10 +186,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the number of floors climbed.
-     * @return String This returns the number of floors climbed.
-     */
     public String getFloors(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -220,10 +200,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the number of floors climbed in a time series format.
-     * @return String This returns the number of floors climbed.
-     */
     public String getFloorsSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -238,10 +214,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the best number of sedentary minutes.
-     * @return String This returns the best number of floors climbed.
-     */
     public String getSedentaryMinutes(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -256,10 +228,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the best number of sedentary minutes in a time series format.
-     * @return String This returns the best number of floors climbed.
-     */
     public String getSedentaryMinutesSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -274,10 +242,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the number of active minutes.
-     * @return String This returns the number of active minutes.
-     */
     public String getActiveMinutes(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -291,10 +255,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the number of active minutes in a time series format.
-     * @return String This returns the number of active minutes.
-     */
     public String getActiveMinutesSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -308,10 +268,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the distance travelled.
-     * @return String This returns the distance travelled.
-     */
     public String getDistance(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -325,10 +281,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the distance travelled in a time series format.
-     * @return String This returns the distance travelled.
-     */
     public String getDistanceSeries(){
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
@@ -342,10 +294,6 @@ public class RealAPI implements API
         return response.getBody();
     }
 
-    /**
-     * This method is used to fetch the total number of the user's collective data.
-     * @return String This returns the number of steps total.
-     */
     public String getLifeTime(){
         requestUrlSuffix = "activities.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;

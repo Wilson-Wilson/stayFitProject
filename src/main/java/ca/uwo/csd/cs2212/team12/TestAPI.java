@@ -1,5 +1,6 @@
 package ca.uwo.csd.cs2212.team12;
-
+import org.json.JSONObject;
+import org.json.JSONArray;
 /**
  * An API for offline testing of the StayFit application
  *
@@ -8,20 +9,7 @@ package ca.uwo.csd.cs2212.team12;
  * @since   2016-02-27
  */
 
-//<dependency>
-//<groupId>org.json</groupId>
-//<artifactId>json</artifactId>
-//<version>20090211</version>
-//</dependency>
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class TestAPI implements API {
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * This method is used to fetch the number of calories burned.
@@ -115,4 +103,5 @@ public class TestAPI implements API {
         }
         return integerData;
     }
+
 }
