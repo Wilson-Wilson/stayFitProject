@@ -1172,6 +1172,12 @@ public class DashBoardPanel extends JPanel {
 
     }
     
+    /**
+     * A method to move the global date backward one day
+     * @param date
+     * @return
+     */
+    
     public static Date subtractDay(Date date) {
 
         Calendar cal = Calendar.getInstance();
@@ -1180,6 +1186,12 @@ public class DashBoardPanel extends JPanel {
         return cal.getTime();
     }
     
+    /**
+     * A method to move the global date forward by one day
+     * @param date
+     * @return
+     */
+    
     public static Date addDay(Date date) {
 
         Calendar cal = Calendar.getInstance();
@@ -1187,7 +1199,11 @@ public class DashBoardPanel extends JPanel {
         cal.add(Calendar.DAY_OF_MONTH, +1);
         return cal.getTime();
     }
-
+    
+    
+    /**
+     * A method to check the Preferences object for card show/hide booleans upon load of dashboard
+     */
     public void checkPref(){
     	if(!Preferences.showCaloriesCard){
     		cardPanel.getComponent(0).setVisible(false);

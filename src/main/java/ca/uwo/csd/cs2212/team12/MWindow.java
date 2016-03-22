@@ -19,18 +19,18 @@ public class MWindow {
     public JFrame frame;
 
     //Make sure to have these initialized with the right icon
-    ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
-    ImageIcon caloriesIcon = new ImageIcon("src/main/resources/FireIcon2.png");
-    ImageIcon minutesIcon = new ImageIcon("src/main/resources/TimeIcon2.png");
-    ImageIcon movementIcon = new ImageIcon("src/main/resources/RunningIcon2.png");
-    ImageIcon lifetimeIcon = new ImageIcon("src/main/resources/StarIcon2.png");
-    ImageIcon timeseriesIcon = new ImageIcon("src/main/resources/BarGraphIcon2.png");
-    ImageIcon bestdayIcon = new ImageIcon("src/main/resources/BlueStarIcon2.png");
-    ImageIcon exitIcon = new ImageIcon("src/main/resources/closebutton2.png");
-    ImageIcon rightarrowIcon = new ImageIcon("src/main/resources/rightArrow2.png");
-    ImageIcon leftarrowIcon = new ImageIcon("src/main/resources/leftArrow2.png");
-    ImageIcon trophyIcon = new ImageIcon("src/main/resources/Trophy.png");
-    ImageIcon cardIcon =new ImageIcon("src/main/resources/dash.png");
+    ImageIcon backImage = ImageClass.getBackImage();
+    ImageIcon caloriesIcon = ImageClass.getCaloriesIcon();
+    ImageIcon minutesIcon = ImageClass.getMinutesIcon();
+    ImageIcon movementIcon = ImageClass.getMovementIcon();
+    ImageIcon lifetimeIcon = ImageClass.getLifetimeIcon();
+    ImageIcon timeseriesIcon = ImageClass.getTimeseriesIcon();
+    ImageIcon bestdayIcon = ImageClass.getBestdayIcon();
+    ImageIcon exitIcon = ImageClass.getExitIcon();
+    ImageIcon rightarrowIcon = ImageClass.getRightarrowIcon();
+    ImageIcon leftarrowIcon = ImageClass.getLeftarrowIcon();
+    ImageIcon trophyIcon = ImageClass.getTrophyIcon();
+    ImageIcon cardIcon =ImageClass.getCardIcon();
 
 
 
@@ -60,7 +60,6 @@ public class MWindow {
         panel_3.setOpaque(false);
         frame.getContentPane().add(panel_3, "3");
         panel_3.setLayout(cl);
-        //panel_1.setBackground(Color.RED);
 
 
 
