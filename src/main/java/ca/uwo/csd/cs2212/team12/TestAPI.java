@@ -1,5 +1,8 @@
 package ca.uwo.csd.cs2212.team12;
 import org.json.JSONObject;
+
+import java.util.Date;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 /**
@@ -16,76 +19,76 @@ public class TestAPI implements API {
      * This method is used to fetch the number of calories burned.
      * @return String This returns the number of calories burned.
      */
-    public  String getCalBurned() {return new Integer(getDat("calories")).toString();}
+    public  JSONArray getCalBurned() throws JSONException {return new JSONArray(new Integer(getDat("calories")).toString());}
 
     /**
      * This method is used to fetch the number of active minutes.
-     * @return String This returns the number of active minutes.
+     * @return JSONArray This returns the number of active minutes.
      */
-    public  String getActiveMinutes() {return new Integer(getDat("activeMinutes")).toString();}
+    public  JSONArray getActiveMinutes() throws JSONException {return new JSONArray(new Integer(getDat("activeMinutes")).toString());}
 
     /**
      * This method is used to fetch the number of sedentary minutes.
      * @return String This returns the number of sedentary minutes.
      */
-    public  String getSedentaryMinutes() {return new Integer(getDat("sedentaryMinutes")).toString();}
+    public  JSONArray getSedentaryMinutes() throws JSONException {return new JSONArray(new Integer(getDat("sedentaryMinutes")).toString());}
 
     /**
      * This method is used to fetch the distance travelled.
-     * @return String This returns the distance travelled.
+     * @return JSONArray This returns the distance travelled.
      */
-    public  String getDistance() {return new Integer(getDat("distance")).toString();}
+    public  JSONArray getDistance() throws JSONException {return new JSONArray(new Integer(getDat("distance")).toString());}
 
     /**
      * This method is used to fetch the number of floors climbed.
-     * @return String This returns the number of floors climbed.
+     * @return JSONArray This returns the number of floors climbed.
      */
-    public  String getFloors() {return new Integer(getDat("floors")).toString();}
+    public  JSONArray getFloors() throws JSONException {return new JSONArray(new Integer(getDat("floors")).toString());}
 
     /**
      * This method is used to fetch the number of steps.
-     * @return String This returns the number of steps.
+     * @return JSONArray This returns the number of steps.
      */
-    public  String getSteps() {return new Integer(getDat("steps")).toString();}
+    public  JSONArray getSteps() throws JSONException {return new JSONArray(new Integer(getDat("steps")).toString());}
 
     /**
      * This method is used to fetch the number of floors climbed in total.
-     * @return String This returns the number of floors climbed in total.
+     * @return JSONArray This returns the number of floors climbed in total.
      */
-    public  String getLifeTimeFloors() {return new Integer(getDat("lifetimeFloors")).toString();}
+    public  JSONArray getLifeTimeFloors() throws JSONException {return new JSONArray(new Integer(getDat("lifetimeFloors")).toString());}
 
     /**
      * This method is used to fetch the number of steps total.
      * @return String This returns the number of steps total.
      */
-    public  String getLifetimeSteps() {return new Integer(getDat("lifetimeSteps")).toString();}
+    public  JSONArray getLifetimeSteps() throws JSONException {return new JSONArray(new Integer(getDat("lifetimeSteps")).toString());}
 
     /**
      * This method is used to fetch the total distance travelled.
-     * @return String This returns the total distance travelled.
+     * @return JSONArray This returns the total distance travelled.
      */
-    public  String getLifetimeDistance() {return new Integer(getDat("lifetimeDistance")).toString();}
+    public  JSONArray getLifetimeDistance() throws JSONException {return new JSONArray(new Integer(getDat("lifetimeDistance")).toString());}
 
     /**
      * This method is used to fetch the best number of floors climbed.
-     * @return String This returns the best number of floors climbed.
+     * @return JSONArray This returns the best number of floors climbed.
      */
-    public  String getBestFloors() {return new Integer(getDat("bestFloors")).toString();}
+    public  JSONArray getBestFloors() throws JSONException {return new JSONArray(new Integer(getDat("bestFloors")).toString());}
 
     /**
      * This method is used to fetch the best number of steps.
-     * @return String This returns the best number of steps.
+     * @return JSONArray This returns the best number of steps.
      */
-    public  String getBestSteps() {return new Integer(getDat("bestSteps")).toString();}
+    public  JSONArray getBestSteps() throws JSONException {return new JSONArray(new Integer(getDat("bestSteps")).toString());}
 
     /**
      * This method is used to fetch the best distance travelled.
      * @return String This returns the best distance travelled.
      */
-    public  String getBestDistance() {return new Integer(getDat("bestDistance")).toString();}
+    public  JSONArray getBestDistance() throws JSONException {return new JSONArray(new Integer(getDat("bestDistance")).toString());}
     
     //for the sake of the interface
-    public String getLifeTime(){return null;}
+    public JSONArray getLifeTime() throws JSONException{return null;}
 
     /**
      * This method searches the JSON object for the required value.
@@ -105,34 +108,30 @@ public class TestAPI implements API {
         return integerData;
     }
 
-	public String getCalSeries() {
+    public JSONArray getDistanceSeries() throws JSONException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String getStepsSeries() {
+    public JSONArray getStepsSeries() throws JSONException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String getSedentaryMinutesSeries() {
+    public JSONArray getCalSeries() throws JSONException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String getFloorsSeries() {
+    public JSONArray getFloorsSeries() throws JSONException{
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
+    public JSONArray getHeartRateSeries() throws JSONException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String getActiveMinutesSeries() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getDistanceSeries() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    
 }
