@@ -9,10 +9,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Controller.java handles all of the back-end logic between the local data, user interface and api classes.
@@ -56,8 +59,10 @@ public class Controller implements Serializable{
 	 * If there is no internet connection available and the new date is out of range, then the view will not update.
 	 * @param newer String representing the newly selected date.
 	 * @param older String representing the current date.
+	 * @throws JSONException 
+	 * @throws ParseException 
 	 */
-	public void changeDate(String newer, String older){
+	public void changeDate(String newer, String older) throws JSONException, ParseException{
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate newDate = LocalDate.parse(newer, formatter);
@@ -125,8 +130,10 @@ public class Controller implements Serializable{
 	 * they will be filled with 0 values instead.
 	 * 
 	 * @throws IOException
+	 * @throws ParseException 
+	 * @throws JSONException 
 	 */
-	public static void onStartUp() throws IOException{
+	public static void onStartUp() throws IOException, ParseException, JSONException{
 		
 		
 		File d = new File("../preferences.boop");
@@ -136,22 +143,34 @@ public class Controller implements Serializable{
 		else{
 			thePreferences = new Preferences();
 		}
+		//Include goals from session restore
 		
 		LocalDate now = LocalDate.now();
-		LocalDate back = now.minusDays(365);
 		String curDate = now.toString();
-		String earlyDate = back.toString();
 		
 		if(testInet()){
-			//pass in curDate and earlyDate to datadict data API requests
-			//pass in curDate for timeseries data request
-			//pass in cur date for userinfo data request
 			
-			//theDictionary = new Dictionary (returned JSONArrays)
-			//theTimeSeries = new TimeSeriesData (JSONarrays)
-			//theUserInfo = new UserInfo(JSONObject, JSONarray)
+			theAPI = new RealAPI(curDate);
 			
-			// goals
+			JSONArray timeCal = theAPI.getCalSeries();
+			JSONArray timeSteps = theAPI.getStepsSeries();
+			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
+			JSONArray timeDistance = theAPI.getCalSeries();
+			JSONArray timeFloors = theAPI.getFloorsSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors);
+			
+			JSONArray lifeStats = theAPI.getLifeTime();
+			theUserInfo = new UserInfo(lifeStats);
+			
+			JSONArray dictCal = theAPI.getCalBurned();
+			JSONArray dictDist = theAPI.getDistance();
+			JSONArray dictFloors = theAPI.getFloors();
+			JSONArray dictSteps = theAPI.getSteps();
+			JSONArray dictActive = theAPI.getActiveMinutes();
+			JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
+			
+			//Include goals from API
 		}
 		else{
 			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
@@ -165,6 +184,7 @@ public class Controller implements Serializable{
 				//this.theDictionary = new Dictionary (fake Json arrays)
 				//this.theTimeSeries = new TimeSeriesData (fake Json arrays)
 				//theUserInfo = new UserInfo (fake shit)
+				//Include goals
 			}				
 		}
 		
@@ -185,7 +205,6 @@ public class Controller implements Serializable{
 		storeTimeSeries(theTimeSeries);
 		storePreferences(thePreferences);
 		//store methods for goals
-		
 	}
 	 
 	/**

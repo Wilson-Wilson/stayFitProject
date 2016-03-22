@@ -8,11 +8,11 @@ import org.json.JSONException;
  */
 public class TimeSeriesData {
 	
-	private static int [] caloriesSet;
-	private static int [] stepsSet;
-	private static int [] heartRateSet;
-	private static int [] distanceSet;
-	private static int [] floorsSet;
+	private static DataPoint [] caloriesSet;
+	private static DataPoint [] stepsSet;
+	private static DataPoint [] heartRateSet;
+	private static DataPoint [] distanceSet;
+	private static DataPoint [] floorsSet;
 	
 	private static final long serialVersionUID= 1L;
 	
@@ -28,19 +28,19 @@ public class TimeSeriesData {
 	 * @throws JSONException
 	 */
 	public TimeSeriesData(JSONArray calData, JSONArray stepsData, JSONArray heartRateData, JSONArray distanceData, JSONArray floorsData) throws JSONException{
-		this.caloriesSet = new int [1440];
-		this.stepsSet = new int [1440]; 
-		this.heartRateSet = new int [1440]; 
-		this.distanceSet = new int [1440];
-		this.floorsSet = new int [1440]; 
-		int addCal, addSteps, addHeartRate, addDistance, addFloors;
+		this.caloriesSet = new DataPoint [1440];
+		this.stepsSet = new DataPoint [1440]; 
+		this.heartRateSet = new DataPoint [1440]; 
+		this.distanceSet = new DataPoint [1440];
+		this.floorsSet = new DataPoint [1440]; 
+		DataPoint addCal, addSteps, addHeartRate, addDistance, addFloors;
 		
 		for(int i=0; i < 1440; i++){
-			addCal = calData.getJSONObject(i).getInt("value");
-			addSteps = stepsData.getJSONObject(i).getInt("value");
-			addHeartRate = heartRateData.getJSONArray(1).getJSONArray(0).getJSONObject(i).getInt("value");
-			addDistance = distanceData.getJSONObject(i).getInt("value");
-			addFloors = floorsData.getJSONObject(i).getInt("value");
+			addCal = new DataPoint (calData.getJSONArray(1).getJSONArray(1).getJSONObject(i));
+			addSteps = new DataPoint (stepsData.getJSONArray(1).getJSONArray(1).getJSONObject(i));
+			addHeartRate = new DataPoint(heartRateData.getJSONArray(1).getJSONArray(0).getJSONObject(i));
+			addDistance = new DataPoint (distanceData.getJSONArray(1).getJSONArray(1).getJSONObject(i));
+			addFloors = new DataPoint (floorsData.getJSONArray(1).getJSONArray(1).getJSONObject(i));
 			
 			caloriesSet[i] = addCal;
 			stepsSet[i] = addSteps;
@@ -52,41 +52,41 @@ public class TimeSeriesData {
 	
 	/**
 	 * Returns the attribute caloriesSet
-	 * @return static int [] variable caloriesSet
+	 * @return static DataPoint [] variable caloriesSet
 	 */
-	public static int[] getCaloriesSet(){
+	public static DataPoint[] getCaloriesSet(){
 		return caloriesSet;
 	}
 	
 	/**
 	 * Returns the attribute stepsSet
-	 * @return static int [] variable stepsSet
+	 * @return static DataPoint [] variable stepsSet
 	 */
-	public static int[] getStepsSet(){
+	public static DataPoint[] getStepsSet(){
 		return stepsSet;
 	}
 	
 	/**
 	 * Returns the attribute heartRateSet
-	 * @return static int [] variable heartRateSet
+	 * @return static DataPoint [] variable heartRateSet
 	 */
-	public static int[] getHeartRateSet(){
+	public static DataPoint[] getHeartRateSet(){
 		return heartRateSet;
 	}
 	
 	/**
 	 * Returns the attribute distanceSet
-	 * @return static int [] variable distanceSet
+	 * @return static DataPoint [] variable distanceSet
 	 */
-	public static int[] getDistanceSet(){
+	public static DataPoint[] getDistanceSet(){
 		return distanceSet;
 	}
 	
 	/**
 	 * Returns the attribute floorsSet
-	 * @return static int [] variable floorsSet
+	 * @return static DataPoint [] variable floorsSet
 	 */
-	public static int[] getFloorsSet(){
+	public static DataPoint[] getFloorsSet(){
 		return floorsSet;
 	}
 
