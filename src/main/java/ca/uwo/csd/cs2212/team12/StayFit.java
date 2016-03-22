@@ -16,17 +16,16 @@ public class StayFit {
 
         final boolean isTest = (args.length!=0 && args[0].equals("test"));
         UserInfo uInfo= new UserInfo();
-
-
+        
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
                 try {
                     API api;
-                    Date thedate = null;
+                    Date date = new Date();
                     if(isTest)  api= new TestAPI();
-                    else        api= new RealAPI(thedate);
-                    Controller controller;
+                    else        api= new RealAPI(date);
+                    Controller controller = new Controller(api);
                     MWindow window = new MWindow();
                     window.frame.setSize(1000,600);
                     window.frame.setVisible(true);
@@ -36,5 +35,4 @@ public class StayFit {
             }
         });
     }
-
 }
