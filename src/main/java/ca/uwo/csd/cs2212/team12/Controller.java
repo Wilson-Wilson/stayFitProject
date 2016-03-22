@@ -63,26 +63,28 @@ public class Controller implements Serializable{
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
-		if(testInet()){
-			LocalDate earlyDate = newDate.minusDays(365);
-			String back = earlyDate.toString();
+		if(testInet()){	
 			
-			//new API object
-			//timeseries data request to api using curdate
+			theAPI = new RealAPI(newer);
 			JSONArray timeCal = theAPI.getCalSeries();
 			JSONArray timeSteps = theAPI.getStepsSeries();
 			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
 			JSONArray timeDistance = theAPI.getCalSeries();
 			JSONArray timeFloors = theAPI.getFloorsSeries();
-			//theTimeSeries = new TimeSeriesData (JSONarrays)
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors);
 			
 			if (!isWithinRange(newDate)){
-				
-				//pass in newer and back to API requests
-				//theDictionary = new Dictionary (returned JSONArrays)
+				JSONArray dictCal = theAPI.getCalBurned();
+				JSONArray dictDist = theAPI.getDistance();
+				JSONArray dictFloors = theAPI.getFloors();
+				JSONArray dictSteps = theAPI.getSteps();
+				JSONArray dictActive = theAPI.getActiveMinutes();
+				JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+						
+				theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			}
 		}
-			
+		
 		int [] dayValues = getDayData(newDate); 
 		/* 
 		 * UI.setCaloriesVariable(dayValues[0]);
@@ -230,7 +232,6 @@ public class Controller implements Serializable{
 		int i;
 		int [] weekValues = new int[6];
 		
-		//Find the Sunday in the same week as the newer date
 		switch(theDate.getDayOfWeek()){
 			case SUNDAY:	dayObject = theDate;
 							break;
@@ -285,7 +286,6 @@ public class Controller implements Serializable{
 		int [] monthValues = new int[6];
 		int currentMonth = theDate.getMonthValue();
 		
-		//get first day of the month
 		dayObject = theDate.withDayOfMonth(1);
 		dayString = dayObject.toString();
 		

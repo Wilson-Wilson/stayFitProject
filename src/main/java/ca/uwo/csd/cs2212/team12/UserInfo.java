@@ -9,12 +9,15 @@ public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID= 1L;
 
+	private String distanceBestDay;
+	private String floorsBestDay;
+	private String stepsBestDay;
+	private int distanceBestVal;
+	private int floorsBestVal;
+	private int stepsBestVal;
 	private int distanceLife;
 	private int floorsLife;
 	private int stepsLife;
-	private String distanceBest;
-	private String floorsBest;
-	private String stepsBest;
 
 	/**
 	 * Constructor that creates the UserInfo Object that stores information from API calls.
@@ -22,14 +25,18 @@ public class UserInfo implements Serializable {
 	 * @param bestDays The JSONArray containing the user's best days.
 	 * @throws JSONException 
 	 */
-	public UserInfo(JSONObject lifeTotals, JSONArray bestDays) throws JSONException{
+	public UserInfo(JSONArray lifeStats) throws JSONException{
 		
-		this.distanceLife = lifeTotals.getInt("distance");
-		this.floorsLife = lifeTotals.getInt("floors");
-		this.stepsLife = lifeTotals.getInt("steps");;
-		this.distanceBest = bestDays.getJSONObject(1).getString("date");
-		this.floorsBest = bestDays.getJSONObject(2).getString("date");;
-		this.stepsBest = bestDays.getJSONObject(3).getString("date");;
+		this.distanceBestDay = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(1).getString("date");
+		this.floorsBestDay = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(2).getString("date");
+		this.stepsBestDay = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(3).getString("date");
+		this.distanceBestVal = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(1).getInt("value");
+		this.floorsBestVal = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(2).getInt("value");
+		this.stepsBestVal = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(3).getInt("value");
+
+		this.distanceLife = lifeStats.getJSONArray(1).getJSONObject(0).getInt("distance");
+		this.floorsLife = lifeStats.getJSONArray(1).getJSONObject(0).getInt("floors");
+		this.stepsLife = lifeStats.getJSONArray(1).getJSONObject(0).getInt("steps");;
 	}
 
 	/**
@@ -47,27 +54,11 @@ public class UserInfo implements Serializable {
 	}
 
 	/**
-	* This method sets this.distanceLife to distanceLife.
-	* @param distanceLife int The new distanceLife.
-	*/
-	public void setDistanceLife(int distanceLife) {
-		this.distanceLife = distanceLife;
-	}
-
-	/**
 	* This method returns the value of floorsLife.
 	* @return int This returns the value of floorsLife.
 	*/
 	public int getFloorsLife() {
 		return this.floorsLife;
-	}
-
-	/**
-	* This method sets this.floorsLife to floorsLife.
-	* @param floorsLife int The new floorsLife.
-	*/
-	public void setFloorsLife(int floorsLife) {
-		this.floorsLife = floorsLife;
 	}
 
 	/**
@@ -77,37 +68,53 @@ public class UserInfo implements Serializable {
 	public int getStepsLife() {
 		return this.stepsLife;
 	}
-
+	
 	/**
-	* This method sets this.stepsLife to stepsLife.
-	* @param stepsLife int The new stepsLife.
+	* This method returns the value of distanceBestDay.
+	* @return String This returns the value of distanceBestDay.
 	*/
-	public void setStepsLife(int stepsLife) {
-		this.stepsLife = stepsLife;
+	public String getDistanceBestDay(){
+		return this.distanceBestDay;
 	}
 	
 	/**
-	* This method returns the value of distanceBest.
-	* @return String This returns the value of distanceBest.
+	* This method returns the value of floorsBestDay.
+	* @return String This returns the value of floorsBestDay.
 	*/
-	public String getDistanceBest(){
-		return this.distanceBest;
-	}
-	
-	/**
-	* This method returns the value of floorsBest.
-	* @return String This returns the value of floorsBest.
-	*/
-	public String getFloorsBest(){
-		return this.floorsBest;
+	public String getFloorsBestDay(){
+		return this.floorsBestDay;
 	}
 	
 	/**
 	* This method returns the value of stepsBest.
 	* @return String This returns the value of stepsBest.
 	*/
-	public String getStepsBest(){
-		return this.stepsBest;
+	public String getStepsBestDay(){
+		return this.stepsBestDay;
+	}
+	
+	/**
+	* This method returns the value of distanceBestVal.
+	* @return int This returns the value of distanceBestVal.
+	*/
+	public int getDistanceBestVal(){
+		return this.distanceBestVal;
+	}
+
+	/**
+	* This method returns the value of floorsBestVal.
+	* @return int This returns the value of floorsBestVal.
+	*/
+	public int getFloorsBestVal(){
+		return this.floorsBestVal;
+	}
+
+	/**
+	* This method returns the value of stepsBestVal.
+	* @return int This returns the value of stepsBestVal.
+	*/
+	public int getStepsBestVal(){
+		return this.stepsBestVal;
 	}
 
 }
