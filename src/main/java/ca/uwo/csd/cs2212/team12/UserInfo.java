@@ -17,11 +17,12 @@ public class UserInfo implements Serializable {
 	private String stepsBest;
 
 	/**
-	 * Creates the UserInfo Object that stores information from API calls.
-	 * @param pref Preferences the Preference object for the custom dashboard.
+	 * Constructor that creates the UserInfo Object that stores information from API calls.
+	 * @param lifeTotals The JSONObject containing the user's lifetime totals.
+	 * @param bestDays The JSONArray containing the user's best days.
 	 * @throws JSONException 
 	 */
-	public UserInfo(Preferences pref, JSONObject lifeTotals, JSONArray bestDays) throws JSONException{
+	public UserInfo(JSONObject lifeTotals, JSONArray bestDays) throws JSONException{
 		
 		this.distanceLife = lifeTotals.getInt("distance");
 		this.floorsLife = lifeTotals.getInt("floors");
