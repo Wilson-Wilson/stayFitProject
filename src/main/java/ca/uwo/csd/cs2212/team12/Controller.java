@@ -12,6 +12,10 @@ import java.net.Socket;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Controller.java handles all of the back-end logic between the local data, user interface and api classes.
+ * @author Leo
+ */
 public class Controller implements Serializable{
 
 	private static DataDict theDictionary;
