@@ -8,10 +8,6 @@ import org.json.JSONException;
  */
 public class TimeSeriesData {
 	
-	/**
-	 *  each "Set" is an int array with 1440 values, representing each minute within a day
-	 *  serialVersionUTD will be used for serialization purposes
-	 */
 	private static int [] caloriesSet;
 	private static int [] stepsSet;
 	private static int [] heartRateSet;
@@ -19,7 +15,8 @@ public class TimeSeriesData {
 	private static final long serialVersionUID= 1L;
 	
 	/**
-	 * Main Constructor method for TimeSeries Data.
+	 * Main Constructor method for TimeSeries Data. Each set is has 1440 indices, each representing a minute
+	 * in a day.
 	 * @param calData JSONArray of calories data
 	 * @param stepsData JSONArray of steps data
 	 * @param heartRateData JSONArray of heart rate data
