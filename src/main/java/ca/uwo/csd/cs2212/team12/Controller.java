@@ -12,6 +12,8 @@ import java.net.Socket;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.json.JSONArray;
+
 /**
  * Controller.java handles all of the back-end logic between the local data, user interface and api classes.
  * @author Leo
@@ -65,7 +67,13 @@ public class Controller implements Serializable{
 			LocalDate earlyDate = newDate.minusDays(365);
 			String back = earlyDate.toString();
 			
+			//new API object
 			//timeseries data request to api using curdate
+			JSONArray timeCal = theAPI.getCalSeries();
+			JSONArray timeSteps = theAPI.getStepsSeries();
+			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
+			JSONArray timeDistance = theAPI.getCalSeries();
+			JSONArray timeFloors = theAPI.getFloorsSeries();
 			//theTimeSeries = new TimeSeriesData (JSONarrays)
 			
 			if (!isWithinRange(newDate)){
@@ -596,4 +604,3 @@ public class Controller implements Serializable{
    }
 
 }
-
