@@ -1,6 +1,7 @@
 package ca.uwo.csd.cs2212.team12;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONException;
 /**
  * An API for offline testing of the StayFit application
  *
@@ -103,5 +104,35 @@ public class TestAPI implements API {
         }
         return integerData;
     }
+
+	public String getCalSeries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getStepsSeries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getSedentaryMinutesSeries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getFloorsSeries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getActiveMinutesSeries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getDistanceSeries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
