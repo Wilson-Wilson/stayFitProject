@@ -3,7 +3,6 @@ package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class UserInfo implements Serializable {
 

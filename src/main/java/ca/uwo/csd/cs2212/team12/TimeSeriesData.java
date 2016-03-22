@@ -28,11 +28,11 @@ public class TimeSeriesData {
 	 * @throws JSONException
 	 */
 	public TimeSeriesData(JSONArray calData, JSONArray stepsData, JSONArray heartRateData, JSONArray distanceData, JSONArray floorsData) throws JSONException{
-		this.caloriesSet = new DataPoint [1440];
-		this.stepsSet = new DataPoint [1440]; 
-		this.heartRateSet = new DataPoint [1440]; 
-		this.distanceSet = new DataPoint [1440];
-		this.floorsSet = new DataPoint [1440]; 
+		caloriesSet = new DataPoint [1440];
+		stepsSet = new DataPoint [1440]; 
+		heartRateSet = new DataPoint [1440]; 
+		distanceSet = new DataPoint [1440];
+		floorsSet = new DataPoint [1440]; 
 		DataPoint addCal, addSteps, addHeartRate, addDistance, addFloors;
 		
 		for(int i=0; i < 1440; i++){
