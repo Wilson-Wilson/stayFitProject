@@ -1,89 +1,40 @@
 package ca.uwo.csd.cs2212.team12;
 
 import java.io.Serializable;
-import java.io.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID= 1L;
 
-	private String userName;
-	private Preferences userPrefs;
-
-	private int calLife;
 	private int distanceLife;
 	private int floorsLife;
 	private int stepsLife;
-	private int actMinsLife;
-	private int sedMinsLife;
+	private String distanceBest;
+	private String floorsBest;
+	private String stepsBest;
 
 	/**
 	 * Creates the UserInfo Object that stores information from API calls.
-	 * @param name String the name of the user.
 	 * @param pref Preferences the Preference object for the custom dashboard.
-	 * @param cal int the lifetime total for calories.
-	 * @param distance int the lifetime total for distance.
-	 * @param floors the lifetime total for floors.
-	 * @param steps the lifetime total for steps.
-	 * @param actMin the lifetime total for active minutes.
-	 * @param sedMin the lifetime total for sedentary minutes.
+	 * @throws JSONException 
 	 */
-
-	public UserInfo(String name, Preferences pref, int cal, int distance, int floors, int steps, int actMin, int sedMin){
-		userName= name;
-		userPrefs= pref;
-		calLife= cal;
-		distanceLife= distance;
-		floorsLife= floors;
-		stepsLife= steps;
-		actMinsLife= actMin;
-		sedMinsLife= sedMin;
+	public UserInfo(Preferences pref, JSONObject lifeTotals, JSONArray bestDays) throws JSONException{
+		
+		this.distanceLife = lifeTotals.getInt("distance");
+		this.floorsLife = lifeTotals.getInt("floors");
+		this.stepsLife = lifeTotals.getInt("steps");;
+		this.distanceBest = bestDays.getJSONObject(1).getString("date");
+		this.floorsBest = bestDays.getJSONObject(2).getString("date");;
+		this.stepsBest = bestDays.getJSONObject(3).getString("date");;
 	}
 
 	/**
 	 * Constructor for UserInfo without params.
 	 */
 	public UserInfo(){
-		userName= null; //get this and other data from API unless UserInfo is serialized
-		userPrefs= new Preferences();
-		calLife= 0;
-		distanceLife= 0;
-		floorsLife= 0;
-		stepsLife= 0;
-		actMinsLife= 0;
-		sedMinsLife= 0;
-	}
-
-	/**
-	* This method returns the value of userName.
-	* @return String This returns the value of userName.
-	*/
-	public String getUserName() {
-		return userName;
-	}
-
-	/**
-	* This method sets this.userName to userName.
-	* @param userName String The new userName.
-	*/
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	/**
-	* This method returns the value of calLife.
-	* @return int This returns the value of calLife.
-	*/
-	public int getCalLife() {
-		return calLife;
-	}
-
-	/**
-	* This method sets this.calLife to calLife.
-	* @param calLife int The new calLife.
-	*/
-	public void setCalLife(int calLife) {
-		this.calLife = calLife;
 	}
 
 	/**
@@ -91,7 +42,7 @@ public class UserInfo implements Serializable {
 	* @return int This returns the value of distanceLife.
 	*/
 	public int getDistanceLife() {
-		return distanceLife;
+		return this.distanceLife;
 	}
 
 	/**
@@ -107,7 +58,7 @@ public class UserInfo implements Serializable {
 	* @return int This returns the value of floorsLife.
 	*/
 	public int getFloorsLife() {
-		return floorsLife;
+		return this.floorsLife;
 	}
 
 	/**
@@ -123,7 +74,7 @@ public class UserInfo implements Serializable {
 	* @return int This returns the value of stepsLife.
 	*/
 	public int getStepsLife() {
-		return stepsLife;
+		return this.stepsLife;
 	}
 
 	/**
@@ -133,37 +84,29 @@ public class UserInfo implements Serializable {
 	public void setStepsLife(int stepsLife) {
 		this.stepsLife = stepsLife;
 	}
-
+	
 	/**
-	* This method returns the value of actMinsLife.
-	* @return int This returns the value of actMinsLife.
+	* This method returns the value of distanceBest.
+	* @return String This returns the value of distanceBest.
 	*/
-	public int getActMinsLife() {
-		return actMinsLife;
+	public String getDistanceBest(){
+		return this.distanceBest;
 	}
-
+	
 	/**
-	* This method sets this.actMinsLife to actMinsLife.
-	* @param actMinsLife int The new actMinsLife.
+	* This method returns the value of floorsBest.
+	* @return String This returns the value of floorsBest.
 	*/
-	public void setActMinsLife(int actMinsLife) {
-		this.actMinsLife = actMinsLife;
+	public String getFloorsBest(){
+		return this.floorsBest;
 	}
-
+	
 	/**
-	* This method returns the value of sedMinsLife.
-	* @return int This returns the value of sedMinsLife.
+	* This method returns the value of stepsBest.
+	* @return String This returns the value of stepsBest.
 	*/
-	public int getSedMinsLife() {
-		return sedMinsLife;
-	}
-
-	/**
-	* This method sets this.sedMinsLife to sedMinsLife.
-	* @param sedMinsLife int The new sedMinsLife.
-	*/
-	public void setSedMinsLife(int sedMinsLife) {
-		this.sedMinsLife = sedMinsLife;
+	public String getStepsBest(){
+		return this.stepsBest;
 	}
 
 }
