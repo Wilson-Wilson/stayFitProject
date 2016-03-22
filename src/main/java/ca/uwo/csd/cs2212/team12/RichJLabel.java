@@ -12,17 +12,32 @@ public class RichJLabel extends JLabel {
     private int tracking = 0;
     private int left_x, left_y, right_x, right_y;
     private Color outlineColor;
+    
+    /**
+     * Constructor for RichJLabel
+     * @param text
+     * @param fontSize
+     */
 
     public RichJLabel(String text, int fontSize) {
         super(text);
         this.setFont(new Font("Arial", Font.BOLD, fontSize));
     }
+    
+    /**
+     * Sets the outline color of the RichJLabel
+     * @param color
+     */
 
     public void setOutline(Color color) {
         right_x = 1;
         right_y = 1;
         outlineColor = color;
     }
+    
+    /**
+     * gets the preferred size 
+     */
 
     @Override public Dimension getPreferredSize() {
         String text = getText();
@@ -37,6 +52,10 @@ public class RichJLabel extends JLabel {
 
         return new Dimension(w,h);
     }
+    
+    /**
+     * paints the RichJLabel
+     */
 
     @Override public void paintComponent(Graphics g) {
         ((Graphics2D)g).setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
@@ -80,16 +99,44 @@ public class RichJLabel extends JLabel {
         }
 
     }
+    
+    /**
+     * returns the offset number of pixels going north for the shadow
+     * @param p
+     * @param distance
+     * @return
+     */
 
     private int ShiftNorth(int p, int distance) {
         return (p - distance);
     }
+    
+    /**
+     * returns the offset number of pixels going south for the shadow
+     * @param p
+     * @param distance
+     * @return
+     */
     private int ShiftSouth(int p, int distance) {
         return (p + distance);
     }
+    
+    /**
+     * returns the offset number of pixels going east for the shadow
+     * @param p
+     * @param distance
+     * @return
+     */
     private int ShiftEast(int p, int distance) {
         return (p + distance);
     }
+    
+    /**
+     * returns the offset number of pixels going west for the shadow
+     * @param p
+     * @param distance
+     * @return
+     */
     private int ShiftWest(int p, int distance) {
         return (p - distance);
     }

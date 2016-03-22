@@ -10,12 +10,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class SettingsPanel extends JPanel {
 
-	// Make sure to have these initialized with the right icon (smaller images i
-	// will put on the button of the ui page)
+
 	ImageIcon backImage = ImageClass.getBackImage();
 
 	/**
-	 * Create the application.
+	 * Create the panel.
 	 */
 	public SettingsPanel() {
 		initialize();
@@ -24,19 +23,10 @@ public class SettingsPanel extends JPanel {
 	/**
 	 * Initialize the contents of the panel; sub-panels, labels, borders and
 	 * etc.
-	 * 
-	 * @param num
-	 *            int used to choose which details of the panel to display
+	 *          
 	 */
 	private void initialize() {
-
-		// main frame
-		/*
-		 * frame = new JFrame(); frame.setResizable(false);
-		 * frame.getContentPane().setBackground(Color.DARK_GRAY);
-		 * frame.setBounds(100, 100, 450, 300);
-		 * frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 */
+		
 		final CardLayout cl = new CardLayout(0, 0);
 		this.setLayout(new CardLayout(0, 0));
 		final JPanel panel_3 = new JPanel();
@@ -98,7 +88,7 @@ public class SettingsPanel extends JPanel {
 		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button.setContentAreaFilled(false);
 		button.setBorder(null);
-		button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\ok-button.png"));
+		button.setIcon(ImageClass.getOkIcon());
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
@@ -201,23 +191,6 @@ public class SettingsPanel extends JPanel {
 
 		JLabel label_5 = new JLabel("");
 
-	/*	JCheckBox MovementsCheckBox = new JCheckBox("Movements");
-		MovementsCheckBox.setOpaque(false);
-		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
-		MovementsCheckBox.addItemListener(new ItemListener() {
-	        
-    	    public void itemStateChanged(ItemEvent e) {
-    	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-    	        	Preferences.showMovementsCard=true;
-    	        	System.out.println("HELLO");
-    	        } else {//checkbox has been deselected
-    	        	Preferences.showMovementsCard=false;
-    	        };
-    	    }
-    });
-		//dashboardSettings.add(MovementsCheckBox);
-		 * 
-		 */
 
 		JCheckBox LifetimeCheckBox = new JCheckBox("Lifetime");
 		LifetimeCheckBox.setForeground(new Color(255, 255, 255));

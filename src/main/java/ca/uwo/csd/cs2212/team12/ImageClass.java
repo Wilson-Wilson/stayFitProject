@@ -4,7 +4,9 @@ import javax.swing.ImageIcon;
 
 public class ImageClass {
 
-	//Image files
+	/**
+	 * All images required for the application
+	 */
 
 	    static ImageIcon backImage = new ImageIcon("src/main/resources/background.jpg");
 	    static ImageIcon caloriesIcon = new ImageIcon("src/main/resources/FireIcon2.png");
@@ -29,26 +31,124 @@ public class ImageClass {
 	   
 
 
-	// Methods to retrieve image files
+	/**
+	 * This method returns backImage
+	 * @return backImage
+	 */
 	public static ImageIcon getBackImage() 			{return backImage;}
+	
+	/**
+	 * This method returns caloriesIcon
+	 * @return caloriesIcon
+	 */
 	public static ImageIcon getCaloriesIcon() 		{return caloriesIcon;}
+	
+	/**
+	 * This method returns minutesIcon
+	 * @return minutesIcon
+	 */
 	public static ImageIcon getMinutesIcon() 		{return minutesIcon;}
+	
+	/**
+	 * This method returns movementIcon
+	 * @return movementIcon
+	 */
 	public static ImageIcon getMovementIcon() 		{return movementIcon;}
+	
+	/**
+	 * This method returns lifetimeIcon
+	 * @return lifetimeIcon
+	 */
 	public static ImageIcon getLifetimeIcon() 		{return lifetimeIcon;}
+	
+	/**
+	 * This method returns timeseriesIcon
+	 * @return timeseriesIcon
+	 */
 	public static ImageIcon getTimeseriesIcon() 	{return timeseriesIcon;}
+	
+	/**
+	 * This method returns bestdayIcon
+	 * @return bestdayIcon
+	 */
 	public static ImageIcon getBestdayIcon() 		{return bestdayIcon;}
+	
+	/**
+	 * This method returns exitIcon
+	 * @return exitIcon
+	 */
 	public static ImageIcon getExitIcon() 			{return exitIcon;}
+	
+	/**
+	 * This method returns rightarrowIcon
+	 * @return rightarrowicon
+	 */
 	public static ImageIcon getRightarrowIcon() 	{return rightarrowIcon;}
+	
+	/**
+	 * This method returns leftarrowIcon
+	 * @return leftarrowIcon
+	 */
 	public static ImageIcon getLeftarrowIcon() 		{return leftarrowIcon;}
+	
+	/**
+	 * This method returns trophyIcon
+	 * @return trophyIcon
+	 */
 	public static ImageIcon getTrophyIcon() 		{return trophyIcon;}
+	
+	/**
+	 * This method returns cardIcon
+	 * @return cardIcon
+	 */
 	public static ImageIcon getCardIcon() 			{return cardIcon;}
+	
+	/**
+	 * This method returns settingsIcon
+	 * @return settingsIcon
+	 */
 	public static ImageIcon getSettingsIcon() 		{return settingsIcon;}
+	
+	/**
+	 * This method returns trophyIcon2
+	 * @return trophyIcon2
+	 */
 	public static ImageIcon getTrophyIcon2() 		{return trophyIcon2;}
+	
+	/**
+	 * This method returns smallrightarrow
+	 * @return smallrightarrow
+	 */
 	public static ImageIcon getSmallrightarrow() 	{return smallrightarrow;}
+	
+	/**
+	 * This method returns calendarIcon
+	 * @return calendarIcon
+	 */
 	public static ImageIcon getCalendarIcon()		{return calendarIcon;}
+	
+	/**
+	 * This method returns refreshIcon
+	 * @return refreshIcon
+	 */
 	public static ImageIcon getRefreshIcon()		{return refreshIcon;}
+	
+	/**
+	 * This method returns homebuttonIcon
+	 * @return homebuttonIcon
+	 */
 	public static ImageIcon getHomebuttonIcon() 	{return homebuttonIcon;}
+	
+	/**
+	 * This method returns smallleftarrow
+	 * @return smallleftarrow
+	 */
 	public static ImageIcon getSmallleftarrow() 	{return smallleftarrow;}
+	
+	/**
+	 * This method returns okIcon
+	 * @return okIcon
+	 */
 	public static ImageIcon getOkIcon()				{return okIcon;}
 
 }
