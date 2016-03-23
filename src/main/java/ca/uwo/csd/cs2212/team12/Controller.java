@@ -37,9 +37,7 @@ public class Controller implements Serializable{
 	private static final String TIMESERIES= "timeseries.boop";
 	private static final String USERINFO= "userinfo.boop";
 	private static final String PREFERENCES= "preferences.boop";
-	private static final String GOALS="goaldict.boop";
-	  
-	
+	private static final String GOALS="dailygoals.boop";	
 	
 	/**
 	 * Constructor that creates Controller object from apiParam. 
@@ -112,11 +110,11 @@ public class Controller implements Serializable{
 		}
 		
 		accoCheck(newDate);
-		//Some UI action
-		//goalsStuff
+		goalsCheck(newDate);
 		
 	}
-	
+
+
 	/**
 	 * This method is called to initialize the data in the view of the StayFit application.
 	 * Preference and goal related data persist through sessions.
@@ -129,7 +127,7 @@ public class Controller implements Serializable{
 	 * to instantiate the data-related classes.
 	 * If there is no internet connection available, theDictionary, theTimeSeries and theUserInfo 
 	 * will be restored from last session's serialized data. If there is no data available,
-	 * they will be filled with 0 values instead.
+	 * the application will not start.
 	 * 
 	 * @throws IOException
 	 * @throws ParseException 
@@ -138,14 +136,18 @@ public class Controller implements Serializable{
 	public static void onStartUp() throws IOException, ParseException, JSONException{
 		
 		
-		File d = new File("../preferences.boop");
-		if (d.exists()){
+		File c = new File("../preferences.boop");
+		if (c.exists()){
 			thePreferences = loadPreferences();
 		}
 		else{
 			thePreferences = new Preferences();
 		}
-		//Include goals from session restore
+		
+		File d = new File("../dailygoals.boop");
+		if (d.exists()){
+			theDailyGoals = loadGoals();
+		}
 		
 		LocalDate now = LocalDate.now();
 		String curDate = now.toString();
@@ -172,7 +174,8 @@ public class Controller implements Serializable{
 			JSONArray dictSedentary = theAPI.getSedentaryMinutes();
 			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			
-			//Include goals from API
+			//JSONObject dailyGoals = theAPI.getGoals();
+			//theDailyGoals = new DailyGoals(dailyGoals);
 		}
 		else{
 			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
@@ -183,17 +186,13 @@ public class Controller implements Serializable{
 				theTimeSeries = loadTimeSeries();
 			}
 			else{
-				//this.theDictionary = new Dictionary (fake Json arrays)
-				//this.theTimeSeries = new TimeSeriesData (fake Json arrays)
-				//theUserInfo = new UserInfo (fake shit)
-				//Include goals
+				//Close application: ERROR you don't have either internet or serialized data!
 			}				
 		}
 		
 		AccoDict theAccoDict = new AccoDict();
 		accoCheck(now);
-		//Some UI action
-		
+		goalsCheck(now);
 	}
 	
 	/**
@@ -206,7 +205,7 @@ public class Controller implements Serializable{
 		storeUserInfo(theUserInfo);
 		storeTimeSeries(theTimeSeries);
 		storePreferences(thePreferences);
-		//store methods for goals
+		storeGoals(theDailyGoals);
 	}
 	 
 	/**
@@ -454,6 +453,27 @@ public class Controller implements Serializable{
 				  }
 			  }
 		  }
+		//update UI
+	}
+	
+	private static void goalsCheck(LocalDate theDate) {
+		
+		int [] dayValues = getDayData(theDate);
+		
+		if(theDailyGoals.getStepGoal() > dayValues[3]){
+			//update UI
+		}
+		
+		if(theDailyGoals.getFloorGoal() > dayValues[2]){
+			//update UI
+		}
+		if(theDailyGoals.getDistGoal() > dayValues[1]){
+			//update UI
+		}
+		if(theDailyGoals.getCalGoal() > dayValues[0]){
+			//update UI
+		}
+		
 	}
 	
 	/**

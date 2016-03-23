@@ -50,6 +50,8 @@ public class TimeSeriesData {
 		}
 	}
 	
+	public TimeSeriesData(){
+	}
 	/**
 	 * Returns the attribute caloriesSet
 	 * @return static DataPoint [] variable caloriesSet

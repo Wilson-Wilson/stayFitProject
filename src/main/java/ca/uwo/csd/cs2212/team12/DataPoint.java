@@ -23,6 +23,9 @@ public class DataPoint implements Serializable {
 		this.time = dataPoint.getString("time");
 	}
 	
+	public DataPoint(){
+	}
+	
 	public int getValue(){
 		return this.value;
 	}
