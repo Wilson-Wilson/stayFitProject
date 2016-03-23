@@ -153,7 +153,7 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getCalSeries() throws JSONException{
+    public JSONObject getCalSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
@@ -161,7 +161,7 @@ public class RealAPI implements API
         service.signRequest(accessToken, request);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
@@ -181,7 +181,7 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getStepsSeries() throws JSONException{
+    public JSONObject getStepsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/steps/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
@@ -189,7 +189,7 @@ public class RealAPI implements API
         service.signRequest(accessToken, request);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
@@ -209,7 +209,7 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getFloorsSeries() throws JSONException{
+    public JSONObject getFloorsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/floors/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
@@ -217,7 +217,7 @@ public class RealAPI implements API
         service.signRequest(accessToken, request);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
@@ -237,14 +237,14 @@ public class RealAPI implements API
         return retVal;
     }
     
-    public JSONArray getSedentaryMinutesSeries() throws JSONException{
+    public JSONObject getSedentaryMinutesSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/minutesSedentary/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
@@ -264,14 +264,14 @@ public class RealAPI implements API
         return retVal;
     }
     
-    public JSONArray getActiveMinutesSeries() throws JSONException{
+    public JSONObject getActiveMinutesSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
     
@@ -290,25 +290,25 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getDistanceSeries() throws JSONException{
+    public JSONObject getDistanceSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/distance/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
     
-    public JSONArray getHeartRateSeries() throws JSONException{
+    public JSONObject getHeartRateSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/heart/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 

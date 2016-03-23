@@ -62,14 +62,14 @@ public class Controller implements Serializable{
 	 * @throws JSONException 
 	 * @throws ParseException 
 	 */
-	public void changeDate(String newer, String older) throws JSONException, ParseException{
+	public static void changeDate(String newer, String older) throws JSONException, ParseException{
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
 		if(testInet()){	
-			
+		
 			theAPI = new RealAPI(newer);
 			JSONArray timeCal = theAPI.getCalSeries();
 			JSONArray timeSteps = theAPI.getStepsSeries();
@@ -155,6 +155,7 @@ public class Controller implements Serializable{
 		String curDate = now.toString();
 		
 		if(testInet()){
+			System.out.println("internet works!");
 			
 			theAPI = new RealAPI(curDate);
 			
@@ -182,6 +183,7 @@ public class Controller implements Serializable{
 			theDailyGoals = new DailyGoals(dailyGoals);
 		}
 		else{
+			System.out.println("internet doesnt works!");
 			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
 			
 			if(f.exists() && g.exists() && h.exists()) { 
@@ -197,9 +199,8 @@ public class Controller implements Serializable{
         MWindow window = new MWindow();
         window.frame.setSize(1000,600);
         window.frame.setVisible(true);
-		//Update UI
-		//UI.setsomevar(thedict)
-		AccoDict theAccoDict = new AccoDict();
+
+        theAccoDict = new AccoDict();
 		accoCheck(now);
 		goalsCheck(now);
 	}
@@ -217,6 +218,76 @@ public class Controller implements Serializable{
 		storeGoals(theDailyGoals);
 	}
 	 
+	public static DataDict getTheDictionary() {
+		return theDictionary;
+	}
+
+
+	public static void setTheDictionary(DataDict theDictionary) {
+		Controller.theDictionary = theDictionary;
+	}
+
+
+	public static API getTheAPI() {
+		return theAPI;
+	}
+
+
+	public static void setTheAPI(API theAPI) {
+		Controller.theAPI = theAPI;
+	}
+
+
+	public static UserInfo getTheUserInfo() {
+		return theUserInfo;
+	}
+
+
+	public static void setTheUserInfo(UserInfo theUserInfo) {
+		Controller.theUserInfo = theUserInfo;
+	}
+
+
+	public static TimeSeriesData getTheTimeSeries() {
+		return theTimeSeries;
+	}
+
+
+	public static void setTheTimeSeries(TimeSeriesData theTimeSeries) {
+		Controller.theTimeSeries = theTimeSeries;
+	}
+
+
+	public static Preferences getThePreferences() {
+		return thePreferences;
+	}
+
+
+	public static void setThePreferences(Preferences thePreferences) {
+		Controller.thePreferences = thePreferences;
+	}
+
+
+	public static AccoDict getTheAccoDict() {
+		return theAccoDict;
+	}
+
+
+	public static void setTheAccoDict(AccoDict theAccoDict) {
+		Controller.theAccoDict = theAccoDict;
+	}
+
+
+	public static DailyGoals getTheDailyGoals() {
+		return theDailyGoals;
+	}
+
+
+	public static void setTheDailyGoals(DailyGoals theDailyGoals) {
+		Controller.theDailyGoals = theDailyGoals;
+	}
+
+
 	/**
 	 * This method returns an int array with each index representing a different type of 
 	 * data corresponding to the date parameter.
@@ -491,7 +562,7 @@ public class Controller implements Serializable{
 	 */
 	private static boolean testInet() {
 	    Socket sock = new Socket();
-	    InetSocketAddress addr = new InetSocketAddress("https://api.fitbit.com/ca",80);
+	    InetSocketAddress addr = new InetSocketAddress("google.ca",80);
 	    try {
 	        sock.connect(addr,3000);
 	        return true;
@@ -690,5 +761,7 @@ public class Controller implements Serializable{
 	     	}
 	     return null;
 	   }
-
+	   public static void main (String args[]){
+		   System.out.println(testInet());
+	   }
 }

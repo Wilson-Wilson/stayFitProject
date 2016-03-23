@@ -179,7 +179,7 @@ public class MinPanel extends JPanel{
 				lblTotalActiveMinutes_1.setForeground(java.awt.Color.WHITE);
 				lblTotalActiveMinutes_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week:");
+				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week: ");
 				lblTotalActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblTotalActiveMinutes.setForeground(java.awt.Color.WHITE);
 				

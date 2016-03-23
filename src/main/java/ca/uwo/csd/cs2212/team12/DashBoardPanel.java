@@ -3,6 +3,7 @@ package ca.uwo.csd.cs2212.team12;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -17,13 +18,15 @@ import javax.swing.LayoutStyle.*;
 
 import javafx.embed.swing.JFXPanel;
 import org.jdesktop.swingx.JXDatePicker;
+import org.json.JSONException;
+
 import no.tornado.databinding.support.jxdatepicker.*;
 
 
 public class DashBoardPanel extends JPanel {
 
     // Data fields that are updated by the Controller on refresh
-    public String caloriesBurned        = "test";
+    public String caloriesBurned        = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getCalBurned());
     public String activeMinutes         = "test";
     public String sedentaryMinutes      = "test";
     public String distance              = "test";
@@ -47,7 +50,9 @@ public class DashBoardPanel extends JPanel {
 
 	final static Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
     static Date date= new Date();
+    static Date oldDate = new Date();
 
+    static String oldDateString= formatter.format(oldDate);
     static String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
 
     final JLabel lblNewLabel_3 = new JLabel(dateString);
@@ -1059,10 +1064,20 @@ public class DashBoardPanel extends JPanel {
         
         datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				oldDate = date;
+				oldDateString = dateString;
 				dateString = formatter.format(datePicker.getDate());
 				date= datePicker.getDate();
 				System.out.println(date.toString());
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 				lblNewLabel_3.setText(dateString);

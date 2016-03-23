@@ -48,9 +48,6 @@ public class MWindow {
         frame.getContentPane().add(panel_3, "3");
         panel_3.setLayout(cl);
 
-
-
-
         DashBoardPanel dash= new DashBoardPanel();
         Preferences.showBestDaysCard=true;
         Preferences.showCaloriesCard=true;
@@ -60,6 +57,7 @@ public class MWindow {
         Preferences.showTimeSeriesCard=true;
         
         dash.checkPref();
+        //ui gets updated here
   
 
         panel_3.add(dash,"2");
