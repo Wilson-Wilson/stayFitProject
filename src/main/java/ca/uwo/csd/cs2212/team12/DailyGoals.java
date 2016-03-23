@@ -1,0 +1,92 @@
+package ca.uwo.csd.cs2212.team12;
+import java.io.Serializable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class DailyGoals implements Serializable{
+	
+	 private int stepGoal;
+	 private int floorGoal;
+	 private int distGoal;
+	 private int calGoal;
+	 private static final long serialVersionUID= 1L;
+
+	 public DailyGoals(JSONObject goals) throws JSONException{
+	    stepGoal=goals.getInt("steps");
+	    floorGoal=goals.getInt("floors");
+	    distGoal=goals.getInt("distance");
+	    calGoal=goals.getInt("caloriesOut");
+	  }
+	
+	 public DailyGoals(){
+	 }
+	
+	/**
+	* Returns value of stepGoal
+	* @return
+	*/
+	public int getStepGoal() {
+		return stepGoal;
+	}
+	
+	/**
+	* Sets new value of stepGoal
+	* @param
+	*/
+	public void setStepGoal(int stepGoal) {
+		this.stepGoal = stepGoal;
+	}
+	
+	/**
+	* Returns value of floorGoal
+	* @return
+	*/
+	public int getFloorGoal() {
+		return floorGoal;
+	}
+	
+	/**
+	* Sets new value of floorGoal
+	* @param
+	*/
+	public void setFloorGoal(int floorGoal) {
+		this.floorGoal = floorGoal;
+	}
+	
+	/**
+	* Returns value of distGoal
+	* @return
+	*/
+	public int getDistGoal() {
+		return distGoal;
+	}
+	
+	/**
+	* Sets new value of distGoal
+	* @param
+	*/
+	public void setDistGoal(int distGoal) {
+		this.distGoal = distGoal;
+	}
+	
+	/**
+	* Returns value of calGoal
+	* @return
+	*/
+	public int getCalGoal() {
+		return calGoal;
+	}
+	
+	/**
+	* Sets new value of calGoal
+	* @param
+	*/
+	public void setCalGoal(int calGoal) {
+		this.calGoal = calGoal;
+	}
+
+}
+
+
+
