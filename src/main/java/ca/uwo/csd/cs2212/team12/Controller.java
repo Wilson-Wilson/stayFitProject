@@ -46,8 +46,7 @@ public class Controller implements Serializable{
 	 */
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 		//a controller object and calls onStartUp()
-	public Controller(API apiParam){
-		theAPI = apiParam;		
+	public Controller(){		
 	}
 	
 	
