@@ -7,6 +7,24 @@ public class MWindow {
 
     public JFrame frame;
 
+
+    //Make sure to have these initialized with the right icon
+    ImageIcon backImage = ImageClass.getBackImage();
+    ImageIcon caloriesIcon = ImageClass.getCaloriesIcon();
+    ImageIcon minutesIcon = ImageClass.getMinutesIcon();
+    ImageIcon movementIcon = ImageClass.getMovementIcon();
+    ImageIcon lifetimeIcon = ImageClass.getLifetimeIcon();
+    ImageIcon timeseriesIcon = ImageClass.getTimeseriesIcon();
+    ImageIcon bestdayIcon = ImageClass.getBestdayIcon();
+    ImageIcon exitIcon = ImageClass.getExitIcon();
+    ImageIcon rightarrowIcon = ImageClass.getRightarrowIcon();
+    ImageIcon leftarrowIcon = ImageClass.getLeftarrowIcon();
+    ImageIcon trophyIcon = ImageClass.getTrophyIcon();
+    ImageIcon cardIcon =ImageClass.getCardIcon();
+
+
+
+
     /**
      * Create the application.
      */
@@ -29,8 +47,21 @@ public class MWindow {
         panel_3.setOpaque(false);
         frame.getContentPane().add(panel_3, "3");
         panel_3.setLayout(cl);
-        //panel_1.setBackground(Color.RED);
+
+
+
+
         DashBoardPanel dash= new DashBoardPanel();
+        Preferences.showBestDaysCard=true;
+        Preferences.showCaloriesCard=true;
+        Preferences.showLifetimeCard=true;
+        Preferences.showMinutesCard=true;
+        Preferences.showMovementsCard=true;
+        Preferences.showTimeSeriesCard=true;
+        
+        dash.checkPref();
+  
+
         panel_3.add(dash,"2");
     }
 }

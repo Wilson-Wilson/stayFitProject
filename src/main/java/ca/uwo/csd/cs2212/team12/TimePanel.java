@@ -183,7 +183,9 @@ public class TimePanel extends JPanel{
 		lblNewLabel.setHorizontalAlignment(JLabel.LEFT);
 
 				lblNewLabel.setBorder(new BevelBorder(BevelBorder.RAISED, new java.awt.Color(0, 128, 0), new java.awt.Color(0, 255, 0), new java.awt.Color(255, 250, 250), new java.awt.Color(210, 105, 30)));
-				lblNewLabel.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
+
+				lblNewLabel.setIcon(ImageClass.getTimeseriesIcon());
+
 				lblNewLabel.setBackground(new java.awt.Color(128, 128, 128));
 				lblNewLabel.setBorder(new LineBorder(new java.awt.Color(0, 128, 0), 24, true));
 
@@ -378,8 +380,11 @@ public class TimePanel extends JPanel{
         plh11.add(plh15,BorderLayout.NORTH);
 		panel_11.add(plh11,BorderLayout.CENTER);
 
-		JLabel lblNewLabel_1 = new JLabel("Minutes");
-		lblNewLabel_1.setIcon(new ImageIcon("src/main/resources/TimeIcon2.png"));
+
+
+		JLabel lblNewLabel_1 = new JLabel("Accolades");
+		lblNewLabel_1.setIcon(ImageClass.getTrophyIcon());
+
 		lblNewLabel_1.setBackground(new java.awt.Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));

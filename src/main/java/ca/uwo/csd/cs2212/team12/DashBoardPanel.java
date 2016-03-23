@@ -44,10 +44,12 @@ public class DashBoardPanel extends JPanel {
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
 
-	final Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
+
+	final static Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
     static Date date= new Date();
 
-    String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
+    static String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
+
     final JLabel lblNewLabel_3 = new JLabel(dateString);
 
     
@@ -71,8 +73,15 @@ public class DashBoardPanel extends JPanel {
      * Initialize the contents of the panels; sub-panels, labels, borders and etc.
      */
     private void initialize() {
-    	
+    
+   	 final Date dNow = new Date( );
+        final SimpleDateFormat timeft =  new SimpleDateFormat ("hh:mm:ss");
 
+        System.out.println("Current Date: " + timeft.format(dNow));
+   	
+
+    	
+    	
         //main frame
 
         final CardLayout cl = new CardLayout(0,0);
@@ -981,22 +990,26 @@ public class DashBoardPanel extends JPanel {
         gl_panel_16.setVerticalGroup(
         	gl_panel_16.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panel_16.createSequentialGroup()
-        			.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(59, Short.MAX_VALUE))
+        			.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(67, Short.MAX_VALUE))
         );
 
         JButton refreshbutton = new JButton("");
         refreshbutton.setContentAreaFilled(false);
         refreshbutton.setBorder(null);
         refreshbutton.setIcon(ImageClass.getRefreshIcon());
-        final JLabel lastupdated = new JLabel("Last updated: "+ Calendar.getInstance().getTime());
+        final JLabel lastupdated = new JLabel("Last updated: "+timeft.format(new Date()));
         refreshbutton.addActionListener(new ActionListener() {
 
 
             public void actionPerformed(ActionEvent ae) {
-            	lastupdated.setText("Last updated: "+ Calendar.getInstance().getTime());
+            	
+                final SimpleDateFormat timeft =  new SimpleDateFormat ("hh:mm:ss");
+            	lastupdated.setText("Last updated: "+timeft.format(new Date()));
                 
             }});
+
+       
 
        
         lastupdated.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -1013,24 +1026,20 @@ public class DashBoardPanel extends JPanel {
         gl_panel_1.setHorizontalGroup(
         	gl_panel_1.createParallelGroup(Alignment.TRAILING)
         		.addGroup(gl_panel_1.createSequentialGroup()
-        			.addGap(166)
-        			.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-        			.addGap(58)
-        			.addComponent(lastupdated, GroupLayout.PREFERRED_SIZE, 84, Short.MAX_VALUE)
+        			.addGap(224)
+        			.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+        			.addGap(45)
+        			.addComponent(lastupdated)
         			.addPreferredGap(ComponentPlacement.RELATED)
         			.addComponent(refreshbutton))
         );
         gl_panel_1.setVerticalGroup(
         	gl_panel_1.createParallelGroup(Alignment.LEADING)
         		.addGroup(gl_panel_1.createSequentialGroup()
-        			.addComponent(refreshbutton)
-        			.addContainerGap())
-        		.addGroup(gl_panel_1.createSequentialGroup()
-        			.addGap(2)
-        			.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE)
-        			.addGap(2))
-        		.addGroup(gl_panel_1.createSequentialGroup()
-        			.addComponent(lastupdated)
+        			.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+        				.addComponent(refreshbutton)
+        				.addComponent(lastupdated)
+        				.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE))
         			.addContainerGap())
         );
         final CardLayout cl3 = new CardLayout(0,0);
@@ -1040,7 +1049,6 @@ public class DashBoardPanel extends JPanel {
         final JPanel panel_5 = new JPanel();
        
         panel_4.setOpaque(false);
-        
         
         
       
@@ -1167,6 +1175,12 @@ public class DashBoardPanel extends JPanel {
 
     }
     
+    /**
+     * A method to move the global date backward one day
+     * @param date
+     * @return
+     */
+    
     public static Date subtractDay(Date date) {
 
         Calendar cal = Calendar.getInstance();
@@ -1175,6 +1189,12 @@ public class DashBoardPanel extends JPanel {
         return cal.getTime();
     }
     
+    /**
+     * A method to move the global date forward by one day
+     * @param date
+     * @return
+     */
+    
     public static Date addDay(Date date) {
 
         Calendar cal = Calendar.getInstance();
@@ -1182,7 +1202,11 @@ public class DashBoardPanel extends JPanel {
         cal.add(Calendar.DAY_OF_MONTH, +1);
         return cal.getTime();
     }
-
+    
+    
+    /**
+     * A method to check the Preferences object for card show/hide booleans upon load of dashboard
+     */
     public void checkPref(){
     	if(!Preferences.showCaloriesCard){
     		cardPanel.getComponent(0).setVisible(false);
