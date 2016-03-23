@@ -28,14 +28,14 @@ public class StayFit {
                     String date  = formatter.format(new Date());
                     if(isTest)  api= new TestAPI();
                     else        api= new RealAPI(date);
-                    Controller controller = new Controller(api);
-                    MWindow window = new MWindow();
-                    window.frame.setSize(1000,600);
-                    window.frame.setVisible(true);
+ 
+                    Controller.onStartUp();
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
     }
+    
 }

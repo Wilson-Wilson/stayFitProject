@@ -194,6 +194,11 @@ public class Controller implements Serializable{
 			}				
 		}
 		
+        MWindow window = new MWindow();
+        window.frame.setSize(1000,600);
+        window.frame.setVisible(true);
+		//Update UI
+		//UI.setsomevar(thedict)
 		AccoDict theAccoDict = new AccoDict();
 		accoCheck(now);
 		goalsCheck(now);
