@@ -22,7 +22,7 @@ public class StayFit {
             public void run() {
                 try {
                     API api;
-                    Date date = new Date();
+                    String date = new Date().toString();
                     if(isTest)  api= new TestAPI();
                     else        api= new RealAPI(date);
                     Controller controller = new Controller(api);
