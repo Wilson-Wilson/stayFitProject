@@ -90,6 +90,18 @@ public interface API {
     public JSONArray getHeartRateSeries() throws JSONException;
     
     /**
+     * This method is used to fetch the sedentary minutes series.
+     * @return JSONArray This returns the distance series.
+     */
+    public JSONArray getSedentaryMinutesSeries() throws JSONException;
+    
+    /**
+     * This method is used to fetch the sedentary minutes series.
+     * @return JSONArray This returns the distance series.
+     */
+    public JSONArray getActiveMinutesSeries() throws JSONException;
+    
+    /**
      * This method is used to fetch the user's daily goals.
      * @return JSONArray This returns the distance series.
      */

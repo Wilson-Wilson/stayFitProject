@@ -236,6 +236,17 @@ public class RealAPI implements API
         JSONArray retVal = new JSONArray(response.getBody()); 
         return retVal;
     }
+    
+    public JSONArray getSedentaryMinutesSeries() throws JSONException{
+        frmt1 = String.format("%tF", enDate);
+        requestUrlSuffix = "activities/minutesSedentary/date/"+frmt1+"/1d/1min.json";
+        requestUrl = requestUrlPrefix + requestUrlSuffix;
+        request = new OAuthRequest(Verb.GET, requestUrl, service);
+        response = request.send();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
+    }
 
     
     public JSONArray getActiveMinutes() throws JSONException{
@@ -253,13 +264,24 @@ public class RealAPI implements API
         return retVal;
     }
     
+    public JSONArray getActiveMinutesSeries() throws JSONException{
+        frmt1 = String.format("%tF", enDate);
+        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/1min.json";
+        requestUrl = requestUrlPrefix + requestUrlSuffix;
+        request = new OAuthRequest(Verb.GET, requestUrl, service);
+        response = request.send();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
+    }
+    
     public JSONArray getDistance() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
         frmt1 = String.format("%tF", enDate);
         frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt2+"/"+frmt1+".json";
+        requestUrlSuffix = "activities/distance/date/"+frmt2+"/"+frmt1+".json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
@@ -270,7 +292,7 @@ public class RealAPI implements API
 
     public JSONArray getDistanceSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/distance/date/"+frmt1+"/1d/1min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
@@ -311,65 +333,8 @@ public class RealAPI implements API
     }
 
     
-
-    /*private  int getDat(String dat) {
-        int integerData = 0;
-        try {
-            String jsonStr = response.getBody();
-            JSONObject o = new JSONObject(jsonStr);
-            JSONObject element =  o.getJSONObject("summary");//needs to be edited to look through response json
-            integerData = element.getInt(dat);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return integerData; //needs to return an array probably
-    }*/
-
-    //we still need to save/refresh the tokens
-    //so either we add it to each method or have a refresh method
     private void refresh(){
-        /*System.out.println();
-        System.out.println("HTTP response code: "+response.getCode());
-        int statusCode = response.getCode();
-        switch(statusCode){
-            case 200:
-                System.out.println("Success!");
-                System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
-                break;
-            case 400:
-                System.out.println("Bad Request - may have to talk to Beth");
-                System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
-                break;
-            case 401:
-                System.out.println("Likely Expired Token");
-                System.out.println("HTTP response body:\n"+response.getBody());
-                System.out.println("Try to refresh");System.out.println("\n\n");
-                // This uses the refresh token to get a completely new accessToken object
-                //   See:  https://dev.fitbit.com/docs/oauth2/#refreshing-tokens
-                // This accessToken is now the current one, and the old ones will not work
-                //   again.  You should save the contents of accessToken.
-                accessToken = service.refreshOAuth2AccessToken(accessToken);
-                // Now we can try to access the service again
-                // Make sure you create a new OAuthRequest object each time!
-                request = new OAuthRequest(Verb.GET, requestUrl, service);
-                service.signRequest(accessToken, request);
-                response = request.send();
-                // Hopefully got a response this time:
-                System.out.println("HTTP response code: "+response.getCode());
-                System.out.println("HTTP response body:\n"+response.getBody());
-                break;
-            case 429:
-                System.out.println("Rate limit exceeded");
-                System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
-                break;
-
-            default:
-                System.out.println("HTTP response code: "+response.getCode());
-                System.out.println("HTTP response body:\n"+response.getBody());System.out.println("\n\n");
-        }
-
-        System.out.println("\n\n\n\n");
-*/
+        
 
         BufferedWriter bufferedWriter=null;
         //  Save the current accessToken information for next time

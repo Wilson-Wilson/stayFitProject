@@ -133,6 +133,16 @@ public class TestAPI implements API {
 		return null;
 	}
     
+    public JSONArray getSedentaryMinutesSeries() throws JSONException{
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
+    public JSONArray getActiveMinutesSeries() throws JSONException{
+		// TODO Auto-generated method stub
+		return null;
+	}
+    
     public JSONArray getGoals() throws JSONException{
 		// TODO Auto-generated method stub
 		return null;
