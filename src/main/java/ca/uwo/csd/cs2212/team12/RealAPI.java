@@ -299,6 +299,16 @@ public class RealAPI implements API
         JSONArray retVal = new JSONArray(response.getBody()); 
         return retVal;
     }
+    
+    public JSONArray getGoals() throws JSONException{
+        requestUrlSuffix = "activities/goals/daily.json";
+        requestUrl = requestUrlPrefix + requestUrlSuffix;
+        request = new OAuthRequest(Verb.GET, requestUrl, service);
+        response = request.send();
+        refresh();
+        JSONArray retVal = new JSONArray(response.getBody()); 
+        return retVal;
+    }
 
     
 

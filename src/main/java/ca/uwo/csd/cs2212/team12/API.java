@@ -83,7 +83,16 @@ public interface API {
      */
     public JSONArray getDistanceSeries() throws JSONException;
     
-    
+    /**
+     * This method is used to fetch the heart rate series.
+     * @return JSONArray This returns the distance series.
+     */
     public JSONArray getHeartRateSeries() throws JSONException;
+    
+    /**
+     * This method is used to fetch the user's daily goals.
+     * @return JSONArray This returns the distance series.
+     */
+    public JSONArray getGoals() throws JSONException;
 
 }

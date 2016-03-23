@@ -132,6 +132,11 @@ public class TestAPI implements API {
 		// TODO Auto-generated method stub
 		return null;
 	}
+    
+    public JSONArray getGoals() throws JSONException{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
     
 }
