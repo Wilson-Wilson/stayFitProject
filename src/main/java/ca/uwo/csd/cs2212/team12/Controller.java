@@ -29,6 +29,7 @@ public class Controller implements Serializable{
 	private static TimeSeriesData theTimeSeries;
 	private static Preferences thePreferences;
 	private static AccoDict	theAccoDict;
+	private static DailyGoals theDailyGoals;
 	//private UI theUI
 	
 	private static final long serialVersionUID= 1L;
@@ -623,13 +624,18 @@ public class Controller implements Serializable{
      return null;
    }
    
-   private static void storeGoals(GoalDict goals){
+   /**
+    * This method is used to persist DailyGoals object between runs.
+    * 
+    * @param goals the DailyGoals to be stored/serialized to a file
+    */
+   private static void storeGoals(DailyGoals goals){
 	     try{
 	       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(GOALS));
 	       out.writeObject(goals);
 	       out.close();
 	         } catch(IOException e){
-	             System.out.println("Goals could not be saved to disk. IO error occured.");
+	             System.out.println("DailyGoals could not be saved to disk. IO error occured.");
 	             e.printStackTrace();
 	           }
 
@@ -638,15 +644,15 @@ public class Controller implements Serializable{
 	   /**
 	    * This method loads serialized objects from a file
 	    */
-	   private static GoalDict loadGoals(){
+	   private static DailyGoals loadGoals(){
 	     try{
 	       ObjectInputStream in= new ObjectInputStream( new FileInputStream(GOALS));
-	       GoalDict goals= (GoalDict) in.readObject();
+	       DailyGoals goals= (DailyGoals) in.readObject();
 
 	       in.close();
 	       return goals;
 	         } catch (IOException e){
-	             System.out.println("TimeSeriesData could not be loaded from disk. IO error occured.");
+	             System.out.println("DailyGoals could not be loaded from disk. IO error occured.");
 	             e.printStackTrace();
 	           }
 	     	catch (ClassNotFoundException e){
