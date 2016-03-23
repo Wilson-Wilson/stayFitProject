@@ -39,13 +39,6 @@ public class DataEntry implements Serializable {
 	 * The default constructor for the DataEntry class.
 	 */
 	public DataEntry(){
-		calBurned=0;
-		distanceTravelled= 0;
-		floorsClimbed= 0;
-		stepsTaken= 0;
-		actMins= 0;
-		sedMins= 0;
-		date= null;
 	}
 
 	/**
