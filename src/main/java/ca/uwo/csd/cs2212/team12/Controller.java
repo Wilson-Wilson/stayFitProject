@@ -186,10 +186,7 @@ public class Controller implements Serializable{
 				theTimeSeries = loadTimeSeries();
 			}
 			else{
-				//this.theDictionary = new Dictionary (fake Json arrays)
-				//this.theTimeSeries = new TimeSeriesData (fake Json arrays)
-				//theUserInfo = new UserInfo (fake shit)
-				theDailyGoals = new DailyGoals();
+				//Close application: ERROR you don't have either internet or serialized data!
 			}				
 		}
 		
