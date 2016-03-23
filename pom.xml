@@ -44,7 +44,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <artifactId>json</artifactId>
   <version>20090211</version>
  </dependency>
-
+ 
+   <dependencies>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>4.11</version>
+      </dependency>
+   </dependencies>
 <dependency>
  <groupId>no.tornado.databinding</groupId>
  <artifactId>jxdatepicker-support</artifactId>
