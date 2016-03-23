@@ -143,7 +143,7 @@ public class TestAPI implements API {
 		return null;
 	}
     
-    public JSONArray getGoals() throws JSONException{
+    public JSONObject getGoals() throws JSONException{
 		// TODO Auto-generated method stub
 		return null;
 	}

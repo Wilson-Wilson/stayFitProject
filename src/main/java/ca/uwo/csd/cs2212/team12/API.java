@@ -2,6 +2,7 @@ package ca.uwo.csd.cs2212.team12;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * An API Stringerface for offline testing of the StayFit application
@@ -105,6 +106,6 @@ public interface API {
      * This method is used to fetch the user's daily goals.
      * @return JSONArray This returns the distance series.
      */
-    public JSONArray getGoals() throws JSONException;
+    public JSONObject getGoals() throws JSONException;
 
 }
