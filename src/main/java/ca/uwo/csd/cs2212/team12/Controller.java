@@ -46,7 +46,7 @@ public class Controller implements Serializable{
 	 */
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
 		//a controller object and calls onStartUp()
-	public Controller(){		
+	public Controller(){	
 	}
 	
 	
@@ -132,7 +132,7 @@ public class Controller implements Serializable{
 	 * @throws ParseException 
 	 * @throws JSONException 
 	 */
-	public static void onStartUp() throws IOException, ParseException, JSONException{
+	public static void onStartUp() throws JSONException, ParseException{
 		
 		
 		File c = new File("../preferences.boop");
@@ -206,7 +206,50 @@ public class Controller implements Serializable{
 		storePreferences(thePreferences);
 		storeGoals(theDailyGoals);
 	}
-	 
+	
+	public static DataDict getDictionary(){
+		return theDictionary;
+	}
+	public static void setDictionary(DataDict dictionary){
+		theDictionary = dictionary;
+	}
+	
+	public static API getAPI(){
+		return theAPI;
+	}
+	public static void setAPI(API api){
+		theAPI = api;
+	}
+	
+	public static TimeSeriesData getTimeSeries(){
+		return theTimeSeries;
+	}
+	public static void setTimeSeries(TimeSeriesData timeseries){
+		theTimeSeries = timeseries;
+	}
+	
+	public static UserInfo getUserInfo(){
+		return theUserInfo;
+	}
+	public static void setUserInfo(UserInfo userinfo){
+		theUserInfo= userinfo;
+	}
+	
+	public static Preferences getPreferences(){
+		return thePreferences;
+	}
+	public static void setPreferences(Preferences preferences){
+		thePreferences= preferences;
+	}
+	
+	public static DailyGoals getDailyGoals(){
+		return theDailyGoals;
+	}
+	public static void setDailyGoals(DailyGoals goals){
+		theDailyGoals= goals;
+	}
+	
+
 	/**
 	 * This method returns an int array with each index representing a different type of 
 	 * data corresponding to the date parameter.
