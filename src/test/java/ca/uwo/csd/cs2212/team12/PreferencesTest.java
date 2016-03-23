@@ -1,152 +1,94 @@
 package ca.uwo.csd.cs2212.team12;
 
-import java.io.Serializable;
+import static org.junit.Assert.*;
 
-public class Preferences implements Serializable{
+/**
+ * Created by Chris on 2016-03-22.
+ */
+public class PreferencesTest {
 
-  private static final long serialVersionUID= 1L;	
-  public static boolean showCaloriesCard;
-  public static boolean showMinutesCard;
-  public static boolean showMovementsCard;
-  public static boolean showLifetimeCard;
-  public static boolean showTimeSeriesCard;
-  public static boolean showBestDaysCard;
-  public static String preferredUnits;
-  
-  /**
-   * This would be the default layout of the dashboard
-   */
-  public Preferences(){
-    showCaloriesCard= true;
-    showMinutesCard= true;
-    showMovementsCard= true;
-    showLifetimeCard= true;
-    showTimeSeriesCard= true;
-    showBestDaysCard= true;
-    preferredUnits= "metric";
-  }
-  
-	/**
-	* Returns value of showCaloriesCard
-	* @return boolean lets the programme know this card's display status
-	*/
-	public static boolean isShowCaloriesCard() {
-		return showCaloriesCard;
-	}
+    @org.junit.Before
+    public void setUp() throws Exception {
 
-	/**
-	* Sets new value of showCaloriesCard
-	* @param showCaloriesCard determines whether this card will be displayed or not
-	*/
-	public void setShowCaloriesCard(boolean showCaloriesCard) {
-		this.showCaloriesCard = showCaloriesCard;
-	}
+    }
 
-	/**
-	* Returns value of showMinutesCard
-	* @return lets the programme know this card's display status
-	*/
-	public static boolean isShowMinutesCard() {
-		return showMinutesCard;
-	}
+    @org.junit.After
+    public void tearDown() throws Exception {
 
-	/**
-	* Sets new value of showMinutesCard
-	* @param showMinutesCard determines whether this card will be displayed or not
-	*/
-	public void setShowMinutesCard(boolean showMinutesCard) {
-		this.showMinutesCard = showMinutesCard;
-	}
+    }
 
-	/**
-	* Returns value of showMovementsCard
-	* @return lets the programme know this card's display status
-	*/
-	public static boolean isShowMovementsCard() {
-		return showMovementsCard;
-	}
+    @org.junit.Test
+    public void testIsShowCaloriesCard() throws Exception {
 
-	/**
-	* Sets new value of showMovementsCard
-	* @param showMovementsCard determines whether this card will be displayed or not
-	*/
-	public void setShowMovementsCard(boolean showMovementsCard) {
-		this.showMovementsCard = showMovementsCard;
-	}
+    }
 
-	/**
-	* Returns value of showLifetimeCard
-	* @return lets the programme know this card's display status
-	*/
-	public static boolean isShowLifetimeCard() {
-		return showLifetimeCard;
-	}
+    @org.junit.Test
+    public void testSetShowCaloriesCard() throws Exception {
 
-	/**
-	* Sets new value of showLifetimeCard
-	* @param showLifetimeCard determines whether this card will be displayed or not
-	*/
-	public void setShowLifetimeCard(boolean showLifetimeCard) {
-		this.showLifetimeCard = showLifetimeCard;
-	}
+    }
 
-	/**
-	* Returns value of showTimeSeriesCard
-	* @return lets the programme know this card's display status
-	*/
-	public static boolean isShowTimeSeriesCard() {
-		return showTimeSeriesCard;
-	}
+    @org.junit.Test
+    public void testIsShowMinutesCard() throws Exception {
 
-	/**
-	 * Returns value of noCardsShowing
-	 * @return lets the program know if any cards are visible onscreen.
-	 */
+    }
 
-	public static boolean noCardsShowing() {
-		if (!showBestDaysCard && !showCaloriesCard && !showLifetimeCard && !showMinutesCard && !showMovementsCard && !showTimeSeriesCard) {
-			return true;
-		}
-		return false;
-	}
+    @org.junit.Test
+    public void testSetShowMinutesCard() throws Exception {
 
-	/**
-	* Sets new value of showTimeSeriesCard
-	* @param showTimeSeriesCard determines whether this card will be displayed or not
-	*/
-	public void setShowTimeSeriesCard(boolean showTimeSeriesCard) {
-		this.showTimeSeriesCard = showTimeSeriesCard;
-	}
+    }
 
-	/**
-	* Returns value of showBestDaysCard
-	* @return lets the programme know this card's display status
-	*/
-	public static boolean isShowBestDaysCard() {
-		return showBestDaysCard;
-	}
+    @org.junit.Test
+    public void testIsShowMovementsCard() throws Exception {
 
-	/**
-	* Sets new value of showBestDaysCard
-	* @param showBestDaysCard determines whether this card will be displayed or not
-	*/
-	public void setShowBestDaysCard(boolean showBestDaysCard) {
-		this.showBestDaysCard = showBestDaysCard;
-	}
+    }
 
-	/**
-	* Returns value of preferredUnits
-	* @return lets the programme know what unit sthe user wants the data in
-	*/
-	public String getPreferredUnits() {
-		return preferredUnits;
-	}
+    @org.junit.Test
+    public void testSetShowMovementsCard() throws Exception {
 
-	/**
-	* Sets new value of preferredUnits
-	* @param preferredUnits determines what units the valu of the cards will be shown in
-	*/
-	public void setPreferredUnits(String preferredUnits) {
-		this.preferredUnits = preferredUnits;
-	}
+    }
+
+    @org.junit.Test
+    public void testIsShowLifetimeCard() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testSetShowLifetimeCard() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testIsShowTimeSeriesCard() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testNoCardsShowing() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testSetShowTimeSeriesCard() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testIsShowBestDaysCard() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testSetShowBestDaysCard() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testGetPreferredUnits() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testSetPreferredUnits() throws Exception {
+
+    }
 }

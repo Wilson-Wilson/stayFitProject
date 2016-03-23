@@ -1,47 +1,44 @@
 package ca.uwo.csd.cs2212.team12;
 
-import javax.swing.*;
-import javax.swing.plaf.metal.MetalScrollBarUI;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import static org.junit.Assert.*;
 
-public class MyScrollbarUI extends MetalScrollBarUI {
+/**
+ * Created by Chris on 2016-03-22.
+ */
+public class MyScrollbarUITest {
 
-    private Image imageThumb, imageTrack;
-    private JButton b = new JButton() {
+    @org.junit.Before
+    public void setUp() throws Exception {
 
-
-        public Dimension getPreferredSize() {
-            return new Dimension(0, 0);
-        }
-
-    };
-
-    MyScrollbarUI() {
-        imageThumb = createScrollbarImage(32, 32, Color.darkGray);
-        imageTrack = createScrollbarImage(32, 32, Color.gray.darker());
     }
 
-    protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
-        g.setColor(Color.white);
-        ((Graphics2D) g).drawImage(imageThumb,
-            r.x, r.y, r.width, r.height, null);
+    @org.junit.After
+    public void tearDown() throws Exception {
+
     }
 
-    protected void paintTrack(Graphics g, JComponent c, Rectangle r) {
-        ((Graphics2D) g).drawImage(imageTrack,
-            r.x, r.y, r.width, r.height, null);
+    @org.junit.Test
+    public void testPaintThumb() throws Exception {
+
     }
 
-    protected JButton createDecreaseButton(int orientation) {return b;}
-    protected JButton createIncreaseButton(int orientation) {return b;}
-    public static Image createScrollbarImage(int w, int h, Color c) {
-        BufferedImage bi = new BufferedImage(
-                w, h, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = bi.createGraphics();
-        g2d.setPaint(c);
-        g2d.fillRect(0, 0, w, h);
-        g2d.dispose();
-        return bi;
+    @org.junit.Test
+    public void testPaintTrack() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testCreateDecreaseButton() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testCreateIncreaseButton() throws Exception {
+
+    }
+
+    @org.junit.Test
+    public void testCreateScrollbarImage() throws Exception {
+
     }
 }
