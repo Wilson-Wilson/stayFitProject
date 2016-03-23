@@ -22,6 +22,20 @@ import no.tornado.databinding.support.jxdatepicker.*;
 
 public class DashBoardPanel extends JPanel {
 
+    // Data fields that are updated by the Controller on refresh
+    public String caloriesBurned        = "test";
+    public String activeMinutes         = "test";
+    public String sedentaryMinutes      = "test";
+    public String distance              = "test";
+    public String floors                = "test";
+    public String steps                 = "test";
+    public String lifetimeFloors        = "test";
+    public String lifetimeSteps         = "test";
+    public String lifetimeDistance      = "test";
+    public String bestFloors            = "test";
+    public String bestSteps             = "test";
+    public String bestDistance          = "test";
+
 	final JPanel cardPanel = new JPanel();
     final JButton caloriesButton = new JButton("");
     final JButton minutesButton = new JButton("");
@@ -29,23 +43,19 @@ public class DashBoardPanel extends JPanel {
     final JButton lifetimeButton = new JButton("");
     final JButton timeseriesButton = new JButton("");
     final JButton bestdayButton = new JButton("");
-    
-    
+
+
 	final static Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
     static Date date= new Date();
-    
-    
-    
+
     static String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
+
     final JLabel lblNewLabel_3 = new JLabel(dateString);
 
     
     private JFrame frame;
     public Graph graph = new Graph();
     public JFXPanel graph_panel;
-    private API api = new RealAPI();
-    public void setAPI(API api){
-        this.api = api;}
 
     //Images from the resource folder used throughout the programme
 
@@ -57,19 +67,6 @@ public class DashBoardPanel extends JPanel {
     public DashBoardPanel() {
         initialize();
     }
-
-  
-    /**
-     * Sets the API the dashboard will get values from.
-     *
-     * @param api an interface that can be used as either the test API or the realAPI
-     */
-    public DashBoardPanel(API api) {
-        this.api = api;
-        initialize();
-    }
-  
-    
     
     
     /**
@@ -222,7 +219,7 @@ public class DashBoardPanel extends JPanel {
         calinfoPanel.setOpaque(false);
         caloriesButton.add(calinfoPanel, BorderLayout.CENTER);
         
-        JLabel lblCaloriesBurned = new JLabel("Calories Burned: " +api.getCalBurned());
+        JLabel lblCaloriesBurned = new JLabel("Calories Burned: "+caloriesBurned);
         lblCaloriesBurned.setForeground(Color.WHITE);
         lblCaloriesBurned.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         GroupLayout gl_calinfoPanel = new GroupLayout(calinfoPanel);
@@ -326,11 +323,11 @@ public class DashBoardPanel extends JPanel {
         mininfoPanel.setOpaque(false);
         minutesButton.add(mininfoPanel, BorderLayout.CENTER);
         
-        JLabel lblSedimentaryMinutes = new JLabel("Sedentary Minutes: "+api.getSedentaryMinutes());
+        JLabel lblSedimentaryMinutes = new JLabel("Sedentary Minutes: "+sedentaryMinutes);
         lblSedimentaryMinutes.setForeground(Color.WHITE);
         lblSedimentaryMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         
-        JLabel lblActiveMinutes = new JLabel("Active Minutes: " +api.getActiveMinutes());
+        JLabel lblActiveMinutes = new JLabel("Active Minutes: " + activeMinutes);
         lblActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
         lblActiveMinutes.setForeground(Color.WHITE);
         GroupLayout gl_mininfoPanel = new GroupLayout(mininfoPanel);
@@ -435,15 +432,15 @@ public class DashBoardPanel extends JPanel {
         moveinfoPanel.setOpaque(false);
         movementButton.add(moveinfoPanel, BorderLayout.CENTER);
         
-        JLabel lblSteps = new JLabel("Steps: " + api.getSteps());
+        JLabel lblSteps = new JLabel("Steps: " + steps);
         lblSteps.setFont(new Font("Arial", Font.PLAIN, 15));
         lblSteps.setForeground(Color.WHITE);
 
-        JLabel lblFloors = new JLabel("Floors: "   + api.getFloors());
+        JLabel lblFloors = new JLabel("Floors: " + floors);
         lblFloors.setFont(new Font("Arial", Font.PLAIN, 15));
         lblFloors.setForeground(Color.WHITE);
 
-        JLabel lblDistance = new JLabel("Distance: "   + api.getDistance());
+        JLabel lblDistance = new JLabel("Distance: "+distance);
         lblDistance.setFont(new Font("Arial", Font.PLAIN, 15));
         lblDistance.setForeground(Color.WHITE);
         GroupLayout gl_moveinfoPanel = new GroupLayout(moveinfoPanel);
@@ -551,15 +548,15 @@ public class DashBoardPanel extends JPanel {
         lifeinfoPanel.setOpaque(false);
         lifetimeButton.add(lifeinfoPanel, BorderLayout.CENTER);
 
-        JLabel lblNewLabel_2 = new JLabel("Lifetime Floors: "   + api.getLifeTimeFloors());
+        JLabel lblNewLabel_2 = new JLabel("Lifetime Floors: " + lifetimeFloors);
         lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel_2.setForeground(Color.WHITE);
 
-        JLabel lblNewLabel_1 = new JLabel("Lifetime Steps: "   + api.getLifetimeSteps());
+        JLabel lblNewLabel_1 = new JLabel("Lifetime Steps: " + lifetimeSteps);
         lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
 
-        JLabel lblLifetimeCalories = new JLabel("Lifetime Distance: "   + api.getLifetimeDistance());
+        JLabel lblLifetimeCalories = new JLabel("Lifetime Distance: " + lifetimeDistance);
         lblLifetimeCalories.setFont(new Font("Arial", Font.PLAIN, 15));
         lblLifetimeCalories.setForeground(Color.WHITE);
         GroupLayout gl_lifeinfoPanel = new GroupLayout(lifeinfoPanel);
@@ -644,7 +641,7 @@ public class DashBoardPanel extends JPanel {
         plh5.setFont(new Font("Verdana", Font.BOLD, 13));
         plh5.setForeground(new Color(255, 255, 255));
         
-        graph_panel = graph.ShowGUI2();
+        graph_panel = graph.setAll();
         plh1.add(graph_panel, BorderLayout.CENTER);
         plh1.add(plh2,BorderLayout.WEST);
         plh1.add(plh3,BorderLayout.EAST);
@@ -776,15 +773,15 @@ public class DashBoardPanel extends JPanel {
         bestinfoPanel.setOpaque(false);
         bestdayButton.add(bestinfoPanel, BorderLayout.CENTER);
 
-        JLabel lblBestFloors = new JLabel("Best Floors: "   + api.getBestFloors());
+        JLabel lblBestFloors = new JLabel("Best Floors: " + bestFloors);
         lblBestFloors.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestFloors.setForeground(Color.WHITE);
 
-        JLabel lblBestSteps = new JLabel("Best Steps: "   + api.getBestSteps());
+        JLabel lblBestSteps = new JLabel("Best Steps: " + bestSteps);
         lblBestSteps.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestSteps.setForeground(Color.WHITE);
 
-        JLabel lblBestDistance = new JLabel("Best Distance: "   + api.getBestDistance());
+        JLabel lblBestDistance = new JLabel("Best Distance: " + bestDistance);
         lblBestDistance.setFont(new Font("Arial", Font.PLAIN, 15));
         lblBestDistance.setForeground(Color.WHITE);
         GroupLayout gl_bestinfoPanel = new GroupLayout(bestinfoPanel);

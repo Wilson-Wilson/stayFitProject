@@ -1,73 +1,42 @@
 package ca.uwo.csd.cs2212.team12;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
-import java.io.*;
+public class AccoDict {
 
-public class AccoDict implements Serializable {
-
-  private List<Accolade> accoList;
-
-  private static final long serialVersionUID= 1L;
-  private static final String FILENAME= "accolades.boop";
-  
   /**
-   * Creates an AccoDict Object and initializes accoList = new ArrayList<Accolade>()
+   * The list containing all of the users accolades.
+   */
+  private Accolade [] theList;
+
+  /**
+   * Initializes all of the available accolades for the user, setting their
+   * completion status to false.
    */
   public AccoDict(){
-    accoList= new ArrayList<Accolade>();
+	theList = new Accolade[20];
+	  
+	theList[0] = new Accolade("1,000 baby-steps","steps",1000, false);
+	theList[1] = new Accolade("5,000 growing calf","steps",5000, false);
+	theList[2] = new Accolade("10,000 marathon","steps",10000, false);
+	theList[3] = new Accolade("Iron Man","steps",15000, false);
+	theList[4] = new Accolade("BMR+750- Kindle","calories",750, false);
+	theList[5] = new Accolade("BMR+1250- Fire Baby","calories",1250, false);
+	theList[6] = new Accolade("BMR+1250- Human Torch","calories",1750, false);
+	theList[7] = new Accolade("1-Another One","distance",1000, false);
+	theList[8] = new Accolade("3-Third Time's the Charm","distance",3000, false);
+	theList[9] = new Accolade("8-Making an Album","distance",8000, false);
+	theList[10] = new Accolade("10 Up or Down?","floors",10, false);
+	theList[11] = new Accolade("20 Step Machine","floors",20, false);
+	theList[12] = new Accolade("Elevator","floors",30, false);
+	theList[13] = new Accolade("60 Power Hour","activeMins",60, false);
+	theList[14] = new Accolade("Double Time","activeMins",120, false);
+	theList[15] = new Accolade("Need a Break","activeMins",200, false);
   }
-  
-  /**
-   * Returns boolean value showing if the user has Accolades.
-   * @param accoID int The unique accoladeID.
-   * @return boolean This returns a value indicating if the user has Accolades.
-   */
-  public boolean userHasAcco(int accoID){
-    if(accoList.get(accoID).getUserObtained() == true){
-      return true;
-    }
 
-    return false;
-  }
-
-
-  //The following methods are used to persist AccoDict object between runs
-  
-  /**
-	 * Saves the user's Accolade information to disk.
-	 * @param accos AccoDict an instance of the AccoDict object to be stored.
-	 */
-  private static void storeAccolades(AccoDict accos){
-    try{
-      ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-      out.writeObject(accos);
-      out.close();
-        } catch(IOException e){
-            System.out.println("Accolades could not be saved to disk. IO error occured.");
-            e.printStackTrace();
-          }
-
-    }
-
-  /**
-	 * Loads user's Accolade information from disk into an instance of AccoDict.
-	 */
-  private static void loadAccolades(){
-    try{
-      ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
-      AccoDict accoList= (AccoDict) in.readObject();
-
-      in.close();
-        } catch (IOException e){
-            System.out.println("Accolades could not be loaded from disk. IO error occured.");
-            e.printStackTrace();
-          }
-    	catch (ClassNotFoundException e){
-    		System.out.println("The class could not be found.");
-    		e.printStackTrace();
-    	}
-    }
-
+	/**
+	 * This method is used to retrieve the user's accolades.
+	 * @return Accolade The list of the user's accolades
+     */
+	public Accolade [] getList(){
+		return this.theList;
+	}
 }

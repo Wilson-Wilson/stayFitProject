@@ -6,9 +6,5 @@ target/
 .settings
 .idea/
 out/
-<<<<<<< HEAD
-team12.iml
-.boop
-=======
 *.iml
->>>>>>> FETCH_HEAD
+.boop

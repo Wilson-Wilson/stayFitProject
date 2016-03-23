@@ -17,8 +17,7 @@ public class DataDict implements Serializable{
   /**
    * Constructor.
    * Fills DataDict with a maximum 365 Data Entry objects.
-   * 
-   * @param firstDate is the first date which 365 days prior to today's date.
+   *
    * @param calories is the JSONObject carrying daily calorie burned data for a year.
    * @param distance is the JSONObject carrying daily distance traveled data for a year.
    * @param floors is the JSONObject carrying daily floors climbed data for a year.
@@ -52,17 +51,33 @@ public class DataDict implements Serializable{
 	  }	   
     
   }
+
+  /**
+   * This is the default constructor for the DataDict class.
+   */
   public DataDict(){
   }
-  
+
+  /**
+   * This method returns the value of the earliest data entry available.
+   * @return String This returns the value of earliest.
+   */
   public String getEarliest(){
 	  return this.earliest;
   }
-  
+
+  /**
+   * This method returns the value of the most recent data entry available.
+   * @return String This returns the value of latest.
+   */
   public String getLatest(){
 	  return this.latest;
   }
-  
+
+  /**
+   * This method returns the dictionary containing the user information.
+   * @return HashMap<String,DataEntry> This returns the dictionary hash map.
+   */
   public HashMap<String, DataEntry> getDictionary(){
 	  return this.theDictionary;
   }

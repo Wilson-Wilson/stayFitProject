@@ -5,18 +5,8 @@ import java.awt.*;
 
 public class MWindow {
 
-    private API api = new RealAPI();
-    
-    /**
-     * Sets the API the dashboard will get values from.
-     * 
-     * @param api an interface that can be used as either the test API or the realAPI
-     */
-    public void setAPI(API api) {
-        this.api = api;
-    }
-
     public JFrame frame;
+
 
     //Make sure to have these initialized with the right icon
     ImageIcon backImage = ImageClass.getBackImage();
@@ -34,19 +24,16 @@ public class MWindow {
 
 
 
+
     /**
      * Create the application.
      */
-    public MWindow(API api) {
-        this.setAPI(api);
-        initialize();
-    }
+    public MWindow() {initialize();}
 
     /**
      * Initialize the contents of the frame; panels, sub-panels, labels, borders and etc.
      */
     private void initialize() {
-
         //main frame
         frame = new JFrame("StayFit");
         frame.setResizable(false);
@@ -63,10 +50,18 @@ public class MWindow {
 
 
 
-        DashBoardPanel dash= new DashBoardPanel(api);
-        dash.setAPI(api);
+
+        DashBoardPanel dash= new DashBoardPanel();
+        Preferences.showBestDaysCard=true;
+        Preferences.showCaloriesCard=true;
+        Preferences.showLifetimeCard=true;
+        Preferences.showMinutesCard=true;
+        Preferences.showMovementsCard=true;
+        Preferences.showTimeSeriesCard=true;
+        
+        dash.checkPref();
+  
+
         panel_3.add(dash,"2");
-
     }
-
 }
