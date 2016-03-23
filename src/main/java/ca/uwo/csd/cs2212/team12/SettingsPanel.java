@@ -10,11 +10,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class SettingsPanel extends JPanel {
 
-
+	// Make sure to have these initialized with the right icon (smaller images i
+	// will put on the button of the ui page)
 	ImageIcon backImage = ImageClass.getBackImage();
 
 	/**
-	 * Create the panel.
+	 * Create the application.
 	 */
 	public SettingsPanel() {
 		initialize();
@@ -23,10 +24,19 @@ public class SettingsPanel extends JPanel {
 	/**
 	 * Initialize the contents of the panel; sub-panels, labels, borders and
 	 * etc.
-	 *          
+	 * 
+	 * @param num
+	 *            int used to choose which details of the panel to display
 	 */
 	private void initialize() {
-		
+
+		// main frame
+		/*
+		 * frame = new JFrame(); frame.setResizable(false);
+		 * frame.getContentPane().setBackground(Color.DARK_GRAY);
+		 * frame.setBounds(100, 100, 450, 300);
+		 * frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 */
 		final CardLayout cl = new CardLayout(0, 0);
 		this.setLayout(new CardLayout(0, 0));
 		final JPanel panel_3 = new JPanel();
@@ -78,7 +88,7 @@ public class SettingsPanel extends JPanel {
 		
 		JEditorPane editorPane_2 = new JEditorPane();
 		
-		JLabel lblCalories = new JLabel("Calories:");
+		JLabel lblCalories = new JLabel("Calories: ");
 		lblCalories.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblCalories.setForeground(new Color(255, 255, 255));
 		
@@ -88,34 +98,33 @@ public class SettingsPanel extends JPanel {
 		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button.setContentAreaFilled(false);
 		button.setBorder(null);
-		button.setIcon(ImageClass.getOkIcon());
+		button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\ok-button.png"));
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_8.createSequentialGroup()
-					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_8.createSequentialGroup()
 							.addComponent(lblCards, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addComponent(lblCards_1, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel_8.createSequentialGroup()
 							.addComponent(editorPane)
 							.addPreferredGap(ComponentPlacement.RELATED))
-						.addGroup(gl_panel_8.createSequentialGroup()
-							.addComponent(lblCards_1, GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-							.addGap(18)
-							.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
-								.addComponent(editorPane_2)
-								.addComponent(editorPane_1))))
+						.addComponent(editorPane_2)
+						.addComponent(editorPane_1))
 					.addGap(409))
 				.addGroup(gl_panel_8.createSequentialGroup()
 					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
 					.addContainerGap())
 				.addGroup(gl_panel_8.createSequentialGroup()
 					.addComponent(lblCalories)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(editorPane_3)
 					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(editorPane_3)
+					.addGap(12)
 					.addComponent(button)
-					.addGap(309))
+					.addGap(373))
 		);
 		gl_panel_8.setVerticalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
@@ -134,9 +143,10 @@ public class SettingsPanel extends JPanel {
 						.addComponent(lblNewLabel))
 					.addGap(7)
 					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblCalories)
-						.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button))
+						.addComponent(button)
+						.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+							.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblCalories)))
 					.addGap(0, 0, Short.MAX_VALUE))
 		);
 		panel_8.setLayout(gl_panel_8);
@@ -191,6 +201,23 @@ public class SettingsPanel extends JPanel {
 
 		JLabel label_5 = new JLabel("");
 
+	/*	JCheckBox MovementsCheckBox = new JCheckBox("Movements");
+		MovementsCheckBox.setOpaque(false);
+		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
+		MovementsCheckBox.addItemListener(new ItemListener() {
+	        
+    	    public void itemStateChanged(ItemEvent e) {
+    	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+    	        	Preferences.showMovementsCard=true;
+    	        	System.out.println("HELLO");
+    	        } else {//checkbox has been deselected
+    	        	Preferences.showMovementsCard=false;
+    	        };
+    	    }
+    });
+		//dashboardSettings.add(MovementsCheckBox);
+		 * 
+		 */
 
 		JCheckBox LifetimeCheckBox = new JCheckBox("Lifetime");
 		LifetimeCheckBox.setForeground(new Color(255, 255, 255));

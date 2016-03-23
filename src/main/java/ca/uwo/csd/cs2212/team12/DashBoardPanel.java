@@ -909,6 +909,7 @@ public class DashBoardPanel extends JPanel {
         trophyButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         trophyButton.setHorizontalTextPosition(SwingConstants.RIGHT);
         trophyButton.setContentAreaFilled(false);
+        trophyButton.setToolTipText("Accolades and Goals");
         trophyButton.setHorizontalAlignment(SwingConstants.RIGHT);
         trophyButton.setVerticalTextPosition(SwingConstants.BOTTOM);
         trophyButton.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -995,9 +996,11 @@ public class DashBoardPanel extends JPanel {
         );
 
         JButton refreshbutton = new JButton("");
+        refreshbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         refreshbutton.setContentAreaFilled(false);
         refreshbutton.setBorder(null);
         refreshbutton.setIcon(ImageClass.getRefreshIcon());
+        refreshbutton.setToolTipText("Refresh");
         final JLabel lastupdated = new JLabel("Last updated: "+timeft.format(new Date()));
         refreshbutton.addActionListener(new ActionListener() {
 
@@ -1081,9 +1084,11 @@ public class DashBoardPanel extends JPanel {
         
 
         JButton calendarButton = new JButton("");
+        calendarButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         calendarButton.setIconTextGap(0);
         calendarButton.setIcon(ImageClass.getCalendarIcon());
         calendarButton.setContentAreaFilled(false);
+        calendarButton.setToolTipText("Pick a date!");
         calendarButton.setBorder(null);
         calendarButton.addActionListener(new ActionListener(){
 
@@ -1127,10 +1132,12 @@ public class DashBoardPanel extends JPanel {
         /*SETTINGS*/
 
         JButton settingsbutton = new JButton("");
+        settingsbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         settingsbutton.setContentAreaFilled(false);
         settingsbutton.setBorder(null);
         settingsbutton.setBorderPainted(false);
         settingsbutton.setIcon(ImageClass.getSettingsIcon());
+        settingsbutton.setToolTipText("Settings");
         settingsbutton.addActionListener(new ActionListener() {
 
 

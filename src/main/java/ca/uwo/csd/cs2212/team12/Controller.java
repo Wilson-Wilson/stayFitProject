@@ -178,8 +178,8 @@ public class Controller implements Serializable{
 			JSONArray dictSedentary = theAPI.getSedentaryMinutes();
 			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			
-			JSONObject dailyGoals = theAPI.getGoals();
-			theDailyGoals = new DailyGoals(dailyGoals);
+			//JSONObject dailyGoals = theAPI.getGoals();
+			//theDailyGoals = new DailyGoals(dailyGoals);
 		}
 		else{
 			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
