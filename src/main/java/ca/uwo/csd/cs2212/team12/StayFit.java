@@ -1,6 +1,8 @@
 package ca.uwo.csd.cs2212.team12;
 
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.SwingUtilities;
@@ -22,7 +24,8 @@ public class StayFit {
             public void run() {
                 try {
                     API api;
-                    String date = new Date().toString();
+                    DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    String date  = formatter.format(new Date());
                     if(isTest)  api= new TestAPI();
                     else        api= new RealAPI(date);
                     Controller controller = new Controller(api);

@@ -101,7 +101,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     </descriptorRefs>
     <archive>
       <manifest>
-        <mainClass>ca.uwo.csd.cs2212.team12.RealAPITestGetters</mainClass>
+        <mainClass>ca.uwo.csd.cs2212.team12.StayFit</mainClass>
       </manifest>
     </archive>
   </configuration>
