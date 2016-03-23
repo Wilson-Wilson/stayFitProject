@@ -34,8 +34,10 @@ public class ImageClass {
 	    static ImageIcon refreshIcon = new ImageIcon("src/main/resources/refreshIcon.png");
 	    static ImageIcon calendarIcon= new ImageIcon("src/main/resources/calendarIcon.png");
 	    static ImageIcon okIcon= new ImageIcon("src/main/resources/ok-button.png");
-
-
+		static ImageIcon bronzeMedalIcon = new ImageIcon("src/main/resources/BronzeMedal.png");
+		static ImageIcon silverMedalIcon = new ImageIcon("src/main/resources/SilverMedal.png");
+		static ImageIcon goldMedalIcon = new ImageIcon("src/main/resources/GoldMedal.png");
+		static ImageIcon goldMedalWithStarIcon = new ImageIcon("src/main/resources/GoldMedalWithStar.png");
 
 	/**
 	 * This method returns backImage
@@ -193,5 +195,29 @@ public class ImageClass {
 	 * @return okIcon
 	 */
 	public static ImageIcon getOkIcon()				{return okIcon;}
+
+	/**
+	 * This method returns bronzeMedalIcon
+	 * @return bronzeMedalIcon
+	 */
+	public static ImageIcon getBronzeMedalIcon() 	{return bronzeMedalIcon;}
+
+	/**
+	 * This method returns silverMedalIcon
+	 * @return silverMedalIcon
+	 */
+	public static ImageIcon getSilverMedalIcon() 	{return silverMedalIcon;}
+
+	/**
+	 * This method returns goldMedalIcon
+	 * @return goldMedalIcon
+	 */
+	public static ImageIcon getGoldMedalIcon() 	{return goldMedalIcon;}
+
+	/**
+	 * This method returns goldMedalWithStarIcon
+	 * @return goldMedalWithStarIcon
+	 */
+	public static ImageIcon getGoldMedalWithStarIcon() 	{return goldMedalWithStarIcon;}
 
 }

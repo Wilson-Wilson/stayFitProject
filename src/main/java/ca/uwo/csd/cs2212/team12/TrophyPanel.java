@@ -241,6 +241,7 @@ public class TrophyPanel extends JPanel{
 				lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
 				lblNewLabel_1.setForeground(Color.WHITE);
 				lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
+				lblNewLabel_1.setIcon(ImageClass.getTimeseriesAltIcon());
 				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 				gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
 				gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -255,7 +256,7 @@ public class TrophyPanel extends JPanel{
 					lblNewLabel_6.setOpaque(true);
 					lblNewLabel_6.setBackground(Color.LIGHT_GRAY);
 				}
-				lblNewLabel_6.setIcon(ImageClass.getTimeseriesAltIcon());
+				lblNewLabel_6.setIcon(ImageClass.getBronzeMedalIcon());
 				lblNewLabel_6.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblNewLabel_6.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
@@ -276,7 +277,7 @@ public class TrophyPanel extends JPanel{
 					lblNewLabel_7.setBackground(Color.LIGHT_GRAY);
 				}
 
-				lblNewLabel_7.setIcon(ImageClass.getTimeseriesAltIcon());
+				lblNewLabel_7.setIcon(ImageClass.getSilverMedalIcon());
 				lblNewLabel_7.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblNewLabel_7.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
@@ -295,7 +296,7 @@ public class TrophyPanel extends JPanel{
 					lblNewLabel_8.setBackground(Color.LIGHT_GRAY);
 				}
 
-				lblNewLabel_8.setIcon(ImageClass.getTimeseriesAltIcon());
+				lblNewLabel_8.setIcon(ImageClass.getGoldMedalIcon());
 				lblNewLabel_8.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblNewLabel_8.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
@@ -314,7 +315,7 @@ public class TrophyPanel extends JPanel{
 				}
 				lblGet.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblGet.setForeground(Color.WHITE);
-				lblGet.setIcon(ImageClass.getTimeseriesAltIcon());
+				lblGet.setIcon(ImageClass.getGoldMedalWithStarIcon());
 				GridBagConstraints gbc_lblGet = new GridBagConstraints();
 				gbc_lblGet.anchor = GridBagConstraints.NORTHWEST;
 				gbc_lblGet.insets = new Insets(0, 0, 5, 5);
@@ -328,6 +329,7 @@ public class TrophyPanel extends JPanel{
 				lblCal.setHorizontalAlignment(SwingConstants.CENTER);
 				lblCal.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblCal.setForeground(Color.WHITE);
+				lblCal.setIcon(ImageClass.getCaloriesAltIcon());
 				GridBagConstraints gbc_lblCal = new GridBagConstraints();
 				gbc_lblCal.anchor = GridBagConstraints.NORTH;
 				gbc_lblCal.fill = GridBagConstraints.HORIZONTAL;
@@ -342,7 +344,7 @@ public class TrophyPanel extends JPanel{
 					lblNewLabel_9.setBackground(Color.LIGHT_GRAY);
 				}
 
-				lblNewLabel_9.setIcon(ImageClass.getCaloriesAltIcon());
+				lblNewLabel_9.setIcon(ImageClass.getBronzeMedalIcon());
 				lblNewLabel_9.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblNewLabel_9.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
@@ -358,7 +360,7 @@ public class TrophyPanel extends JPanel{
 					lblNewLabel_11.setOpaque(true);
 					lblNewLabel_11.setBackground(Color.LIGHT_GRAY);
 				}
-				lblNewLabel_11.setIcon(ImageClass.getCaloriesAltIcon());
+				lblNewLabel_11.setIcon(ImageClass.getSilverMedalIcon());
 				lblNewLabel_11.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
 				lblNewLabel_11.setForeground(Color.WHITE);
@@ -375,7 +377,7 @@ public class TrophyPanel extends JPanel{
 					lblBmr.setOpaque(true);
 					lblBmr.setBackground(Color.LIGHT_GRAY);
 				}
-				lblBmr.setIcon(ImageClass.getCaloriesAltIcon());
+				lblBmr.setIcon(ImageClass.getGoldMedalIcon());
 				lblBmr.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblBmr.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblBmr = new GridBagConstraints();
@@ -391,7 +393,7 @@ public class TrophyPanel extends JPanel{
 					lblBmr1.setOpaque(true);
 					lblBmr1.setBackground(Color.LIGHT_GRAY);
 				}
-				lblBmr1.setIcon(ImageClass.getCaloriesAltIcon());
+				lblBmr1.setIcon(ImageClass.getGoldMedalWithStarIcon());
 				lblBmr1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblBmr1.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblBmr1 = new GridBagConstraints();
@@ -404,6 +406,7 @@ public class TrophyPanel extends JPanel{
 				JLabel lblDistance = new JLabel("Distance:");
 				lblDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblDistance.setForeground(Color.WHITE);
+				lblDistance.setIcon(ImageClass.getMovementAltIcon());
 				GridBagConstraints gbc_lblDistance = new GridBagConstraints();
 				gbc_lblDistance.anchor = GridBagConstraints.NORTH;
 				gbc_lblDistance.insets = new Insets(0, 0, 5, 5);
@@ -416,7 +419,7 @@ public class TrophyPanel extends JPanel{
 					lblAnotherOne.setOpaque(true);
 					lblAnotherOne.setBackground(Color.LIGHT_GRAY);
 				}
-				lblAnotherOne.setIcon(ImageClass.getMovementAltIcon());
+				lblAnotherOne.setIcon(ImageClass.getBronzeMedalIcon());
 				lblAnotherOne.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblAnotherOne.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblAnotherOne = new GridBagConstraints();
@@ -432,7 +435,7 @@ public class TrophyPanel extends JPanel{
 					lblThird.setOpaque(true);
 					lblThird.setBackground(Color.LIGHT_GRAY);
 				}
-				lblThird.setIcon(ImageClass.getMovementAltIcon());
+				lblThird.setIcon(ImageClass.getSilverMedalIcon());
 				lblThird.setForeground(Color.WHITE);
 				lblThird.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				GridBagConstraints gbc_lblThird = new GridBagConstraints();
@@ -448,7 +451,7 @@ public class TrophyPanel extends JPanel{
 					lblMaking.setOpaque(true);
 					lblMaking.setBackground(Color.LIGHT_GRAY);
 				}
-				lblMaking.setIcon(ImageClass.getMovementAltIcon());
+				lblMaking.setIcon(ImageClass.getGoldMedalIcon());
 				lblMaking.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblMaking.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblMaking = new GridBagConstraints();
@@ -464,7 +467,7 @@ public class TrophyPanel extends JPanel{
 					lblMaking1.setOpaque(true);
 					lblMaking1.setBackground(Color.LIGHT_GRAY);
 				}
-				lblMaking1.setIcon(ImageClass.getMovementAltIcon());
+				lblMaking1.setIcon(ImageClass.getGoldMedalWithStarIcon());
 				lblMaking1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblMaking1.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblMaking1 = new GridBagConstraints();
@@ -477,6 +480,7 @@ public class TrophyPanel extends JPanel{
 				JLabel lblFlights = new JLabel("Flights:");
 				lblFlights.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblFlights.setForeground(Color.WHITE);
+				lblFlights.setIcon(ImageClass.getFlightsIcon());
 				GridBagConstraints gbc_lblFlights = new GridBagConstraints();
 				gbc_lblFlights.anchor = GridBagConstraints.NORTH;
 				gbc_lblFlights.insets = new Insets(0, 0, 5, 5);
@@ -489,7 +493,7 @@ public class TrophyPanel extends JPanel{
 					lblUp.setOpaque(true);
 					lblUp.setBackground(Color.LIGHT_GRAY);
 				}
-				lblUp.setIcon(ImageClass.getFlightsIcon());
+				lblUp.setIcon(ImageClass.getBronzeMedalIcon());
 				lblUp.setForeground(Color.WHITE);
 				lblUp.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				GridBagConstraints gbc_lblUp = new GridBagConstraints();
@@ -505,7 +509,7 @@ public class TrophyPanel extends JPanel{
 					lblStep.setOpaque(true);
 					lblStep.setBackground(Color.LIGHT_GRAY);
 				}
-				lblStep.setIcon(ImageClass.getFlightsIcon());
+				lblStep.setIcon(ImageClass.getSilverMedalIcon());
 				lblStep.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblStep.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblStep = new GridBagConstraints();
@@ -521,7 +525,7 @@ public class TrophyPanel extends JPanel{
 					lblElevator.setOpaque(true);
 					lblElevator.setBackground(Color.LIGHT_GRAY);
 				}
-				lblElevator.setIcon(ImageClass.getFlightsIcon());
+				lblElevator.setIcon(ImageClass.getGoldMedalIcon());
 				lblElevator.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 				lblElevator.setForeground(Color.WHITE);
 				GridBagConstraints gbc_lblElevator = new GridBagConstraints();
@@ -536,7 +540,7 @@ public class TrophyPanel extends JPanel{
 			lblElevator1.setOpaque(true);
 			lblElevator1.setBackground(Color.LIGHT_GRAY);
 		}
-		lblElevator1.setIcon(ImageClass.getFlightsIcon());
+		lblElevator1.setIcon(ImageClass.getGoldMedalWithStarIcon());
 		lblElevator1.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblElevator1.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblElevator1 = new GridBagConstraints();
@@ -549,6 +553,7 @@ public class TrophyPanel extends JPanel{
 		JLabel lblActiveMinutes = new JLabel("Active Minutes:");
 		lblActiveMinutes.setForeground(Color.WHITE);
 		lblActiveMinutes.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		lblActiveMinutes.setIcon(ImageClass.getMinutesAltIcon());
 		GridBagConstraints gbc_lblActiveMinutes = new GridBagConstraints();
 		gbc_lblActiveMinutes.anchor = GridBagConstraints.NORTH;
 		gbc_lblActiveMinutes.insets = new Insets(0, 0, 5, 5);
@@ -561,7 +566,7 @@ public class TrophyPanel extends JPanel{
 			lblUpOr_1.setOpaque(true);
 			lblUpOr_1.setBackground(Color.LIGHT_GRAY);
 		}
-		lblUpOr_1.setIcon(ImageClass.getMinutesAltIcon());
+		lblUpOr_1.setIcon(ImageClass.getBronzeMedalIcon());
 		lblUpOr_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblUpOr_1.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblUpOr_1 = new GridBagConstraints();
@@ -576,7 +581,7 @@ public class TrophyPanel extends JPanel{
 			lblNewLabel_10.setOpaque(true);
 			lblNewLabel_10.setBackground(Color.LIGHT_GRAY);
 		}
-		lblNewLabel_10.setIcon(ImageClass.getMinutesAltIcon());
+		lblNewLabel_10.setIcon(ImageClass.getSilverMedalIcon());
 		lblNewLabel_10.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblNewLabel_10.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
@@ -592,7 +597,7 @@ public class TrophyPanel extends JPanel{
 			lblNewLabel_15.setBackground(Color.LIGHT_GRAY);
 		}
 		
-		lblNewLabel_15.setIcon(ImageClass.getMinutesAltIcon());
+		lblNewLabel_15.setIcon(ImageClass.getGoldMedalIcon());
 		lblNewLabel_15.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblNewLabel_15.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblNewLabel_15 = new GridBagConstraints();
@@ -607,7 +612,7 @@ public class TrophyPanel extends JPanel{
 			lblNewLabel_14.setOpaque(true);
 			lblNewLabel_14.setBackground(Color.LIGHT_GRAY);
 		}
-		lblNewLabel_14.setIcon(ImageClass.getMinutesAltIcon());
+		lblNewLabel_14.setIcon(ImageClass.getGoldMedalWithStarIcon());
 		lblNewLabel_14.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblNewLabel_14.setForeground(Color.WHITE);
 		GridBagConstraints gbc_lblNewLabel_14 = new GridBagConstraints();
