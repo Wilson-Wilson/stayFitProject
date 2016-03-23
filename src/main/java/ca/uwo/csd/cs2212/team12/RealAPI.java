@@ -155,7 +155,7 @@ public class RealAPI implements API
 
     public JSONArray getCalSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
@@ -183,7 +183,7 @@ public class RealAPI implements API
 
     public JSONArray getStepsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/steps/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/steps/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
@@ -211,7 +211,7 @@ public class RealAPI implements API
 
     public JSONArray getFloorsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/floors/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/floors/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
@@ -239,7 +239,7 @@ public class RealAPI implements API
     
     public JSONArray getSedentaryMinutesSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/minutesSedentary/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/minutesSedentary/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
@@ -266,7 +266,7 @@ public class RealAPI implements API
     
     public JSONArray getActiveMinutesSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
@@ -292,7 +292,7 @@ public class RealAPI implements API
 
     public JSONArray getDistanceSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/distance/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/distance/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
@@ -303,7 +303,7 @@ public class RealAPI implements API
     
     public JSONArray getHeartRateSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/heart/date/"+frmt1+"/1d/1min.json";
+        requestUrlSuffix = "activities/heart/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();

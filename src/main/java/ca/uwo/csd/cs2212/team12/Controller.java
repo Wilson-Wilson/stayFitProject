@@ -76,7 +76,9 @@ public class Controller implements Serializable{
 			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
 			JSONArray timeDistance = theAPI.getCalSeries();
 			JSONArray timeFloors = theAPI.getFloorsSeries();
-			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors);
+			JSONArray timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONArray timeActive = theAPI.getActiveMinutesSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
 			
 			if (!isWithinRange(newDate)){
 				JSONArray dictCal = theAPI.getCalBurned();
@@ -161,7 +163,9 @@ public class Controller implements Serializable{
 			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
 			JSONArray timeDistance = theAPI.getCalSeries();
 			JSONArray timeFloors = theAPI.getFloorsSeries();
-			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors);
+			JSONArray timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONArray timeActive = theAPI.getActiveMinutesSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
 			
 			JSONArray lifeStats = theAPI.getLifeTime();
 			theUserInfo = new UserInfo(lifeStats);
