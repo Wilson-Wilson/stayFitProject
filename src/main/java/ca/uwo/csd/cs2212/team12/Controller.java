@@ -127,7 +127,7 @@ public class Controller implements Serializable{
 	 * to instantiate the data-related classes.
 	 * If there is no internet connection available, theDictionary, theTimeSeries and theUserInfo 
 	 * will be restored from last session's serialized data. If there is no data available,
-	 * they will be filled with 0 values instead.
+	 * the application will not start.
 	 * 
 	 * @throws IOException
 	 * @throws ParseException 
@@ -186,10 +186,7 @@ public class Controller implements Serializable{
 				theTimeSeries = loadTimeSeries();
 			}
 			else{
-				//this.theDictionary = new Dictionary (fake Json arrays)
-				//this.theTimeSeries = new TimeSeriesData (fake Json arrays)
-				//theUserInfo = new UserInfo (fake shit)
-				theDailyGoals = new DailyGoals();
+				//Close application: ERROR you don't have either internet or serialized data!
 			}				
 		}
 		
