@@ -2,8 +2,15 @@ package ca.uwo.csd.cs2212.team12;
 
 public class AccoDict {
 
+  /**
+   * The list containing all of the users accolades.
+   */
   private Accolade [] theList;
-  
+
+  /**
+   * Initializes all of the available accolades for the user, setting their
+   * completion status to false.
+   */
   public AccoDict(){
 	theList = new Accolade[20];
 	  
@@ -25,6 +32,10 @@ public class AccoDict {
 	theList[15] = new Accolade("Need a Break","activeMins",200, false);
   }
 
+	/**
+	 * This method is used to retrieve the user's accolades.
+	 * @return Accolade The list of the user's accolades
+     */
 	public Accolade [] getList(){
 		return this.theList;
 	}

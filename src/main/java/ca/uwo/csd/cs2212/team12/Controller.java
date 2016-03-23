@@ -9,9 +9,18 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * Controller.java handles all of the back-end logic between the local data, user interface and api classes.
+ * @author Leo
+ */
 public class Controller implements Serializable{
 
 	private static DataDict theDictionary;
@@ -20,6 +29,7 @@ public class Controller implements Serializable{
 	private static TimeSeriesData theTimeSeries;
 	private static Preferences thePreferences;
 	private static AccoDict	theAccoDict;
+	private static DailyGoals theDailyGoals;
 	//private UI theUI
 	
 	private static final long serialVersionUID= 1L;
@@ -27,33 +37,59 @@ public class Controller implements Serializable{
 	private static final String TIMESERIES= "timeseries.boop";
 	private static final String USERINFO= "userinfo.boop";
 	private static final String PREFERENCES= "preferences.boop";
-	  
+	private static final String GOALS="dailygoals.boop";	
+	
+	/**
+	 * Constructor that creates Controller object from apiParam. 
+	 * The method is only used in StayFit.java with onStartUp() defined below.
+	 * @param apiParam 
+	 */
 	//Add UI parameter and create initializeController() method in Stayfit that creates 
-	//a controller object and calls onStartUp()
+		//a controller object and calls onStartUp()
 	public Controller(API apiParam){
 		theAPI = apiParam;		
 	}
 	
-	public void changeDate(String newer, String older){
+	
+	/**
+	 * This method refreshes the user interface with the data relating to the newly 
+	 * selected date.
+	 * If there is no internet connection available, but the new date is within the range of theDictionary
+	 * all data except for the time series view will be updated.
+	 * If there is no internet connection available and the new date is out of range, then the view will not update.
+	 * @param newer String representing the newly selected date.
+	 * @param older String representing the current date.
+	 * @throws JSONException 
+	 * @throws ParseException 
+	 */
+	public void changeDate(String newer, String older) throws JSONException, ParseException{
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
-		if(testInet()){
-			LocalDate earlyDate = newDate.minusDays(365);
-			String back = earlyDate.toString();
+		if(testInet()){	
 			
-			//timeseries data request to api using curdate
-			//theTimeSeries = new TimeSeriesData (JSONarrays)
+			theAPI = new RealAPI(newer);
+			JSONArray timeCal = theAPI.getCalSeries();
+			JSONArray timeSteps = theAPI.getStepsSeries();
+			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
+			JSONArray timeDistance = theAPI.getCalSeries();
+			JSONArray timeFloors = theAPI.getFloorsSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors);
 			
 			if (!isWithinRange(newDate)){
-				
-				//pass in newer and back to API requests
-				//theDictionary = new Dictionary (returned JSONArrays)
+				JSONArray dictCal = theAPI.getCalBurned();
+				JSONArray dictDist = theAPI.getDistance();
+				JSONArray dictFloors = theAPI.getFloors();
+				JSONArray dictSteps = theAPI.getSteps();
+				JSONArray dictActive = theAPI.getActiveMinutes();
+				JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+						
+				theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			}
 		}
-			
+		
 		int [] dayValues = getDayData(newDate); 
 		/* 
 		 * UI.setCaloriesVariable(dayValues[0]);
@@ -74,37 +110,72 @@ public class Controller implements Serializable{
 		}
 		
 		accoCheck(newDate);
-		//Some UI action
-		//goalsStuff
+		goalsCheck(newDate);
 		
 	}
-	
-	public static void onStartUp() throws IOException{
+
+
+	/**
+	 * This method is called to initialize the data in the view of the StayFit application.
+	 * Preference and goal related data persist through sessions.
+	 * 
+	 * In the test mode:
+	 * Date changing will be disabled, and the views will be populated using the data available in TestAPI.
+	 * 
+	 * In the regular mode:
+	 * If there is internet connection available, the method will make the appropriate API calls 
+	 * to instantiate the data-related classes.
+	 * If there is no internet connection available, theDictionary, theTimeSeries and theUserInfo 
+	 * will be restored from last session's serialized data. If there is no data available,
+	 * the application will not start.
+	 * 
+	 * @throws IOException
+	 * @throws ParseException 
+	 * @throws JSONException 
+	 */
+	public static void onStartUp() throws IOException, ParseException, JSONException{
 		
 		
-		File d = new File("../preferences.boop");
-		if (d.exists()){
+		File c = new File("../preferences.boop");
+		if (c.exists()){
 			thePreferences = loadPreferences();
 		}
 		else{
 			thePreferences = new Preferences();
 		}
 		
+		File d = new File("../dailygoals.boop");
+		if (d.exists()){
+			theDailyGoals = loadGoals();
+		}
+		
 		LocalDate now = LocalDate.now();
-		LocalDate back = now.minusDays(365);
 		String curDate = now.toString();
-		String earlyDate = back.toString();
 		
 		if(testInet()){
-			//pass in curDate and earlyDate to datadict data API requests
-			//pass in curDate for timeseries data request
-			//pass in cur date for userinfo data request
 			
-			//theDictionary = new Dictionary (returned JSONArrays)
-			//theTimeSeries = new TimeSeriesData (JSONarrays)
-			//theUserInfo = new UserInfo(JSONObject, JSONarray)
+			theAPI = new RealAPI(curDate);
 			
-			// goals
+			JSONArray timeCal = theAPI.getCalSeries();
+			JSONArray timeSteps = theAPI.getStepsSeries();
+			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
+			JSONArray timeDistance = theAPI.getCalSeries();
+			JSONArray timeFloors = theAPI.getFloorsSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors);
+			
+			JSONArray lifeStats = theAPI.getLifeTime();
+			theUserInfo = new UserInfo(lifeStats);
+			
+			JSONArray dictCal = theAPI.getCalBurned();
+			JSONArray dictDist = theAPI.getDistance();
+			JSONArray dictFloors = theAPI.getFloors();
+			JSONArray dictSteps = theAPI.getSteps();
+			JSONArray dictActive = theAPI.getActiveMinutes();
+			JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
+			
+			//JSONObject dailyGoals = theAPI.getGoals();
+			//theDailyGoals = new DailyGoals(dailyGoals);
 		}
 		else{
 			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
@@ -115,28 +186,40 @@ public class Controller implements Serializable{
 				theTimeSeries = loadTimeSeries();
 			}
 			else{
-				//this.theDictionary = new Dictionary (fake Json arrays)
-				//this.theTimeSeries = new TimeSeriesData (fake Json arrays)
-				//theUserInfo = new UserInfo (fake shit)
+				//Close application: ERROR you don't have either internet or serialized data!
 			}				
 		}
 		
 		AccoDict theAccoDict = new AccoDict();
 		accoCheck(now);
-		//Some UI action
-		
+		goalsCheck(now);
 	}
 	
+	/**
+	 * This method serializes all data-related instance variables.
+	 * The method is disabled in test mode.
+	 */
 	public static void onClose(){
 		
 		storeDataDict(theDictionary);
 		storeUserInfo(theUserInfo);
 		storeTimeSeries(theTimeSeries);
 		storePreferences(thePreferences);
-		//store methods for goals
-		
+		storeGoals(theDailyGoals);
 	}
 	 
+	/**
+	 * This method returns an int array with each index representing a different type of 
+	 * data corresponding to the date parameter.
+	 * 0 - calories
+	 * 1 - distance
+	 * 2 - floors
+	 * 3 - steps
+	 * 4 - active minutes
+	 * 5 - sedentary minutes
+	 * @param theDate the date to retrieve data from.
+	 * @return int [] the array containing the data values of the theDate.
+	 */
 	private static int[] getDayData(LocalDate theDate){
 		
 		int [] dayValues = new int[6];
@@ -155,6 +238,12 @@ public class Controller implements Serializable{
 		
 	}
 	
+	/**
+	 * This method returns an int array with each index representing a different type of 
+	 * data, identical to getDayData. The values are the sums from the week linked to theDate parameter.
+	 * @param theDate the Date belonging to the week whose values are being queried.
+	 * @return int [] the array containing the weekly sum values
+	 */
 	private static int[] getWeekData(LocalDate theDate){
 		
 		LocalDate dayObject = null;
@@ -163,7 +252,6 @@ public class Controller implements Serializable{
 		int i;
 		int [] weekValues = new int[6];
 		
-		//Find the Sunday in the same week as the newer date
 		switch(theDate.getDayOfWeek()){
 			case SUNDAY:	dayObject = theDate;
 							break;
@@ -204,6 +292,12 @@ public class Controller implements Serializable{
 		return weekValues;
 	}
 	
+	/**
+	 * This method returns an int array with each index representing a different type of 
+	 * data, identical to getDayData. The values are the sums from the month linked to theDate parameter.
+	 * @param theDate the Date belonging to the month whose values are being queried.
+	 * @return int [] the array containing the month sum values
+	 */
 	private static int[] getMonthData(LocalDate theDate){
 		
 		LocalDate dayObject;
@@ -212,7 +306,6 @@ public class Controller implements Serializable{
 		int [] monthValues = new int[6];
 		int currentMonth = theDate.getMonthValue();
 		
-		//get first day of the month
 		dayObject = theDate.withDayOfMonth(1);
 		dayString = dayObject.toString();
 		
@@ -236,6 +329,13 @@ public class Controller implements Serializable{
 		return monthValues;
 	}
 	
+	/**
+	 * This method returns a boolean value indicating if theDate is within theDictionary's range.
+	 * If the key returns a null value, it does not exist within theDictionary and the method returns false.
+	 * Otherwise it returns true.
+	 * @param theDate The date to test if it is within theDictionary's range.
+	 * @return boolean The indicator if the date is within the range or not.
+	 */
 	private static boolean isWithinRange(LocalDate theDate){
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -253,12 +353,17 @@ public class Controller implements Serializable{
     	
 	}
 	
+	/**
+	 * This method compares if newer is in the same week as older. The method returns
+	 * a boolean value indicating the test result. A week is defined as Sunday - Saturday
+	 * @param newer The date to test if it is within range.
+	 * @param older The "anchoring date" that determine's the week's range.
+	 * @return boolean The indicator if the newer is within the range or not.
+	 */
 	private static boolean isSameWeek(LocalDate newer, LocalDate older){
-		//A week is defined as Sunday - Saturday
 		
 		LocalDate startOfWeek = null, endOfWeek = null;
 		
-		//Define the Sunday and Saturday corresponding to the week of the older date
 		switch(older.getDayOfWeek()){
 			case SUNDAY:	startOfWeek = older;
 							endOfWeek = older.plusDays(6);
@@ -284,8 +389,7 @@ public class Controller implements Serializable{
 			default:		break;
 
 		}
-	
-		//Perform a range test on the newer date
+
 		if(newer.isAfter(startOfWeek) && newer.isBefore(endOfWeek))
     		return true;
     	else if (newer.isEqual(startOfWeek) || newer.isEqual(endOfWeek))
@@ -294,7 +398,14 @@ public class Controller implements Serializable{
     		return false;
 	
 	}
-
+	
+	/**
+	 * This method compares if newer is in the same month as older. The method returns
+	 * a boolean value indicating the test result.
+	 * @param newer The date to test if it is within range.
+	 * @param older The "anchoring date" that determine's the month range.
+	 * @return boolean The indicator if the newer is within the range or not.
+	 */
 	private static boolean isSameMonth(LocalDate newer, LocalDate older){
 		
 		if(newer.getYear() == older.getYear() && newer.getMonth() == older.getMonth()){
@@ -305,6 +416,14 @@ public class Controller implements Serializable{
 		
 	}
 	
+	/**
+	 * This method runs a check on the daily data values associated with theDate to determine if the 
+	 * user is eligible for the predefined accolades.
+	 * If so, the accolade's obtained variable is set to true, and is displayed on the user interface
+	 * to indicate achievement. If not, then the accolade remains hidden.
+	 * 
+	 * @param theDate The date to perform the accolade check on.
+	 */
 	private static void accoCheck(LocalDate theDate){
 		
 		int [] dayValues = getDayData(theDate);
@@ -334,8 +453,33 @@ public class Controller implements Serializable{
 				  }
 			  }
 		  }
+		//update UI
 	}
 	
+	private static void goalsCheck(LocalDate theDate) {
+		
+		int [] dayValues = getDayData(theDate);
+		
+		if(theDailyGoals.getStepGoal() > dayValues[3]){
+			//update UI
+		}
+		
+		if(theDailyGoals.getFloorGoal() > dayValues[2]){
+			//update UI
+		}
+		if(theDailyGoals.getDistGoal() > dayValues[1]){
+			//update UI
+		}
+		if(theDailyGoals.getCalGoal() > dayValues[0]){
+			//update UI
+		}
+		
+	}
+	
+	/**
+	 * This method determines if internet connection is present.
+	 * @return boolean Indicates true, if internet connection is available and false if not.
+	 */
 	private static boolean testInet() {
 	    Socket sock = new Socket();
 	    InetSocketAddress addr = new InetSocketAddress("https://api.fitbit.com/ca",80);
@@ -349,12 +493,10 @@ public class Controller implements Serializable{
 	        catch (IOException e) {}
 	    }
 	}
-	
-	 /**
-	   * This method is used to persist DataDict object between runs.
-	   * 
-	   * @param dat the DataDict to be stored/serialized to a file
-	   */
+
+	/**This method is used to persist DataDict object between runs.
+	 * @param dat the DataDict to be stored/serialized to a file
+	 */
 	private static void storeDataDict(DataDict dat){
 	    try{
 	      ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(DATADICT));
@@ -367,9 +509,9 @@ public class Controller implements Serializable{
 		 }
 	 }
 
-  /**
-   * This method loads serialized objects from a file
-   */
+   /**
+    * This method loads serialized objects from a file
+    */
    private static DataDict loadDataDict(){
 	    try{
 	      ObjectInputStream in= new ObjectInputStream( new FileInputStream(DATADICT));
@@ -501,6 +643,43 @@ public class Controller implements Serializable{
      	}
      return null;
    }
+   
+   /**
+    * This method is used to persist DailyGoals object between runs.
+    * 
+    * @param goals the DailyGoals to be stored/serialized to a file
+    */
+   private static void storeGoals(DailyGoals goals){
+	     try{
+	       ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(GOALS));
+	       out.writeObject(goals);
+	       out.close();
+	         } catch(IOException e){
+	             System.out.println("DailyGoals could not be saved to disk. IO error occured.");
+	             e.printStackTrace();
+	           }
+
+	     }
+
+	   /**
+	    * This method loads serialized objects from a file
+	    */
+	   private static DailyGoals loadGoals(){
+	     try{
+	       ObjectInputStream in= new ObjectInputStream( new FileInputStream(GOALS));
+	       DailyGoals goals= (DailyGoals) in.readObject();
+
+	       in.close();
+	       return goals;
+	         } catch (IOException e){
+	             System.out.println("DailyGoals could not be loaded from disk. IO error occured.");
+	             e.printStackTrace();
+	           }
+	     	catch (ClassNotFoundException e){
+	     		System.out.println("Class could not be Found!");
+	             e.printStackTrace();
+	     	}
+	     return null;
+	   }
 
 }
-

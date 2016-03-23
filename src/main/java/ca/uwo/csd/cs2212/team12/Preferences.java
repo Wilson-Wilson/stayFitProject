@@ -1,9 +1,10 @@
 package ca.uwo.csd.cs2212.team12;
 
 import java.io.Serializable;
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
+
 public class Preferences implements Serializable{
 
+  private static final long serialVersionUID= 1L;	
   public static boolean showCaloriesCard;
   public static boolean showMinutesCard;
   public static boolean showMovementsCard;
@@ -11,8 +12,6 @@ public class Preferences implements Serializable{
   public static boolean showTimeSeriesCard;
   public static boolean showBestDaysCard;
   public static String preferredUnits;
-  
-  private static final long serialVersionUID= 1L;
   
   /**
    * This would be the default layout of the dashboard
@@ -26,7 +25,7 @@ public class Preferences implements Serializable{
     showBestDaysCard= true;
     preferredUnits= "metric";
   }
-
+  
 	/**
 	* Returns value of showCaloriesCard
 	* @return boolean lets the programme know this card's display status

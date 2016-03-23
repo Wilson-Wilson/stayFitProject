@@ -1,10 +1,11 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion> 4.0.0 </modelVersion>
   <groupId> ca.uwo.csd.cs2212.team12 </groupId>
   <artifactId> team12-StayFit </artifactId>
   <packaging> jar </packaging>
   <version> 1.0-SNAPSHOT </version>
-
+  
 <repositories>
   <repository>
   <id>cs2212</id>
@@ -13,62 +14,78 @@
   </repository>
   </repositories>
 
-  <dependencies>
+<dependencies>
  <dependency>
   <groupId>org.apache.logging.log4j</groupId>
   <artifactId> log4j-api </artifactId>
   <version> 2.0-beta9 </version>
  </dependency>
+
  <dependency>
   <groupId> org.apache.logging.log4j </groupId>
   <artifactId> log4j-core </artifactId>
   <version> 2.0-beta9 </version>
  </dependency>
+
   <dependency>
   <groupId>ca.uwo.csd.cs2212</groupId>
   <artifactId>scribejava-apis</artifactId>
   <version>2.2.2-CS2212</version>
   </dependency>
+
   <dependency>
   <groupId>ca.uwo.csd.cs2212</groupId>
   <artifactId>scribejava-core</artifactId>
   <version>2.2.2-CS2212</version>
   </dependency>
+
   <dependency>
   <groupId>org.json</groupId>
   <artifactId>json</artifactId>
   <version>20090211</version>
  </dependency>
+
+<dependency>
+ <groupId>no.tornado.databinding</groupId>
+ <artifactId>jxdatepicker-support</artifactId>
+ <version>1.0</version>
+</dependency>
+
 </dependencies>
+
 <dependencyManagement>
 <dependencies>
+
 <dependency>
   <groupId>ca.uwo.csd.cs2212</groupId>
   <artifactId>scribejava-apis</artifactId>
   <version>2.2.2-CS2212</version>
   </dependency>
+
   <dependency>
   <groupId>ca.uwo.csd.cs2212</groupId>
   <artifactId>scribejava-core</artifactId>
   <version>2.2.2-CS2212</version>
   </dependency>
+
   <dependency>
   <groupId>org.json</groupId>
   <artifactId>json</artifactId>
   <version>20090211</version>
  </dependency>
-</dependencies>
 
+</dependencies>
 </dependencyManagement>
-  <build> 
+
+<build> 
 <plugins>
-  <plugin>
-   <groupId> org.apache.maven.plugins </groupId>
-   <artifactId> maven-jar-plugin </artifactId>
-   <version>2.4 </version>
-   <configuration>
-    <archive>
-     <manifest>
+<plugin>
+<groupId> org.apache.maven.plugins </groupId>
+<artifactId> maven-jar-plugin </artifactId>
+<version>2.4 </version>
+<configuration>
+<archive>
+<manifest>
       <mainClass>ca.uwo.csd.cs2212.team12.StayFit</mainClass>
      </manifest>
     </archive>
@@ -84,7 +101,7 @@
     </descriptorRefs>
     <archive>
       <manifest>
-        <mainClass>ca.uwo.csd.cs2212.team12.StayFit</mainClass>
+        <mainClass>ca.uwo.csd.cs2212.team12.RealAPI</mainClass>
       </manifest>
     </archive>
   </configuration>
