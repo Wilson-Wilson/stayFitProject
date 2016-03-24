@@ -28,6 +28,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MinPanel extends JPanel{
 
+	// Percentage field for pie chart
+	private int percent = 65;
+
 	private JFrame frame;
 	public Graph graph = new Graph();
 	public JFXPanel graph_panel;
@@ -219,7 +222,7 @@ public class MinPanel extends JPanel{
 				panel.add(panel_1);
 
 				
-				CircleProgressBar progress=new CircleProgressBar(65, new java.awt.Color(0,0,255));
+				CircleProgressBar progress=new CircleProgressBar(percent, new java.awt.Color(0,0,255));
 				progress.setBackground(new java.awt.Color(30, 144, 255));
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				panel.add(progress);
