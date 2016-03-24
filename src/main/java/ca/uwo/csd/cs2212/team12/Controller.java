@@ -71,22 +71,25 @@ public class Controller implements Serializable{
 		if(testInet()){	
 		
 			theAPI = new RealAPI(newer);
-			JSONArray timeCal = theAPI.getCalSeries();
-			JSONArray timeSteps = theAPI.getStepsSeries();
-			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
-			JSONArray timeDistance = theAPI.getCalSeries();
-			JSONArray timeFloors = theAPI.getFloorsSeries();
-			JSONArray timeSedentary = theAPI.getSedentaryMinutesSeries();
-			JSONArray timeActive = theAPI.getActiveMinutesSeries();
+			JSONObject timeCal = theAPI.getCalSeries();
+			JSONObject timeSteps = theAPI.getStepsSeries();
+			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
+			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeFloors = theAPI.getFloorsSeries();
+			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONObject timeActive = theAPI.getActiveMinutesSeries();
 			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
 			
+			JSONObject lifeStats = theAPI.getLifeTime();
+			theUserInfo = new UserInfo(lifeStats);
+			
 			if (!isWithinRange(newDate)){
-				JSONArray dictCal = theAPI.getCalBurned();
-				JSONArray dictDist = theAPI.getDistance();
-				JSONArray dictFloors = theAPI.getFloors();
-				JSONArray dictSteps = theAPI.getSteps();
-				JSONArray dictActive = theAPI.getActiveMinutes();
-				JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+				JSONObject dictCal = theAPI.getCalBurned();
+				JSONObject dictDist = theAPI.getDistance();
+				JSONObject dictFloors = theAPI.getFloors();
+				JSONObject dictSteps = theAPI.getSteps();
+				JSONObject dictActive = theAPI.getActiveMinutes();
+				JSONObject dictSedentary = theAPI.getSedentaryMinutes();
 						
 				theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			}
@@ -155,32 +158,35 @@ public class Controller implements Serializable{
 		String curDate = now.toString();
 		
 		if(testInet()){
+			
 			System.out.println("internet works!");
 			
 			theAPI = new RealAPI(curDate);
+			String str ="{\"activities-log-calories\":[{\"dateTime\":\"2014-09-05\",\"value\":1433}],\"activities-log-calories-intraday\":{\"datasetInterval\":1,\"dataset\":[{\"time\":\"00:00:00\",\"value\":0},{\"time\":\"00:01:00\",\"value\":0},{\"time\":\"00:02:00\",\"value\":0},{\"time\":\"00:03:00\",\"value\":0},{\"time\":\"00:04:00\",\"value\":0},{\"time\":\"00:05:00\",\"value\":287},]}}";
+			JSONObject timeCal = new JSONObject(str);
+			/*JSONObject timeCal = theAPI.getCalSeries();
+			JSONObject timeSteps = theAPI.getStepsSeries();
+			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
+			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeFloors = theAPI.getFloorsSeries();
+			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONObject timeActive = theAPI.getActiveMinutesSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);*/
+			theTimeSeries = new TimeSeriesData (timeCal,  timeCal, timeCal, timeCal, timeCal, timeCal, timeCal);
 			
-			JSONArray timeCal = theAPI.getCalSeries();
-			JSONArray timeSteps = theAPI.getStepsSeries();
-			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
-			JSONArray timeDistance = theAPI.getCalSeries();
-			JSONArray timeFloors = theAPI.getFloorsSeries();
-			JSONArray timeSedentary = theAPI.getSedentaryMinutesSeries();
-			JSONArray timeActive = theAPI.getActiveMinutesSeries();
-			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
-			
-			JSONArray lifeStats = theAPI.getLifeTime();
+/*			JSONObject lifeStats = theAPI.getLifeTime();
 			theUserInfo = new UserInfo(lifeStats);
 			
-			JSONArray dictCal = theAPI.getCalBurned();
-			JSONArray dictDist = theAPI.getDistance();
-			JSONArray dictFloors = theAPI.getFloors();
-			JSONArray dictSteps = theAPI.getSteps();
-			JSONArray dictActive = theAPI.getActiveMinutes();
-			JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+			JSONObject dictCal = theAPI.getCalBurned();
+			JSONObject dictDist = theAPI.getDistance();
+			JSONObject dictFloors = theAPI.getFloors();
+			JSONObject dictSteps = theAPI.getSteps();
+			JSONObject dictActive = theAPI.getActiveMinutes();
+			JSONObject dictSedentary = theAPI.getSedentaryMinutes();
 			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			
 			JSONObject dailyGoals = theAPI.getGoals();
-			theDailyGoals = new DailyGoals(dailyGoals);
+			theDailyGoals = new DailyGoals(dailyGoals);*/
 		}
 		else{
 			System.out.println("internet doesnt works!");
@@ -201,8 +207,8 @@ public class Controller implements Serializable{
         window.frame.setVisible(true);
 
         theAccoDict = new AccoDict();
-		accoCheck(now);
-		goalsCheck(now);
+/*		accoCheck(now);
+		goalsCheck(now);*/
 	}
 	
 	/**
@@ -760,8 +766,5 @@ public class Controller implements Serializable{
 	             e.printStackTrace();
 	     	}
 	     return null;
-	   }
-	   public static void main (String args[]){
-		   System.out.println(testInet());
 	   }
 }

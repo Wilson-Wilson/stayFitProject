@@ -137,7 +137,7 @@ public class RealAPI implements API
      * @return String This returns the number of calories burned.
      * @throws JSONException 
      */
-    public JSONArray getCalBurned() throws JSONException{
+    public JSONObject getCalBurned() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -149,12 +149,13 @@ public class RealAPI implements API
         service.signRequest(accessToken, request);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
     public JSONObject getCalSeries() throws JSONException{
-        frmt1 = String.format("%tF", enDate);
+    	
+    	frmt1 = String.format("%tF", enDate);
         requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
@@ -165,7 +166,7 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getSteps() throws JSONException{
+    public JSONObject getSteps() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -177,7 +178,7 @@ public class RealAPI implements API
         service.signRequest(accessToken, request);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
@@ -193,7 +194,7 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getFloors() throws JSONException{
+    public JSONObject getFloors() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -205,7 +206,7 @@ public class RealAPI implements API
         service.signRequest(accessToken, request);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
@@ -221,7 +222,7 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getSedentaryMinutes() throws JSONException{
+    public JSONObject getSedentaryMinutes() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -233,7 +234,7 @@ public class RealAPI implements API
         service.signRequest(accessToken, request);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
     
@@ -249,7 +250,7 @@ public class RealAPI implements API
     }
 
     
-    public JSONArray getActiveMinutes() throws JSONException{
+    public JSONObject getActiveMinutes() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -260,7 +261,7 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
     
@@ -275,7 +276,7 @@ public class RealAPI implements API
         return retVal;
     }
     
-    public JSONArray getDistance() throws JSONException{
+    public JSONObject getDistance() throws JSONException{
         calndr.setTime(enDate);
         calndr.add(calndr.YEAR, -1);
         baseDate = calndr.getTime();
@@ -286,7 +287,7 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
 
@@ -312,13 +313,13 @@ public class RealAPI implements API
         return retVal;
     }
 
-    public JSONArray getLifeTime() throws JSONException{
+    public JSONObject getLifeTime() throws JSONException{
         requestUrlSuffix = "activities.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
         refresh();
-        JSONArray retVal = new JSONArray(response.getBody()); 
+        JSONObject retVal = new JSONObject(response.getBody()); 
         return retVal;
     }
     
@@ -341,39 +342,42 @@ public class RealAPI implements API
 
         // IF YOU DO NOT SAVE THE CURRENTLY ACTIVE TOKEN INFO YOU WILL NOT BE ABLE TO REFRESH
         //   - contact Beth if this happens and she can reissue you a fresh set
-
-        try {
-            FileWriter fileWriter;
-            fileWriter = new FileWriter("src/main/resources/Team12Tokens.txt");
-            bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(accessToken.getToken());
-            bufferedWriter.newLine();
-            bufferedWriter.write(accessToken.getTokenType());
-            bufferedWriter.newLine();
-            bufferedWriter.write(accessToken.getRefreshToken());
-            bufferedWriter.newLine();
-            bufferedWriter.write(accessToken.getExpiresIn().toString() );
-            bufferedWriter.newLine();
-            bufferedWriter.write(accessToken.getRawResponse());
-            bufferedWriter.newLine();
-            bufferedWriter.close();
-        }catch(FileNotFoundException ex) {
-            System.out.println("Unable to open file\n"+ex.getMessage());
+        do{
+	        try {
+	            FileWriter fileWriter;
+	            fileWriter = new FileWriter("src/main/resources/Team12Tokens.txt");
+	            bufferedWriter = new BufferedWriter(fileWriter);
+	            bufferedWriter.write(accessToken.getToken());
+	            bufferedWriter.newLine();
+	            bufferedWriter.write(accessToken.getTokenType());
+	            bufferedWriter.newLine();
+	            bufferedWriter.write(accessToken.getRefreshToken());
+	            bufferedWriter.newLine();
+	            bufferedWriter.write(accessToken.getExpiresIn().toString() );
+	            bufferedWriter.newLine();
+	            bufferedWriter.write(accessToken.getRawResponse());
+	            bufferedWriter.newLine();
+	            bufferedWriter.close();
+	        }catch(FileNotFoundException ex) {
+	            System.out.println("Unable to open file\n"+ex.getMessage());
+	        }
+	        catch(IOException ex) {
+	            System.out.println("Error reading/write file\n"+ex.getMessage());
+	        }
+	
+	        finally{
+	            try {
+	                if (bufferedWriter!=null)
+	                    bufferedWriter.close();
+	            }catch(Exception e){
+	                System.out.println("Error closing file\n"+e.getMessage());
+	            }
+	
+	        }
+	        System.out.println(response.getCode());
         }
-        catch(IOException ex) {
-            System.out.println("Error reading/write file\n"+ex.getMessage());
-        }
-
-        finally{
-            try {
-                if (bufferedWriter!=null)
-                    bufferedWriter.close();
-            }catch(Exception e){
-                System.out.println("Error closing file\n"+e.getMessage());
-            }
-
-        }
-
+        
+        while(response.getCode() != 200 || response.getCode() == 400);
     }
 }
 

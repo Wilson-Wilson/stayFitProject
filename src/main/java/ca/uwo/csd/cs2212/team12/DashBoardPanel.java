@@ -26,7 +26,7 @@ import no.tornado.databinding.support.jxdatepicker.*;
 public class DashBoardPanel extends JPanel {
 
     // Data fields that are updated by the Controller on refresh
-    public String caloriesBurned        = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getCalBurned());
+    public String caloriesBurned        = "test";//String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getCalBurned());
     public String activeMinutes         = "test";
     public String sedentaryMinutes      = "test";
     public String distance              = "test";

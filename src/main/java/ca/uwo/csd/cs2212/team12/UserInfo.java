@@ -3,6 +3,7 @@ package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserInfo implements Serializable {
 
@@ -24,18 +25,18 @@ public class UserInfo implements Serializable {
 	 * @param bestDays The JSONArray containing the user's best days.
 	 * @throws JSONException 
 	 */
-	public UserInfo(JSONArray lifeStats) throws JSONException{
+	public UserInfo(JSONObject lifeStats) throws JSONException{
 		
-		this.distanceBestDay = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(1).getString("date");
-		this.floorsBestDay = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(2).getString("date");
-		this.stepsBestDay = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(3).getString("date");
-		this.distanceBestVal = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(1).getInt("value");
-		this.floorsBestVal = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(2).getInt("value");
-		this.stepsBestVal = lifeStats.getJSONArray(0).getJSONArray(0).getJSONObject(3).getInt("value");
+		this.distanceBestDay = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("distance").getString("date");
+		this.floorsBestDay = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("floors").getString("date");
+		this.stepsBestDay = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("steps").getString("date");
+		this.distanceBestVal = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("distance").getInt("value");
+		this.floorsBestVal = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("floors").getInt("value");
+		this.stepsBestVal = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("steps").getInt("value");
 
-		this.distanceLife = lifeStats.getJSONArray(1).getJSONObject(0).getInt("distance");
-		this.floorsLife = lifeStats.getJSONArray(1).getJSONObject(0).getInt("floors");
-		this.stepsLife = lifeStats.getJSONArray(1).getJSONObject(0).getInt("steps");;
+		this.distanceLife = lifeStats.getJSONObject("lifetime").getJSONObject("total").getInt("distance");
+		this.floorsLife = lifeStats.getJSONObject("best").getJSONObject("total").getInt("floors");
+		this.stepsLife = lifeStats.getJSONObject("best").getJSONObject("total").getInt("steps");;
 	}
 
 	/**
