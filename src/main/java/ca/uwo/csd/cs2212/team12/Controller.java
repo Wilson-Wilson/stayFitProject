@@ -138,15 +138,26 @@ public class Controller implements Serializable{
 	public static void onStartUp() throws IOException, ParseException, JSONException{
 		
 		
-		File c = new File("../preferences.boop");
+		
+		File c = new File("preferences.boop");
 		if (c.exists()){
-			thePreferences = loadPreferences();
+			Preferences pref = loadPreferences();
+			
+			System.out.println(pref.isSaveBestDaysCard());
+			System.out.println(pref.isSaveCaloriesCard());
+			
+			Preferences.showBestDaysCard=pref.isSaveBestDaysCard();
+			Preferences.showCaloriesCard=pref.isSaveCaloriesCard();
+			Preferences.showMovementsCard=pref.isSaveMovementsCard();
+			Preferences.showMinutesCard=pref.isSaveMinutesCard();
+			Preferences.showLifetimeCard=pref.isSaveLifetimeCard();
+			Preferences.showTimeSeriesCard=pref.isSaveTimeSeriesCard();
 		}
 		else{
-			thePreferences = new Preferences();
+			Preferences.setAllTrue();
 		}
 		
-		File d = new File("../dailygoals.boop");
+		File d = new File("dailygoals.boop");
 		if (d.exists()){
 			theDailyGoals = loadGoals();
 		}
@@ -182,21 +193,31 @@ public class Controller implements Serializable{
 			theDailyGoals = new DailyGoals(dailyGoals);
 		}
 		else{
-			File f = new File("../datadict.boop"),g = new File("../timeseries.boop"),h = new File("../userinfo.boop");
+			File f = new File("datadict.boop"),g = new File("timeseries.boop"),h = new File("userinfo.boop");
 			
 			if(f.exists() && g.exists() && h.exists()) { 
 				theDictionary = loadDataDict();
 				theUserInfo = loadUserInfo();
+				
+				
 				theTimeSeries = loadTimeSeries();
+				TimeSeriesData.caloriesSet=theTimeSeries.getSaveCaloriesSet();
+				TimeSeriesData.distanceSet=theTimeSeries.getSaveDistanceSet();
+				TimeSeriesData.stepsSet=theTimeSeries.getSaveStepsSet();
+				TimeSeriesData.heartRateSet=theTimeSeries.getSaveHeartRateSet();
+				TimeSeriesData.floorsSet=theTimeSeries.getSaveFloorsSet();
+				TimeSeriesData.ActiveMinutesSet=theTimeSeries.getSaveActiveMinutesSet();
+				TimeSeriesData.SedentaryMinutesSet=theTimeSeries.getSaveSedentaryMinutesSet();
+				
 			}
 			else{
-				//Close application: ERROR you don't have either internet or serialized data!
+				System.exit(2);   //Close application: ERROR you have neither Internet or serialized data!
 			}				
 		}
 		
 		AccoDict theAccoDict = new AccoDict();
-		accoCheck(now);
-		goalsCheck(now);
+		//accoCheck(now);
+		//goalsCheck(now);
 	}
 	
 	/**
@@ -205,11 +226,34 @@ public class Controller implements Serializable{
 	 */
 	public static void onClose(){
 		//instantiate static classes
+		
+		Preferences savePref= new Preferences();
+		savePref.setSaveBestDaysCard(Preferences.showBestDaysCard);
+		savePref.setSaveCaloriesCard(Preferences.showCaloriesCard);
+		savePref.setSaveLifetimeCard(Preferences.showLifetimeCard);
+		savePref.setSaveMinutesCard(Preferences.showMinutesCard);
+		savePref.setSaveMovementsCard(Preferences.showMovementsCard);
+		savePref.setSaveTimeSeriesCard(Preferences.showTimeSeriesCard);
+		
+		
+		
+		TimeSeriesData saveSeries= new TimeSeriesData();
+		saveSeries.setSaveCaloriesSet(TimeSeriesData.caloriesSet);
+		saveSeries.setSaveDistanceSet(TimeSeriesData.distanceSet);
+		saveSeries.setSaveStepsSet(TimeSeriesData.stepsSet);
+		saveSeries.setSaveHeartRateSet(TimeSeriesData.heartRateSet);
+		saveSeries.setSaveFloorsSet(TimeSeriesData.floorsSet);
+		saveSeries.setSaveActiveMinutesSet(TimeSeriesData.ActiveMinutesSet);
+		saveSeries.setSaveSedentaryMinutesSet(TimeSeriesData.SedentaryMinutesSet);
+		
 		storeDataDict(theDictionary);
 		storeUserInfo(theUserInfo);
-		storeTimeSeries(theTimeSeries);
-		storePreferences(thePreferences);
 		storeGoals(theDailyGoals);
+		
+		storeTimeSeries(saveSeries);
+		storePreferences(savePref);
+		
+		
 	}
 	 
 	/**
@@ -486,7 +530,7 @@ public class Controller implements Serializable{
 	 */
 	private static boolean testInet() {
 	    Socket sock = new Socket();
-	    InetSocketAddress addr = new InetSocketAddress("https://api.fitbit.com/ca",80);
+	    InetSocketAddress addr = new InetSocketAddress("google.ca",80);
 	    try {
 	        sock.connect(addr,3000);
 	        return true;

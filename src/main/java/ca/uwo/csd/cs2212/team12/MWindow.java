@@ -52,12 +52,7 @@ public class MWindow {
 
 
         DashBoardPanel dash= new DashBoardPanel();
-        Preferences.showBestDaysCard=true;
-        Preferences.showCaloriesCard=true;
-        Preferences.showLifetimeCard=true;
-        Preferences.showMinutesCard=true;
-        Preferences.showMovementsCard=true;
-        Preferences.showTimeSeriesCard=true;
+      
         
         dash.checkPref();
   
