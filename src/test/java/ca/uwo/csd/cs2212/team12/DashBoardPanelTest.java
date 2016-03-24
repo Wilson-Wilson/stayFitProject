@@ -14,16 +14,16 @@ public class DashBoardPanelTest {
 
     @org.junit.Test
     public void testSubtractDay() throws Exception {
-        Date day = new Date(2000000000);
+        Date day = new Date(172800000);
         day = pan.addDay(day);
-        assertEquals(day,new Date(1000000000));
+        assertEquals(day,new Date(86400000));
     }
 
     @org.junit.Test
     public void testAddDay() throws Exception {
-        Date day = new Date(1000000000);
+        Date day = new Date(86400000);
         day = pan.addDay(day);
-        assertEquals(day,new Date(2000000000));
+        assertEquals(day,new Date(172800000));
     }
 
 }
