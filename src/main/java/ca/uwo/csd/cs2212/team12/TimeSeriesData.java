@@ -148,8 +148,8 @@ public class TimeSeriesData implements Serializable {
 		SedentaryMinutesSet = new ArrayList<DataPoint>();
 		ActiveMinutesSet = new ArrayList<DataPoint>();
 				
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			caloriesSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
+		for(int i = 0; i < calData.getJSONObject("activities-calories-intraday").getJSONArray("dataset").length(); i++){
+			caloriesSet.add(new DataPoint (calData.getJSONObject("activities-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 
 /*		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
