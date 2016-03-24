@@ -41,9 +41,9 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 public class LifePanel extends JPanel {
 
 	// Data fields
-	public String lifeDistance = "";
-	public String lifeFloors = "";
-	public String lifeSteps = "";
+	public String lifeDistance = String.valueOf(Controller.getTheUserInfo().getDistanceLife());
+	public String lifeFloors = String.valueOf(Controller.getTheUserInfo().getFloorsLife());
+	public String lifeSteps = String.valueOf(Controller.getTheUserInfo().getStepsLife());
 
 	private JFrame frame;
 

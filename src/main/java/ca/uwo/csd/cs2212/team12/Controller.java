@@ -171,16 +171,19 @@ public class Controller implements Serializable{
 			JSONObject dailyGoals = theAPI.getGoals();
 			theDailyGoals = new DailyGoals(dailyGoals);
 			
-			MWindow window = new MWindow();
-	        window.frame.setSize(1000,600);
-	        window.frame.setVisible(true);
-	        
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			LocalDate addDate = LocalDate.parse(theDictionary.getLatest(), formatter);
-			
+		    
+			weeklyTotals = getWeekData(addDate);
+			monthlyTotals = getMonthData(addDate);
 	        theAccoDict = new AccoDict();
 			accoCheck(addDate);
 			goalsCheck(addDate);
+			
+			MWindow window = new MWindow();
+	        window.frame.setSize(1000,600);
+	        window.frame.setVisible(true);
+	       
 			return;
 		}
 		
@@ -454,7 +457,7 @@ public class Controller implements Serializable{
 		dayString = dayObject.toString();
 		
 		for (i = 0; i < 7; i++){
-			
+
 			if (theDictionary.getDictionary().get(dayString) != null)
 			{
 				currentDay = theDictionary.getDictionary().get(dayString);
@@ -466,10 +469,11 @@ public class Controller implements Serializable{
 				weekValues[4] += currentDay.getActMins();
 				weekValues[5] += currentDay.getSedMins();
 			}
-			dayObject.plusDays(1);
+			dayObject = dayObject.plusDays(1);
 			dayString = dayObject.toString();
 			
 		}
+		System.out.println(weekValues[0]);
 		return weekValues;
 	}
 	
@@ -503,7 +507,7 @@ public class Controller implements Serializable{
 				monthValues[4] += currentDay.getActMins();
 				monthValues[5] += currentDay.getSedMins();
 			}
-			dayObject.plusDays(1);
+			dayObject = dayObject.plusDays(1);
 			dayString = dayObject.toString();
 			
 		}
