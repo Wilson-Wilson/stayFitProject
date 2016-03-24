@@ -472,9 +472,7 @@ public class DashBoardPanel extends JPanel {
         					.addComponent(lblFloors, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
         					.addGap(10))
         				.addComponent(lblSteps, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-        				.addGroup(gl_moveinfoPanel.createSequentialGroup()
-        					.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
-        					.addContainerGap())))
+        				.addComponent(lblDistance, GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))
         );
         gl_moveinfoPanel.setVerticalGroup(
         	gl_moveinfoPanel.createParallelGroup(Alignment.LEADING)

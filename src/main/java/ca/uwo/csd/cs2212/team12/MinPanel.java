@@ -228,10 +228,10 @@ public class MinPanel extends JPanel{
 				panel.add(panel_1);
 
 				
-				CircleProgressBar progress=new CircleProgressBar(percent, new java.awt.Color(0,0,255));
-				progress.setBackground(new java.awt.Color(30, 144, 255));
-				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-				panel.add(progress);
+				//CircleProgressBar progress=new CircleProgressBar(percent, new java.awt.Color(0,0,255));
+				//progress.setBackground(new java.awt.Color(30, 144, 255));
+				//panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				//panel.add(progress);
 		JPanel panel_10 = new JPanel() {
 			  @Override
 			     protected void paintComponent(Graphics g) {

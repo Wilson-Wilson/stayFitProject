@@ -30,10 +30,13 @@ public class MovePanel extends JPanel{
 	private int percent = 25;
 
 	// Data fields
+	public String dayDistance 	= String.valueOf(Controller.getDailyTotals(1));
 	public String weekDistance 	= String.valueOf(Controller.getWeeklyTotals(1));
 	public String monthDistance = String.valueOf(Controller.getMonthlyTotals(1));
+	public String dayFloors 	= String.valueOf(Controller.getDailyTotals(2));
 	public String weekFloors 	= String.valueOf(Controller.getWeeklyTotals(2));
 	public String monthFloors 	= String.valueOf(Controller.getMonthlyTotals(2));
+	public String daySteps 		= String.valueOf(Controller.getDailyTotals(3));
 	public String weekSteps 	= String.valueOf(Controller.getWeeklyTotals(3));
 	public String monthSteps 	= String.valueOf(Controller.getMonthlyTotals(3));
 
@@ -181,19 +184,19 @@ public class MovePanel extends JPanel{
 				JPanel panel_1 = new JPanel();
 				panel_1.setOpaque(false);
 				
-				JLabel lblSteps = new JLabel("Steps:");
+				JLabel lblSteps = new JLabel("Daily Steps: "+daySteps);
 				lblSteps.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblSteps.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblMonthsTotalDistance = new JLabel("Month's Total Distance: " + monthDistance);
+				JLabel lblMonthsTotalDistance = new JLabel("Month's Total Distance(km): " + monthDistance);
 				lblMonthsTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblMonthsTotalDistance.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblWeeksTotalFloors = new JLabel("Week's Total Distance: " + weekDistance);
+				JLabel lblWeeksTotalFloors = new JLabel("Week's Total Distance(km): " + weekDistance);
 				lblWeeksTotalFloors.setForeground(java.awt.Color.WHITE);
 				lblWeeksTotalFloors.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblFloors_1 = new JLabel("Floors:");
+				JLabel lblFloors_1 = new JLabel("Daily Floors: "+dayFloors);
 				lblFloors_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblFloors_1.setForeground(new java.awt.Color(255, 255, 255));
 				
@@ -205,7 +208,7 @@ public class MovePanel extends JPanel{
 				lblWeeksTotalDistance.setForeground(java.awt.Color.WHITE);
 				lblWeeksTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblDistance = new JLabel("Distance:");
+				JLabel lblDistance = new JLabel("Daily Distance(km): "+dayDistance);
 				lblDistance.setForeground(java.awt.Color.WHITE);
 				lblDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				panel.add(panel_1);
@@ -227,24 +230,26 @@ public class MovePanel extends JPanel{
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblMonthsTotalSteps, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-										.addComponent(lblWeeksTotalSteps, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE))))
+										.addComponent(lblWeeksTotalSteps, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+										.addComponent(lblMonthsTotalSteps, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
 							.addGap(56)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblFloors_1, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
 								.addComponent(lblWeeksTotalDistance)
-								.addComponent(lblMonthsTotalFloors, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-							.addGap(43)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblMonthsTotalFloors, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)))
+							.addGap(18)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(lblWeeksTotalFloors, GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
 									.addContainerGap())
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(lblMonthsTotalDistance, GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
 									.addGap(206))
-								.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-									.addGap(387))))
+									.addGap(343))))
 				);
 				gl_panel_1.setVerticalGroup(
 					gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -261,17 +266,20 @@ public class MovePanel extends JPanel{
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblMonthsTotalSteps)
-								.addComponent(lblMonthsTotalFloors)
-								.addComponent(lblMonthsTotalDistance))
+								.addComponent(lblMonthsTotalDistance)
+								.addComponent(lblMonthsTotalFloors))
 							.addGap(21))
 				);
 				panel_1.setLayout(gl_panel_1);
 				CircleProgressBar stepsprogress=new CircleProgressBar(percent, new java.awt.Color(0,128,0));
 				stepsprogress.setBackground(new java.awt.Color(0, 128, 0));
+				stepsprogress.setToolTipText("Your Goal Progress!");
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				panel.add(stepsprogress);
+				
 				CircleProgressBar distanceprogress=new CircleProgressBar(65,new java.awt.Color(0,128,0));
 				distanceprogress.setBackground(new java.awt.Color(0,128, 0));
+				distanceprogress.setToolTipText("Your Goal Progress!");
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
 				Component horizontalStrut_8 = Box.createHorizontalStrut(20);
@@ -291,6 +299,7 @@ public class MovePanel extends JPanel{
 				panel.add(distanceprogress);
 				CircleProgressBar floorprogress=new CircleProgressBar(90,new java.awt.Color(0,128,0));
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				floorprogress.setToolTipText("Your Goal Progress!");
 				
 				Component horizontalStrut_7 = Box.createHorizontalStrut(20);
 				panel.add(horizontalStrut_7);
