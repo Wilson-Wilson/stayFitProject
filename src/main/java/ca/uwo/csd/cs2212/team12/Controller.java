@@ -139,8 +139,6 @@ public class Controller implements Serializable{
 	 */
 	public static void onStartUp() throws IOException, ParseException, JSONException{
 		
-		
-		
 		File c = new File("preferences.boop");
 		if (c.exists()){
 			Preferences pref = loadPreferences();

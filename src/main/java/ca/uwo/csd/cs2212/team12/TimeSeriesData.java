@@ -148,52 +148,28 @@ public class TimeSeriesData implements Serializable {
 		SedentaryMinutesSet = new ArrayList<DataPoint>();
 		ActiveMinutesSet = new ArrayList<DataPoint>();
 				
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			caloriesSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}
-
-/*		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			stepsSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
+		for(int i = 0; i < calData.getJSONObject("activities-calories-intraday").getJSONArray("dataset").length(); i++){
+			caloriesSet.add(new DataPoint (calData.getJSONObject("activities-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			heartRateSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
+		for(int i = 0; i < stepsData.getJSONObject("activities-steps-intraday").getJSONArray("dataset").length(); i++){
+			stepsSet.add(new DataPoint (stepsData.getJSONObject("activities-steps-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			distanceSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
+		for(int i = 0; i < floorsData.getJSONObject("activities-floors-intraday").getJSONArray("dataset").length(); i++){
+			floorsSet.add(new DataPoint (floorsData.getJSONObject("activities-floors-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			floorsSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
+		for(int i = 0; i < distanceData.getJSONObject("activities-distance-intraday").getJSONArray("dataset").length(); i++){
+			distanceSet.add(new DataPoint (distanceData.getJSONObject("activities-distance-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			SedentaryMinutesSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
+		for(int i = 0; i < SedentaryData.getJSONObject("activities-minutesSedentary-intraday").getJSONArray("dataset").length(); i++){
+			SedentaryMinutesSet.add(new DataPoint (SedentaryData.getJSONObject("activities-minutesSedentary-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
-			ActiveMinutesSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}*/
-		
-		for(int i = 0; i < stepsData.getJSONObject("activities-log-steps-intraday").getJSONArray("dataset").length(); i++){
-			stepsSet.add(new DataPoint (stepsData.getJSONObject("activities-log-steps-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}
-		
-		for(int i = 0; i < floorsData.getJSONObject("activities-log-floors-intraday").getJSONArray("dataset").length(); i++){
-			floorsSet.add(new DataPoint (floorsData.getJSONObject("activities-log-floors-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}
-		
-		for(int i = 0; i < distanceData.getJSONObject("activities-log-distance-intraday").getJSONArray("dataset").length(); i++){
-			distanceSet.add(new DataPoint (distanceData.getJSONObject("activities-log-distance-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}
-		
-		for(int i = 0; i < SedentaryData.getJSONObject("activities-log-minutesSedentary-intraday").getJSONArray("dataset").length(); i++){
-			SedentaryMinutesSet.add(new DataPoint (SedentaryData.getJSONObject("activities-log-minutesSedentary-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}
-		
-		for(int i = 0; i < ActiveData.getJSONObject("activities-log-minutesFairlyActive-intraday").getJSONArray("dataset").length(); i++){
-			ActiveMinutesSet.add(new DataPoint(ActiveData.getJSONObject("activities-log-minutesFairlyActive-intraday").getJSONArray("dataset").getJSONObject(i)));			
+		for(int i = 0; i < ActiveData.getJSONObject("activities-minutesFairlyActive-intraday").getJSONArray("dataset").length(); i++){
+			ActiveMinutesSet.add(new DataPoint(ActiveData.getJSONObject("activities-minutesFairlyActive-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
 		for(int i = 0; i < heartRateData.getJSONObject("activities-heart-intraday").getJSONArray("dataset").length(); i++){
