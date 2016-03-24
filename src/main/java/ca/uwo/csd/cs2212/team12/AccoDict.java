@@ -22,10 +22,10 @@ public class AccoDict {
 	theList[5] = new Accolade("BMR+1250- Fire Baby","calories",1250, false);
 	theList[6] = new Accolade("BMR+1250- Human Torch","calories",1750, false);
 	theList[7] = new Accolade("BMR+2050- Smoke and Fire","calories",2050, false);
-	theList[8] = new Accolade("1-Another One","distance",1000, false);
-	theList[9] = new Accolade("3-Third Time's the Charm","distance",3000, false);
-	theList[10] = new Accolade("8-Making an Album","distance",8000, false);
-	theList[11] = new Accolade("12-Need a map?","distance",12000, false);
+	theList[8] = new Accolade("1-Another One","distance",1, false);
+	theList[9] = new Accolade("3-Third Time's the Charm","distance",3, false);
+	theList[10] = new Accolade("8-Making an Album","distance",8, false);
+	theList[11] = new Accolade("12-Need a map?","distance",12, false);
 	theList[12] = new Accolade("10 Up or Down?","floors",10, false);
 	theList[13] = new Accolade("20 Step Machine","floors",20, false);
 	theList[14] = new Accolade("Elevator","floors",30, false);

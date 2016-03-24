@@ -35,8 +35,8 @@ public class UserInfo implements Serializable {
 		this.stepsBestVal = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("steps").getInt("value");
 
 		this.distanceLife = lifeStats.getJSONObject("lifetime").getJSONObject("total").getInt("distance");
-		this.floorsLife = lifeStats.getJSONObject("best").getJSONObject("total").getInt("floors");
-		this.stepsLife = lifeStats.getJSONObject("best").getJSONObject("total").getInt("steps");;
+		this.floorsLife = lifeStats.getJSONObject("lifetime").getJSONObject("total").getInt("floors");
+		this.stepsLife = lifeStats.getJSONObject("lifetime").getJSONObject("total").getInt("steps");;
 	}
 
 	/**

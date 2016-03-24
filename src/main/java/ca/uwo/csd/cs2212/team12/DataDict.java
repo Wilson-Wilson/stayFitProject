@@ -31,8 +31,8 @@ public class DataDict implements Serializable{
 	  
 	  this.theDictionary = new HashMap<String,DataEntry>(365);
 	  int numdays = calories.length();
-	  this.earliest = sedMins.getJSONArray("activities-log-minutesSedentary").getJSONObject(0).getString("dateTime");
-	  this.latest = sedMins.getJSONArray("activities-log-minutesSedentary").getJSONObject(numdays-1).getString("dateTime");
+	  this.earliest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(0).getString("dateTime");
+	  this.latest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(numdays-1).getString("dateTime");
 	  
 	  
 	  for(int i=0; i < numdays; i++){
@@ -43,7 +43,7 @@ public class DataDict implements Serializable{
 		  int addSteps = steps.getJSONArray("activities-steps").getJSONObject(i).getInt("value");
 		  int addActive = activeMins.getJSONArray("activities-minutesFairlyActive").getJSONObject(i).getInt("value");
 		  int addSedentary= sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(i).getInt("value");
-		  String addDate = sedMins.getJSONArray("activities-calories").getJSONObject(i).getString("dateTime");
+		  String addDate = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(i).getString("dateTime");
 		  
 		  DataEntry addMe = new DataEntry(addCal, addDistance, addFloors, addSteps, addActive, addSedentary, addDate);
 		  

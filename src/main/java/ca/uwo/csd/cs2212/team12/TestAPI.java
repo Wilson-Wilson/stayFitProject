@@ -118,13 +118,14 @@ public class TestAPI implements API {
 	}
     
     public JSONObject getGoals() throws JSONException{
-    	String str ="{\"best\":{\"total\":{\"distance\":{\"date\":\"2016-03-01\",\"value\":12.35489},\"floors\":{\"date\":\"2016-03-16\",\"value\":41.000000062320005},\"steps\":{\"date\":\"2016-03-01\",\"value\":14709}},\"tracker\":{\"distance\":{\"date\":\"2016-03-01\",\"value\":12.35489},\"floors\":{\"date\":\"2016-03-16\",\"value\":41.000000062320005},\"steps\":{\"date\":\"2016-03-01\",\"value\":14709}}},\"lifetime\":{\"total\":{\"activeScore\":-1,\"caloriesOut\":-1,\"distance\":300.85,\"floors\":857,\"steps\":401635},\"tracker\":{\"activeScore\":-1,\"caloriesOut\":-1,\"distance\":300.85,\"floors\":857,\"steps\":401635}}}";
+    	String str ="{\"goals\":{\"activeMinutes\":30,\"caloriesOut\":2551,\"distance\":8.05,\"floors\":20,\"steps\":10000}}";
     	JSONObject thing = new JSONObject(str);
     	return thing;
 	}
 	public JSONObject getLifeTime() throws JSONException {
-		// TODO Auto-generated method stub
-		return null;
+		String str ="{\"best\":{\"total\":{\"distance\":{\"date\":\"2016-03-01\",\"value\":12.35489},\"floors\":{\"date\":\"2016-03-16\",\"value\":41.000000062320005},\"steps\":{\"date\":\"2016-03-01\",\"value\":14709}},\"tracker\":{\"distance\":{\"date\":\"2016-03-01\",\"value\":12.35489},\"floors\":{\"date\":\"2016-03-16\",\"value\":41.000000062320005},\"steps\":{\"date\":\"2016-03-01\",\"value\":14709}}},\"lifetime\":{\"total\":{\"activeScore\":-1,\"caloriesOut\":-1,\"distance\":300.85,\"floors\":857,\"steps\":401635},\"tracker\":{\"activeScore\":-1,\"caloriesOut\":-1,\"distance\":300.85,\"floors\":857,\"steps\":401635}}}";
+    	JSONObject thing = new JSONObject(str);
+    	return thing;
 	}
 
     

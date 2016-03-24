@@ -151,7 +151,7 @@ public class Controller implements Serializable{
 			JSONObject timeCal = theAPI.getCalSeries();
 			JSONObject timeSteps = theAPI.getStepsSeries();
 			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
-			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeDistance = theAPI.getDistanceSeries();
 			JSONObject timeFloors = theAPI.getFloorsSeries();
 			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
 			JSONObject timeActive = theAPI.getActiveMinutesSeries();
