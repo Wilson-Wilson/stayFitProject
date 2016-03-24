@@ -30,6 +30,7 @@ public class Controller implements Serializable{
 	private static Preferences thePreferences;
 	private static AccoDict	theAccoDict;
 	private static DailyGoals theDailyGoals;
+	private static boolean testFlag = false;
 	
 	private static final long serialVersionUID= 1L;
 	private static final String DATADICT= "datadict.boop";
@@ -51,6 +52,9 @@ public class Controller implements Serializable{
 	 */
 	public static void changeDate(String newer, String older) throws JSONException, ParseException{
 		
+		if(testFlag == true){
+			return;
+		}
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
@@ -127,7 +131,44 @@ public class Controller implements Serializable{
 	 */
 	public static void onStartUp() throws IOException, ParseException, JSONException{
 		
-		
+		if(testFlag == true){
+			Preferences.setAllTrue();
+			theAPI = new TestAPI();
+			
+			JSONObject timeCal = theAPI.getCalSeries();
+			JSONObject timeSteps = theAPI.getStepsSeries();
+			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
+			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeFloors = theAPI.getFloorsSeries();
+			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONObject timeActive = theAPI.getActiveMinutesSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
+			
+			JSONObject lifeStats = theAPI.getLifeTime();
+			theUserInfo = new UserInfo(lifeStats);
+			
+			JSONObject dictCal = theAPI.getCalBurned();
+			JSONObject dictDist = theAPI.getDistance();
+			JSONObject dictFloors = theAPI.getFloors();
+			JSONObject dictSteps = theAPI.getSteps();
+			JSONObject dictActive = theAPI.getActiveMinutes();
+			JSONObject dictSedentary = theAPI.getSedentaryMinutes();
+			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
+			
+			JSONObject dailyGoals = theAPI.getGoals();
+			theDailyGoals = new DailyGoals(dailyGoals);
+			
+			MWindow window = new MWindow();
+	        window.frame.setSize(1000,600);
+	        window.frame.setVisible(true);
+	        
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			LocalDate addDate = LocalDate.parse(theDictionary.getLatest(), formatter);
+			
+	        theAccoDict = new AccoDict();
+			accoCheck(addDate);
+			goalsCheck(addDate);
+		}
 		
 		File c = new File("preferences.boop");
 		if (c.exists()){
@@ -160,8 +201,7 @@ public class Controller implements Serializable{
 			System.out.println("internet works!");
 			
 			theAPI = new RealAPI(curDate);
-			//String str ="{\"activities-log-calories\":[{\"dateTime\":\"2014-09-05\",\"value\":1433}],\"activities-log-calories-intraday\":{\"datasetInterval\":1,\"dataset\":[{\"time\":\"00:00:00\",\"value\":0},{\"time\":\"00:01:00\",\"value\":0},{\"time\":\"00:02:00\",\"value\":0},{\"time\":\"00:03:00\",\"value\":0},{\"time\":\"00:04:00\",\"value\":0},{\"time\":\"00:05:00\",\"value\":287},]}}";
-			//JSONObject timeCal = new JSONObject(str);
+			
 			JSONObject timeCal = theAPI.getCalSeries();
 			JSONObject timeSteps = theAPI.getStepsSeries();
 			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
@@ -170,7 +210,6 @@ public class Controller implements Serializable{
 			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
 			JSONObject timeActive = theAPI.getActiveMinutesSeries();
 			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
-			//theTimeSeries = new TimeSeriesData (timeCal,  timeCal, timeCal, timeCal, timeCal, timeCal, timeCal);
 			
 			JSONObject lifeStats = theAPI.getLifeTime();
 			theUserInfo = new UserInfo(lifeStats);
@@ -223,6 +262,9 @@ public class Controller implements Serializable{
 	 * The method is disabled in test mode.
 	 */
 	public static void onClose(){
+		if(testFlag == true){
+			return;
+		}
 		//instantiate static classes
 		
 		Preferences savePref= new Preferences();
@@ -318,6 +360,16 @@ public class Controller implements Serializable{
 
 	public static void setTheDailyGoals(DailyGoals theDailyGoals) {
 		Controller.theDailyGoals = theDailyGoals;
+	}
+
+
+	public static boolean isTestFlag() {
+		return testFlag;
+	}
+
+
+	public static void setTestFlag(boolean testFlag) {
+		Controller.testFlag = testFlag;
 	}
 
 

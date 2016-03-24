@@ -18,7 +18,8 @@ public class TestAPI implements API {
      * @return String This returns the number of calories burned.
      */
     public  JSONObject getCalBurned() throws JSONException {return new JSONObject(new Integer(getDat("calories")).toString());}
-
+    //String str ="{\"activities-log-calories\":[{\"dateTime\":\"2014-09-05\",\"value\":1433}],\"activities-log-calories-intraday\":{\"datasetInterval\":1,\"dataset\":[{\"time\":\"00:00:00\",\"value\":0},{\"time\":\"00:01:00\",\"value\":0},{\"time\":\"00:02:00\",\"value\":0},{\"time\":\"00:03:00\",\"value\":0},{\"time\":\"00:04:00\",\"value\":0},{\"time\":\"00:05:00\",\"value\":287},]}}";
+    
     /**
      * This method is used to fetch the number of active minutes.
      * @return JSONArray This returns the number of active minutes.

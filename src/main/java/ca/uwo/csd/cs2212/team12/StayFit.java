@@ -17,17 +17,17 @@ public class StayFit {
     public static void main(String[] args) {
 
         final boolean isTest = (args.length!=0 && args[0].equals("test"));
-        UserInfo uInfo= new UserInfo();
         
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
                 try {
-                    API api;
+             
                     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     String date  = formatter.format(new Date());
-                    if(isTest)  api= new TestAPI();
-                    else        api= new RealAPI(date);
+                    
+                    //Update TestFlag in Controller 
+                    if(isTest){ Controller.setTestFlag(true);}
  
                     Controller.onStartUp();
                     
