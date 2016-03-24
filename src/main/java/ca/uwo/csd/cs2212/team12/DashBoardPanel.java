@@ -1055,6 +1055,16 @@ public class DashBoardPanel extends JPanel {
 
             public void actionPerformed(ActionEvent ae) {
             	
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
                 final SimpleDateFormat timeft =  new SimpleDateFormat ("hh:mm:ss");
             	lastupdated.setText("Last updated: "+timeft.format(new Date()));
                 
