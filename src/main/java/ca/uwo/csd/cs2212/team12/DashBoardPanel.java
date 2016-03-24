@@ -26,12 +26,13 @@ import no.tornado.databinding.support.jxdatepicker.*;
 public class DashBoardPanel extends JPanel {
 
     // Data fields that are updated by the Controller on refresh
-    public String caloriesBurned        = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getCalBurned());
-    public String activeMinutes         = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getActMins());
-    public String sedentaryMinutes      = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getSedMins());
-    public String distance              = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getDistanceTravelled());
-    public String floors                = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getFloorsClimbed());
-    public String steps                 = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getStepsTaken());
+    String labelDate =  (new SimpleDateFormat("YYYY-MM-dd")).format(date);
+    public String caloriesBurned        = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getCalBurned());
+    public String activeMinutes         = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getActMins());
+    public String sedentaryMinutes      = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getSedMins());
+    public String distance              = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getDistanceTravelled());
+    public String floors                = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getFloorsClimbed());
+    public String steps                 = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getStepsTaken());
 
     public String lifetimeFloors        = String.valueOf(Controller.getTheUserInfo().getFloorsLife());
     public String lifetimeSteps         = String.valueOf(Controller.getTheUserInfo().getStepsLife());
@@ -50,7 +51,20 @@ public class DashBoardPanel extends JPanel {
 
 
 	final static Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
-    static Date date= new Date();
+    static Date date= stringToDate(Controller.getTheDictionary().getLatest());
+    public static Date stringToDate(String sdate) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = null;
+        try {
+            date1 = simpleDateFormat.parse(sdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date1;
+    }
+
+
+
     static Date oldDate = new Date();
 
     static String oldDateString= formatter.format(oldDate);
