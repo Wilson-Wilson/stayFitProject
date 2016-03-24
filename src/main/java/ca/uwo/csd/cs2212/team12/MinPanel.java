@@ -31,6 +31,10 @@ public class MinPanel extends JPanel{
 	// Percentage field for pie chart
 	private int percent = 65;
 
+	// Data fields
+	public String actWeek 	= String.valueOf(Controller.getWeeklyTotals(4));
+	public String actMonth	= String.valueOf(Controller.getMonthlyTotals(4));
+
 	private JFrame frame;
 	public Graph graph = new Graph();
 	public JFXPanel graph_panel;
@@ -178,11 +182,11 @@ public class MinPanel extends JPanel{
 				panel_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 				panel_1.setOpaque(false);
 				
-				JLabel lblTotalActiveMinutes_1 = new JLabel("Total Active Minutes for the Month: ");
+				JLabel lblTotalActiveMinutes_1 = new JLabel("Total Active Minutes for the Month: " + actMonth);
 				lblTotalActiveMinutes_1.setForeground(java.awt.Color.WHITE);
 				lblTotalActiveMinutes_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week: ");
+				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week: " + actWeek);
 				lblTotalActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblTotalActiveMinutes.setForeground(java.awt.Color.WHITE);
 				
