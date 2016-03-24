@@ -31,9 +31,19 @@ public class StayFit {
  
                     Controller.onStartUp();
                     
+                    Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+                        public void run() {
+                            Controller.onClose();
+                        }
+                    }, "Shutdown-thread"));
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                
+                
+            
+                
             }
         });
     }

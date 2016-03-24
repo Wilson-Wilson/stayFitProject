@@ -5,20 +5,127 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.io.Serializable;
  /**
   * TimeSeriesData.java is a data structure class to store intraday TimeSeries data for the current day
  * @author Leo
  */
-public class TimeSeriesData {
+public class TimeSeriesData implements Serializable {
 	
-	private static ArrayList<DataPoint> caloriesSet;
-	private static ArrayList<DataPoint> stepsSet;
-	private static ArrayList<DataPoint> heartRateSet;
-	private static ArrayList<DataPoint> distanceSet;
-	private static ArrayList<DataPoint> floorsSet;
-	private static ArrayList<DataPoint> SedentaryMinutesSet;
-	private static ArrayList<DataPoint> ActiveMinutesSet;
+	public static ArrayList<DataPoint> caloriesSet;
+	public static ArrayList<DataPoint> stepsSet;
+	public static ArrayList<DataPoint> heartRateSet;
+	public static ArrayList<DataPoint> distanceSet;
+	public static ArrayList<DataPoint> floorsSet;
+	public static ArrayList<DataPoint> SedentaryMinutesSet;
+	public static ArrayList<DataPoint> ActiveMinutesSet;
 	
+	public ArrayList<DataPoint> saveCaloriesSet;
+	public ArrayList<DataPoint> saveStepsSet;
+	public ArrayList<DataPoint> saveHeartRateSet;
+	public ArrayList<DataPoint> saveDistanceSet;
+	public ArrayList<DataPoint> saveFloorsSet;
+	public ArrayList<DataPoint> saveSedentaryMinutesSet;
+	public ArrayList<DataPoint> saveActiveMinutesSet;
+	
+	/**
+	 * @return the saveCaloriesSet
+	 */
+	public ArrayList<DataPoint> getSaveCaloriesSet() {
+		return saveCaloriesSet;
+	}
+
+	/**
+	 * @param saveCaloriesSet the saveCaloriesSet to set
+	 */
+	public void setSaveCaloriesSet(ArrayList<DataPoint> saveCaloriesSet) {
+		this.saveCaloriesSet = saveCaloriesSet;
+	}
+
+	/**
+	 * @return the saveStepsSet
+	 */
+	public ArrayList<DataPoint> getSaveStepsSet() {
+		return saveStepsSet;
+	}
+
+	/**
+	 * @param saveStepsSet the saveStepsSet to set
+	 */
+	public void setSaveStepsSet(ArrayList<DataPoint> saveStepsSet) {
+		this.saveStepsSet = saveStepsSet;
+	}
+
+	/**
+	 * @return the saveHeartRateSet
+	 */
+	public ArrayList<DataPoint> getSaveHeartRateSet() {
+		return saveHeartRateSet;
+	}
+
+	/**
+	 * @param saveHeartRateSet the saveHeartRateSet to set
+	 */
+	public void setSaveHeartRateSet(ArrayList<DataPoint> saveHeartRateSet) {
+		this.saveHeartRateSet = saveHeartRateSet;
+	}
+
+	/**
+	 * @return the saveDistanceSet
+	 */
+	public ArrayList<DataPoint> getSaveDistanceSet() {
+		return saveDistanceSet;
+	}
+
+	/**
+	 * @param saveDistanceSet the saveDistanceSet to set
+	 */
+	public void setSaveDistanceSet(ArrayList<DataPoint> saveDistanceSet) {
+		this.saveDistanceSet = saveDistanceSet;
+	}
+
+	/**
+	 * @return the saveFloorsSet
+	 */
+	public ArrayList<DataPoint> getSaveFloorsSet() {
+		return saveFloorsSet;
+	}
+
+	/**
+	 * @param saveFloorsSet the saveFloorsSet to set
+	 */
+	public void setSaveFloorsSet(ArrayList<DataPoint> saveFloorsSet) {
+		this.saveFloorsSet = saveFloorsSet;
+	}
+
+	/**
+	 * @return the saveSedentaryMinutesSet
+	 */
+	public ArrayList<DataPoint> getSaveSedentaryMinutesSet() {
+		return saveSedentaryMinutesSet;
+	}
+
+	/**
+	 * @param saveSedentaryMinutesSet the saveSedentaryMinutesSet to set
+	 */
+	public void setSaveSedentaryMinutesSet(ArrayList<DataPoint> saveSedentaryMinutesSet) {
+		this.saveSedentaryMinutesSet = saveSedentaryMinutesSet;
+	}
+
+	/**
+	 * @return the saveActiveMinutesSet
+	 */
+	public ArrayList<DataPoint> getSaveActiveMinutesSet() {
+		return saveActiveMinutesSet;
+	}
+
+	/**
+	 * @param saveActiveMinutesSet the saveActiveMinutesSet to set
+	 */
+	public void setSaveActiveMinutesSet(ArrayList<DataPoint> saveActiveMinutesSet) {
+		this.saveActiveMinutesSet = saveActiveMinutesSet;
+	}
+
 	private static final long serialVersionUID= 1L;
 	
 	/**
@@ -96,12 +203,23 @@ public class TimeSeriesData {
 	
 	public TimeSeriesData(){
 	}
+	
+	
 	/**
 	 * Returns the attribute caloriesSet
 	 * @return static ArrayList<DataPoint> variable caloriesSet
 	 */
 	public static ArrayList<DataPoint> getCaloriesSet(){
 		return caloriesSet;
+	}
+	
+	/**
+	 * Sets the attribute caloriesSet
+	 * @param ArrayList<DataPoint> calSet
+	 */
+	
+	public static void setCaloriesSet(ArrayList<DataPoint> calSet){
+		caloriesSet=calSet;
 	}
 	
 	/**
@@ -113,11 +231,29 @@ public class TimeSeriesData {
 	}
 	
 	/**
+	 * Sets the attribute stepsSet
+	 * @param ArrayList<DataPoint> steps
+	 */
+	
+	public static void setStepsSet(ArrayList<DataPoint> steps){
+		stepsSet=steps;
+	}
+	
+	/**
 	 * Returns the attribute heartRateSet
 	 * @return static ArrayList<DataPoint> variable heartRateSet
 	 */
 	public static ArrayList<DataPoint> getHeartRateSet(){
 		return heartRateSet;
+	}
+	
+	/**
+	 * Sets the attribute heartRateSet
+	 * @param ArrayList<DataPoint> heartSet
+	 */
+	
+	public static void setHeartRateSet(ArrayList<DataPoint> heartSet){
+		heartRateSet=heartSet;
 	}
 	
 	/**
@@ -129,11 +265,29 @@ public class TimeSeriesData {
 	}
 	
 	/**
+	 * Sets the attribute distanceSet
+	 * @param ArrayList<DataPoint> distSet
+	 */
+	
+	public static void setDistanceSet(ArrayList<DataPoint> distSet){
+		distanceSet=distSet;
+	}
+	
+	/**
 	 * Returns the attribute floorsSet
 	 * @return static ArrayList<DataPoint> variable floorsSet
 	 */
 	public static ArrayList<DataPoint> getFloorsSet(){
 		return floorsSet;
+	}
+	
+	/**
+	 * Sets the attribute floorsSet
+	 * @param ArrayList<DataPoint> floors
+	 */
+	
+	public static void setFloorsSet(ArrayList<DataPoint> floors){
+		floorsSet=floors;
 	}
 	
 	/**
@@ -145,11 +299,29 @@ public class TimeSeriesData {
 	}
 	
 	/**
+	 * Sets the attribute SedentaryMinutesSet
+	 * @param ArrayList<DataPoint> sedSet
+	 */
+	
+	public static void setSedentaryMinutesSet(ArrayList<DataPoint> sedSet){
+		caloriesSet=sedSet;
+	}
+	
+	/**
 	 * Returns the attribute ActiveMinutesSet
 	 * @return static ArrayList<DataPoint> variable ActiveMinutesSet
 	 */
 	public static ArrayList<DataPoint> getActiveMinutesSet(){
 		return ActiveMinutesSet;
+	}
+	
+	/**
+	 * Sets the attribute ActiveMinutesSet
+	 * @param ArrayList<DataPoint> actSet
+	 */
+	
+	public static void setActiveMinutesSet(ArrayList<DataPoint> actSet){
+		caloriesSet=actSet;
 	}
 
 }

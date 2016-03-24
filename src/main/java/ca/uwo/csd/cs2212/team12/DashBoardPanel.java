@@ -848,6 +848,10 @@ public class DashBoardPanel extends JPanel {
 				
 				
 				lblNewLabel_3.setText(dateString);
+            	DashBoardPanel dash= new DashBoardPanel();
+        		panel_3.add(dash,"11");
+        		cl.show(panel_3,"11");
+        		dash.checkPref();
                 
 
             }});
@@ -875,6 +879,10 @@ public class DashBoardPanel extends JPanel {
 				
 				
 				lblNewLabel_3.setText(dateString);
+            	DashBoardPanel dash= new DashBoardPanel();
+        		panel_3.add(dash,"11");
+        		cl.show(panel_3,"11");
+        		dash.checkPref();
                 
 
             }});
