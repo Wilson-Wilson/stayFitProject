@@ -20,8 +20,10 @@ import com.github.scribejava.core.model.*;
 import com.github.scribejava.core.oauth.OAuth20Service;
 import com.github.scribejava.apis.service.FitbitOAuth20ServiceImpl;
 import com.github.scribejava.core.model.OAuthRequest;
+
 import java.awt.Desktop;
 import java.net.URI;
+
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,12 +40,12 @@ public class RealAPI implements API
     Date baseDate;
     String frmt1 = new String();
     String frmt2 = new String();
-    String requestUrlSuffix = new String();
-    String requestUrl = new String();
-    OAuthRequest request;
+    String requestUrlSuffix = new String(),requestUrlSuffix2 = new String();
+    String requestUrl = new String(),requestUrl2 = new String();
+    OAuthRequest request,request2;
     String requestUrlPrefix = "https://api.fitbit.com/1/user/3WGW2P/";
     Calendar calndr = Calendar.getInstance();
-    Response response;
+    Response response,response2;
 
     BufferedReader bufferedReader=null;
     // This will reference one line at a time
@@ -64,8 +66,8 @@ public class RealAPI implements API
     //This is the only scope you have access to currently
     String scope = "activity%20heartrate";
 
-    FitbitOAuth20ServiceImpl service;
-    OAuth2AccessToken accessToken;
+    FitbitOAuth20ServiceImpl service,service2;
+    OAuth2AccessToken accessToken,accessToken2;
 
 
     public RealAPI(String thedate) throws ParseException
@@ -130,6 +132,22 @@ public class RealAPI implements API
                 refreshToken,
                 expiresIn,
                 rawResponse);
+        
+        service2 = (FitbitOAuth20ServiceImpl) new ServiceBuilder()
+        	.apiKey(clientID)       //fitbit uses the clientID here
+        	.apiSecret(apiSecret)
+        	.callback("http://localhost:8080")
+        	.scope(scope)
+        	.grantType("authorization_code")
+        	.build(FitbitApi20.instance());
+
+        accessToken2 = new OAuth2AccessToken(
+        		accessTokenItself,
+        		tokenType,
+        		refreshToken,
+        		expiresIn,
+        		rawResponse);        
+        
     }
     
     /**
@@ -148,21 +166,32 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        refresh();
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
     public JSONObject getCalSeries() throws JSONException{
     	
     	frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/calories/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        service.signRequest(accessToken, request);
-        response = request.send();
-        refresh();
-        JSONObject retVal = new JSONObject(response.getBody()); 
+        requestUrlSuffix2 = "activities/calories/date/"+frmt1+"/1d/15min.json";
+        requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
+        request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
+        service2.signRequest(accessToken2, request2);
+        response2 = request2.send();
+        System.out.println(response2.getBody());
+        refresh(response2);
+        JSONObject retVal = new JSONObject(response2.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
@@ -177,20 +206,32 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        refresh();
+        System.out.println(response.getBody());
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
     public JSONObject getStepsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/steps/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        service.signRequest(accessToken, request);
-        response = request.send();
-        refresh();
-        JSONObject retVal = new JSONObject(response.getBody()); 
+        requestUrlSuffix2 = "activities/steps/date/"+frmt1+"/1d/15min.json";
+        requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
+        request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
+        service2.signRequest(accessToken2, request2);
+        response2 = request2.send();
+        System.out.println(response2.getBody());
+        refresh(response2);
+        JSONObject retVal = new JSONObject(response2.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
@@ -205,20 +246,32 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        refresh();
+        System.out.println(response.getBody());
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
     public JSONObject getFloorsSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/floors/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        service.signRequest(accessToken, request);
-        response = request.send();
-        refresh();
-        JSONObject retVal = new JSONObject(response.getBody()); 
+        requestUrlSuffix2 = "activities/floors/date/"+frmt1+"/1d/15min.json";
+        requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
+        request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
+        service2.signRequest(accessToken2, request2);
+        response2 = request2.send();
+        System.out.println(response2.getBody());
+        refresh(response2);
+        JSONObject retVal = new JSONObject(response2.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
@@ -233,19 +286,32 @@ public class RealAPI implements API
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         service.signRequest(accessToken, request);
         response = request.send();
-        refresh();
+        System.out.println(response.getBody());
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
     
     public JSONObject getSedentaryMinutesSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/minutesSedentary/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        refresh();
-        JSONObject retVal = new JSONObject(response.getBody()); 
+        requestUrlSuffix2 = "activities/minutesSedentary/date/"+frmt1+"/1d/15min.json";
+        requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
+        request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
+        service2.signRequest(accessToken2, request2);
+        response2 = request2.send();
+        System.out.println(response2.getBody());
+        refresh(response2);
+        JSONObject retVal = new JSONObject(response2.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
@@ -256,23 +322,38 @@ public class RealAPI implements API
         baseDate = calndr.getTime();
         frmt1 = String.format("%tF", enDate);
         frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt2+"/"+frmt1+".json";
+        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"15min.json";
+        //[resource-path]/date/[date]/1d/[detail-level].json
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
+        service.signRequest(accessToken, request);
         response = request.send();
-        refresh();
+        System.out.println(response.getBody());
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
     
     public JSONObject getActiveMinutesSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        refresh();
-        JSONObject retVal = new JSONObject(response.getBody()); 
+        requestUrlSuffix2 = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
+        requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
+        request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
+        service2.signRequest(accessToken2, request2);
+        response2 = request2.send();
+        System.out.println(response2.getBody());
+        refresh(response2);
+        JSONObject retVal = new JSONObject(response2.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
     
@@ -285,20 +366,34 @@ public class RealAPI implements API
         requestUrlSuffix = "activities/distance/date/"+frmt2+"/"+frmt1+".json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
+        service.signRequest(accessToken, request);
         response = request.send();
-        refresh();
+        System.out.println(response.getBody());
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
     public JSONObject getDistanceSeries() throws JSONException{
         frmt1 = String.format("%tF", enDate);
-        requestUrlSuffix = "activities/distance/date/"+frmt1+"/1d/15min.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        refresh();
-        JSONObject retVal = new JSONObject(response.getBody()); 
+        requestUrlSuffix2 = "activities/distance/date/"+frmt1+"/1d/15min.json";
+        requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
+        request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
+        service2.signRequest(accessToken2, request2);
+        response2 = request2.send();
+        System.out.println(response2.getBody());
+        refresh(response2);
+        JSONObject retVal = new JSONObject(response2.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
     
@@ -307,19 +402,33 @@ public class RealAPI implements API
         requestUrlSuffix = "activities/heart/date/"+frmt1+"/1d/15min.json";
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
+        service.signRequest(accessToken, request);
         response = request.send();
-        refresh();
+        System.out.println(response.getBody());
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
     public JSONObject getLifeTime() throws JSONException{
-        requestUrlSuffix = "activities.json";
-        requestUrl = requestUrlPrefix + requestUrlSuffix;
-        request = new OAuthRequest(Verb.GET, requestUrl, service);
-        response = request.send();
-        refresh();
-        JSONObject retVal = new JSONObject(response.getBody()); 
+        requestUrlSuffix2 = "activities.json";
+        requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
+        request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
+        service2.signRequest(accessToken2, request2);
+        response2 = request2.send();
+        System.out.println(response2.getBody());
+        refresh(response2);
+        JSONObject retVal = new JSONObject(response2.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
     
@@ -328,52 +437,150 @@ public class RealAPI implements API
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
         response = request.send();
-        refresh();
+        System.out.println(response.getBody());
+        refresh(response);
         JSONObject retVal = new JSONObject(response.getBody()); 
+        try {
+            Thread.sleep(1000);                 //1000 milliseconds is one second.
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
         return retVal;
     }
 
     
-    private void refresh(){
+    
+    private String refresh(Response response){
+        int statusCode = response.getCode();
         
+        switch(statusCode){
+            case 200:
+            	System.out.println("HTTP response code: "+response.getCode());
+            	String result = response.getBody();
+            	BufferedWriter bufferedWriter=null;
+                //  Save the current accessToken information for next time
+                 
+                // IF YOU DO NOT SAVE THE CURRENTLY ACTIVE TOKEN INFO YOU WILL NOT BE ABLE TO REFRESH
+                //   - contact Beth if this happens and she can reissue you a fresh set
+                 
+                try {
+                    FileWriter fileWriter; 
+                    fileWriter =
+                            new FileWriter("src/main/resources/Team12Tokens.txt");
+                    bufferedWriter = new BufferedWriter(fileWriter);
+                    bufferedWriter.write(accessToken.getToken());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write(accessToken.getTokenType());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write(accessToken.getRefreshToken());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write(accessToken.getExpiresIn().toString() );
+                    bufferedWriter.newLine();
+                    bufferedWriter.write(accessToken.getRawResponse());
+                    bufferedWriter.newLine();
+                    bufferedWriter.close();
+                }
+                catch(FileNotFoundException ex) {
+                    System.out.println(
+                            "Unable to open file\n"+ex.getMessage());               
+                }
+                catch(IOException ex) {
+                    System.out.println(
+                            "Error reading/write file\n"+ex.getMessage());                 
+                }
+                finally{
+                    try{
+                        if (bufferedWriter!=null)
+                            bufferedWriter.close(); 
+                    }
+                    catch(Exception e){
+                        System.out.println(
+                                "Error closing file\n"+e.getMessage()); 
+                    }
+                }
+                return result;
+            case 400:
+                System.out.println("Bad Request - may have to talk to Beth");
+                return response.getBody();
+            case 401:
+                String result2;
+            	System.out.println("Try to refresh");
+                 
+                // This uses the refresh token to get a completely new accessToken object
+                //   See:  https://dev.fitbit.com/docs/oauth2/#refreshing-tokens           
+                // This accessToken is now the current one, and the old ones will not work
+                //   again.  You should save the contents of accessToken.
+                accessToken = service.refreshOAuth2AccessToken(accessToken);
+                 
+                // Now we can try to access the service again
+                // Make sure you create a new OAuthRequest object each time!
+                request = new OAuthRequest(Verb.GET, requestUrl, service);
+                service.signRequest(accessToken, request);
+                response = request.send();
+                 
+                // Hopefully got a response this time:
+                //System.out.println("HTTP response code: "+response.getCode());
+                System.out.println("HTTP response code: "+response.getBody());
+                if(response.getCode()==200){
+                	result2 = response.getBody();
+                	
+                	BufferedWriter bufferedWriter2=null;
+                    //  Save the current accessToken information for next time
+                     
+                    // IF YOU DO NOT SAVE THE CURRENTLY ACTIVE TOKEN INFO YOU WILL NOT BE ABLE TO REFRESH
+                    //   - contact Beth if this happens and she can reissue you a fresh set
+                     
+                    try {
+                        FileWriter fileWriter; 
+                        fileWriter =
+                                new FileWriter("src/main/resources/Team12Tokens.txt");
+                        bufferedWriter2 = new BufferedWriter(fileWriter);
+                        bufferedWriter2.write(accessToken.getToken());
+                        bufferedWriter2.newLine();
+                        bufferedWriter2.write(accessToken.getTokenType());
+                        bufferedWriter2.newLine();
+                        bufferedWriter2.write(accessToken.getRefreshToken());
+                        bufferedWriter2.newLine();
+                        bufferedWriter2.write(accessToken.getExpiresIn().toString() );
+                        bufferedWriter2.newLine();
+                        bufferedWriter2.write(accessToken.getRawResponse());
+                        bufferedWriter2.newLine();
+                        bufferedWriter2.close();
+                    }
+                    catch(FileNotFoundException ex) {
+                        System.out.println(
+                                "Unable to open file\n"+ex.getMessage());               
+                    }
+                    catch(IOException ex) {
+                        System.out.println(
+                                "Error reading/write file\n"+ex.getMessage());                 
+                    }
+                    finally{
+                        try{
+                            if (bufferedWriter2!=null)
+                                bufferedWriter2.close(); 
+                        }
+                        catch(Exception e){
+                            System.out.println(
+                                    "Error closing file\n"+e.getMessage()); 
+                        }
+                    }
+                    System.out.println("HTTP response code: "+response.getCode());
+                    return result2;
+                }else
+                	System.out.println("HTTP response code: "+response.getCode());
+                	return response.getBody();
+                
+            case 429:
+                System.out.println("Rate limit exceeded");
+                return response.getBody();
+            default:
+                System.out.println("HTTP response code: "+response.getCode());
+                break;
 
-        BufferedWriter bufferedWriter=null;
-        //  Save the current accessToken information for next time
-
-        // IF YOU DO NOT SAVE THE CURRENTLY ACTIVE TOKEN INFO YOU WILL NOT BE ABLE TO REFRESH
-        //   - contact Beth if this happens and she can reissue you a fresh set
-	        try {
-	            FileWriter fileWriter;
-	            fileWriter = new FileWriter("src/main/resources/Team12Tokens.txt");
-	            bufferedWriter = new BufferedWriter(fileWriter);
-	            bufferedWriter.write(accessToken.getToken());
-	            bufferedWriter.newLine();
-	            bufferedWriter.write(accessToken.getTokenType());
-	            bufferedWriter.newLine();
-	            bufferedWriter.write(accessToken.getRefreshToken());
-	            bufferedWriter.newLine();
-	            bufferedWriter.write(accessToken.getExpiresIn().toString() );
-	            bufferedWriter.newLine();
-	            bufferedWriter.write(accessToken.getRawResponse());
-	            bufferedWriter.newLine();
-	            bufferedWriter.close();
-	        }catch(FileNotFoundException ex) {
-	            System.out.println("Unable to open file\n"+ex.getMessage());
-	        }
-	        catch(IOException ex) {
-	            System.out.println("Error reading/write file\n"+ex.getMessage());
-	        }
-	
-	        finally{
-	            try {
-	                if (bufferedWriter!=null)
-	                    bufferedWriter.close();
-	            }catch(Exception e){
-	                System.out.println("Error closing file\n"+e.getMessage());
-	            }
-	
-	        }
-	        System.out.println(response.getCode());
         }
+        return null;
     }
+  
+}
 
