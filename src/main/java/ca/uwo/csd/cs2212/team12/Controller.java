@@ -578,7 +578,6 @@ public class Controller implements Serializable{
 				  }
 			  }
 		  }
-		//update UI
 	}
 	
 	private static void goalsCheck(LocalDate theDate) {

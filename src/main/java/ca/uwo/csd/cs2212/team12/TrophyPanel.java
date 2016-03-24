@@ -55,6 +55,14 @@ public class TrophyPanel extends JPanel{
    
     protected int shadGap = 5;
     protected int shadOffset = 4;
+    
+    // Goal Data fields
+ 	public String stepGoal 	= String.valueOf(Controller.getTheDailyGoals().getStepGoal());
+ 	public String floorGoal 	= String.valueOf(Controller.getTheDailyGoals().getFloorGoal());
+ 	public String distGoal 	= String.valueOf(Controller.getTheDailyGoals().getDistGoal());
+ 	public String calGoal 	= String.valueOf(Controller.getTheDailyGoals().getCalGoal());
+ 	
+ 	// Accolade Data
    
 	
 	 //Make sure to have these initialized with the right icon (smaller images i will put on the button of the ui page)
@@ -148,19 +156,19 @@ public class TrophyPanel extends JPanel{
 		JPanel panel11 = new JPanel();
 		panel11.setOpaque(false);
 		panel.add(panel11, BorderLayout.NORTH);
-		JLabel lblNewLabel_5 = new JLabel("Steps Goal:");
+		JLabel lblNewLabel_5 = new JLabel("Steps Goal:"+stepGoal);
 		lblNewLabel_5.setFont(new Font("Trebuchet MS", Font.PLAIN, 37));
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_3 = new JLabel(" Floor Goal:");
+		JLabel lblNewLabel_3 = new JLabel(" Floor Goal:"+floorGoal);
 		lblNewLabel_3.setFont(new Font("Trebuchet MS", Font.PLAIN, 37));
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_4 = new JLabel("Distance Goal:");
+		JLabel lblNewLabel_4 = new JLabel("Distance Goal:"+distGoal);
 		lblNewLabel_4.setFont(new Font("Trebuchet MS", Font.PLAIN, 37));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblNewLabel_2 = new JLabel("Calories Goal:");
+		JLabel lblNewLabel_2 = new JLabel("Calories Goal:"+calGoal);
 		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 37));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		panel11.setLayout(new GridLayout(0, 2, 0, 0));
@@ -250,9 +258,10 @@ public class TrophyPanel extends JPanel{
 				panel_2.add(lblNewLabel_1, gbc_lblNewLabel_1);
 				
 				
-				DataEntry d = new DataEntry();
+				
+				
 				JLabel lblNewLabel_6 = new JLabel("1. 1,000 - Babysteps");
-				if(d.getStepsTaken()>=1000){
+				if(Controller.getTheAccoDict().getList()[0].isObtained()){
 					lblNewLabel_6.setOpaque(true);
 					lblNewLabel_6.setBackground(Color.LIGHT_GRAY);
 				}
@@ -272,7 +281,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblNewLabel_7 = new JLabel("2. 5,000 - Growing Calf");
-				if(d.getStepsTaken()>=5000){
+				if(Controller.getTheAccoDict().getList()[1].isObtained()){
 					lblNewLabel_7.setOpaque(true);
 					lblNewLabel_7.setBackground(Color.LIGHT_GRAY);
 				}
@@ -291,7 +300,7 @@ public class TrophyPanel extends JPanel{
 	
 				
 				JLabel lblNewLabel_8 = new JLabel("3. 10,000 - Marathon");
-				if(d.getStepsTaken()>=10000){
+				if(Controller.getTheAccoDict().getList()[2].isObtained()){
 					lblNewLabel_8.setOpaque(true);
 					lblNewLabel_8.setBackground(Color.LIGHT_GRAY);
 				}
@@ -309,7 +318,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblGet = new JLabel("4. 15,000 - Get a Bike");
-				if(d.getStepsTaken()>=15000){
+				if(Controller.getTheAccoDict().getList()[3].isObtained()){
 					lblGet.setOpaque(true);
 					lblGet.setBackground(Color.LIGHT_GRAY);
 				}
@@ -339,7 +348,7 @@ public class TrophyPanel extends JPanel{
 				panel_2.add(lblCal, gbc_lblCal);
 				
 				JLabel lblNewLabel_9 = new JLabel("1. BMR+750 - Kindle");
-				if(d.getCalBurned()>=750){
+				if(Controller.getTheAccoDict().getList()[4].isObtained()){
 					lblNewLabel_9.setOpaque(true);
 					lblNewLabel_9.setBackground(Color.LIGHT_GRAY);
 				}
@@ -356,7 +365,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblNewLabel_11 = new JLabel("2. BMR+1250 - Fire Baby");
-				if(d.getCalBurned()>=1250){
+				if(Controller.getTheAccoDict().getList()[5].isObtained()){
 					lblNewLabel_11.setOpaque(true);
 					lblNewLabel_11.setBackground(Color.LIGHT_GRAY);
 				}
@@ -373,7 +382,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblBmr = new JLabel("3. BMR+1750 - Human Torch");
-				if(d.getCalBurned()>=1750){
+				if(Controller.getTheAccoDict().getList()[6].isObtained()){
 					lblBmr.setOpaque(true);
 					lblBmr.setBackground(Color.LIGHT_GRAY);
 				}
@@ -389,7 +398,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblBmr1 = new JLabel("4. BMR+2050 - Smoke and Fire");
-				if(d.getCalBurned()>=2050){
+				if(Controller.getTheAccoDict().getList()[7].isObtained()){
 					lblBmr1.setOpaque(true);
 					lblBmr1.setBackground(Color.LIGHT_GRAY);
 				}
@@ -415,7 +424,7 @@ public class TrophyPanel extends JPanel{
 				panel_2.add(lblDistance, gbc_lblDistance);
 				
 				JLabel lblAnotherOne = new JLabel("1. 1km - Another One");
-				if(d.getDistanceTravelled()>=1){
+				if(Controller.getTheAccoDict().getList()[8].isObtained()){
 					lblAnotherOne.setOpaque(true);
 					lblAnotherOne.setBackground(Color.LIGHT_GRAY);
 				}
@@ -431,7 +440,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblThird = new JLabel("2. 3km - Third Time's the Charm");
-				if(d.getDistanceTravelled()>=3){
+				if(Controller.getTheAccoDict().getList()[9].isObtained()){
 					lblThird.setOpaque(true);
 					lblThird.setBackground(Color.LIGHT_GRAY);
 				}
@@ -447,7 +456,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblMaking = new JLabel("3. 8km - Making an Album");
-				if(d.getDistanceTravelled()>=8){
+				if(Controller.getTheAccoDict().getList()[10].isObtained()){
 					lblMaking.setOpaque(true);
 					lblMaking.setBackground(Color.LIGHT_GRAY);
 				}
@@ -463,7 +472,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblMaking1 = new JLabel("4. 12km - Need a map?");
-				if(d.getDistanceTravelled()>=12){
+				if(Controller.getTheAccoDict().getList()[11].isObtained()){
 					lblMaking1.setOpaque(true);
 					lblMaking1.setBackground(Color.LIGHT_GRAY);
 				}
@@ -489,7 +498,7 @@ public class TrophyPanel extends JPanel{
 				panel_2.add(lblFlights, gbc_lblFlights);
 				
 				JLabel lblUp = new JLabel("1. 10 - Up or Down");
-				if(d.getFloorsClimbed()>=10){
+				if(Controller.getTheAccoDict().getList()[12].isObtained()){
 					lblUp.setOpaque(true);
 					lblUp.setBackground(Color.LIGHT_GRAY);
 				}
@@ -505,7 +514,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblStep = new JLabel("2. 20 - Step Machine?");
-				if(d.getFloorsClimbed()>=20){
+				if(Controller.getTheAccoDict().getList()[13].isObtained()){
 					lblStep.setOpaque(true);
 					lblStep.setBackground(Color.LIGHT_GRAY);
 				}
@@ -521,7 +530,7 @@ public class TrophyPanel extends JPanel{
 				
 				
 				JLabel lblElevator = new JLabel("3. 30 - Elevator");
-				if(d.getFloorsClimbed()>=30){
+				if(Controller.getTheAccoDict().getList()[14].isObtained()){
 					lblElevator.setOpaque(true);
 					lblElevator.setBackground(Color.LIGHT_GRAY);
 				}
@@ -536,7 +545,7 @@ public class TrophyPanel extends JPanel{
 				panel_2.add(lblElevator, gbc_lblElevator);
 		
 		JLabel lblElevator1 = new JLabel("4. 50 - Calves for Days!");
-		if(d.getFloorsClimbed()>=50){
+		if(Controller.getTheAccoDict().getList()[15].isObtained()){
 			lblElevator1.setOpaque(true);
 			lblElevator1.setBackground(Color.LIGHT_GRAY);
 		}
@@ -562,7 +571,7 @@ public class TrophyPanel extends JPanel{
 		panel_2.add(lblActiveMinutes, gbc_lblActiveMinutes);
 		
 		JLabel lblUpOr_1 = new JLabel("1. 60 minutes - Power Hour");
-		if(d.getActMins()>=60){
+		if(Controller.getTheAccoDict().getList()[16].isObtained()){
 			lblUpOr_1.setOpaque(true);
 			lblUpOr_1.setBackground(Color.LIGHT_GRAY);
 		}
@@ -577,7 +586,7 @@ public class TrophyPanel extends JPanel{
 		panel_2.add(lblUpOr_1, gbc_lblUpOr_1);
 		
 		JLabel lblNewLabel_10 = new JLabel("2. 120 minutes - Double Time");
-		if(d.getActMins()>=120){
+		if(Controller.getTheAccoDict().getList()[17].isObtained()){
 			lblNewLabel_10.setOpaque(true);
 			lblNewLabel_10.setBackground(Color.LIGHT_GRAY);
 		}
@@ -592,7 +601,7 @@ public class TrophyPanel extends JPanel{
 		panel_2.add(lblNewLabel_10, gbc_lblNewLabel_10);
 		
 		JLabel lblNewLabel_15 = new JLabel("3. 200 minutes - Need a Break?");
-		if(d.getActMins()>=200){
+		if(Controller.getTheAccoDict().getList()[18].isObtained()){
 			lblNewLabel_15.setOpaque(true);
 			lblNewLabel_15.setBackground(Color.LIGHT_GRAY);
 		}
@@ -608,7 +617,7 @@ public class TrophyPanel extends JPanel{
 		panel_2.add(lblNewLabel_15, gbc_lblNewLabel_15);
 		
 		JLabel lblNewLabel_14 = new JLabel("4. 280 minutes - Marathoner");
-		if(d.getActMins()>=280){
+		if(Controller.getTheAccoDict().getList()[19].isObtained()){
 			lblNewLabel_14.setOpaque(true);
 			lblNewLabel_14.setBackground(Color.LIGHT_GRAY);
 		}
