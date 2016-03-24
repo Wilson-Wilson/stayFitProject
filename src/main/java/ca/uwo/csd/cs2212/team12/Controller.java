@@ -479,7 +479,6 @@ public class Controller implements Serializable{
 			dayString = dayObject.toString();
 			
 		}
-		System.out.println(weekValues[0]);
 		return weekValues;
 	}
 	

@@ -32,7 +32,6 @@ public class DataDict implements Serializable{
 	  this.theDictionary = new HashMap<String,DataEntry>(365);
 	  
 	  int numdays = calories.getJSONArray("activities-calories").length();
-	  System.out.println("Num of days stored in Dict is "+numdays);
 	  this.earliest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(0).getString("dateTime");
 	  this.latest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(numdays-1).getString("dateTime");
 	  
