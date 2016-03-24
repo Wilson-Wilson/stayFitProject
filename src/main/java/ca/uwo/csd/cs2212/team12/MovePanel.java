@@ -234,7 +234,7 @@ public class MovePanel extends JPanel{
 										.addComponent(lblMonthsTotalSteps, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
 							.addGap(56)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblFloors_1, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+								.addComponent(lblFloors_1, GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
 								.addComponent(lblWeeksTotalDistance)
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(lblMonthsTotalFloors, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
@@ -248,8 +248,8 @@ public class MovePanel extends JPanel{
 									.addComponent(lblMonthsTotalDistance, GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
 									.addGap(206))
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-									.addGap(343))))
+									.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+									.addContainerGap())))
 				);
 				gl_panel_1.setVerticalGroup(
 					gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -275,6 +275,27 @@ public class MovePanel extends JPanel{
 				stepsprogress.setBackground(new java.awt.Color(0, 128, 0));
 				stepsprogress.setToolTipText("Your Goal Progress!");
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				
+				Component horizontalStrut_15 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_15);
+				
+				Component horizontalStrut_19 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_19);
+				
+				Component horizontalStrut_20 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_20);
+				
+				Component horizontalStrut_21 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_21);
+				
+				Component horizontalStrut_22 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_22);
+				
+				Box horizontalBox = Box.createHorizontalBox();
+				panel.add(horizontalBox);
+				
+				Component horizontalStrut_23 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_23);
 				panel.add(stepsprogress);
 				
 				CircleProgressBar distanceprogress=new CircleProgressBar(65,new java.awt.Color(0,128,0));
@@ -312,7 +333,61 @@ public class MovePanel extends JPanel{
 				
 				Component horizontalStrut_1 = Box.createHorizontalStrut(20);
 				panel.add(horizontalStrut_1);
+				
+				Component horizontalStrut_14 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_14);
+				
+				Component horizontalStrut_16 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_16);
 				panel.add(floorprogress);
+				
+				Component horizontalStrut_13 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_13);
+				
+				Component horizontalStrut_25 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_25);
+				
+				Component horizontalStrut_9 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_9);
+				
+				JLabel lblNewLabel_2 = new JLabel("Your progress is:");
+				panel.add(lblNewLabel_2);
+				
+				Component horizontalStrut_18 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_18);
+				
+				Component horizontalStrut_17 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_17);
+				
+				Component horizontalStrut_10 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_10);
+				
+				Component horizontalStrut_24 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_24);
+				
+				Component horizontalStrut_27 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_27);
+				
+				JLabel lblProgressWithGoal = new JLabel("Your progress is:");
+				panel.add(lblProgressWithGoal);
+				
+				Component horizontalStrut_28 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_28);
+				
+				Component horizontalStrut_26 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_26);
+				
+				Component horizontalStrut_29 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_29);
+				
+				Component horizontalStrut_11 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_11);
+				
+				Component horizontalStrut_12 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_12);
+				
+				JLabel lblNewLabel_3 = new JLabel("Your progress is: ");
+				panel.add(lblNewLabel_3);
 
 		JPanel panel_10 = new JPanel() {
 			  @Override

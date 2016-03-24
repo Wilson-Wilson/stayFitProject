@@ -184,6 +184,7 @@ public class CalPanel extends JPanel{
 				CircleProgressBar progress=new CircleProgressBar(percent,new java.awt.Color(0,128,0));
 				progress.setBackground(new java.awt.Color(255, 69, 0));
 				progress.setToolTipText("Your Goal Progress!");
+				
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
 				JPanel panel_1 = new JPanel();
@@ -231,6 +232,12 @@ public class CalPanel extends JPanel{
 				);
 				panel_1.setLayout(gl_panel_1);
 				panel.add(progress);
+				
+				Component horizontalStrut = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut);
+				
+				JLabel lblYourProgressIs = new JLabel("Your Progress is:");
+				panel.add(lblYourProgressIs);
 
 
 
