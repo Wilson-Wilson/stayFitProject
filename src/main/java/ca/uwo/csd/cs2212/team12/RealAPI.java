@@ -67,7 +67,7 @@ public class RealAPI implements API
     String scope = "activity%20heartrate";
 
     FitbitOAuth20ServiceImpl service,service2;
-    OAuth2AccessToken accessToken,accessToken2;
+    OAuth2AccessToken accessToken;
 
 
     public RealAPI(String thedate) throws ParseException
@@ -141,13 +141,6 @@ public class RealAPI implements API
         	.grantType("authorization_code")
         	.build(FitbitApi20.instance());
 
-        accessToken2 = new OAuth2AccessToken(
-        		accessTokenItself,
-        		tokenType,
-        		refreshToken,
-        		expiresIn,
-        		rawResponse);        
-        
     }
     
     /**
@@ -182,7 +175,7 @@ public class RealAPI implements API
         requestUrlSuffix2 = "activities/calories/date/"+frmt1+"/1d/15min.json";
         requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
         request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
-        service2.signRequest(accessToken2, request2);
+        service2.signRequest(accessToken, request2);
         response2 = request2.send();
         System.out.println(response2.getBody());
         refresh(response2);
@@ -222,7 +215,7 @@ public class RealAPI implements API
         requestUrlSuffix2 = "activities/steps/date/"+frmt1+"/1d/15min.json";
         requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
         request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
-        service2.signRequest(accessToken2, request2);
+        service2.signRequest(accessToken, request2);
         response2 = request2.send();
         System.out.println(response2.getBody());
         refresh(response2);
@@ -262,7 +255,7 @@ public class RealAPI implements API
         requestUrlSuffix2 = "activities/floors/date/"+frmt1+"/1d/15min.json";
         requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
         request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
-        service2.signRequest(accessToken2, request2);
+        service2.signRequest(accessToken, request2);
         response2 = request2.send();
         System.out.println(response2.getBody());
         refresh(response2);
@@ -302,7 +295,7 @@ public class RealAPI implements API
         requestUrlSuffix2 = "activities/minutesSedentary/date/"+frmt1+"/1d/15min.json";
         requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
         request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
-        service2.signRequest(accessToken2, request2);
+        service2.signRequest(accessToken, request2);
         response2 = request2.send();
         System.out.println(response2.getBody());
         refresh(response2);
@@ -344,7 +337,7 @@ public class RealAPI implements API
         requestUrlSuffix2 = "activities/minutesFairlyActive/date/"+frmt1+"/1d/15min.json";
         requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
         request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
-        service2.signRequest(accessToken2, request2);
+        service2.signRequest(accessToken, request2);
         response2 = request2.send();
         System.out.println(response2.getBody());
         refresh(response2);
@@ -384,7 +377,7 @@ public class RealAPI implements API
         requestUrlSuffix2 = "activities/distance/date/"+frmt1+"/1d/15min.json";
         requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
         request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
-        service2.signRequest(accessToken2, request2);
+        service2.signRequest(accessToken, request2);
         response2 = request2.send();
         System.out.println(response2.getBody());
         refresh(response2);
@@ -419,7 +412,7 @@ public class RealAPI implements API
         requestUrlSuffix2 = "activities.json";
         requestUrl2 = requestUrlPrefix + requestUrlSuffix2;
         request2 = new OAuthRequest(Verb.GET, requestUrl2, service2);
-        service2.signRequest(accessToken2, request2);
+        service2.signRequest(accessToken, request2);
         response2 = request2.send();
         System.out.println(response2.getBody());
         refresh(response2);
