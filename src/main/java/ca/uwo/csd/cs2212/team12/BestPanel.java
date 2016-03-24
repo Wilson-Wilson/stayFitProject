@@ -47,6 +47,10 @@ public class BestPanel extends JPanel {
 
 	protected int shadowGap = 5;
 
+	// Data fields
+		public String bestDistance = String.valueOf(Controller.getTheUserInfo().getDistanceBestVal());
+		public String bestFloors = String.valueOf(Controller.getTheUserInfo().getFloorsBestVal());
+		public String bestSteps = String.valueOf(Controller.getTheUserInfo().getStepsBestVal());
 	/**
 	 * Create the application.
 	 */
@@ -175,15 +179,15 @@ public class BestPanel extends JPanel {
 		panel_6.setOpaque(false);
 		panel_9.add(panel_6, BorderLayout.CENTER);
 		
-		JLabel lblBestDistance = new JLabel("Best Distance: ");
+		JLabel lblBestDistance = new JLabel("Best Distance: "+bestDistance);
 		lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestDistance.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestFloors = new JLabel("Best Floors:");
+		JLabel lblBestFloors = new JLabel("Best Floors:"+bestFloors);
 		lblBestFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestFloors.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestSteps = new JLabel("Best Steps:");
+		JLabel lblBestSteps = new JLabel("Best Steps:"+bestSteps);
 		lblBestSteps.setForeground(new Color(255, 255, 255));
 		lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		GroupLayout gl_panel_6 = new GroupLayout(panel_6);

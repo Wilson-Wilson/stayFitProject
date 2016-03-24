@@ -30,7 +30,32 @@ public class Controller implements Serializable{
 	private static Preferences thePreferences;
 	private static AccoDict	theAccoDict;
 	private static DailyGoals theDailyGoals;
-	//private UI theUI
+	private static boolean testFlag = false;
+	
+	/*
+	 * For the weeklyTotals and monthlyTotal arrays
+	 * 0 - calories
+	 * 1 - distance
+	 * 2 - floors
+	 * 3 - steps
+	 * 4 - active minutes
+	 * 5 - sedentary minutes
+	 * */
+	private static int [] dailyTotals;
+	private static int [] weeklyTotals;
+	private static int [] monthlyTotals;
+
+	
+	public static int getDailyTotals(int i) {
+		return dailyTotals[i];
+	}
+	public static int getWeeklyTotals(int i) {
+		return weeklyTotals[i];
+	}
+	public static int getMonthlyTotals(int i) {
+		return monthlyTotals[i];
+	}
+
 	
 	private static final long serialVersionUID= 1L;
 	private static final String DATADICT= "datadict.boop";
@@ -38,18 +63,6 @@ public class Controller implements Serializable{
 	private static final String USERINFO= "userinfo.boop";
 	private static final String PREFERENCES= "preferences.boop";
 	private static final String GOALS="dailygoals.boop";	
-	
-	/**
-	 * Constructor that creates Controller object from apiParam. 
-	 * The method is only used in StayFit.java with onStartUp() defined below.
-	 * @param apiParam 
-	 */
-	//Add UI parameter and create initializeController() method in Stayfit that creates 
-		//a controller object and calls onStartUp()
-	public Controller(API apiParam){
-		theAPI = apiParam;		
-	}
-	
 	
 	/**
 	 * This method refreshes the user interface with the data relating to the newly 
@@ -62,53 +75,50 @@ public class Controller implements Serializable{
 	 * @throws JSONException 
 	 * @throws ParseException 
 	 */
-	public void changeDate(String newer, String older) throws JSONException, ParseException{
+	public static void changeDate(String newer, String older) throws JSONException, ParseException{
 		
+		if(testFlag == true){
+			return;
+		}
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate newDate = LocalDate.parse(newer, formatter);
 		LocalDate oldDate = LocalDate.parse(older, formatter);
 		
 		if(testInet()){	
-			
+		
 			theAPI = new RealAPI(newer);
-			JSONArray timeCal = theAPI.getCalSeries();
-			JSONArray timeSteps = theAPI.getStepsSeries();
-			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
-			JSONArray timeDistance = theAPI.getCalSeries();
-			JSONArray timeFloors = theAPI.getFloorsSeries();
-			JSONArray timeSedentary = theAPI.getSedentaryMinutesSeries();
-			JSONArray timeActive = theAPI.getActiveMinutesSeries();
+			JSONObject timeCal = theAPI.getCalSeries();
+			JSONObject timeSteps = theAPI.getStepsSeries();
+			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
+			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeFloors = theAPI.getFloorsSeries();
+			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONObject timeActive = theAPI.getActiveMinutesSeries();
 			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
 			
+			JSONObject lifeStats = theAPI.getLifeTime();
+			theUserInfo = new UserInfo(lifeStats);
+			
 			if (!isWithinRange(newDate)){
-				JSONArray dictCal = theAPI.getCalBurned();
-				JSONArray dictDist = theAPI.getDistance();
-				JSONArray dictFloors = theAPI.getFloors();
-				JSONArray dictSteps = theAPI.getSteps();
-				JSONArray dictActive = theAPI.getActiveMinutes();
-				JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+				JSONObject dictCal = theAPI.getCalBurned();
+				JSONObject dictDist = theAPI.getDistance();
+				JSONObject dictFloors = theAPI.getFloors();
+				JSONObject dictSteps = theAPI.getSteps();
+				JSONObject dictActive = theAPI.getActiveMinutes();
+				JSONObject dictSedentary = theAPI.getSedentaryMinutes();
 						
 				theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			}
 		}
 		
-		int [] dayValues = getDayData(newDate); 
-		/* 
-		 * UI.setCaloriesVariable(dayValues[0]);
-		*/
+		dailyTotals = getDayData(newDate);
 		
 		if(!isSameWeek(newDate, oldDate)){
-			int[] weekValues = getWeekData(newDate);
-			/*UI.setCaloriesVariable(weekValues[0]);
-			...
-			*/
+			weeklyTotals = getWeekData(newDate);
 		}
 		
 		if(!isSameMonth(newDate, oldDate)){
-			int[] monthValues = getMonthData(newDate);
-			/*UI.setCaloriesVariable(weekValues[0]);
-			...
-			*/
+			monthlyTotals = getMonthData(newDate);
 		}
 		
 		accoCheck(newDate);
@@ -137,7 +147,50 @@ public class Controller implements Serializable{
 	 */
 	public static void onStartUp() throws IOException, ParseException, JSONException{
 		
-		
+
+		if(testFlag == true){
+			Preferences.setAllTrue();
+			theAPI = new TestAPI();
+			
+			JSONObject timeCal = theAPI.getCalSeries();
+			JSONObject timeSteps = theAPI.getStepsSeries();
+			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
+			JSONObject timeDistance = theAPI.getDistanceSeries();
+			JSONObject timeFloors = theAPI.getFloorsSeries();
+			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONObject timeActive = theAPI.getActiveMinutesSeries();
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
+			
+			JSONObject lifeStats = theAPI.getLifeTime();
+			theUserInfo = new UserInfo(lifeStats);
+			
+			JSONObject dictCal = theAPI.getCalBurned();
+			JSONObject dictDist = theAPI.getDistance();
+			JSONObject dictFloors = theAPI.getFloors();
+			JSONObject dictSteps = theAPI.getSteps();
+			JSONObject dictActive = theAPI.getActiveMinutes();
+			JSONObject dictSedentary = theAPI.getSedentaryMinutes();
+			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
+			
+			JSONObject dailyGoals = theAPI.getGoals();
+			theDailyGoals = new DailyGoals(dailyGoals);
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			LocalDate addDate = LocalDate.parse(theDictionary.getLatest(), formatter);
+		    
+			dailyTotals = getDayData(addDate); 
+			weeklyTotals = getWeekData(addDate);
+			monthlyTotals = getMonthData(addDate);
+	        theAccoDict = new AccoDict();
+			accoCheck(addDate);
+			goalsCheck(addDate);
+			
+			MWindow window = new MWindow();
+	        window.frame.setSize(1000,600);
+	        window.frame.setVisible(true);
+	       
+			return;
+		}
 		
 		File c = new File("preferences.boop");
 		if (c.exists()){
@@ -167,26 +220,28 @@ public class Controller implements Serializable{
 		
 		if(testInet()){
 			
+			System.out.println("internet works!");
+			
 			theAPI = new RealAPI(curDate);
 			
-			JSONArray timeCal = theAPI.getCalSeries();
-			JSONArray timeSteps = theAPI.getStepsSeries();
-			JSONArray timeHeartRate = theAPI.getHeartRateSeries();
-			JSONArray timeDistance = theAPI.getCalSeries();
-			JSONArray timeFloors = theAPI.getFloorsSeries();
-			JSONArray timeSedentary = theAPI.getSedentaryMinutesSeries();
-			JSONArray timeActive = theAPI.getActiveMinutesSeries();
+			JSONObject timeCal = theAPI.getCalSeries();
+			JSONObject timeSteps = theAPI.getStepsSeries();
+			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
+			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeFloors = theAPI.getFloorsSeries();
+			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
+			JSONObject timeActive = theAPI.getActiveMinutesSeries();
 			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
 			
-			JSONArray lifeStats = theAPI.getLifeTime();
+			JSONObject lifeStats = theAPI.getLifeTime();
 			theUserInfo = new UserInfo(lifeStats);
 			
-			JSONArray dictCal = theAPI.getCalBurned();
-			JSONArray dictDist = theAPI.getDistance();
-			JSONArray dictFloors = theAPI.getFloors();
-			JSONArray dictSteps = theAPI.getSteps();
-			JSONArray dictActive = theAPI.getActiveMinutes();
-			JSONArray dictSedentary = theAPI.getSedentaryMinutes();
+			JSONObject dictCal = theAPI.getCalBurned();
+			JSONObject dictDist = theAPI.getDistance();
+			JSONObject dictFloors = theAPI.getFloors();
+			JSONObject dictSteps = theAPI.getSteps();
+			JSONObject dictActive = theAPI.getActiveMinutes();
+			JSONObject dictSedentary = theAPI.getSedentaryMinutes();
 			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			
 			JSONObject dailyGoals = theAPI.getGoals();
@@ -215,9 +270,16 @@ public class Controller implements Serializable{
 			}				
 		}
 		
-		AccoDict theAccoDict = new AccoDict();
-		//accoCheck(now);
-		//goalsCheck(now);
+        MWindow window = new MWindow();
+        window.frame.setSize(1000,600);
+        window.frame.setVisible(true);
+        
+        dailyTotals = getDayData(now); 
+        weeklyTotals = getWeekData(now);
+		monthlyTotals = getMonthData(now);
+        theAccoDict = new AccoDict();
+		accoCheck(now);
+		goalsCheck(now);
 	}
 	
 	/**
@@ -225,6 +287,9 @@ public class Controller implements Serializable{
 	 * The method is disabled in test mode.
 	 */
 	public static void onClose(){
+		if(testFlag == true){
+			return;
+		}
 		//instantiate static classes
 		
 		Preferences savePref= new Preferences();
@@ -234,8 +299,6 @@ public class Controller implements Serializable{
 		savePref.setSaveMinutesCard(Preferences.showMinutesCard);
 		savePref.setSaveMovementsCard(Preferences.showMovementsCard);
 		savePref.setSaveTimeSeriesCard(Preferences.showTimeSeriesCard);
-		
-		
 		
 		TimeSeriesData saveSeries= new TimeSeriesData();
 		saveSeries.setSaveCaloriesSet(TimeSeriesData.caloriesSet);
@@ -253,9 +316,88 @@ public class Controller implements Serializable{
 		storeTimeSeries(saveSeries);
 		storePreferences(savePref);
 		
-		
 	}
 	 
+	public static DataDict getTheDictionary() {
+		return theDictionary;
+	}
+
+
+	public static void setTheDictionary(DataDict theDictionary) {
+		Controller.theDictionary = theDictionary;
+	}
+
+
+	public static API getTheAPI() {
+		return theAPI;
+	}
+
+
+	public static void setTheAPI(API theAPI) {
+		Controller.theAPI = theAPI;
+	}
+
+
+	public static UserInfo getTheUserInfo() {
+		return theUserInfo;
+	}
+
+
+	public static void setTheUserInfo(UserInfo theUserInfo) {
+		Controller.theUserInfo = theUserInfo;
+	}
+
+
+	public static TimeSeriesData getTheTimeSeries() {
+		return theTimeSeries;
+	}
+
+
+	public static void setTheTimeSeries(TimeSeriesData theTimeSeries) {
+		Controller.theTimeSeries = theTimeSeries;
+	}
+
+
+	public static Preferences getThePreferences() {
+		return thePreferences;
+	}
+
+
+	public static void setThePreferences(Preferences thePreferences) {
+		Controller.thePreferences = thePreferences;
+	}
+
+
+	public static AccoDict getTheAccoDict() {
+		return theAccoDict;
+	}
+
+
+	public static void setTheAccoDict(AccoDict theAccoDict) {
+		Controller.theAccoDict = theAccoDict;
+	}
+
+
+	public static DailyGoals getTheDailyGoals() {
+		return theDailyGoals;
+	}
+
+
+	public static void setTheDailyGoals(DailyGoals theDailyGoals) {
+		Controller.theDailyGoals = theDailyGoals;
+	}
+
+
+	public static boolean isTestFlag() {
+		return testFlag;
+	}
+
+
+	public static void setTestFlag(boolean testFlag) {
+		Controller.testFlag = testFlag;
+	}
+
+
 	/**
 	 * This method returns an int array with each index representing a different type of 
 	 * data corresponding to the date parameter.
@@ -321,7 +463,7 @@ public class Controller implements Serializable{
 		dayString = dayObject.toString();
 		
 		for (i = 0; i < 7; i++){
-			
+
 			if (theDictionary.getDictionary().get(dayString) != null)
 			{
 				currentDay = theDictionary.getDictionary().get(dayString);
@@ -333,7 +475,7 @@ public class Controller implements Serializable{
 				weekValues[4] += currentDay.getActMins();
 				weekValues[5] += currentDay.getSedMins();
 			}
-			dayObject.plusDays(1);
+			dayObject = dayObject.plusDays(1);
 			dayString = dayObject.toString();
 			
 		}
@@ -370,7 +512,7 @@ public class Controller implements Serializable{
 				monthValues[4] += currentDay.getActMins();
 				monthValues[5] += currentDay.getSedMins();
 			}
-			dayObject.plusDays(1);
+			dayObject = dayObject.plusDays(1);
 			dayString = dayObject.toString();
 			
 		}
@@ -501,7 +643,6 @@ public class Controller implements Serializable{
 				  }
 			  }
 		  }
-		//update UI
 	}
 	
 	private static void goalsCheck(LocalDate theDate) {
@@ -729,5 +870,4 @@ public class Controller implements Serializable{
 	     	}
 	     return null;
 	   }
-
 }

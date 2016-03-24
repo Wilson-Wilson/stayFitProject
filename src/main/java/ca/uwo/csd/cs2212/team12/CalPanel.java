@@ -19,12 +19,22 @@ import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.GroupLayout.Alignment;
 
 public class CalPanel extends JPanel{
+
+	// Percentage field for pie chart
+	private int percent = 30;
+
+	// Data fields
+	
+	public String dayCalories 	= String.valueOf(Controller.getDailyTotals(0));
+	public String weekCalories 	= String.valueOf(Controller.getWeeklyTotals(0));
+	public String monthCalories = String.valueOf(Controller.getMonthlyTotals(0));
 
 	private JFrame frame;
 	public Graph graph = new Graph();
@@ -171,23 +181,23 @@ public class CalPanel extends JPanel{
 				JPanel panel = new JPanel();
 				panel.setOpaque(false);
 				panel_9.add(panel, BorderLayout.CENTER);
-				CircleProgressBar progress=new CircleProgressBar(30,new java.awt.Color(0,128,0));
+				CircleProgressBar progress=new CircleProgressBar(percent,new java.awt.Color(0,128,0));
 				progress.setBackground(new java.awt.Color(255, 69, 0));
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
 				JPanel panel_1 = new JPanel();
 				panel_1.setOpaque(false);
 				
-				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:");
+				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:"+dayCalories);
 				lblCaloriesBurned.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurned.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned:");
+				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned:" + weekCalories);
 				lblCaloriesBurnedFor.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurnedFor.setForeground(java.awt.Color.WHITE);
 				panel.add(panel_1);
 				
-				JLabel lblCaloriesBurnedFor_1 = new JLabel("Month's Calories Burned: ");
+				JLabel lblCaloriesBurnedFor_1 = new JLabel("Month's Calories Burned: " + monthCalories);
 				lblCaloriesBurnedFor_1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurnedFor_1.setForeground(java.awt.Color.WHITE);
 				GroupLayout gl_panel_1 = new GroupLayout(panel_1);

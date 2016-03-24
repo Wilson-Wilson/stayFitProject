@@ -13,10 +13,10 @@ public class DailyGoals implements Serializable{
 	 private static final long serialVersionUID= 1L;
 
 	 public DailyGoals(JSONObject goals) throws JSONException{
-	    stepGoal=goals.getInt("steps");
-	    floorGoal=goals.getInt("floors");
-	    distGoal=goals.getInt("distance");
-	    calGoal=goals.getInt("caloriesOut");
+	    stepGoal=goals.getJSONObject("goals").getInt("steps");
+	    floorGoal=goals.getJSONObject("goals").getInt("floors");
+	    distGoal=goals.getJSONObject("goals").getInt("distance");
+	    calGoal=goals.getJSONObject("goals").getInt("caloriesOut");
 	  }
 	
 	 public DailyGoals(){

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import java.io.Serializable;
  /**
   * TimeSeriesData.java is a data structure class to store intraday TimeSeries data for the current day
@@ -138,7 +139,7 @@ public class TimeSeriesData implements Serializable {
 	 * 
 	 * @throws JSONException
 	 */
-	public TimeSeriesData(JSONArray calData, JSONArray stepsData, JSONArray heartRateData, JSONArray distanceData, JSONArray floorsData, JSONArray SedentaryData, JSONArray ActiveData) throws JSONException{
+	public TimeSeriesData(JSONObject calData, JSONObject stepsData, JSONObject heartRateData, JSONObject distanceData, JSONObject floorsData, JSONObject SedentaryData, JSONObject ActiveData) throws JSONException{
 		caloriesSet = new ArrayList<DataPoint>();
 		stepsSet = new ArrayList<DataPoint>(); 
 		heartRateSet = new ArrayList<DataPoint>(); 
@@ -147,32 +148,32 @@ public class TimeSeriesData implements Serializable {
 		SedentaryMinutesSet = new ArrayList<DataPoint>();
 		ActiveMinutesSet = new ArrayList<DataPoint>();
 				
-		for(int i = 0; i < calData.getJSONArray(1).getJSONArray(1).length(); i++){
-			caloriesSet.add(new DataPoint (calData.getJSONArray(1).getJSONArray(1).getJSONObject(i)));			
+		for(int i = 0; i < calData.getJSONObject("activities-calories-intraday").getJSONArray("dataset").length(); i++){
+			caloriesSet.add(new DataPoint (calData.getJSONObject("activities-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < stepsData.getJSONArray(1).getJSONArray(1).length(); i++){
-			stepsSet.add(new DataPoint (stepsData.getJSONArray(1).getJSONArray(1).getJSONObject(i)));			
+		for(int i = 0; i < stepsData.getJSONObject("activities-steps-intraday").getJSONArray("dataset").length(); i++){
+			stepsSet.add(new DataPoint (stepsData.getJSONObject("activities-steps-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < floorsData.getJSONArray(1).getJSONArray(1).length(); i++){
-			floorsSet.add(new DataPoint (floorsData.getJSONArray(1).getJSONArray(1).getJSONObject(i)));			
+		for(int i = 0; i < floorsData.getJSONObject("activities-floors-intraday").getJSONArray("dataset").length(); i++){
+			floorsSet.add(new DataPoint (floorsData.getJSONObject("activities-floors-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < distanceData.getJSONArray(1).getJSONArray(1).length(); i++){
-			distanceSet.add(new DataPoint (distanceData.getJSONArray(1).getJSONArray(1).getJSONObject(i)));			
+		for(int i = 0; i < distanceData.getJSONObject("activities-distance-intraday").getJSONArray("dataset").length(); i++){
+			distanceSet.add(new DataPoint (distanceData.getJSONObject("activities-distance-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < SedentaryData.getJSONArray(1).getJSONArray(1).length(); i++){
-			SedentaryMinutesSet.add(new DataPoint (SedentaryData.getJSONArray(1).getJSONArray(1).getJSONObject(i)));			
+		for(int i = 0; i < SedentaryData.getJSONObject("activities-minutesSedentary-intraday").getJSONArray("dataset").length(); i++){
+			SedentaryMinutesSet.add(new DataPoint (SedentaryData.getJSONObject("activities-minutesSedentary-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < ActiveData.getJSONArray(1).getJSONArray(1).length(); i++){
-			ActiveMinutesSet.add(new DataPoint(ActiveData.getJSONArray(1).getJSONArray(0).getJSONObject(i)));			
+		for(int i = 0; i < ActiveData.getJSONObject("activities-minutesFairlyActive-intraday").getJSONArray("dataset").length(); i++){
+			ActiveMinutesSet.add(new DataPoint(ActiveData.getJSONObject("activities-minutesFairlyActive-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
-		for(int i = 0; i < heartRateData.getJSONArray(1).getJSONArray(1).length(); i++){
-			heartRateSet.add(new DataPoint(heartRateData.getJSONArray(1).getJSONArray(0).getJSONObject(i)));			
+		for(int i = 0; i < heartRateData.getJSONObject("activities-heart-intraday").getJSONArray("dataset").length(); i++){
+			heartRateSet.add(new DataPoint(heartRateData.getJSONObject("activities-heart-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 	}
 	

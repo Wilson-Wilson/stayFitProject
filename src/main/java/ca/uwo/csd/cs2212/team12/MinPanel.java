@@ -28,6 +28,15 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MinPanel extends JPanel{
 
+	// Percentage field for pie chart
+	private int percent = 65;
+
+	// Data fields
+	public String sedDay 	= String.valueOf(Controller.getDailyTotals(5));
+	public String actDay 	= String.valueOf(Controller.getDailyTotals(4));
+	public String actWeek 	= String.valueOf(Controller.getWeeklyTotals(4));
+	public String actMonth	= String.valueOf(Controller.getMonthlyTotals(4));
+
 	private JFrame frame;
 	public Graph graph = new Graph();
 	public JFXPanel graph_panel;
@@ -175,19 +184,19 @@ public class MinPanel extends JPanel{
 				panel_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 				panel_1.setOpaque(false);
 				
-				JLabel lblTotalActiveMinutes_1 = new JLabel("Total Active Minutes for the Month: ");
+				JLabel lblTotalActiveMinutes_1 = new JLabel("Total Active Minutes for the Month: " + actMonth);
 				lblTotalActiveMinutes_1.setForeground(java.awt.Color.WHITE);
 				lblTotalActiveMinutes_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week:");
+				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week: " + actWeek);
 				lblTotalActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblTotalActiveMinutes.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblSedentaryMinutes = new JLabel("Sedentary Minutes: ");
+				JLabel lblSedentaryMinutes = new JLabel("Sedentary Minutes: "+sedDay);
 				lblSedentaryMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblSedentaryMinutes.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblActiveMinutes = new JLabel("Active Minutes: ");
+				JLabel lblActiveMinutes = new JLabel("Active Minutes: "+actDay);
 				lblActiveMinutes.setForeground(java.awt.Color.WHITE);
 				lblActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				GroupLayout gl_panel_1 = new GroupLayout(panel_1);
@@ -219,7 +228,7 @@ public class MinPanel extends JPanel{
 				panel.add(panel_1);
 
 				
-				CircleProgressBar progress=new CircleProgressBar(65, new java.awt.Color(0,0,255));
+				CircleProgressBar progress=new CircleProgressBar(percent, new java.awt.Color(0,0,255));
 				progress.setBackground(new java.awt.Color(30, 144, 255));
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				panel.add(progress);

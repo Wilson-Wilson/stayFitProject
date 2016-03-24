@@ -17,28 +17,26 @@ public class StayFit {
     public static void main(String[] args) {
 
         final boolean isTest = (args.length!=0 && args[0].equals("test"));
-        UserInfo uInfo= new UserInfo();
         
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
                 try {
-                    API api;
+             
                     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                     String date  = formatter.format(new Date());
-                    if(isTest)  api= new TestAPI();
-                    else        api= new RealAPI(date);
-                   // Controller controller = new Controller(api);
+                    
+                    //Update TestFlag in Controller 
+                    if(isTest){ Controller.setTestFlag(true);}
+ 
                     Controller.onStartUp();
-                    MWindow window = new MWindow();
-                    window.frame.setSize(1000,600);
-                    window.frame.setVisible(true);
                     
                     Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
                         public void run() {
                             Controller.onClose();
                         }
                     }, "Shutdown-thread"));
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -49,4 +47,5 @@ public class StayFit {
             }
         });
     }
+    
 }

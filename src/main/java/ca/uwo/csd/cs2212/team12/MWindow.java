@@ -48,13 +48,11 @@ public class MWindow {
         frame.getContentPane().add(panel_3, "3");
         panel_3.setLayout(cl);
 
-
-
-
         DashBoardPanel dash= new DashBoardPanel();
       
         
         dash.checkPref();
+        //ui gets updated here
   
 
         panel_3.add(dash,"2");

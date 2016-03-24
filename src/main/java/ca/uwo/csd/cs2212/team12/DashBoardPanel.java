@@ -3,6 +3,7 @@ package ca.uwo.csd.cs2212.team12;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -17,24 +18,28 @@ import javax.swing.LayoutStyle.*;
 
 import javafx.embed.swing.JFXPanel;
 import org.jdesktop.swingx.JXDatePicker;
+import org.json.JSONException;
+
 import no.tornado.databinding.support.jxdatepicker.*;
 
 
 public class DashBoardPanel extends JPanel {
 
     // Data fields that are updated by the Controller on refresh
-    public String caloriesBurned        = "test";
-    public String activeMinutes         = "test";
-    public String sedentaryMinutes      = "test";
-    public String distance              = "test";
-    public String floors                = "test";
-    public String steps                 = "test";
-    public String lifetimeFloors        = "test";
-    public String lifetimeSteps         = "test";
-    public String lifetimeDistance      = "test";
-    public String bestFloors            = "test";
-    public String bestSteps             = "test";
-    public String bestDistance          = "test";
+    String labelDate =  (new SimpleDateFormat("YYYY-MM-dd")).format(date);
+    public String caloriesBurned        = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getCalBurned());
+    public String activeMinutes         = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getActMins());
+    public String sedentaryMinutes      = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getSedMins());
+    public String distance              = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getDistanceTravelled());
+    public String floors                = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getFloorsClimbed());
+    public String steps                 = String.valueOf(Controller.getTheDictionary().getDictionary().get(labelDate).getStepsTaken());
+
+    public String lifetimeFloors        = String.valueOf(Controller.getTheUserInfo().getFloorsLife());
+    public String lifetimeSteps         = String.valueOf(Controller.getTheUserInfo().getStepsLife());
+    public String lifetimeDistance      = String.valueOf(Controller.getTheUserInfo().getDistanceLife());
+    public String bestFloors            = String.valueOf(Controller.getTheUserInfo().getFloorsBestVal());
+    public String bestSteps             = String.valueOf(Controller.getTheUserInfo().getStepsBestVal());
+    public String bestDistance          = String.valueOf(Controller.getTheUserInfo().getDistanceBestVal());
 
 	final JPanel cardPanel = new JPanel();
     final JButton caloriesButton = new JButton("");
@@ -46,8 +51,23 @@ public class DashBoardPanel extends JPanel {
 
 
 	final static Format formatter = new SimpleDateFormat("MMMM" + " "+"d" + " "+"YYY");
-    static Date date= new Date();
+    static Date date= stringToDate(Controller.getTheDictionary().getLatest());
+    public static Date stringToDate(String sdate) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = null;
+        try {
+            date1 = simpleDateFormat.parse(sdate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date1;
+    }
 
+
+
+    static Date oldDate = new Date();
+
+    static String oldDateString= formatter.format(oldDate);
     static String dateString= formatter.format(date); //dateString is the unique key used to access the dataEntry hashmap called DataDict
 
     final JLabel lblNewLabel_3 = new JLabel(dateString);
@@ -58,7 +78,6 @@ public class DashBoardPanel extends JPanel {
     public JFXPanel graph_panel;
 
     //Images from the resource folder used throughout the programme
-
 
 
     /**
@@ -836,10 +855,21 @@ public class DashBoardPanel extends JPanel {
 
             public void actionPerformed(ActionEvent ae) {
 
-            	date= subtractDay(date);
-            	dateString = formatter.format(date);
+            	oldDate = date;
+				oldDateString = dateString;
+				date= subtractDay(date);
+				dateString = formatter.format(date);
 				
 				System.out.println(date.toString());
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 				lblNewLabel_3.setText(dateString);
@@ -867,11 +897,21 @@ public class DashBoardPanel extends JPanel {
 
             public void actionPerformed(ActionEvent ae) {
 
-            	date= addDay(date);
-            	dateString = formatter.format(date);
+            	oldDate = date;
+				oldDateString = dateString;
+				date= addDay(date);
+				dateString = formatter.format(date);
 				
 				System.out.println(date.toString());
-				
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				lblNewLabel_3.setText(dateString);
             	DashBoardPanel dash= new DashBoardPanel();
@@ -1015,6 +1055,16 @@ public class DashBoardPanel extends JPanel {
 
             public void actionPerformed(ActionEvent ae) {
             	
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
                 final SimpleDateFormat timeft =  new SimpleDateFormat ("hh:mm:ss");
             	lastupdated.setText("Last updated: "+timeft.format(new Date()));
                 
@@ -1061,16 +1111,24 @@ public class DashBoardPanel extends JPanel {
        
         panel_4.setOpaque(false);
         
-        
-      
         final JXDatePicker datePicker = new JXDatePicker();
         
         datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				oldDate = date;
+				oldDateString = dateString;
 				dateString = formatter.format(datePicker.getDate());
 				date= datePicker.getDate();
 				System.out.println(date.toString());
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 				lblNewLabel_3.setText(dateString);
