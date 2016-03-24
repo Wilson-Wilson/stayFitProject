@@ -189,11 +189,11 @@ public class CalPanel extends JPanel{
 				JPanel panel_1 = new JPanel();
 				panel_1.setOpaque(false);
 				
-				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:"+dayCalories);
+				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned: "+dayCalories);
 				lblCaloriesBurned.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurned.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned:" + weekCalories);
+				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned: " + weekCalories);
 				lblCaloriesBurnedFor.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurnedFor.setForeground(java.awt.Color.WHITE);
 				panel.add(panel_1);

@@ -57,6 +57,9 @@ public class BestPanel extends JPanel {
 	protected int shadowGap = 5;
 
 	// Data fields
+		public String bestDistanceDay = String.valueOf(Controller.getTheUserInfo().getDistanceBestDay());
+		public String bestFloorsDay = String.valueOf(Controller.getTheUserInfo().getFloorsBestDay());
+		public String bestStepsDay = String.valueOf(Controller.getTheUserInfo().getStepsBestDay());
 		public String bestDistance = String.valueOf(Controller.getTheUserInfo().getDistanceBestVal());
 		public String bestFloors = String.valueOf(Controller.getTheUserInfo().getFloorsBestVal());
 		public String bestSteps = String.valueOf(Controller.getTheUserInfo().getStepsBestVal());
@@ -188,15 +191,15 @@ public class BestPanel extends JPanel {
 		panel_6.setOpaque(false);
 		panel_9.add(panel_6, BorderLayout.CENTER);
 		
-		JLabel lblBestDistance = new JLabel("Best Distance: ");
+		JLabel lblBestDistance = new JLabel("Best Distance(km): "+bestDistance);
 		lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestDistance.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestFloors = new JLabel("Best Floors:");
+		JLabel lblBestFloors = new JLabel("Best Floors: "+bestFloors);
 		lblBestFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestFloors.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestSteps = new JLabel("Best Steps:");
+		JLabel lblBestSteps = new JLabel("Best Steps: "+bestSteps);
 		lblBestSteps.setForeground(new Color(255, 255, 255));
 		lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		
@@ -209,15 +212,15 @@ public class BestPanel extends JPanel {
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\thumbs up.png"));
 		
-		JLabel lblBestFloorsDate = new JLabel("Best Floor's Date:");
+		JLabel lblBestFloorsDate = new JLabel("Best Floor's Date: "+bestFloorsDay);
 		lblBestFloorsDate.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestFloorsDate.setForeground(Color.WHITE);
 		
-		JLabel lblBestStepsDate = new JLabel("Best Step's Date:");
+		JLabel lblBestStepsDate = new JLabel("Best Step's Date: "+bestStepsDay);
 		lblBestStepsDate.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestStepsDate.setForeground(Color.WHITE);
 		
-		JLabel lblBestDistanceDate = new JLabel("Best Distance Date:");
+		JLabel lblBestDistanceDate = new JLabel("Best Distance Date: "+bestDistanceDay);
 		lblBestDistanceDate.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestDistanceDate.setForeground(Color.WHITE);
 		GroupLayout gl_panel_6 = new GroupLayout(panel_6);

@@ -30,10 +30,13 @@ public class MovePanel extends JPanel{
 	private int percent = 25;
 
 	// Data fields
+	public String dayDistance 	= String.valueOf(Controller.getDailyTotals(1));
 	public String weekDistance 	= String.valueOf(Controller.getWeeklyTotals(1));
 	public String monthDistance = String.valueOf(Controller.getMonthlyTotals(1));
+	public String dayFloors 	= String.valueOf(Controller.getDailyTotals(2));
 	public String weekFloors 	= String.valueOf(Controller.getWeeklyTotals(2));
 	public String monthFloors 	= String.valueOf(Controller.getMonthlyTotals(2));
+	public String daySteps 		= String.valueOf(Controller.getDailyTotals(3));
 	public String weekSteps 	= String.valueOf(Controller.getWeeklyTotals(3));
 	public String monthSteps 	= String.valueOf(Controller.getMonthlyTotals(3));
 
@@ -181,19 +184,19 @@ public class MovePanel extends JPanel{
 				JPanel panel_1 = new JPanel();
 				panel_1.setOpaque(false);
 				
-				JLabel lblSteps = new JLabel("Daily Steps:");
+				JLabel lblSteps = new JLabel("Daily Distance(km): "+dayDistance);
 				lblSteps.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblSteps.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblMonthsTotalDistance = new JLabel("Month's Total Distance: " + monthDistance);
+				JLabel lblMonthsTotalDistance = new JLabel("Month's Total Distance(km): " + monthDistance);
 				lblMonthsTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblMonthsTotalDistance.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblWeeksTotalFloors = new JLabel("Week's Total Distance: " + weekDistance);
+				JLabel lblWeeksTotalFloors = new JLabel("Week's Total Distance(km): " + weekDistance);
 				lblWeeksTotalFloors.setForeground(java.awt.Color.WHITE);
 				lblWeeksTotalFloors.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblFloors_1 = new JLabel("Daily Floors:");
+				JLabel lblFloors_1 = new JLabel("Daily Floors: "+dayFloors);
 				lblFloors_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblFloors_1.setForeground(new java.awt.Color(255, 255, 255));
 				
@@ -205,7 +208,7 @@ public class MovePanel extends JPanel{
 				lblWeeksTotalDistance.setForeground(java.awt.Color.WHITE);
 				lblWeeksTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblDistance = new JLabel("Daily Distance:");
+				JLabel lblDistance = new JLabel("Daily Steps: "+daySteps);
 				lblDistance.setForeground(java.awt.Color.WHITE);
 				lblDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				panel.add(panel_1);
