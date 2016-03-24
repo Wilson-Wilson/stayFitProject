@@ -27,17 +27,18 @@ public class DashBoardPanel extends JPanel {
 
     // Data fields that are updated by the Controller on refresh
     public String caloriesBurned        = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getCalBurned());
-    public String activeMinutes         = "test";
-    public String sedentaryMinutes      = "test";
-    public String distance              = "test";
-    public String floors                = "test";
-    public String steps                 = "test";
-    public String lifetimeFloors        = "test";
-    public String lifetimeSteps         = "test";
-    public String lifetimeDistance      = "test";
-    public String bestFloors            = "test";
-    public String bestSteps             = "test";
-    public String bestDistance          = "test";
+    public String activeMinutes         = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getActMins());
+    public String sedentaryMinutes      = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getSedMins());
+    public String distance              = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getDistanceTravelled());
+    public String floors                = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getFloorsClimbed());
+    public String steps                 = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getStepsTaken());
+
+    public String lifetimeFloors        = String.valueOf(Controller.getTheUserInfo().getFloorsLife());
+    public String lifetimeSteps         = String.valueOf(Controller.getTheUserInfo().getStepsLife());
+    public String lifetimeDistance      = String.valueOf(Controller.getTheUserInfo().getDistanceLife());
+    public String bestFloors            = String.valueOf(Controller.getTheUserInfo().getFloorsBestVal());
+    public String bestSteps             = String.valueOf(Controller.getTheUserInfo().getStepsBestVal());
+    public String bestDistance          = String.valueOf(Controller.getTheUserInfo().getDistanceBestVal());
 
 	final JPanel cardPanel = new JPanel();
     final JButton caloriesButton = new JButton("");
