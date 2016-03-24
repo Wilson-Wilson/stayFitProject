@@ -184,7 +184,7 @@ public class MovePanel extends JPanel{
 				JPanel panel_1 = new JPanel();
 				panel_1.setOpaque(false);
 				
-				JLabel lblSteps = new JLabel("Daily Distance(km): "+dayDistance);
+				JLabel lblSteps = new JLabel("Daily Steps: "+daySteps);
 				lblSteps.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblSteps.setForeground(java.awt.Color.WHITE);
 				
@@ -208,7 +208,7 @@ public class MovePanel extends JPanel{
 				lblWeeksTotalDistance.setForeground(java.awt.Color.WHITE);
 				lblWeeksTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblDistance = new JLabel("Daily Steps: "+daySteps);
+				JLabel lblDistance = new JLabel("Daily Distance(km): "+dayDistance);
 				lblDistance.setForeground(java.awt.Color.WHITE);
 				lblDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				panel.add(panel_1);
