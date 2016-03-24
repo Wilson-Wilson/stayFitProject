@@ -54,34 +54,9 @@ public class Graph {
                 XYChart.Series series1 = new XYChart.Series();
                 series1.setName("Calories");
                 //populating the series with data
-                int hh = 0;int mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getCaloriesSet()[i]));
-                		mm+=15;
+                for(int i=0;i<TimeSeriesData.getCaloriesSet().size();i++){
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getCaloriesSet().get(i).getTime(), TimeSeriesData.getCaloriesSet().get(i).getValue()));
                 	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series1.getData().add(new XYChart.Data(hh+":0"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series1.getData().add(new XYChart.Data(hh+"0:"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-                			    mm+=15;
-                			}
-                			series1.getData().add(new XYChart.Data(hh+":"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-            			    mm+=15;
-                		}
-                	}
-                }
                                 
                 Scene scene  = new Scene(lineChart,800,600);
                 lineChart.getData().add(series1);
@@ -117,21 +92,7 @@ public class Graph {
                 //populating the series with data
                 int hh = 1;int mm = 0;int hour_check;
                 for(int i : testCal){
-                	if(mm==0 && hh==1){
-                		series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			hh+=1;mm=0;
-                			series1.getData().add(new XYChart.Data(hh+":"+mm+"0", i));         
-                			mm+=15;
-                		}
-                		else{
-                			series1.getData().add(new XYChart.Data(hh+":"+mm, i));
-                			mm+=15;
-                		}
-                	}
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getFloorsSet().get(i).getTime(), TimeSeriesData.getFloorsSet().get(i).getValue()));
                 }
                                 
                 Scene scene  = new Scene(lineChart,800,600);
@@ -167,98 +128,24 @@ public class Graph {
                 series1.setName("Steps");
                 //populating the series with data
                 int hh = 0;int mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getStepsSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getStepsSet()[i]));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series1.getData().add(new XYChart.Data(hh+":0"+mm, TimeSeriesData.getStepsSet()[i]));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series1.getData().add(new XYChart.Data(hh+"0:"+mm, TimeSeriesData.getStepsSet()[i]));         
-                			    mm+=15;
-                			}
-                			series1.getData().add(new XYChart.Data(hh+":"+mm, TimeSeriesData.getStepsSet()[i]));         
-            			    mm+=15;
-                		}
-                	}
+                for(int i=0;i<TimeSeriesData.getStepsSet().size();i++){
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getStepsSet().get(i).getTime(), TimeSeriesData.getStepsSet().get(i).getValue()));
                 }
                 
               //defining a series
                 XYChart.Series series2 = new XYChart.Series();
                 series2.setName("Distance");
                 //populating the series with data
-                hh = 0;mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series2.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getStepsSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series2.getData().add(new XYChart.Data(hh+"0:0"+mm, i));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series2.getData().add(new XYChart.Data(hh+":0"+mm, i));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series2.getData().add(new XYChart.Data(hh+"0:"+mm, i));         
-                			    mm+=15;
-                			}
-                			series2.getData().add(new XYChart.Data(hh+":"+mm, i));         
-            			    mm+=15;
-                		}
-                	}
+                for(int i=0;i<TimeSeriesData.getDistanceSet().size();i++){
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getDistanceSet().get(i).getTime(), TimeSeriesData.getDistanceSet().get(i).getValue()));
                 }
                 
               //defining a series
                 XYChart.Series series3 = new XYChart.Series();
                 series3.setName("Floors");
                 //populating the series with data
-                hh = 0;mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series3.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getFloorsSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series3.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getFloorsSet()[i]));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series3.getData().add(new XYChart.Data(hh+":0"+mm, TimeSeriesData.getFloorsSet()[i]));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series3.getData().add(new XYChart.Data(hh+"0:"+mm, TimeSeriesData.getFloorsSet()[i]));         
-                			    mm+=15;
-                			}
-                			series3.getData().add(new XYChart.Data(hh+":"+mm, TimeSeriesData.getFloorsSet()[i]));         
-            			    mm+=15;
-                		}
-                	}
+                for(int i=0;i<TimeSeriesData.getFloorsSet().size();i++){
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getFloorsSet().get(i).getTime(), TimeSeriesData.getFloorsSet().get(i).getValue()));
                 }
                                 
                 Scene scene  = new Scene(lineChart,800,600);
@@ -392,16 +279,16 @@ public class Graph {
                 XYChart.Series series1 = new XYChart.Series();
                 series1.setName("Sedentary Mins");
                 //populating the series with data
-                for(int i : TimeSeriesData.getCaloriesSet()){
-                	series1.getData().add(new XYChart.Data("1:00", i));
+                for(int i=0;i<TimeSeriesData.getSedentaryMinutesSet().size();i++){
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getSedentaryMinutesSet().get(i).getTime(), TimeSeriesData.getSedentaryMinutesSet().get(i).getValue()));
                 }
                 
               //defining a series
                 XYChart.Series series2 = new XYChart.Series();
                 series1.setName("Active Mins");
                 //populating the series with data
-                for(int i : TimeSeriesData.getCaloriesSet()){
-                	series1.getData().add(new XYChart.Data("1:00", i));
+                for(int i=0;i<TimeSeriesData.getActiveMinutesSet().size();i++){
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getActiveMinutesSet().get(i).getTime(), TimeSeriesData.getActiveMinutesSet().get(i).getValue()));
                 }         
                                                 
                 Scene scene  = new Scene(lineChart,800,600);
@@ -507,173 +394,64 @@ public class Graph {
                         new LineChart<String,Number>(xAxis,yAxis);
                         
                 lineChart.setTitle("Time Series");
-              //defining a series
+              /*//defining a series
                 XYChart.Series series1 = new XYChart.Series();
                 series1.setName("Calories");
                 //populating the series with data
-                int hh = 0;int mm = 0;
                 for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getCaloriesSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series1.getData().add(new XYChart.Data(hh+":0"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series1.getData().add(new XYChart.Data(hh+"0:"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-                			    mm+=15;
-                			}
-                			series1.getData().add(new XYChart.Data(hh+":"+mm, TimeSeriesData.getCaloriesSet()[i]));         
-            			    mm+=15;
-                		}
-                	}
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getCaloriesSet()[i].getTime(), TimeSeriesData.getCaloriesSet()[i].getValue()));
                 }
                 
               //defining a series
                 XYChart.Series series2 = new XYChart.Series();
                 series2.setName("Steps");
                 //populating the series with data
-                hh = 0; mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series2.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getStepsSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series2.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getStepsSet()[i]));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series2.getData().add(new XYChart.Data(hh+":0"+mm, TimeSeriesData.getStepsSet()[i]));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series2.getData().add(new XYChart.Data(hh+"0:"+mm, TimeSeriesData.getStepsSet()[i]));         
-                			    mm+=15;
-                			}
-                			series2.getData().add(new XYChart.Data(hh+":"+mm, TimeSeriesData.getStepsSet()[i]));         
-            			    mm+=15;
-                		}
-                	}
+                for(int i=0;i<TimeSeriesData.getStepsSet().length;i++){
+                	series2.getData().add(new XYChart.Data(TimeSeriesData.getStepsSet()[i].getTime(), TimeSeriesData.getStepsSet()[i].getValue()));
                 }
                 
               //defining a series
                 XYChart.Series series3 = new XYChart.Series();
                 series3.setName("Distance");
                 //populating the series with data
-                hh = 0; mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series3.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getStepsSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series3.getData().add(new XYChart.Data(hh+"0:0"+mm, i));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series3.getData().add(new XYChart.Data(hh+":0"+mm, i));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series3.getData().add(new XYChart.Data(hh+"0:"+mm, i));         
-                			    mm+=15;
-                			}
-                			series3.getData().add(new XYChart.Data(hh+":"+mm, i));         
-            			    mm+=15;
-                		}
-                	}
+                for(int i=0;i<TimeSeriesData.getDistanceSet().length;i++){
+                	series3.getData().add(new XYChart.Data(TimeSeriesData.getDistanceSet()[i].getTime(), TimeSeriesData.getDistanceSet()[i].getValue()));
                 }
                 
               //defining a series
                 XYChart.Series series4 = new XYChart.Series();
                 series4.setName("Floors");
                 //populating the series with data
-                hh = 0; mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series4.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getFloorsSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series4.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getFloorsSet()[i]));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series4.getData().add(new XYChart.Data(hh+":0"+mm, TimeSeriesData.getFloorsSet()[i]));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series4.getData().add(new XYChart.Data(hh+"0:"+mm, TimeSeriesData.getFloorsSet()[i]));         
-                			    mm+=15;
-                			}
-                			series4.getData().add(new XYChart.Data(hh+":"+mm, TimeSeriesData.getFloorsSet()[i]));         
-            			    mm+=15;
-                		}
-                	}
+                for(int i=0;i<TimeSeriesData.getFloorsSet().length;i++){
+                	series4.getData().add(new XYChart.Data(TimeSeriesData.getFloorsSet()[i].getTime(), TimeSeriesData.getFloorsSet()[i].getValue()));
                 }
                 
               //defining a series
                 XYChart.Series series5 = new XYChart.Series();
+                series5.setName("Sedentary Minutes");
+                //populating the series with data
+                for(int i=0;i<TimeSeriesData.getSedentaryMinutesSet().length;i++){
+                	series5.getData().add(new XYChart.Data(TimeSeriesData.getSedentaryMinutesSet()[i].getTime(), TimeSeriesData.getSedentaryMinutesSet()[i].getValue()));
+                }
+                
+              //defining a series
+                XYChart.Series series6 = new XYChart.Series();
+                series6.setName("Active Minutes");
+                //populating the series with data
+                for(int i=0;i<TimeSeriesData.getActiveMinutesSet().length;i++){
+                	series6.getData().add(new XYChart.Data(TimeSeriesData.getActiveMinutesSet()[i].getTime(), TimeSeriesData.getActiveMinutesSet()[i].getValue()));
+                }*/
+                
+              //defining a series
+                XYChart.Series series1 = new XYChart.Series();
                 series1.setName("HeartRate");
                 //populating the series with data
-                hh = 0; mm = 0;
-                for(int i=0;i<TimeSeriesData.getCaloriesSet().length;i++){
-                	if(mm<10 && hh<10){
-                		series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getHeartRateSet()[i]));
-                		mm+=15;
-                	}
-                	else{
-                		if(mm>45){
-                			if(hh<10){
-                				hh+=1;mm=0;
-                			    series1.getData().add(new XYChart.Data(hh+"0:0"+mm, TimeSeriesData.getHeartRateSet()[i]));         
-                			    mm+=15;
-                			}
-                			hh+=1;mm=0;
-            			    series1.getData().add(new XYChart.Data(hh+":0"+mm, TimeSeriesData.getHeartRateSet()[i]));         
-            			    mm+=15;
-                			
-                		}
-                		else{
-                			if(hh<10){
-                			    series1.getData().add(new XYChart.Data(hh+"0:"+mm, TimeSeriesData.getHeartRateSet()[i]));         
-                			    mm+=15;
-                			}
-                			series1.getData().add(new XYChart.Data(hh+":"+mm, TimeSeriesData.getHeartRateSet()[i]));         
-            			    mm+=15;
-                		}
-                	}
+                for(int i=0;i<TimeSeriesData.getHeartRateSet().size();i++){
+                	series1.getData().add(new XYChart.Data(TimeSeriesData.getHeartRateSet().get(i).getTime(), TimeSeriesData.getHeartRateSet().get(i).getValue()));
                 }
                                                
                 Scene scene  = new Scene(lineChart,800,600);
-                lineChart.getData().addAll(series1,series2,series3,series4,series5);
+                lineChart.getData().add(series1);//,series2,series3,series4,series5,series6,series7);
                 fxPanel.setScene(scene);
         	}
         });

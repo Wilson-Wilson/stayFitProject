@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class DataDict implements Serializable{
  
@@ -26,23 +27,24 @@ public class DataDict implements Serializable{
    * @param sedMins is the JSONObject carrying sedentary minutes data for a year.
    * @throws JSONException 
    */
-  public DataDict(JSONArray calories, JSONArray distance, JSONArray floors, JSONArray steps, JSONArray activeMins, JSONArray sedMins) throws JSONException{
+  public DataDict(JSONObject calories, JSONObject distance, JSONObject floors, JSONObject steps, JSONObject activeMins, JSONObject sedMins) throws JSONException{
 	  
 	  this.theDictionary = new HashMap<String,DataEntry>(365);
-	  int numdays = calories.length();
-	  this.earliest = sedMins.getJSONObject(0).getString("dateTime");
-	  this.latest = sedMins.getJSONObject(numdays-1).getString("dateTime");
+	  
+	  int numdays = calories.getJSONArray("activities-calories").length();
+	  this.earliest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(0).getString("dateTime");
+	  this.latest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(numdays-1).getString("dateTime");
 	  
 	  
 	  for(int i=0; i < numdays; i++){
 		  
-		  int addCal = calories.getJSONObject(i).getInt("value");
-		  int addDistance = distance.getJSONObject(i).getInt("value");
-		  int addFloors = floors.getJSONObject(i).getInt("value");
-		  int addSteps = steps.getJSONObject(i).getInt("value");
-		  int addActive = activeMins.getJSONObject(i).getInt("value");
-		  int addSedentary= sedMins.getJSONObject(i).getInt("value");
-		  String addDate = sedMins.getJSONObject(i).getString("dateTime");
+		  int addCal = calories.getJSONArray("activities-calories").getJSONObject(i).getInt("value");
+		  int addDistance = distance.getJSONArray("activities-distance").getJSONObject(i).getInt("value");
+		  int addFloors = floors.getJSONArray("activities-floors").getJSONObject(i).getInt("value");
+		  int addSteps = steps.getJSONArray("activities-steps").getJSONObject(i).getInt("value");
+		  int addActive = activeMins.getJSONArray("activities-minutesFairlyActive").getJSONObject(i).getInt("value");
+		  int addSedentary= sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(i).getInt("value");
+		  String addDate = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(i).getString("dateTime");
 		  
 		  DataEntry addMe = new DataEntry(addCal, addDistance, addFloors, addSteps, addActive, addSedentary, addDate);
 		  

@@ -11,19 +11,125 @@ public class Preferences implements Serializable{
   public static boolean showLifetimeCard;
   public static boolean showTimeSeriesCard;
   public static boolean showBestDaysCard;
-  public static String preferredUnits;
+  
+  public boolean saveCaloriesCard;
+  public boolean saveMinutesCard;
+  public boolean saveMovementsCard;
+  public boolean saveLifetimeCard;
+  public boolean saveTimeSeriesCard;
+  public boolean saveBestDaysCard;
   
   /**
    * This would be the default layout of the dashboard
    */
   public Preferences(){
-    showCaloriesCard= true;
-    showMinutesCard= true;
-    showMovementsCard= true;
-    showLifetimeCard= true;
-    showTimeSeriesCard= true;
-    showBestDaysCard= true;
-    preferredUnits= "metric";
+    
+  }
+  
+  
+  /**
+ * @return the saveCaloriesCard
+ */
+public boolean isSaveCaloriesCard() {
+	return saveCaloriesCard;
+}
+
+
+/**
+ * @param saveCaloriesCard the saveCaloriesCard to set
+ */
+public void setSaveCaloriesCard(boolean saveCaloriesCard) {
+	this.saveCaloriesCard = saveCaloriesCard;
+}
+
+
+/**
+ * @return the saveMinutesCard
+ */
+public boolean isSaveMinutesCard() {
+	return saveMinutesCard;
+}
+
+
+/**
+ * @param saveMinutesCard the saveMinutesCard to set
+ */
+public void setSaveMinutesCard(boolean saveMinutesCard) {
+	this.saveMinutesCard = saveMinutesCard;
+}
+
+
+/**
+ * @return the saveMovementsCard
+ */
+public boolean isSaveMovementsCard() {
+	return saveMovementsCard;
+}
+
+
+/**
+ * @param saveMovementsCard the saveMovementsCard to set
+ */
+public void setSaveMovementsCard(boolean saveMovementsCard) {
+	this.saveMovementsCard = saveMovementsCard;
+}
+
+
+/**
+ * @return the saveLifetimeCard
+ */
+public boolean isSaveLifetimeCard() {
+	return saveLifetimeCard;
+}
+
+
+/**
+ * @param saveLifetimeCard the saveLifetimeCard to set
+ */
+public void setSaveLifetimeCard(boolean saveLifetimeCard) {
+	this.saveLifetimeCard = saveLifetimeCard;
+}
+
+
+/**
+ * @return the saveTimeSeriesCard
+ */
+public boolean isSaveTimeSeriesCard() {
+	return saveTimeSeriesCard;
+}
+
+
+/**
+ * @param saveTimeSeriesCard the saveTimeSeriesCard to set
+ */
+public void setSaveTimeSeriesCard(boolean saveTimeSeriesCard) {
+	this.saveTimeSeriesCard = saveTimeSeriesCard;
+}
+
+
+/**
+ * @return the saveBestDaysCard
+ */
+public boolean isSaveBestDaysCard() {
+	return saveBestDaysCard;
+}
+
+
+/**
+ * @param saveBestDaysCard the saveBestDaysCard to set
+ */
+public void setSaveBestDaysCard(boolean saveBestDaysCard) {
+	this.saveBestDaysCard = saveBestDaysCard;
+}
+
+
+public static void setAllTrue(){
+	    Preferences.showCaloriesCard= true;
+	    Preferences.showMinutesCard= true;
+	    Preferences.showMovementsCard= true;
+	    Preferences.showLifetimeCard= true;
+	    Preferences.showTimeSeriesCard= true;
+	    Preferences.showBestDaysCard= true;
   }
   
 	/**
@@ -134,19 +240,5 @@ public class Preferences implements Serializable{
 		this.showBestDaysCard = showBestDaysCard;
 	}
 
-	/**
-	* Returns value of preferredUnits
-	* @return lets the programme know what unit sthe user wants the data in
-	*/
-	public String getPreferredUnits() {
-		return preferredUnits;
-	}
-
-	/**
-	* Sets new value of preferredUnits
-	* @param preferredUnits determines what units the valu of the cards will be shown in
-	*/
-	public void setPreferredUnits(String preferredUnits) {
-		this.preferredUnits = preferredUnits;
-	}
+	
 }

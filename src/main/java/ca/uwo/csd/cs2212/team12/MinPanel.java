@@ -28,6 +28,15 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MinPanel extends JPanel{
 
+	// Percentage field for pie chart
+	private int percent = 65;
+
+	// Data fields
+	public String sedDay 	= String.valueOf(Controller.getDailyTotals(5));
+	public String actDay 	= String.valueOf(Controller.getDailyTotals(4));
+	public String actWeek 	= String.valueOf(Controller.getWeeklyTotals(4));
+	public String actMonth	= String.valueOf(Controller.getMonthlyTotals(4));
+
 	private JFrame frame;
 	public Graph graph = new Graph();
 	public JFXPanel graph_panel;
@@ -165,62 +174,64 @@ public class MinPanel extends JPanel{
 				lblNewLabel.setBorder(null);
 				lblNewLabel.setForeground(new java.awt.Color(255, 255, 255));
 				lblNewLabel.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-
 				
 				JPanel panel = new JPanel();
 				panel.setOpaque(false);
 				panel_9.add(panel, BorderLayout.CENTER);
+				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
-				JLabel lblActiveMinutes = new JLabel("Active Minutes: ");
-				lblActiveMinutes.setForeground(new java.awt.Color(255, 255, 255));
-				lblActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				JPanel panel_1 = new JPanel();
+				panel_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
+				panel_1.setOpaque(false);
 				
-				JLabel lblSedentaryMinutes = new JLabel("Sedentary Minutes: ");
-				lblSedentaryMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				lblSedentaryMinutes.setForeground(new java.awt.Color(255, 255, 255));
-				
-				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week:");
-				lblTotalActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				lblTotalActiveMinutes.setForeground(new java.awt.Color(255, 255, 255));
-				
-				JLabel lblTotalActiveMinutes_1 = new JLabel("Total Active Minutes for the Month: ");
-				lblTotalActiveMinutes_1.setForeground(new java.awt.Color(255, 255, 255));
+				JLabel lblTotalActiveMinutes_1 = new JLabel("Total Active Minutes for the Month: " + actMonth);
+				lblTotalActiveMinutes_1.setForeground(java.awt.Color.WHITE);
 				lblTotalActiveMinutes_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				GroupLayout gl_panel = new GroupLayout(panel);
-				gl_panel.setHorizontalGroup(
-					gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(44)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblTotalActiveMinutes_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addContainerGap())
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblTotalActiveMinutes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addContainerGap())
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblSedentaryMinutes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addContainerGap())
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblActiveMinutes, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(206))))
+				
+				JLabel lblTotalActiveMinutes = new JLabel("Total Active Minutes for the Week: " + actWeek);
+				lblTotalActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				lblTotalActiveMinutes.setForeground(java.awt.Color.WHITE);
+				
+				JLabel lblSedentaryMinutes = new JLabel("Sedentary Minutes: "+sedDay);
+				lblSedentaryMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				lblSedentaryMinutes.setForeground(java.awt.Color.WHITE);
+				
+				JLabel lblActiveMinutes = new JLabel("Active Minutes: "+actDay);
+				lblActiveMinutes.setForeground(java.awt.Color.WHITE);
+				lblActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+				gl_panel_1.setHorizontalGroup(
+					gl_panel_1.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
+							.addGap(240)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblTotalActiveMinutes, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+								.addComponent(lblTotalActiveMinutes_1, GroupLayout.PREFERRED_SIZE, 522, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblSedentaryMinutes, GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+								.addComponent(lblActiveMinutes, GroupLayout.PREFERRED_SIZE, 559, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap())
 				);
-				gl_panel.setVerticalGroup(
-					gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(42)
+				gl_panel_1.setVerticalGroup(
+					gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(4)
 							.addComponent(lblActiveMinutes)
-							.addGap(11)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblSedentaryMinutes)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblTotalActiveMinutes)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblTotalActiveMinutes_1)
-							.addContainerGap(189, Short.MAX_VALUE))
+							.addContainerGap(33, Short.MAX_VALUE))
 				);
-				panel.setLayout(gl_panel);
+				panel_1.setLayout(gl_panel_1);
+				panel.add(panel_1);
 
-
+				
+				//CircleProgressBar progress=new CircleProgressBar(percent, new java.awt.Color(0,0,255));
+				//progress.setBackground(new java.awt.Color(30, 144, 255));
+				//panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				//panel.add(progress);
 		JPanel panel_10 = new JPanel() {
 			  @Override
 			     protected void paintComponent(Graphics g) {
@@ -297,7 +308,7 @@ public class MinPanel extends JPanel{
         plh5.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
         plh5.setForeground(new java.awt.Color(255, 255, 255));
         
-        graph_panel = graph.setMinutesTest();
+        graph_panel = graph.setMinutes();
         plh1.add(graph_panel, BorderLayout.CENTER);
         plh1.add(plh2,BorderLayout.WEST);
         plh1.add(plh3,BorderLayout.EAST);
@@ -361,7 +372,7 @@ public class MinPanel extends JPanel{
 		panel_11.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
+		lblNewLabel_1.setIcon(ImageClass.getTrophyIcon2());
 		lblNewLabel_1.setBackground(new java.awt.Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));

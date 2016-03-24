@@ -165,6 +165,7 @@ public class OpenCardListener extends JPanel{
         userButton.setBorderPainted(false);
 
         JButton timeseriesButton = new JButton("");
+        timeseriesButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         timeseriesButton.setContentAreaFilled(false);
         timeseriesButton.setIcon(ImageClass.getTimeseriesIcon());
         timeseriesButton.setBorder(null);
@@ -269,6 +270,7 @@ public class OpenCardListener extends JPanel{
         
 		JButton homebutton = new JButton("");
 		homebutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		 homebutton.setToolTipText("Dashboard");
 		homebutton.addActionListener(new ActionListener() {
 
 	            
@@ -349,7 +351,8 @@ public class OpenCardListener extends JPanel{
 					.addContainerGap())
 		);
 		panel.setLayout(gl_panel);
-		final JLabel lblToday = new JLabel("Today");
+		final JLabel lblToday = new JLabel(DashBoardPanel.dateString);
+		lblToday.setToolTipText("Please go to the dashboard to change the date");
 		settingsbutton.addActionListener(new ActionListener() {
 
 
@@ -363,6 +366,7 @@ public class OpenCardListener extends JPanel{
                 lblToday.setText("Settings");
 
             }});
+		settingsbutton.setToolTipText("Settings");
 		 trophyButton.addActionListener(new ActionListener() {
 
 
@@ -372,6 +376,7 @@ public class OpenCardListener extends JPanel{
 	                cl.show(panel_3,"11");
 
 	            }});
+		trophyButton.setToolTipText("Accolades and Goals");
 		
 		panel_15.setLayout(new BorderLayout(0, 0));
 		panel_15.add(panel);

@@ -143,13 +143,49 @@ public class TimePanel extends JPanel{
 		gbc_panel_9.gridy = 1;
 		panel_8.add(panel_9, gbc_panel_9);
 		panel_9.setLayout(new BorderLayout(0, 0));
+		
+		JPanel plh1= new JPanel();
+        plh1.setOpaque(false);
+        plh1.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh1.setForeground(new java.awt.Color(255, 255, 255));
+        plh1.setLayout(new BorderLayout());
+        
+        JPanel plh2= new JPanel();
+        plh2.setOpaque(false);
+        plh2.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh2.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JPanel plh3 = new JPanel();
+        plh3.setOpaque(false);
+        plh3.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh3.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JPanel plh4 = new JPanel();
+        plh4.setOpaque(false);
+        plh4.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh4.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JPanel plh5 = new JPanel();
+        plh5.setOpaque(false);
+        plh5.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh5.setForeground(new java.awt.Color(255, 255, 255));
+        
+        graph_panel = graph.setCalories();
+        plh1.add(graph_panel, BorderLayout.CENTER);
+        plh1.add(plh2,BorderLayout.WEST);
+        plh1.add(plh3,BorderLayout.EAST);
+        plh1.add(plh4,BorderLayout.SOUTH);
+        plh1.add(plh5,BorderLayout.NORTH);
+		panel_9.add(plh1,BorderLayout.CENTER);
 
-		JLabel lblNewLabel = new JLabel("Time Series");
+		JLabel lblNewLabel = new JLabel("Calories");
 		panel_9.add(lblNewLabel, BorderLayout.NORTH);
 		lblNewLabel.setHorizontalAlignment(JLabel.LEFT);
 
 				lblNewLabel.setBorder(new BevelBorder(BevelBorder.RAISED, new java.awt.Color(0, 128, 0), new java.awt.Color(0, 255, 0), new java.awt.Color(255, 250, 250), new java.awt.Color(210, 105, 30)));
-				lblNewLabel.setIcon(new ImageIcon("src/main/resources/BarGraphIcon2.png"));
+
+				lblNewLabel.setIcon(ImageClass.getCaloriesIcon());
+
 				lblNewLabel.setBackground(new java.awt.Color(128, 128, 128));
 				lblNewLabel.setBorder(new LineBorder(new java.awt.Color(0, 128, 0), 24, true));
 
@@ -207,39 +243,53 @@ public class TimePanel extends JPanel{
 		panel_8.add(panel_10, gbc_panel_10);
 		panel_10.setLayout(new BorderLayout(0, 0));
 		
-		JPanel plh1= new JPanel();
-        plh1.setOpaque(false);
-        plh1.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
-        plh1.setForeground(new java.awt.Color(255, 255, 255));
-        plh1.setLayout(new BorderLayout());
+		JPanel plh6= new JPanel();
+        plh6.setOpaque(false);
+        plh6.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh6.setForeground(new java.awt.Color(255, 255, 255));
+        plh6.setLayout(new BorderLayout());
         
-        JPanel plh2= new JPanel();
-        plh2.setOpaque(false);
-        plh2.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
-        plh2.setForeground(new java.awt.Color(255, 255, 255));
+        JPanel plh7= new JPanel();
+        plh7.setOpaque(false);
+        plh7.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh7.setForeground(new java.awt.Color(255, 255, 255));
         
-        JPanel plh3 = new JPanel();
-        plh3.setOpaque(false);
-        plh3.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
-        plh3.setForeground(new java.awt.Color(255, 255, 255));
+        JPanel plh8 = new JPanel();
+        plh8.setOpaque(false);
+        plh8.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh8.setForeground(new java.awt.Color(255, 255, 255));
         
-        JPanel plh4 = new JPanel();
-        plh4.setOpaque(false);
-        plh4.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
-        plh4.setForeground(new java.awt.Color(255, 255, 255));
+        JPanel plh9 = new JPanel();
+        plh9.setOpaque(false);
+        plh9.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh9.setForeground(new java.awt.Color(255, 255, 255));
         
-        JPanel plh5 = new JPanel();
-        plh5.setOpaque(false);
-        plh5.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
-        plh5.setForeground(new java.awt.Color(255, 255, 255));
+        JPanel plh10= new JPanel();
+        plh10.setOpaque(false);
+        plh10.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh10.setForeground(new java.awt.Color(255, 255, 255));
         
-        graph_panel = graph.setAllTest();
-        plh1.add(graph_panel, BorderLayout.CENTER);
-        plh1.add(plh2,BorderLayout.WEST);
-        plh1.add(plh3,BorderLayout.EAST);
-        plh1.add(plh4,BorderLayout.SOUTH);
-        plh1.add(plh5,BorderLayout.NORTH);
-		panel_10.add(plh1,BorderLayout.CENTER);
+        graph_panel = graph.setMovement();
+        plh6.add(graph_panel, BorderLayout.CENTER);
+        plh6.add(plh7,BorderLayout.WEST);
+        plh6.add(plh8,BorderLayout.EAST);
+        plh6.add(plh9,BorderLayout.SOUTH);
+        plh6.add(plh10,BorderLayout.NORTH);
+		panel_10.add(plh6,BorderLayout.CENTER);
+		
+		JLabel lblNewLabel2 = new JLabel("Movement");
+		panel_10.add(lblNewLabel2, BorderLayout.NORTH);
+		lblNewLabel2.setHorizontalAlignment(JLabel.LEFT);
+
+				lblNewLabel2.setBorder(new BevelBorder(BevelBorder.RAISED, new java.awt.Color(0, 128, 0), new java.awt.Color(0, 255, 0), new java.awt.Color(255, 250, 250), new java.awt.Color(210, 105, 30)));
+				lblNewLabel2.setIcon(new ImageIcon("src/main/resources/RunningIcon2.png"));
+				lblNewLabel2.setBackground(new java.awt.Color(128, 128, 128));
+				lblNewLabel2.setBorder(new LineBorder(new java.awt.Color(0, 128, 0), 24, true));
+
+				lblNewLabel2.setBorder(null);
+				lblNewLabel2.setForeground(new java.awt.Color(255, 255, 255));
+				lblNewLabel2.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+
 
 
 
@@ -295,9 +345,46 @@ public class TimePanel extends JPanel{
 		gbc_panel_11.gridy = 5;
 		panel_8.add(panel_11, gbc_panel_11);
 		panel_11.setLayout(new BorderLayout(0, 0));
+		
+		JPanel plh11= new JPanel();
+        plh11.setOpaque(false);
+        plh11.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh11.setForeground(new java.awt.Color(255, 255, 255));
+        plh11.setLayout(new BorderLayout());
+        
+        JPanel plh12= new JPanel();
+        plh12.setOpaque(false);
+        plh12.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh12.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JPanel plh13 = new JPanel();
+        plh13.setOpaque(false);
+        plh13.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh13.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JPanel plh14 = new JPanel();
+        plh14.setOpaque(false);
+        plh14.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh14.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JPanel plh15= new JPanel();
+        plh15.setOpaque(false);
+        plh15.setFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 13));
+        plh15.setForeground(new java.awt.Color(255, 255, 255));
+        
+        graph_panel = graph.setMinutes();
+        plh11.add(graph_panel, BorderLayout.CENTER);
+        plh11.add(plh12,BorderLayout.WEST);
+        plh11.add(plh13,BorderLayout.EAST);
+        plh11.add(plh14,BorderLayout.SOUTH);
+        plh11.add(plh15,BorderLayout.NORTH);
+		panel_11.add(plh11,BorderLayout.CENTER);
 
-		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
+
+
+		JLabel lblNewLabel_1 = new JLabel("Minutes");
+		lblNewLabel_1.setIcon(ImageClass.getMinutesIcon());
+
 		lblNewLabel_1.setBackground(new java.awt.Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));

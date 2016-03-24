@@ -4,18 +4,18 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class SettingsPanel extends JPanel {
 
-	// Make sure to have these initialized with the right icon (smaller images i
-	// will put on the button of the ui page)
+
 	ImageIcon backImage = ImageClass.getBackImage();
 
 	/**
-	 * Create the application.
+	 * Create the panel.
 	 */
 	public SettingsPanel() {
 		initialize();
@@ -24,19 +24,10 @@ public class SettingsPanel extends JPanel {
 	/**
 	 * Initialize the contents of the panel; sub-panels, labels, borders and
 	 * etc.
-	 * 
-	 * @param num
-	 *            int used to choose which details of the panel to display
+	 *          
 	 */
 	private void initialize() {
-
-		// main frame
-		/*
-		 * frame = new JFrame(); frame.setResizable(false);
-		 * frame.getContentPane().setBackground(Color.DARK_GRAY);
-		 * frame.setBounds(100, 100, 450, 300);
-		 * frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 */
+		
 		final CardLayout cl = new CardLayout(0, 0);
 		this.setLayout(new CardLayout(0, 0));
 		final JPanel panel_3 = new JPanel();
@@ -82,23 +73,53 @@ public class SettingsPanel extends JPanel {
 		lblNewLabel.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		
-		JEditorPane editorPane = new JEditorPane();
+		final JEditorPane editorPane = new JEditorPane();
 		
-		JEditorPane editorPane_1 = new JEditorPane();
+		final JEditorPane editorPane_1 = new JEditorPane();
 		
-		JEditorPane editorPane_2 = new JEditorPane();
+		final JEditorPane editorPane_2 = new JEditorPane();
 		
 		JLabel lblCalories = new JLabel("Calories:");
 		lblCalories.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblCalories.setForeground(new Color(255, 255, 255));
 		
-		JEditorPane editorPane_3 = new JEditorPane();
+		final JEditorPane editorPane_3 = new JEditorPane();
 		
-		JButton button = new JButton("");
-		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button.setContentAreaFilled(false);
-		button.setBorder(null);
-		button.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\ok-button.png"));
+		JButton okbutton = new JButton("");
+		okbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		okbutton.setContentAreaFilled(false);
+		okbutton.setBorder(null);
+		okbutton.setIcon(ImageClass.getOkIcon());
+		okbutton.addActionListener(new ActionListener() {
+
+
+	            public void actionPerformed(ActionEvent ae) {
+	            	String stepInput = editorPane.getText();
+	            	if( !stepInput.isEmpty() && isNumeric(stepInput) ){
+	            		int add = Integer.parseInt(stepInput);
+	            		Controller.getTheDailyGoals().setStepGoal(add);
+	            	}
+	            	
+	            	String floorsInput = editorPane_1.getText();
+	            	if( !floorsInput.isEmpty() && isNumeric(floorsInput) ){
+	            		int add = Integer.parseInt(floorsInput);
+	            		Controller.getTheDailyGoals().setFloorGoal(add);
+	            		
+	            	}
+	            	
+	            	String distInput = editorPane_2.getText();
+	            	if( !distInput.isEmpty() && isNumeric(distInput) ){
+	            		int add = Integer.parseInt(distInput);
+	            		Controller.getTheDailyGoals().setDistGoal(add);
+	            	}
+	            	
+	            	String calInput = editorPane_3.getText();
+	            	if( !calInput.isEmpty() && isNumeric(calInput	) ){
+	            		int add = Integer.parseInt(calInput);
+	            		Controller.getTheDailyGoals().setCalGoal(add);
+	            		
+	            	}
+	            }});
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
@@ -124,7 +145,7 @@ public class SettingsPanel extends JPanel {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(editorPane_3)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(button)
+					.addComponent(okbutton)
 					.addGap(309))
 		);
 		gl_panel_8.setVerticalGroup(
@@ -146,7 +167,7 @@ public class SettingsPanel extends JPanel {
 					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblCalories)
 						.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button))
+						.addComponent(okbutton))
 					.addGap(0, 0, Short.MAX_VALUE))
 		);
 		panel_8.setLayout(gl_panel_8);
@@ -201,23 +222,6 @@ public class SettingsPanel extends JPanel {
 
 		JLabel label_5 = new JLabel("");
 
-	/*	JCheckBox MovementsCheckBox = new JCheckBox("Movements");
-		MovementsCheckBox.setOpaque(false);
-		MovementsCheckBox.setSelected(Preferences.isShowMovementsCard());
-		MovementsCheckBox.addItemListener(new ItemListener() {
-	        
-    	    public void itemStateChanged(ItemEvent e) {
-    	        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
-    	        	Preferences.showMovementsCard=true;
-    	        	System.out.println("HELLO");
-    	        } else {//checkbox has been deselected
-    	        	Preferences.showMovementsCard=false;
-    	        };
-    	    }
-    });
-		//dashboardSettings.add(MovementsCheckBox);
-		 * 
-		 */
 
 		JCheckBox LifetimeCheckBox = new JCheckBox("Lifetime");
 		LifetimeCheckBox.setForeground(new Color(255, 255, 255));
@@ -416,4 +420,7 @@ public class SettingsPanel extends JPanel {
 		Date dateAndTime = Calendar.getInstance().getTime();
 
 	}
+	public static boolean isNumeric(String s) {  
+	    return s.matches("[-+]?\\d*\\.?\\d+");  
+	}  
 }

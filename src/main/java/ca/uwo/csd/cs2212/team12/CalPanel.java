@@ -1,6 +1,7 @@
 package ca.uwo.csd.cs2212.team12;
 
 import javax.swing.*;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.metal.MetalScrollBarUI;
@@ -18,11 +19,22 @@ import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 import javax.swing.GroupLayout.Alignment;
 
 public class CalPanel extends JPanel{
+
+	// Percentage field for pie chart
+	private int percent = 30;
+
+	// Data fields
+	
+	public String dayCalories 	= String.valueOf(Controller.getDailyTotals(0));
+	public String weekCalories 	= String.valueOf(Controller.getWeeklyTotals(0));
+	public String monthCalories = String.valueOf(Controller.getMonthlyTotals(0));
 
 	private JFrame frame;
 	public Graph graph = new Graph();
@@ -165,53 +177,61 @@ public class CalPanel extends JPanel{
 				lblNewLabel.setBorder(null);
 				lblNewLabel.setForeground(new java.awt.Color(255, 255, 255));
 				lblNewLabel.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-
-				
 				
 				JPanel panel = new JPanel();
 				panel.setOpaque(false);
 				panel_9.add(panel, BorderLayout.CENTER);
+				CircleProgressBar progress=new CircleProgressBar(percent,new java.awt.Color(0,128,0));
+				progress.setBackground(new java.awt.Color(255, 69, 0));
+				progress.setToolTipText("Your Goal Progress!");
+				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
-				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:");
+				JPanel panel_1 = new JPanel();
+				panel_1.setOpaque(false);
+				
+				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned: "+dayCalories);
 				lblCaloriesBurned.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				lblCaloriesBurned.setForeground(new java.awt.Color(255, 255, 255));
+				lblCaloriesBurned.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned:");
+				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned: " + weekCalories);
 				lblCaloriesBurnedFor.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				lblCaloriesBurnedFor.setForeground(new java.awt.Color(255, 255, 255));
+				lblCaloriesBurnedFor.setForeground(java.awt.Color.WHITE);
+				panel.add(panel_1);
 				
-				JLabel lblCaloriesBurnedFor_1 = new JLabel("Month's Calories Burned: ");
+				JLabel lblCaloriesBurnedFor_1 = new JLabel("Month's Calories Burned: " + monthCalories);
 				lblCaloriesBurnedFor_1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 15));
-				lblCaloriesBurnedFor_1.setForeground(new java.awt.Color(255, 255, 255));
-				GroupLayout gl_panel = new GroupLayout(panel);
-				gl_panel.setHorizontalGroup(
-					gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(30)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblCaloriesBurnedFor_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(18))
-								.addGroup(gl_panel.createSequentialGroup()
+				lblCaloriesBurnedFor_1.setForeground(java.awt.Color.WHITE);
+				GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+				gl_panel_1.setHorizontalGroup(
+					gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(241)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_1.createSequentialGroup()
 									.addComponent(lblCaloriesBurnedFor, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(25))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblCaloriesBurned, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(19)))
-							.addGap(144))
+									.addContainerGap())
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_panel_1.createSequentialGroup()
+											.addComponent(lblCaloriesBurned, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addGap(1))
+										.addComponent(lblCaloriesBurnedFor_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addGap(414))))
 				);
-				gl_panel.setVerticalGroup(
-					gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(77)
+				gl_panel_1.setVerticalGroup(
+					gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(5)
 							.addComponent(lblCaloriesBurned)
-							.addGap(34)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblCaloriesBurnedFor)
-							.addGap(35)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblCaloriesBurnedFor_1)
-							.addContainerGap(152, Short.MAX_VALUE))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
-				panel.setLayout(gl_panel);
+				panel_1.setLayout(gl_panel_1);
+				panel.add(progress);
+
 
 
 		JPanel panel_10 = new JPanel() {
@@ -354,7 +374,7 @@ public class CalPanel extends JPanel{
 		panel_11.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
+		lblNewLabel_1.setIcon(ImageClass.getTrophyIcon2());
 		lblNewLabel_1.setBackground(new java.awt.Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));

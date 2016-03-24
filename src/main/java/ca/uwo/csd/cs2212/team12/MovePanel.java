@@ -26,6 +26,20 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MovePanel extends JPanel{
 
+	// Percentage field for pie chart
+	private int percent = 25;
+
+	// Data fields
+	public String dayDistance 	= String.valueOf(Controller.getDailyTotals(1));
+	public String weekDistance 	= String.valueOf(Controller.getWeeklyTotals(1));
+	public String monthDistance = String.valueOf(Controller.getMonthlyTotals(1));
+	public String dayFloors 	= String.valueOf(Controller.getDailyTotals(2));
+	public String weekFloors 	= String.valueOf(Controller.getWeeklyTotals(2));
+	public String monthFloors 	= String.valueOf(Controller.getMonthlyTotals(2));
+	public String daySteps 		= String.valueOf(Controller.getDailyTotals(3));
+	public String weekSteps 	= String.valueOf(Controller.getWeeklyTotals(3));
+	public String monthSteps 	= String.valueOf(Controller.getMonthlyTotals(3));
+
 	private JFrame frame;
 	public Graph graph = new Graph();
 	public JFXPanel graph_panel;
@@ -159,108 +173,146 @@ public class MovePanel extends JPanel{
 				lblNewLabel.setBorder(new LineBorder(new java.awt.Color(0, 128, 0), 24, true));
 
 				lblNewLabel.setBorder(null);
-
 				lblNewLabel.setForeground(new java.awt.Color(255, 255, 255));
 				lblNewLabel.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-
 				
 				JPanel panel = new JPanel();
 				panel.setOpaque(false);
 				panel_9.add(panel, BorderLayout.CENTER);
+				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
-				JLabel lblDistance = new JLabel("Distance:");
-				lblDistance.setForeground(new java.awt.Color(255, 255, 255));
-				lblDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				JPanel panel_1 = new JPanel();
+				panel_1.setOpaque(false);
 				
-				JLabel lblSteps = new JLabel("Steps:");
+				JLabel lblSteps = new JLabel("Daily Steps: "+daySteps);
 				lblSteps.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				lblSteps.setForeground(new java.awt.Color(255, 255, 255));
+				lblSteps.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblFloors = new JLabel("Floors:");
-				lblFloors.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				lblFloors.setForeground(new java.awt.Color(255, 255, 255));
+				JLabel lblMonthsTotalDistance = new JLabel("Month's Total Distance(km): " + monthDistance);
+				lblMonthsTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				lblMonthsTotalDistance.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblWeeksTotalSteps = new JLabel("Week's Total Steps:");
+				JLabel lblWeeksTotalFloors = new JLabel("Week's Total Distance(km): " + weekDistance);
+				lblWeeksTotalFloors.setForeground(java.awt.Color.WHITE);
+				lblWeeksTotalFloors.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				
+				JLabel lblFloors_1 = new JLabel("Daily Floors: "+dayFloors);
+				lblFloors_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				lblFloors_1.setForeground(new java.awt.Color(255, 255, 255));
+				
+				JLabel lblMonthsTotalFloors = new JLabel("Month's Total Floors: " + monthFloors);
+				lblMonthsTotalFloors.setForeground(java.awt.Color.WHITE);
+				lblMonthsTotalFloors.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				
+				JLabel lblWeeksTotalDistance = new JLabel("Week's Total Floors: " + weekFloors);
+				lblWeeksTotalDistance.setForeground(java.awt.Color.WHITE);
+				lblWeeksTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				
+				JLabel lblDistance = new JLabel("Daily Distance(km): "+dayDistance);
+				lblDistance.setForeground(java.awt.Color.WHITE);
+				lblDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+				panel.add(panel_1);
+				
+				JLabel lblWeeksTotalSteps = new JLabel("Week's Total Steps: " + weekSteps);
 				lblWeeksTotalSteps.setForeground(new java.awt.Color(255, 255, 255));
 				lblWeeksTotalSteps.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				
-				JLabel lblWeeksTotalFloors = new JLabel("Week's Total Floors:");
-				lblWeeksTotalFloors.setForeground(new java.awt.Color(255, 255, 255));
-				lblWeeksTotalFloors.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				
-				JLabel lblWeeksTotalDistance = new JLabel("Week's Total Distance:");
-				lblWeeksTotalDistance.setForeground(new java.awt.Color(255, 255, 255));
-				lblWeeksTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				
-				JLabel lblMonthsTotalSteps = new JLabel("Month's Total Steps:");
-				lblMonthsTotalSteps.setForeground(new java.awt.Color(255, 255, 255));
+				JLabel lblMonthsTotalSteps = new JLabel("Month's Total Steps: " + monthSteps);
 				lblMonthsTotalSteps.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				
-				JLabel lblMonthsTotalFloors = new JLabel("Month's Total Floors:");
-				lblMonthsTotalFloors.setForeground(new java.awt.Color(255, 255, 255));
-				lblMonthsTotalFloors.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				
-				JLabel lblMonthsTotalDistance = new JLabel("Month's Total Distance:");
-				lblMonthsTotalDistance.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
-				lblMonthsTotalDistance.setForeground(new java.awt.Color(255, 255, 255));
-				GroupLayout gl_panel = new GroupLayout(panel);
-				gl_panel.setHorizontalGroup(
-					gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(47)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblMonthsTotalDistance, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(146))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblMonthsTotalFloors, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(163))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblMonthsTotalSteps, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(167))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblWeeksTotalDistance, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(150))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblWeeksTotalFloors, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(167))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblWeeksTotalSteps, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(171))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblFloors, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(256))
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblSteps, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGap(260))
-								.addComponent(lblDistance, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
-							.addContainerGap())
+				lblMonthsTotalSteps.setForeground(new java.awt.Color(255, 255, 255));
+				GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+				gl_panel_1.setHorizontalGroup(
+					gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(350)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblSteps, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblWeeksTotalSteps, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+										.addComponent(lblMonthsTotalSteps, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
+							.addGap(56)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblFloors_1, GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+								.addComponent(lblWeeksTotalDistance)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblMonthsTotalFloors, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)))
+							.addGap(18)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblWeeksTotalFloors, GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+									.addContainerGap())
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblMonthsTotalDistance, GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+									.addGap(206))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addComponent(lblDistance, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+									.addGap(343))))
 				);
-				gl_panel.setVerticalGroup(
-					gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblSteps)
+				gl_panel_1.setVerticalGroup(
+					gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblSteps)
+								.addComponent(lblFloors_1)
+								.addComponent(lblDistance))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblDistance)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblWeeksTotalFloors)
+								.addComponent(lblWeeksTotalSteps)
+								.addComponent(lblWeeksTotalDistance))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblFloors)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblWeeksTotalSteps)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblWeeksTotalFloors)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblWeeksTotalDistance)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblMonthsTotalSteps)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblMonthsTotalFloors)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblMonthsTotalDistance)
-							.addContainerGap(155, Short.MAX_VALUE))
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblMonthsTotalSteps)
+								.addComponent(lblMonthsTotalDistance)
+								.addComponent(lblMonthsTotalFloors))
+							.addGap(21))
 				);
-				panel.setLayout(gl_panel);
-
+				panel_1.setLayout(gl_panel_1);
+				CircleProgressBar stepsprogress=new CircleProgressBar(percent, new java.awt.Color(0,128,0));
+				stepsprogress.setBackground(new java.awt.Color(0, 128, 0));
+				stepsprogress.setToolTipText("Your Goal Progress!");
+				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				panel.add(stepsprogress);
+				
+				CircleProgressBar distanceprogress=new CircleProgressBar(65,new java.awt.Color(0,128,0));
+				distanceprogress.setBackground(new java.awt.Color(0,128, 0));
+				distanceprogress.setToolTipText("Your Goal Progress!");
+				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				
+				Component horizontalStrut_8 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_8);
+				
+				Component horizontalStrut_6 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_6);
+				
+				Component horizontalStrut_4 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_4);
+				
+				Component horizontalStrut_2 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_2);
+				
+				Component horizontalStrut = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut);
+				panel.add(distanceprogress);
+				CircleProgressBar floorprogress=new CircleProgressBar(90,new java.awt.Color(0,128,0));
+				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+				floorprogress.setToolTipText("Your Goal Progress!");
+				
+				Component horizontalStrut_7 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_7);
+				
+				Component horizontalStrut_5 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_5);
+				
+				Component horizontalStrut_3 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_3);
+				
+				Component horizontalStrut_1 = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut_1);
+				panel.add(floorprogress);
 
 		JPanel panel_10 = new JPanel() {
 			  @Override
@@ -402,7 +454,7 @@ public class MovePanel extends JPanel{
 		panel_11.setLayout(new BorderLayout(0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(new ImageIcon("src/main/resources/FireIcon2.png"));
+		lblNewLabel_1.setIcon(ImageClass.getTrophyIcon2());
 		lblNewLabel_1.setBackground(new java.awt.Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));

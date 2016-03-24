@@ -42,7 +42,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <dependency>
   <groupId>org.json</groupId>
   <artifactId>json</artifactId>
-  <version>20090211</version>
+  <version>20160212</version>
  </dependency>
  
 
@@ -78,7 +78,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <dependency>
   <groupId>org.json</groupId>
   <artifactId>json</artifactId>
-  <version>20090211</version>
+  <version>20160212</version>
  </dependency>
 
 </dependencies>
@@ -108,7 +108,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     </descriptorRefs>
     <archive>
       <manifest>
-        <mainClass>ca.uwo.csd.cs2212.team12.RealAPI</mainClass>
+        <mainClass>ca.uwo.csd.cs2212.team12.StayFit</mainClass>
       </manifest>
     </archive>
   </configuration>
