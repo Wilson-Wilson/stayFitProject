@@ -37,13 +37,13 @@ public class DataDict implements Serializable{
 	  
 	  for(int i=0; i < numdays; i++){
 		  
-		  int addCal = calories.getJSONArray("activities-log-calories").getJSONObject(i).getInt("value");
-		  int addDistance = distance.getJSONArray("activities-log-calories").getJSONObject(i).getInt("value");
-		  int addFloors = floors.getJSONArray("activities-log-calories").getJSONObject(i).getInt("value");
-		  int addSteps = steps.getJSONArray("activities-log-calories").getJSONObject(i).getInt("value");
-		  int addActive = activeMins.getJSONArray("activities-log-calories").getJSONObject(i).getInt("value");
-		  int addSedentary= sedMins.getJSONArray("activities-log-calories").getJSONObject(i).getInt("value");
-		  String addDate = sedMins.getJSONArray("activities-log-calories").getJSONObject(i).getString("dateTime");
+		  int addCal = calories.getJSONArray("activities-calories").getJSONObject(i).getInt("value");
+		  int addDistance = distance.getJSONArray("activities-distance").getJSONObject(i).getInt("value");
+		  int addFloors = floors.getJSONArray("activities-floors").getJSONObject(i).getInt("value");
+		  int addSteps = steps.getJSONArray("activities-steps").getJSONObject(i).getInt("value");
+		  int addActive = activeMins.getJSONArray("activities-minutesFairlyActive").getJSONObject(i).getInt("value");
+		  int addSedentary= sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(i).getInt("value");
+		  String addDate = sedMins.getJSONArray("activities-calories").getJSONObject(i).getString("dateTime");
 		  
 		  DataEntry addMe = new DataEntry(addCal, addDistance, addFloors, addSteps, addActive, addSedentary, addDate);
 		  
