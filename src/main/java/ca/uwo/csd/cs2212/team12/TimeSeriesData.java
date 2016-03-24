@@ -45,7 +45,7 @@ public class TimeSeriesData {
 			caloriesSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 
-		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
+/*		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
 			stepsSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
@@ -67,9 +67,9 @@ public class TimeSeriesData {
 		
 		for(int i = 0; i < calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").length(); i++){
 			ActiveMinutesSet.add(new DataPoint (calData.getJSONObject("activities-log-calories-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}
+		}*/
 		
-		/*for(int i = 0; i < stepsData.getJSONObject("activities-log-steps-intraday").getJSONArray("dataset").length(); i++){
+		for(int i = 0; i < stepsData.getJSONObject("activities-log-steps-intraday").getJSONArray("dataset").length(); i++){
 			stepsSet.add(new DataPoint (stepsData.getJSONObject("activities-log-steps-intraday").getJSONArray("dataset").getJSONObject(i)));			
 		}
 		
@@ -91,7 +91,7 @@ public class TimeSeriesData {
 		
 		for(int i = 0; i < heartRateData.getJSONObject("activities-heart-intraday").getJSONArray("dataset").length(); i++){
 			heartRateSet.add(new DataPoint(heartRateData.getJSONObject("activities-heart-intraday").getJSONArray("dataset").getJSONObject(i)));			
-		}*/
+		}
 	}
 	
 	public TimeSeriesData(){
