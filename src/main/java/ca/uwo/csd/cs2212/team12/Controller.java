@@ -162,19 +162,19 @@ public class Controller implements Serializable{
 			System.out.println("internet works!");
 			
 			theAPI = new RealAPI(curDate);
-			String str ="{\"activities-log-calories\":[{\"dateTime\":\"2014-09-05\",\"value\":1433}],\"activities-log-calories-intraday\":{\"datasetInterval\":1,\"dataset\":[{\"time\":\"00:00:00\",\"value\":0},{\"time\":\"00:01:00\",\"value\":0},{\"time\":\"00:02:00\",\"value\":0},{\"time\":\"00:03:00\",\"value\":0},{\"time\":\"00:04:00\",\"value\":0},{\"time\":\"00:05:00\",\"value\":287},]}}";
-			JSONObject timeCal = new JSONObject(str);
-			/*JSONObject timeCal = theAPI.getCalSeries();
+			//String str ="{\"activities-log-calories\":[{\"dateTime\":\"2014-09-05\",\"value\":1433}],\"activities-log-calories-intraday\":{\"datasetInterval\":1,\"dataset\":[{\"time\":\"00:00:00\",\"value\":0},{\"time\":\"00:01:00\",\"value\":0},{\"time\":\"00:02:00\",\"value\":0},{\"time\":\"00:03:00\",\"value\":0},{\"time\":\"00:04:00\",\"value\":0},{\"time\":\"00:05:00\",\"value\":287},]}}";
+			//JSONObject timeCal = new JSONObject(str);
+			JSONObject timeCal = theAPI.getCalSeries();
 			JSONObject timeSteps = theAPI.getStepsSeries();
 			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
 			JSONObject timeDistance = theAPI.getCalSeries();
 			JSONObject timeFloors = theAPI.getFloorsSeries();
 			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
 			JSONObject timeActive = theAPI.getActiveMinutesSeries();
-			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);*/
-			theTimeSeries = new TimeSeriesData (timeCal,  timeCal, timeCal, timeCal, timeCal, timeCal, timeCal);
+			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
+			//theTimeSeries = new TimeSeriesData (timeCal,  timeCal, timeCal, timeCal, timeCal, timeCal, timeCal);
 			
-/*			JSONObject lifeStats = theAPI.getLifeTime();
+			JSONObject lifeStats = theAPI.getLifeTime();
 			theUserInfo = new UserInfo(lifeStats);
 			
 			JSONObject dictCal = theAPI.getCalBurned();
@@ -186,7 +186,7 @@ public class Controller implements Serializable{
 			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			
 			JSONObject dailyGoals = theAPI.getGoals();
-			theDailyGoals = new DailyGoals(dailyGoals);*/
+			theDailyGoals = new DailyGoals(dailyGoals);
 		}
 		else{
 			System.out.println("internet doesnt works!");
@@ -207,8 +207,8 @@ public class Controller implements Serializable{
         window.frame.setVisible(true);
 
         theAccoDict = new AccoDict();
-/*		accoCheck(now);
-		goalsCheck(now);*/
+		accoCheck(now);
+		goalsCheck(now);
 	}
 	
 	/**

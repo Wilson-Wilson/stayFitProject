@@ -342,7 +342,6 @@ public class RealAPI implements API
 
         // IF YOU DO NOT SAVE THE CURRENTLY ACTIVE TOKEN INFO YOU WILL NOT BE ABLE TO REFRESH
         //   - contact Beth if this happens and she can reissue you a fresh set
-        do{
 	        try {
 	            FileWriter fileWriter;
 	            fileWriter = new FileWriter("src/main/resources/Team12Tokens.txt");
@@ -376,8 +375,5 @@ public class RealAPI implements API
 	        }
 	        System.out.println(response.getCode());
         }
-        
-        while(response.getCode() != 200 || response.getCode() == 400);
     }
-}
 
