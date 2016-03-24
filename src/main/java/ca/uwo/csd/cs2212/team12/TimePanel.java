@@ -184,7 +184,7 @@ public class TimePanel extends JPanel{
 
 				lblNewLabel.setBorder(new BevelBorder(BevelBorder.RAISED, new java.awt.Color(0, 128, 0), new java.awt.Color(0, 255, 0), new java.awt.Color(255, 250, 250), new java.awt.Color(210, 105, 30)));
 
-				lblNewLabel.setIcon(ImageClass.getTimeseriesIcon());
+				lblNewLabel.setIcon(ImageClass.getCaloriesIcon());
 
 				lblNewLabel.setBackground(new java.awt.Color(128, 128, 128));
 				lblNewLabel.setBorder(new LineBorder(new java.awt.Color(0, 128, 0), 24, true));
@@ -382,8 +382,8 @@ public class TimePanel extends JPanel{
 
 
 
-		JLabel lblNewLabel_1 = new JLabel("Accolades");
-		lblNewLabel_1.setIcon(ImageClass.getTrophyIcon());
+		JLabel lblNewLabel_1 = new JLabel("Minutes");
+		lblNewLabel_1.setIcon(ImageClass.getMinutesIcon());
 
 		lblNewLabel_1.setBackground(new java.awt.Color(196, 192, 192,180));
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
