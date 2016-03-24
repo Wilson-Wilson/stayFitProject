@@ -26,7 +26,7 @@ import no.tornado.databinding.support.jxdatepicker.*;
 public class DashBoardPanel extends JPanel {
 
     // Data fields that are updated by the Controller on refresh
-    public String caloriesBurned        = "test";//String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getCalBurned());
+    public String caloriesBurned        = String.valueOf(Controller.getTheDictionary().getDictionary().get(dateString).getCalBurned());
     public String activeMinutes         = "test";
     public String sedentaryMinutes      = "test";
     public String distance              = "test";
@@ -63,7 +63,6 @@ public class DashBoardPanel extends JPanel {
     public JFXPanel graph_panel;
 
     //Images from the resource folder used throughout the programme
-
 
 
     /**
@@ -841,10 +840,21 @@ public class DashBoardPanel extends JPanel {
 
             public void actionPerformed(ActionEvent ae) {
 
-            	date= subtractDay(date);
-            	dateString = formatter.format(date);
+            	oldDate = date;
+				oldDateString = dateString;
+				date= subtractDay(date);
+				dateString = formatter.format(date);
 				
 				System.out.println(date.toString());
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 				lblNewLabel_3.setText(dateString);
@@ -872,11 +882,21 @@ public class DashBoardPanel extends JPanel {
 
             public void actionPerformed(ActionEvent ae) {
 
-            	date= addDay(date);
-            	dateString = formatter.format(date);
+            	oldDate = date;
+				oldDateString = dateString;
+				date= addDay(date);
+				dateString = formatter.format(date);
 				
 				System.out.println(date.toString());
-				
+				try {
+					Controller.changeDate(dateString, oldDateString);
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				lblNewLabel_3.setText(dateString);
             	DashBoardPanel dash= new DashBoardPanel();
@@ -1066,8 +1086,6 @@ public class DashBoardPanel extends JPanel {
        
         panel_4.setOpaque(false);
         
-        
-      
         final JXDatePicker datePicker = new JXDatePicker();
         
         datePicker.addActionListener(new ActionListener() {

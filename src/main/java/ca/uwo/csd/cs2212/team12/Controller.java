@@ -30,7 +30,6 @@ public class Controller implements Serializable{
 	private static Preferences thePreferences;
 	private static AccoDict	theAccoDict;
 	private static DailyGoals theDailyGoals;
-	//private UI theUI
 	
 	private static final long serialVersionUID= 1L;
 	private static final String DATADICT= "datadict.boop";
@@ -38,18 +37,6 @@ public class Controller implements Serializable{
 	private static final String USERINFO= "userinfo.boop";
 	private static final String PREFERENCES= "preferences.boop";
 	private static final String GOALS="dailygoals.boop";	
-	
-	/**
-	 * Constructor that creates Controller object from apiParam. 
-	 * The method is only used in StayFit.java with onStartUp() defined below.
-	 * @param apiParam 
-	 */
-	//Add UI parameter and create initializeController() method in Stayfit that creates 
-		//a controller object and calls onStartUp()
-	public Controller(API apiParam){
-		theAPI = apiParam;		
-	}
-	
 	
 	/**
 	 * This method refreshes the user interface with the data relating to the newly 
@@ -246,8 +233,6 @@ public class Controller implements Serializable{
 		savePref.setSaveMovementsCard(Preferences.showMovementsCard);
 		savePref.setSaveTimeSeriesCard(Preferences.showTimeSeriesCard);
 		
-		
-		
 		TimeSeriesData saveSeries= new TimeSeriesData();
 		saveSeries.setSaveCaloriesSet(TimeSeriesData.caloriesSet);
 		saveSeries.setSaveDistanceSet(TimeSeriesData.distanceSet);
@@ -263,7 +248,6 @@ public class Controller implements Serializable{
 		
 		storeTimeSeries(saveSeries);
 		storePreferences(savePref);
-		
 		
 	}
 	 
