@@ -43,6 +43,14 @@ public class Controller implements Serializable{
 	private static int [] weeklyTotals;
 	private static int [] monthlyTotals;
 
+
+	public static int getWeeklyTotals(int i) {
+		return weeklyTotals[i];
+	}
+	public static int getMonthlyTotals(int i) {
+		return monthlyTotals[i];
+	}
+
 	
 	private static final long serialVersionUID= 1L;
 	private static final String DATADICT= "datadict.boop";
