@@ -90,7 +90,7 @@ public class Controller implements Serializable{
 			JSONObject timeCal = theAPI.getCalSeries();
 			JSONObject timeSteps = theAPI.getStepsSeries();
 			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
-			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeDistance = theAPI.getDistanceSeries();
 			JSONObject timeFloors = theAPI.getFloorsSeries();
 			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
 			JSONObject timeActive = theAPI.getActiveMinutesSeries();
@@ -226,10 +226,25 @@ public class Controller implements Serializable{
 			
 			JSONObject timeCal = theAPI.getCalSeries();
 			JSONObject timeSteps = theAPI.getStepsSeries();
+			try {
+	            Thread.sleep(1000);                 //1000 milliseconds is one second.
+	        } catch(InterruptedException ex) {
+	            Thread.currentThread().interrupt();
+	        }
 			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
 			JSONObject timeDistance = theAPI.getCalSeries();
+			try {
+	            Thread.sleep(1000);                 //1000 milliseconds is one second.
+	        } catch(InterruptedException ex) {
+	            Thread.currentThread().interrupt();
+	        }
 			JSONObject timeFloors = theAPI.getFloorsSeries();
 			JSONObject timeSedentary = theAPI.getSedentaryMinutesSeries();
+			try {
+	            Thread.sleep(1000);                 //1000 milliseconds is one second.
+	        } catch(InterruptedException ex) {
+	            Thread.currentThread().interrupt();
+	        }
 			JSONObject timeActive = theAPI.getActiveMinutesSeries();
 			theTimeSeries = new TimeSeriesData (timeCal, timeSteps, timeHeartRate, timeDistance, timeFloors, timeSedentary, timeActive);
 			
