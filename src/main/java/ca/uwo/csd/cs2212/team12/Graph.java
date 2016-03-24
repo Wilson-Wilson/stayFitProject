@@ -285,10 +285,10 @@ public class Graph {
                 
               //defining a series
                 XYChart.Series series2 = new XYChart.Series();
-                series1.setName("Active Mins");
+                series2.setName("Active Mins");
                 //populating the series with data
                 for(int i=0;i<TimeSeriesData.getActiveMinutesSet().size();i++){
-                	series1.getData().add(new XYChart.Data(TimeSeriesData.getActiveMinutesSet().get(i).getTime(), TimeSeriesData.getActiveMinutesSet().get(i).getValue()));
+                	series2.getData().add(new XYChart.Data(TimeSeriesData.getActiveMinutesSet().get(i).getTime(), TimeSeriesData.getActiveMinutesSet().get(i).getValue()));
                 }         
                                                 
                 Scene scene  = new Scene(lineChart,800,600);

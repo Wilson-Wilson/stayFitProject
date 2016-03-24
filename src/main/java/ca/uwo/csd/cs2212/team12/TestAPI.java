@@ -27,7 +27,7 @@ public class TestAPI implements API {
      * @return JSONArray This returns the number of active minutes.
      */
     public  JSONObject getActiveMinutes() throws JSONException {
-    	String str ="{\"activities-minutesFairlyActive\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+    	String str ="{\"activities-minutesFairlyActive\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"1596\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2007\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2362\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
     	JSONObject thing = new JSONObject(str);
     	return thing;
     	}
@@ -37,7 +37,7 @@ public class TestAPI implements API {
      * @return String This returns the number of sedentary minutes.
      */
     public  JSONObject getSedentaryMinutes() throws JSONException {
-    	String str ="{\"activities-minutesSedentary\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+    	String str ="{\"activities-minutesSedentary\":[{\"dateTime\":\"2016-03-16\",\"value\":\"1300\"},{\"dateTime\":\"2016-03-17\",\"value\":\"1033\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2037\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2422\"},{\"dateTime\":\"2016-03-22\",\"value\":\"1727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2279\"}]}";
     	JSONObject thing = new JSONObject(str);
     	return thing;
     	
