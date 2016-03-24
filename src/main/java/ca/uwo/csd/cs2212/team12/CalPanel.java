@@ -26,6 +26,9 @@ import javax.swing.GroupLayout.Alignment;
 
 public class CalPanel extends JPanel{
 
+	// Percentage field for pie chart
+	private int percent = 30;
+
 	private JFrame frame;
 	public Graph graph = new Graph();
 	public JFXPanel graph_panel;
@@ -171,7 +174,7 @@ public class CalPanel extends JPanel{
 				JPanel panel = new JPanel();
 				panel.setOpaque(false);
 				panel_9.add(panel, BorderLayout.CENTER);
-				CircleProgressBar progress=new CircleProgressBar(30,new java.awt.Color(0,128,0));
+				CircleProgressBar progress=new CircleProgressBar(percent,new java.awt.Color(0,128,0));
 				progress.setBackground(new java.awt.Color(255, 69, 0));
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
