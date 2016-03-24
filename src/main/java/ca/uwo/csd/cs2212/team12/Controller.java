@@ -181,6 +181,7 @@ public class Controller implements Serializable{
 	        theAccoDict = new AccoDict();
 			accoCheck(addDate);
 			goalsCheck(addDate);
+			return;
 		}
 		
 		File c = new File("preferences.boop");
