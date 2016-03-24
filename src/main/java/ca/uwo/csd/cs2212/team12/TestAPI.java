@@ -17,131 +17,112 @@ public class TestAPI implements API {
      * This method is used to fetch the number of calories burned.
      * @return String This returns the number of calories burned.
      */
-    public  JSONObject getCalBurned() throws JSONException {return new JSONObject(new Integer(getDat("calories")).toString());}
-    //String str ="{\"activities-log-calories\":[{\"dateTime\":\"2014-09-05\",\"value\":1433}],\"activities-log-calories-intraday\":{\"datasetInterval\":1,\"dataset\":[{\"time\":\"00:00:00\",\"value\":0},{\"time\":\"00:01:00\",\"value\":0},{\"time\":\"00:02:00\",\"value\":0},{\"time\":\"00:03:00\",\"value\":0},{\"time\":\"00:04:00\",\"value\":0},{\"time\":\"00:05:00\",\"value\":287},]}}";
-    
-    /**
+    public  JSONObject getCalBurned() throws JSONException {
+    	String str ="{\"activities-calories\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+    	JSONObject thing = new JSONObject(str);
+    	return thing;
+    }
+        /**
      * This method is used to fetch the number of active minutes.
      * @return JSONArray This returns the number of active minutes.
      */
-    public  JSONObject getActiveMinutes() throws JSONException {return new JSONObject(new Integer(getDat("activeMinutes")).toString());}
+    public  JSONObject getActiveMinutes() throws JSONException {
+    	String str ="{\"activities-minutesFairlyActive\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+    	JSONObject thing = new JSONObject(str);
+    	return thing;
+    	}
 
     /**
      * This method is used to fetch the number of sedentary minutes.
      * @return String This returns the number of sedentary minutes.
      */
-    public  JSONObject getSedentaryMinutes() throws JSONException {return new JSONObject(new Integer(getDat("sedentaryMinutes")).toString());}
+    public  JSONObject getSedentaryMinutes() throws JSONException {
+    	String str ="{\"activities-minutesSedentary\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+    	JSONObject thing = new JSONObject(str);
+    	return thing;
+    	
+    }
+    	
 
     /**
      * This method is used to fetch the distance travelled.
      * @return JSONArray This returns the distance travelled.
      */
-    public  JSONObject getDistance() throws JSONException {return new JSONObject(new Integer(getDat("distance")).toString());}
+    public  JSONObject getDistance() throws JSONException {
+    	String str ="{\"activities-distance\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+    	JSONObject thing = new JSONObject(str);
+    	return thing;
+    	}
 
     /**
      * This method is used to fetch the number of floors climbed.
      * @return JSONArray This returns the number of floors climbed.
-     */public JSONObject getFloors() throws JSONException {return new JSONObject(new Integer(getDat("floors")).toString());}
+     */public JSONObject getFloors() throws JSONException {
+    	 String str ="{\"activities-floors\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+     	JSONObject thing = new JSONObject(str);
+     	return thing;
+    	 }
 
     /**
      * This method is used to fetch the number of steps.
      * @return JSONArray This returns the number of steps.
      */
-    public  JSONObject getSteps() throws JSONException {return new JSONObject(new Integer(getDat("steps")).toString());}
+    public  JSONObject getSteps() throws JSONException {
+    	String str ="{\"activities-steps\":[{\"dateTime\":\"2016-03-16\",\"value\":\"2331\"},{\"dateTime\":\"2016-03-17\",\"value\":\"2433\"},{\"dateTime\":\"2016-03-18\",\"value\":\"2296\"},{\"dateTime\":\"2016-03-19\",\"value\":\"2221\"},{\"dateTime\":\"2016-03-20\",\"value\":\"2337\"},{\"dateTime\":\"2016-03-21\",\"value\":\"2462\"},{\"dateTime\":\"2016-03-22\",\"value\":\"2727\"},{\"dateTime\":\"2016-03-23\",\"value\":\"2287\"}]}";
+    	JSONObject thing = new JSONObject(str);
+    	return thing;
+    	}
 
-    /**
-     * This method is used to fetch the number of floors climbed in total.
-     * @return JSONArray This returns the number of floors climbed in total.
-     */
-    public  JSONArray getLifeTimeFloors() throws JSONException {return new JSONArray(new Integer(getDat("lifetimeFloors")).toString());}
-
-    /**
-     * This method is used to fetch the number of steps total.
-     * @return String This returns the number of steps total.
-     */
-    public  JSONArray getLifetimeSteps() throws JSONException {return new JSONArray(new Integer(getDat("lifetimeSteps")).toString());}
-
-    /**
-     * This method is used to fetch the total distance travelled.
-     * @return JSONArray This returns the total distance travelled.
-     */
-    public  JSONArray getLifetimeDistance() throws JSONException {return new JSONArray(new Integer(getDat("lifetimeDistance")).toString());}
-
-    /**
-     * This method is used to fetch the best number of floors climbed.
-     * @return JSONArray This returns the best number of floors climbed.
-     */
-    public  JSONArray getBestFloors() throws JSONException {return new JSONArray(new Integer(getDat("bestFloors")).toString());}
-
-    /**
-     * This method is used to fetch the best number of steps.
-     * @return JSONArray This returns the best number of steps.
-     */
-    public  JSONArray getBestSteps() throws JSONException {return new JSONArray(new Integer(getDat("bestSteps")).toString());}
-
-    /**
-     * This method is used to fetch the best distance travelled.
-     * @return String This returns the best distance travelled.
-     */
-    public  JSONArray getBestDistance() throws JSONException {return new JSONArray(new Integer(getDat("bestDistance")).toString());}
-    
-    //for the sake of the interface
-    public JSONObject getLifeTime() throws JSONException{return null;}
-
-    /**
-     * This method searches the JSON object for the required value.
-     * @param dat The value required from the JSON object
-     * @return int The integer requested.
-     */
-    private  int getDat(String dat) {
-        int integerData = 0;
-        try {
-            String jsonStr = "{\"summary\":{\"calories\":2300,\"activeMinutes\":119,\"sedentaryMinutes\":439,\"distance\":1324,\"floors\":14,\"steps\":14,\"lifetimeFloors\":1400,\"lifetimeSteps\":140321,\"lifetimeDistance\":14000,\"bestFloors\":21,\"bestSteps\":14000,\"bestDistance\":25000}}";
-            JSONObject o = new JSONObject(jsonStr);
-            JSONObject element =  o.getJSONObject("summary");
-            integerData = element.getInt(dat);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return integerData;
-    }
 
     public JSONObject getDistanceSeries() throws JSONException{
-		// TODO Auto-generated method stub
-		return null;
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-distance-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	JSONObject thing = new JSONObject (str);
+    	return thing;
 	}
 
     public JSONObject getStepsSeries() throws JSONException{
-		// TODO Auto-generated method stub
-		return null;
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-steps-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	JSONObject thing = new JSONObject (str);
+    	return thing;
 	}
 
     public JSONObject getCalSeries() throws JSONException{
-		// TODO Auto-generated method stub
-		return null;
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-calories-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	JSONObject thing = new JSONObject (str);
+    	return thing;
 	}
 
     public JSONObject getFloorsSeries() throws JSONException{
-		// TODO Auto-generated method stub
-		return null;
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-floors-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	JSONObject thing = new JSONObject (str);
+    	return thing;
 	}
     
     public JSONObject getHeartRateSeries() throws JSONException{
-		// TODO Auto-generated method stub
-		return null;
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-heart-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	JSONObject thing = new JSONObject (str);
+    	return thing;
 	}
     
     public JSONObject getSedentaryMinutesSeries() throws JSONException{
-		// TODO Auto-generated method stub
-		return null;
-	}
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-minutesSedentary-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	JSONObject thing = new JSONObject (str);
+    	return thing;
+    	}
+
     
     public JSONObject getActiveMinutesSeries() throws JSONException{
-		// TODO Auto-generated method stub
-		return null;
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-minutesFairlyActive-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	JSONObject thing = new JSONObject (str);
+    	return thing;
 	}
     
     public JSONObject getGoals() throws JSONException{
+    	String str ="{\"best\":{\"total\":{\"distance\":{\"date\":\"2016-03-01\",\"value\":12.35489},\"floors\":{\"date\":\"2016-03-16\",\"value\":41.000000062320005},\"steps\":{\"date\":\"2016-03-01\",\"value\":14709}},\"tracker\":{\"distance\":{\"date\":\"2016-03-01\",\"value\":12.35489},\"floors\":{\"date\":\"2016-03-16\",\"value\":41.000000062320005},\"steps\":{\"date\":\"2016-03-01\",\"value\":14709}}},\"lifetime\":{\"total\":{\"activeScore\":-1,\"caloriesOut\":-1,\"distance\":300.85,\"floors\":857,\"steps\":401635},\"tracker\":{\"activeScore\":-1,\"caloriesOut\":-1,\"distance\":300.85,\"floors\":857,\"steps\":401635}}}";
+    	JSONObject thing = new JSONObject(str);
+    	return thing;
+	}
+	public JSONObject getLifeTime() throws JSONException {
 		// TODO Auto-generated method stub
 		return null;
 	}
