@@ -75,19 +75,19 @@ public class TestAPI implements API {
 
 
     public JSONObject getDistanceSeries() throws JSONException{
-    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-distance-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-distance-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":13.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":6.7685},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":10.76078965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
     	JSONObject thing = new JSONObject (str);
     	return thing;
 	}
 
     public JSONObject getStepsSeries() throws JSONException{
-    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-steps-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-steps-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":25.438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":3.37438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":0},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":7.3923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
     	JSONObject thing = new JSONObject (str);
     	return thing;
 	}
 
     public JSONObject getCalSeries() throws JSONException{
-    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-calories-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-calories-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":1.937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":10.937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":6.78965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":11.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
     	JSONObject thing = new JSONObject (str);
     	return thing;
 	}
@@ -99,20 +99,20 @@ public class TestAPI implements API {
 	}
     
     public JSONObject getHeartRateSeries() throws JSONException{
-    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-heart-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-heart-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":66.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":67.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":64.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":73.438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":65.13923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
     	JSONObject thing = new JSONObject (str);
     	return thing;
 	}
     
     public JSONObject getSedentaryMinutesSeries() throws JSONException{
-    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-minutesSedentary-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-minutesSedentary-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":28.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":46.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":11.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
     	JSONObject thing = new JSONObject (str);
     	return thing;
     	}
 
     
     public JSONObject getActiveMinutesSeries() throws JSONException{
-    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-minutesFairlyActive-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":16.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":1.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
+    	String str = "{\"activities-calories\":[{\"dateTime\":\"2016-03-23\",\"value\":\"68.19\"}],\"activities-minutesFairlyActive-intraday\":{\"dataset\":[{\"level\":0,\"mets\":150,\"time\":\"03:00:00\",\"value\":36.7684993765},{\"level\":0,\"mets\":150,\"time\":\"03:15:00\",\"value\":26.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:30:00\",\"value\":32.76849937438965},{\"level\":0,\"mets\":150,\"time\":\"03:45:00\",\"value\":6.76849937438965},{\"level\":0,\"mets\":10,\"time\":\"04:00:00\",\"value\":23.117900013923645}],\"datasetInterval\":15,\"datasetType\":\"minute\"}}";
     	JSONObject thing = new JSONObject (str);
     	return thing;
 	}

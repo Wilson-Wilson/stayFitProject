@@ -137,7 +137,7 @@ public class Graph {
                 series2.setName("Distance");
                 //populating the series with data
                 for(int i=0;i<TimeSeriesData.getDistanceSet().size();i++){
-                	series1.getData().add(new XYChart.Data(TimeSeriesData.getDistanceSet().get(i).getTime(), TimeSeriesData.getDistanceSet().get(i).getValue()));
+                	series2.getData().add(new XYChart.Data(TimeSeriesData.getDistanceSet().get(i).getTime(), TimeSeriesData.getDistanceSet().get(i).getValue()));
                 }
                 
               //defining a series
@@ -145,7 +145,7 @@ public class Graph {
                 series3.setName("Floors");
                 //populating the series with data
                 for(int i=0;i<TimeSeriesData.getFloorsSet().size();i++){
-                	series1.getData().add(new XYChart.Data(TimeSeriesData.getFloorsSet().get(i).getTime(), TimeSeriesData.getFloorsSet().get(i).getValue()));
+                	series3.getData().add(new XYChart.Data(TimeSeriesData.getFloorsSet().get(i).getTime(), TimeSeriesData.getFloorsSet().get(i).getValue()));
                 }
                                 
                 Scene scene  = new Scene(lineChart,800,600);
