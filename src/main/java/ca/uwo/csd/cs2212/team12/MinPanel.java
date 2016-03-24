@@ -32,6 +32,8 @@ public class MinPanel extends JPanel{
 	private int percent = 65;
 
 	// Data fields
+	public String sedDay 	= String.valueOf(Controller.getDailyTotals(5));
+	public String actDay 	= String.valueOf(Controller.getDailyTotals(4));
 	public String actWeek 	= String.valueOf(Controller.getWeeklyTotals(4));
 	public String actMonth	= String.valueOf(Controller.getMonthlyTotals(4));
 
@@ -190,11 +192,11 @@ public class MinPanel extends JPanel{
 				lblTotalActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblTotalActiveMinutes.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblSedentaryMinutes = new JLabel("Sedentary Minutes: ");
+				JLabel lblSedentaryMinutes = new JLabel("Sedentary Minutes: "+sedDay);
 				lblSedentaryMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblSedentaryMinutes.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblActiveMinutes = new JLabel("Active Minutes: ");
+				JLabel lblActiveMinutes = new JLabel("Active Minutes: "+actDay);
 				lblActiveMinutes.setForeground(java.awt.Color.WHITE);
 				lblActiveMinutes.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				GroupLayout gl_panel_1 = new GroupLayout(panel_1);

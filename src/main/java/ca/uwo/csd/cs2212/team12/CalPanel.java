@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,6 +31,8 @@ public class CalPanel extends JPanel{
 	private int percent = 30;
 
 	// Data fields
+	
+	public String dayCalories 	= String.valueOf(Controller.getDailyTotals(0));
 	public String weekCalories 	= String.valueOf(Controller.getWeeklyTotals(0));
 	public String monthCalories = String.valueOf(Controller.getMonthlyTotals(0));
 
@@ -185,7 +188,7 @@ public class CalPanel extends JPanel{
 				JPanel panel_1 = new JPanel();
 				panel_1.setOpaque(false);
 				
-				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:");
+				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:"+dayCalories);
 				lblCaloriesBurned.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurned.setForeground(java.awt.Color.WHITE);
 				

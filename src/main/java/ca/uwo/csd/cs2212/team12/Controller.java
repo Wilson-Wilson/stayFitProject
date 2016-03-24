@@ -41,10 +41,14 @@ public class Controller implements Serializable{
 	 * 4 - active minutes
 	 * 5 - sedentary minutes
 	 * */
+	private static int [] dailyTotals;
 	private static int [] weeklyTotals;
 	private static int [] monthlyTotals;
 
-
+	
+	public static int getDailyTotals(int i) {
+		return dailyTotals[i];
+	}
 	public static int getWeeklyTotals(int i) {
 		return weeklyTotals[i];
 	}
@@ -107,7 +111,7 @@ public class Controller implements Serializable{
 			}
 		}
 		
-		int [] dayValues = getDayData(newDate); 
+		dailyTotals = getDayData(newDate);
 		
 		if(!isSameWeek(newDate, oldDate)){
 			weeklyTotals = getWeekData(newDate);
@@ -174,6 +178,7 @@ public class Controller implements Serializable{
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			LocalDate addDate = LocalDate.parse(theDictionary.getLatest(), formatter);
 		    
+			dailyTotals = getDayData(addDate); 
 			weeklyTotals = getWeekData(addDate);
 			monthlyTotals = getMonthData(addDate);
 	        theAccoDict = new AccoDict();
@@ -268,7 +273,8 @@ public class Controller implements Serializable{
         MWindow window = new MWindow();
         window.frame.setSize(1000,600);
         window.frame.setVisible(true);
-
+        
+        dailyTotals = getDayData(now); 
         weeklyTotals = getWeekData(now);
 		monthlyTotals = getMonthData(now);
         theAccoDict = new AccoDict();
