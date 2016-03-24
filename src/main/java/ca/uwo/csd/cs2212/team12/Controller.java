@@ -31,6 +31,19 @@ public class Controller implements Serializable{
 	private static AccoDict	theAccoDict;
 	private static DailyGoals theDailyGoals;
 	
+	/*
+	 * For the weeklyTotals and monthlyTotal arrays
+	 * 0 - calories
+	 * 1 - distance
+	 * 2 - floors
+	 * 3 - steps
+	 * 4 - active minutes
+	 * 5 - sedentary minutes
+	 * */
+	private static int [] weeklyTotals;
+	private static int [] monthlyTotals;
+
+	
 	private static final long serialVersionUID= 1L;
 	private static final String DATADICT= "datadict.boop";
 	private static final String TIMESERIES= "timeseries.boop";
@@ -83,22 +96,13 @@ public class Controller implements Serializable{
 		}
 		
 		int [] dayValues = getDayData(newDate); 
-		/* 
-		 * UI.setCaloriesVariable(dayValues[0]);
-		*/
 		
 		if(!isSameWeek(newDate, oldDate)){
-			int[] weekValues = getWeekData(newDate);
-			/*UI.setCaloriesVariable(weekValues[0]);
-			...
-			*/
+			weeklyTotals = getWeekData(newDate);
 		}
 		
 		if(!isSameMonth(newDate, oldDate)){
-			int[] monthValues = getMonthData(newDate);
-			/*UI.setCaloriesVariable(weekValues[0]);
-			...
-			*/
+			monthlyTotals = getMonthData(newDate);
 		}
 		
 		accoCheck(newDate);
@@ -213,6 +217,8 @@ public class Controller implements Serializable{
         window.frame.setSize(1000,600);
         window.frame.setVisible(true);
 
+        weeklyTotals = getWeekData(now);
+		monthlyTotals = getMonthData(now);
         theAccoDict = new AccoDict();
 		accoCheck(now);
 		goalsCheck(now);
