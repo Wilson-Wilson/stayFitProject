@@ -5,6 +5,8 @@ import java.awt.event.*;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import javafx.stage.Stage;
@@ -852,10 +854,22 @@ public class DashBoardPanel extends JPanel {
 
 
             public void actionPerformed(ActionEvent ae) {
-
+            	
+            	DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            	Format tempForm = new SimpleDateFormat("yyyy" + "-"+"MM" + "-"+"dd");
+            	
             	oldDate = date;
-				oldDateString = dateString;
 				date= subtractDay(date);
+				String dateStr=tempForm.format(date);
+				System.out.println(dateStr);
+				
+				LocalDate selectedDate= LocalDate.parse(dateStr, formatter2);
+				
+				LocalDate earliest = LocalDate.parse(Controller.getTheDictionary().getEarliest(), formatter2);
+				
+				
+				if(!selectedDate.isBefore(earliest)){
+				oldDateString = dateString;
 				dateString = formatter.format(date);
 				
 				System.out.println(date.toString());
@@ -876,7 +890,14 @@ public class DashBoardPanel extends JPanel {
         		cl.show(panel_3,"11");
         		dash.checkPref();
                 
-
+				}
+				else{
+					date=oldDate;
+					System.out.println("This date is no good"); 
+					
+					JOptionPane.showMessageDialog(frame, "There is no data stored for the date you are trying to select! Please select a different date.");
+				}
+				
             }});
         
         dashPanel.add(leftarrow, BorderLayout.WEST);
@@ -894,10 +915,20 @@ public class DashBoardPanel extends JPanel {
 
 
             public void actionPerformed(ActionEvent ae) {
+            	
 
             	oldDate = date;
-				oldDateString = dateString;
 				date= addDay(date);
+				
+				DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				Format tempForm = new SimpleDateFormat("yyyy" + "-"+"MM" + "-"+"dd");
+				
+				String dateStr= tempForm.format(date);
+				
+				LocalDate selectedDate= LocalDate.parse(dateStr, formatter2);				
+				
+				if(!selectedDate.isAfter(LocalDate.now())){
+				oldDateString = dateString;
 				dateString = formatter.format(date);
 				
 				System.out.println(date.toString());
@@ -916,7 +947,13 @@ public class DashBoardPanel extends JPanel {
         		panel_3.add(dash,"11");
         		cl.show(panel_3,"11");
         		dash.checkPref();
-                
+				}
+				else{
+					
+					date=oldDate;
+					JOptionPane.showMessageDialog(frame, "This date is in the future and does not hold any FitBit data. Please select a different date.");
+
+				}
 
             }});
         
@@ -1114,10 +1151,28 @@ public class DashBoardPanel extends JPanel {
         datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				oldDate = date;
-				oldDateString = dateString;
-				dateString = formatter.format(datePicker.getDate());
 				date= datePicker.getDate();
-				System.out.println(date.toString());
+				
+				DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				Format tempForm = new SimpleDateFormat("yyyy" + "-"+"MM" + "-"+"dd");
+				
+				String dateStr= tempForm.format(date);
+				
+				LocalDate selectedDate= LocalDate.parse(dateStr, formatter2);
+				LocalDate earliest = LocalDate.parse(Controller.getTheDictionary().getEarliest(), formatter2);
+				
+				dateString = formatter.format(datePicker.getDate());
+				
+				System.out.println(!selectedDate.isAfter(LocalDate.now()));
+				System.out.println(!selectedDate.isBefore(earliest));
+				
+				
+				if(!(selectedDate.isAfter(LocalDate.now()) || selectedDate.isBefore(earliest))){
+					dateString = formatter.format(datePicker.getDate());
+					oldDateString = dateString;
+					
+					System.out.println("WE IN HERE");
+					
 				try {
 					Controller.changeDate(dateString, oldDateString);
 				} catch (JSONException e1) {
@@ -1128,10 +1183,19 @@ public class DashBoardPanel extends JPanel {
 					e1.printStackTrace();
 				}
 				
-				
 				lblNewLabel_3.setText(dateString);
+            	DashBoardPanel dash= new DashBoardPanel();
+        		panel_3.add(dash,"11");
+        		cl.show(panel_3,"11");
+        		dash.checkPref();
 			 
-			 
+				}
+				else{
+					datePicker.setDate(oldDate);
+					date=oldDate;
+					JOptionPane.showMessageDialog(frame, "The date you are trying to access is invalid, please select a different date.");
+
+				}
 				
 			}
 		});
