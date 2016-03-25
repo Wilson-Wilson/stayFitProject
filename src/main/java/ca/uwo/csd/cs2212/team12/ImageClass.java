@@ -14,7 +14,16 @@ public class ImageClass {
 	    static ImageIcon caloriesAltIcon= new ImageIcon("src/main/resources/FireIcon3.png");
 	    static ImageIcon minutesIcon = new ImageIcon("src/main/resources/TimeIcon2.png");
 	    static ImageIcon minutesAltIcon = new ImageIcon("src/main/resources/TimeIcon3.png");
-	    static ImageIcon movementIcon = new ImageIcon("src/main/resources/RunningIcon2.png");
+	    public static void setThumbsupIcon(ImageIcon thumbsupIcon) {
+			ImageClass.thumbsupIcon = thumbsupIcon;
+		}
+
+
+		public static ImageIcon getThumbsupIcon() {
+			return thumbsupIcon;
+		}
+
+		static ImageIcon movementIcon = new ImageIcon("src/main/resources/RunningIcon2.png");
 	    static ImageIcon movementAltIcon= new ImageIcon("src/main/resources/RunningIcon3.png");
 	    static ImageIcon lifetimeIcon = new ImageIcon("src/main/resources/StarIcon2.png");
 	    static ImageIcon timeseriesIcon = new ImageIcon("src/main/resources/BarGraphIcon2.png");
@@ -29,6 +38,7 @@ public class ImageClass {
 	   	static ImageIcon trophyIcon2=new ImageIcon("src/main/resources/Trophy2.png");
 	   	static ImageIcon smallrightarrow=new ImageIcon("src/main/resources/smallrightarrow.png");
 		static ImageIcon homebuttonIcon= new ImageIcon("src/main/resources/home2.png");
+		static ImageIcon thumbsupIcon=new ImageIcon("src/main/resources/thumbs up.png");
 		static ImageIcon homebuttonAltIcon= new ImageIcon("src/main/resources/home3.png");
 	    static ImageIcon smallleftarrow= new ImageIcon("src/main/resources/smallleftarrow.png");
 	    static ImageIcon refreshIcon = new ImageIcon("src/main/resources/refreshIcon.png");
@@ -219,5 +229,12 @@ public class ImageClass {
 	 * @return goldMedalWithStarIcon
 	 */
 	public static ImageIcon getGoldMedalWithStarIcon() 	{return goldMedalWithStarIcon;}
+	
+	
+	/**
+	 * This method returns thumbsupIcon
+	 * @return thumbsupIcon
+	 */
+	public static ImageIcon getThumpsupIcon() {return thumbsupIcon;}
 
 }
