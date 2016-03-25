@@ -21,11 +21,14 @@ public class ControllerTest {
 	public void mainTest() throws JSONException, ParseException, IOException {
 		
 		//Test case1: no serialized data and internet is available:
-		Files.deleteIfExists(Paths.get("datadict.boop"));
+		
+/*		Files.deleteIfExists(Paths.get("datadict.boop"));
 		Files.deleteIfExists(Paths.get("timeseries.boop"));
 		Files.deleteIfExists(Paths.get("userinfo.boop"));
 		Files.deleteIfExists(Paths.get("preferences.boop"));
 		Files.deleteIfExists(Paths.get("dailygoals.boop"));
+		*/
+		
 		Controller.onStartUp();
 		
 			//Assert that default Preference constructor was called successfully
@@ -35,14 +38,17 @@ public class ControllerTest {
 		Assert.assertEquals(true, Preferences.isShowMovementsCard());
 		Assert.assertEquals(true, Preferences.isShowLifetimeCard());
 		Assert.assertEquals(true, Preferences.isShowBestDaysCard());
-			//Modify Preferences for serialization purposes
+			
+		
+		//Modify Preferences for serialization purposes
+		Preferences.showCaloriesCard = false;
 		
 		Controller.onClose();
 		System.exit(2);
 		
-		//Test case2: serialized data is available but internet is not available
+/*		//Test case2: serialized data is available but internet is not available
 		Controller.onStartUp();
-		System.exit(2);
+		System.exit(2);*/
 	      
 	}
 	
