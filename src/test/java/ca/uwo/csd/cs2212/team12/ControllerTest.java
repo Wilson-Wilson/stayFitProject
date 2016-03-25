@@ -29,9 +29,10 @@ public class ControllerTest {
 		Files.deleteIfExists(Paths.get("dailygoals.boop"));
 		*/
 		
-		Controller.onStartUp();
+		//Controller.onStartUp();
 		
 			//Assert that default Preference constructor was called successfully
+		Preferences.setAllTrue();
 		Assert.assertEquals(true, Preferences.isShowBestDaysCard());
 		Assert.assertEquals(true, Preferences.isShowCaloriesCard());
 		Assert.assertEquals(true, Preferences.isShowMinutesCard());
@@ -44,7 +45,7 @@ public class ControllerTest {
 		Preferences.showCaloriesCard = false;
 		
 		Controller.onClose();
-		System.exit(2);
+		//System.exit(2);
 		
 /*		//Test case2: serialized data is available but internet is not available
 		Controller.onStartUp();
