@@ -1,6 +1,7 @@
 package ca.uwo.csd.cs2212.team12;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,7 +9,7 @@ import org.json.JSONObject;
 public class DataPoint implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private int value;
+	private float value;
 	private String time;
 	
 	
@@ -19,14 +20,14 @@ public class DataPoint implements Serializable {
 	 * @throws JSONException
 	 */
 	public DataPoint (JSONObject dataPoint) throws JSONException{
-		this.value = dataPoint.getInt("value");
+		this.value = BigDecimal.valueOf(dataPoint.getInt("value")).floatValue();
 		this.time = dataPoint.getString("time");
 	}
 	
 	public DataPoint(){
 	}
 	
-	public int getValue(){
+	public float getValue(){
 		return this.value;
 	}
 	

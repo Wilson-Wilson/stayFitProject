@@ -1,5 +1,6 @@
 package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,14 +9,14 @@ public class DailyGoals implements Serializable{
 	
 	 private int stepGoal;
 	 private int floorGoal;
-	 private int distGoal;
+	 private float distGoal;
 	 private int calGoal;
 	 private static final long serialVersionUID= 1L;
 
 	 public DailyGoals(JSONObject goals) throws JSONException{
 	    stepGoal=goals.getJSONObject("goals").getInt("steps");
 	    floorGoal=goals.getJSONObject("goals").getInt("floors");
-	    distGoal=goals.getJSONObject("goals").getInt("distance");
+	    distGoal=BigDecimal.valueOf(goals.getJSONObject("goals").getDouble("distance")).floatValue();
 	    calGoal=goals.getJSONObject("goals").getInt("caloriesOut");
 	  }
 	
@@ -58,7 +59,7 @@ public class DailyGoals implements Serializable{
 	* Returns value of distGoal
 	* @return
 	*/
-	public int getDistGoal() {
+	public float getDistGoal() {
 		return distGoal;
 	}
 	
@@ -66,7 +67,7 @@ public class DailyGoals implements Serializable{
 	* Sets new value of distGoal
 	* @param
 	*/
-	public void setDistGoal(int distGoal) {
+	public void setDistGoal(float distGoal) {
 		this.distGoal = distGoal;
 	}
 	

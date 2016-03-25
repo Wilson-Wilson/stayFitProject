@@ -1,5 +1,6 @@
 package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import org.json.JSONArray;
@@ -37,9 +38,8 @@ public class DataDict implements Serializable{
 	  
 	  
 	  for(int i=0; i < numdays; i++){
-		  
 		  int addCal = calories.getJSONArray("activities-calories").getJSONObject(i).getInt("value");
-		  int addDistance = distance.getJSONArray("activities-distance").getJSONObject(i).getInt("value");
+		  float addDistance = BigDecimal.valueOf(distance.getJSONArray("activities-distance").getJSONObject(i).getDouble("value")).floatValue();
 		  int addFloors = floors.getJSONArray("activities-floors").getJSONObject(i).getInt("value");
 		  int addSteps = steps.getJSONArray("activities-steps").getJSONObject(i).getInt("value");
 		  int addActive = activeMins.getJSONArray("activities-minutesFairlyActive").getJSONObject(i).getInt("value");
