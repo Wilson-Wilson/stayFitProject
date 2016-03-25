@@ -41,18 +41,18 @@ public class Controller implements Serializable{
 	 * 4 - active minutes
 	 * 5 - sedentary minutes
 	 * */
-	private static int [] dailyTotals;
-	private static int [] weeklyTotals;
-	private static int [] monthlyTotals;
+	private static float [] dailyTotals;
+	private static float [] weeklyTotals;
+	private static float [] monthlyTotals;
 
 	
-	public static int getDailyTotals(int i) {
+	public static float getDailyTotals(int i) {
 		return dailyTotals[i];
 	}
-	public static int getWeeklyTotals(int i) {
+	public static float getWeeklyTotals(int i) {
 		return weeklyTotals[i];
 	}
-	public static int getMonthlyTotals(int i) {
+	public static float getMonthlyTotals(int i) {
 		return monthlyTotals[i];
 	}
 
@@ -246,7 +246,7 @@ public class Controller implements Serializable{
 	            Thread.currentThread().interrupt();
 	        }
 			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
-			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeDistance = theAPI.getDistanceSeries();
 			try {
 	            Thread.sleep(1000);                 //1000 milliseconds is one second.
 	        } catch(InterruptedException ex) {
@@ -273,8 +273,19 @@ public class Controller implements Serializable{
 			JSONObject dictSedentary = theAPI.getSedentaryMinutes();
 			theDictionary = new DataDict(dictCal, dictDist, dictFloors, dictSteps, dictActive, dictSedentary);
 			
-			JSONObject dailyGoals = theAPI.getGoals();
-			theDailyGoals = new DailyGoals(dailyGoals);
+			 try{
+				 JSONObject dailyGoals = theAPI.getGoals();
+				 theDailyGoals = new DailyGoals(dailyGoals);
+	            }
+	            catch(Exception e){
+	                System.out.println(
+	                        "no goals to fetch"+e.getMessage());
+	                theDailyGoals = new DailyGoals();
+	    			theDailyGoals.setCalGoal(0);
+	    			theDailyGoals.setDistGoal(0);
+	    			theDailyGoals.setFloorGoal(0);
+	    			theDailyGoals.setStepGoal(0);
+	            }
 		}
 		else{
 			File f = new File("datadict.boop"),g = new File("timeseries.boop"),h = new File("userinfo.boop");
@@ -439,9 +450,9 @@ public class Controller implements Serializable{
 	 * @param theDate the date to retrieve data from.
 	 * @return int [] the array containing the data values of the theDate.
 	 */
-	private static int[] getDayData(LocalDate theDate){
+	private static float[] getDayData(LocalDate theDate){
 		
-		int [] dayValues = new int[6];
+		float [] dayValues = new float[6];
 		
 		String dayString = theDate.toString();
 		DataEntry theDay = theDictionary.getDictionary().get(dayString);
@@ -463,13 +474,13 @@ public class Controller implements Serializable{
 	 * @param theDate the Date belonging to the week whose values are being queried.
 	 * @return int [] the array containing the weekly sum values
 	 */
-	private static int[] getWeekData(LocalDate theDate){
+	private static float[] getWeekData(LocalDate theDate){
 		
 		LocalDate dayObject = null;
 		String dayString;
 		DataEntry currentDay;
-		int i;
-		int [] weekValues = new int[6];
+		float i;
+		float [] weekValues = new float[6];
 		
 		switch(theDate.getDayOfWeek()){
 			case SUNDAY:	dayObject = theDate;
@@ -517,13 +528,13 @@ public class Controller implements Serializable{
 	 * @param theDate the Date belonging to the month whose values are being queried.
 	 * @return int [] the array containing the month sum values
 	 */
-	private static int[] getMonthData(LocalDate theDate){
+	private static float[] getMonthData(LocalDate theDate){
 		
 		LocalDate dayObject;
 		String dayString;
 		DataEntry currentDay;
-		int [] monthValues = new int[6];
-		int currentMonth = theDate.getMonthValue();
+		float [] monthValues = new float[6];
+		float currentMonth = theDate.getMonthValue();
 		
 		dayObject = theDate.withDayOfMonth(1);
 		dayString = dayObject.toString();
@@ -645,29 +656,29 @@ public class Controller implements Serializable{
 	 */
 	private static void accoCheck(LocalDate theDate){
 		
-		int [] dayValues = getDayData(theDate);
+		float [] dayValues = getDayData(theDate);
 
 		for (int i = 0; i < 20; i++){
 			  
 			  Accolade acco = theAccoDict.getList()[i];
 			  
-			  if (acco.getType().equals("steps") && dayValues[3] >= acco.getThreshold()){
+			  if (acco.getType().equals("steps") && (int)dayValues[3] >= acco.getThreshold()){
 				  acco.setObtained(true);
 			  }
-			  else if(acco.getType().equals("calories") && dayValues[0] >= acco.getThreshold()){
+			  else if(acco.getType().equals("calories") && (int)dayValues[0] >= acco.getThreshold()){
 				  acco.setObtained(true);
 			  }
-			  else if(acco.getType().equals("distance") && dayValues[1] >= acco.getThreshold()){
+			  else if(acco.getType().equals("distance") && dayValues[1] >= (float)acco.getThreshold()){
 				  acco.setObtained(true);
 			  }
-			  else if(acco.getType().equals("floors") && dayValues[2] >= acco.getThreshold()){
+			  else if(acco.getType().equals("floors") && (int)dayValues[2] >= acco.getThreshold()){
 				  acco.setObtained(true);
 			  }
-			  else if(acco.getType().equals("activeMins") && dayValues[4] >= acco.getThreshold()){
+			  else if(acco.getType().equals("activeMins") && (int)dayValues[4] >= acco.getThreshold()){
 				  acco.setObtained(true);
 			  }
 			  else {
-				  if(acco.getType().equals("sedentaryMins") && dayValues[5] >= acco.getThreshold()){
+				  if(acco.getType().equals("sedentaryMins") && (int)dayValues[5] >= acco.getThreshold()){
 					  acco.setObtained(true);
 				  }
 			  }
@@ -676,19 +687,19 @@ public class Controller implements Serializable{
 	
 	private static void goalsCheck(LocalDate theDate) {
 		
-		int [] dayValues = getDayData(theDate);
+		float [] dayValues = getDayData(theDate);
 		
-		if(theDailyGoals.getStepGoal() > dayValues[3]){
+		if(theDailyGoals.getStepGoal() > (int)dayValues[3]){
 			//update UI
 		}
 		
-		if(theDailyGoals.getFloorGoal() > dayValues[2]){
+		if(theDailyGoals.getFloorGoal() > (int)dayValues[2]){
 			//update UI
 		}
-		if(theDailyGoals.getDistGoal() > dayValues[1]){
+		if((float)theDailyGoals.getDistGoal() > dayValues[1]){
 			//update UI
 		}
-		if(theDailyGoals.getCalGoal() > dayValues[0]){
+		if(theDailyGoals.getCalGoal() > (int)dayValues[0]){
 			//update UI
 		}
 		

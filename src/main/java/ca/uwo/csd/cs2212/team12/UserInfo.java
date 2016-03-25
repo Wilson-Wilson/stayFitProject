@@ -1,6 +1,8 @@
 package ca.uwo.csd.cs2212.team12;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,10 +14,10 @@ public class UserInfo implements Serializable {
 	private String distanceBestDay;
 	private String floorsBestDay;
 	private String stepsBestDay;
-	private int distanceBestVal;
+	private float distanceBestVal;
 	private int floorsBestVal;
 	private int stepsBestVal;
-	private int distanceLife;
+	private float distanceLife;
 	private int floorsLife;
 	private int stepsLife;
 
@@ -30,11 +32,11 @@ public class UserInfo implements Serializable {
 		this.distanceBestDay = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("distance").getString("date");
 		this.floorsBestDay = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("floors").getString("date");
 		this.stepsBestDay = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("steps").getString("date");
-		this.distanceBestVal = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("distance").getInt("value");
+		this.distanceBestVal = BigDecimal.valueOf(lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("distance").getDouble("value")).floatValue();
 		this.floorsBestVal = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("floors").getInt("value");
 		this.stepsBestVal = lifeStats.getJSONObject("best").getJSONObject("total").getJSONObject("steps").getInt("value");
 
-		this.distanceLife = lifeStats.getJSONObject("lifetime").getJSONObject("total").getInt("distance");
+		this.distanceLife = BigDecimal.valueOf(lifeStats.getJSONObject("lifetime").getJSONObject("total").getDouble("distance")).floatValue();
 		this.floorsLife = lifeStats.getJSONObject("lifetime").getJSONObject("total").getInt("floors");
 		this.stepsLife = lifeStats.getJSONObject("lifetime").getJSONObject("total").getInt("steps");;
 	}
@@ -49,7 +51,7 @@ public class UserInfo implements Serializable {
 	* This method returns the value of distanceLife.
 	* @return int This returns the value of distanceLife.
 	*/
-	public int getDistanceLife() {
+	public float getDistanceLife() {
 		return this.distanceLife;
 	}
 
@@ -97,7 +99,7 @@ public class UserInfo implements Serializable {
 	* This method returns the value of distanceBestVal.
 	* @return int This returns the value of distanceBestVal.
 	*/
-	public int getDistanceBestVal(){
+	public float getDistanceBestVal(){
 		return this.distanceBestVal;
 	}
 
@@ -105,7 +107,7 @@ public class UserInfo implements Serializable {
 	* This method returns the value of floorsBestVal.
 	* @return int This returns the value of floorsBestVal.
 	*/
-	public int getFloorsBestVal(){
+	public float getFloorsBestVal(){
 		return this.floorsBestVal;
 	}
 

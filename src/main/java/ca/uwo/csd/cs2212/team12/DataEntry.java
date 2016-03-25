@@ -7,7 +7,7 @@ public class DataEntry implements Serializable {
 	 * The data entries.
 	 */
 	private int calBurned;
-	private int distanceTravelled;
+	private float distanceTravelled;
 	private int floorsClimbed;
 	private int stepsTaken;
 	private int actMins;
@@ -25,7 +25,7 @@ public class DataEntry implements Serializable {
 	 * @param sedMinutes This is the user's number of sedentary minutes.
 	 * @param theDate This is the date at which the previous values were recorded.
 	 */
-	public DataEntry(int cal, int dist, int floors, int steps, int actMinutes, int sedMinutes, String theDate){
+	public DataEntry(int cal, float dist, int floors, int steps, int actMinutes, int sedMinutes, String theDate){
 			 calBurned= cal;
 			 distanceTravelled= dist;
 			 floorsClimbed= floors;
@@ -60,14 +60,14 @@ public class DataEntry implements Serializable {
 	* This method returns the distance travelled by the user.
 	* @return int This is the value of distanceTravelled
 	*/
-	public int getDistanceTravelled() {
+	public float getDistanceTravelled() {
 		return distanceTravelled;
 	}
 
 	/**
 	* This method sets the distance travelled by the user.
 	*/
-	public void setDistanceTravelled(int distanceTravelled) {
+	public void setDistanceTravelled(float distanceTravelled) {
 		this.distanceTravelled = distanceTravelled;
 	}
 
