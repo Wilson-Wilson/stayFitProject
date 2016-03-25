@@ -65,6 +65,20 @@ public class Controller implements Serializable{
 	private static final String GOALS="dailygoals.boop";	
 	
 	/**
+<<<<<<< HEAD
+	 * Constructor that creates Controller object from apiParam. 
+	 * The method is only used in StayFit.java with onStartUp() defined below.
+	 * @param apiParam 
+	 */
+	//Add UI parameter and create initializeController() method in Stayfit that creates 
+		//a controller object and calls onStartUp()
+	public Controller(){	
+	}
+	
+	
+	/**
+=======
+>>>>>>> dev
 	 * This method refreshes the user interface with the data relating to the newly 
 	 * selected date.
 	 * If there is no internet connection available, but the new date is within the range of theDictionary
@@ -145,7 +159,7 @@ public class Controller implements Serializable{
 	 * @throws ParseException 
 	 * @throws JSONException 
 	 */
-	public static void onStartUp() throws IOException, ParseException, JSONException{
+	public static void onStartUp() throws JSONException, ParseException{
 		
 
 		if(testFlag == true){
