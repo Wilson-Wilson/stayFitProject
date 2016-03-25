@@ -183,16 +183,18 @@ public class CalPanel extends JPanel{
 				panel_9.add(panel, BorderLayout.CENTER);
 				CircleProgressBar progress=new CircleProgressBar(percent,new java.awt.Color(0,128,0));
 				progress.setBackground(new java.awt.Color(255, 69, 0));
+				progress.setToolTipText("Your Goal Progress!");
+				
 				panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				
 				JPanel panel_1 = new JPanel();
 				panel_1.setOpaque(false);
 				
-				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned:"+dayCalories);
+				JLabel lblCaloriesBurned = new JLabel("Current Calories Burned: "+dayCalories);
 				lblCaloriesBurned.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurned.setForeground(java.awt.Color.WHITE);
 				
-				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned:" + weekCalories);
+				JLabel lblCaloriesBurnedFor = new JLabel("Week's Calories Burned: " + weekCalories);
 				lblCaloriesBurnedFor.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 				lblCaloriesBurnedFor.setForeground(java.awt.Color.WHITE);
 				panel.add(panel_1);
@@ -230,6 +232,12 @@ public class CalPanel extends JPanel{
 				);
 				panel_1.setLayout(gl_panel_1);
 				panel.add(progress);
+				
+				Component horizontalStrut = Box.createHorizontalStrut(20);
+				panel.add(horizontalStrut);
+				
+				JLabel lblYourProgressIs = new JLabel("Your Progress is:");
+				panel.add(lblYourProgressIs);
 
 
 
@@ -378,6 +386,18 @@ public class CalPanel extends JPanel{
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));
 		panel_11.add(lblNewLabel_1, BorderLayout.NORTH);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
+		panel_11.add(panel_2, BorderLayout.CENTER);
+		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel lblNewLabel_2 = new JLabel("Please go to the Accolades and Goals Section to see a list of all the Accolades\r\n\r\n\r\n");
+		lblNewLabel_2.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+		lblNewLabel_2.setForeground(java.awt.Color.WHITE);
+		lblNewLabel_2.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(lblNewLabel_2);
   	    viewport.setOpaque(false);
         scrollPane.setViewport(viewport);
 

@@ -180,15 +180,15 @@ public class LifePanel extends JPanel {
 		panel_6.setOpaque(false);
 		panel_9.add(panel_6, BorderLayout.CENTER);
 		
-		JLabel lblBestDistance = new JLabel("Lifetime Distance: " + lifeDistance);
+		JLabel lblBestDistance = new JLabel("Lifetime Distance(km): " + lifeDistance);
 		lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestDistance.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestFloors = new JLabel("Lifetime Floors:" + lifeFloors);
+		JLabel lblBestFloors = new JLabel("Lifetime Floors: " + lifeFloors);
 		lblBestFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestFloors.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestSteps = new JLabel("Lifetime Steps:" + lifeSteps);
+		JLabel lblBestSteps = new JLabel("Lifetime Steps: " + lifeSteps);
 		lblBestSteps.setForeground(new Color(255, 255, 255));
 		lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		GroupLayout gl_panel_6 = new GroupLayout(panel_6);

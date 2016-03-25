@@ -24,8 +24,8 @@ import org.json.JSONArray;
  */
 public class AppRefreshTokens
 {
-    private static String CALL_BACK_URI="http://localhost:8080";
-    private static int CALL_BACK_PORT=8080;
+    private static final String CALL_BACK_URI="http://localhost:8080";
+    private static final int CALL_BACK_PORT=8080;
   
     public static void main( String[] args )
     {
@@ -94,7 +94,7 @@ public class AppRefreshTokens
         FitbitOAuth20ServiceImpl service = (FitbitOAuth20ServiceImpl) new ServiceBuilder()
                 .apiKey(clientID)       //fitbit uses the clientID here
                 .apiSecret(apiSecret)
-                .callback("http://localhost:8080")
+                .callback(CALL_BACK_URI)
                 .scope(scope)
                 .grantType("authorization_code")
                 .build(FitbitApi20.instance());

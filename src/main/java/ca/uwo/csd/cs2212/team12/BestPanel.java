@@ -1,7 +1,12 @@
 package ca.uwo.csd.cs2212.team12;
 
 
+
+
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Box;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -10,15 +15,19 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 
 import java.awt.*;
 
 import javax.swing.*;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
@@ -48,6 +57,9 @@ public class BestPanel extends JPanel {
 	protected int shadowGap = 5;
 
 	// Data fields
+		public String bestDistanceDay = String.valueOf(Controller.getTheUserInfo().getDistanceBestDay());
+		public String bestFloorsDay = String.valueOf(Controller.getTheUserInfo().getFloorsBestDay());
+		public String bestStepsDay = String.valueOf(Controller.getTheUserInfo().getStepsBestDay());
 		public String bestDistance = String.valueOf(Controller.getTheUserInfo().getDistanceBestVal());
 		public String bestFloors = String.valueOf(Controller.getTheUserInfo().getFloorsBestVal());
 		public String bestSteps = String.valueOf(Controller.getTheUserInfo().getStepsBestVal());
@@ -179,44 +191,82 @@ public class BestPanel extends JPanel {
 		panel_6.setOpaque(false);
 		panel_9.add(panel_6, BorderLayout.CENTER);
 		
-		JLabel lblBestDistance = new JLabel("Best Distance: "+bestDistance);
+		JLabel lblBestDistance = new JLabel("Best Distance(km): "+bestDistance);
 		lblBestDistance.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestDistance.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestFloors = new JLabel("Best Floors:"+bestFloors);
+		JLabel lblBestFloors = new JLabel("Best Floors: "+bestFloors);
 		lblBestFloors.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
 		lblBestFloors.setForeground(new Color(255, 255, 255));
 		
-		JLabel lblBestSteps = new JLabel("Best Steps:"+bestSteps);
+		JLabel lblBestSteps = new JLabel("Best Steps: "+bestSteps);
 		lblBestSteps.setForeground(new Color(255, 255, 255));
 		lblBestSteps.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		
+		JLabel lblKeepItMoving = new JLabel("KEEP IT MOVING!");
+		lblKeepItMoving.setHorizontalAlignment(SwingConstants.CENTER);
+		lblKeepItMoving.setFont(new Font("Stencil", Font.PLAIN, 25));
+		lblKeepItMoving.setForeground(new Color(255, 255, 255));
+		
+		JLabel label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setIcon(new ImageIcon("C:\\Users\\Jodi-Marie\\courses\\cs2212\\labs\\team12\\src\\main\\resources\\thumbs up.png"));
+		
+		JLabel lblBestFloorsDate = new JLabel("Best Floor's Date: "+bestFloorsDay);
+		lblBestFloorsDate.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		lblBestFloorsDate.setForeground(Color.WHITE);
+		
+		JLabel lblBestStepsDate = new JLabel("Best Step's Date: "+bestStepsDay);
+		lblBestStepsDate.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		lblBestStepsDate.setForeground(Color.WHITE);
+		
+		JLabel lblBestDistanceDate = new JLabel("Best Distance Date: "+bestDistanceDay);
+		lblBestDistanceDate.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+		lblBestDistanceDate.setForeground(Color.WHITE);
 		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
 		gl_panel_6.setHorizontalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
+			gl_panel_6.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel_6.createSequentialGroup()
-					.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
+					.addGap(70)
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel_6.createSequentialGroup()
-							.addGap(241)
-							.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_6.createSequentialGroup()
-									.addComponent(lblBestSteps, GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-									.addGap(11))
-								.addComponent(lblBestDistance, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-						.addGroup(Alignment.TRAILING, gl_panel_6.createSequentialGroup()
-							.addGap(240)
-							.addComponent(lblBestFloors, GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)))
-					.addGap(1))
+							.addComponent(label, GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+							.addGap(58))
+						.addGroup(gl_panel_6.createSequentialGroup()
+							.addComponent(lblKeepItMoving, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(69))))
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addGap(165)
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblBestSteps, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+						.addComponent(lblBestDistance, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+						.addComponent(lblBestFloors, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblBestFloorsDate, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+						.addComponent(lblBestStepsDate)
+						.addComponent(lblBestDistanceDate))
+					.addContainerGap())
 		);
 		gl_panel_6.setVerticalGroup(
 			gl_panel_6.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_6.createSequentialGroup()
-					.addGap(21)
-					.addComponent(lblBestFloors, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap()
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblBestFloors, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblBestFloorsDate))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblBestSteps, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblBestSteps, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblBestStepsDate))
 					.addGap(11)
-					.addComponent(lblBestDistance, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(21, Short.MAX_VALUE))
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblBestDistance, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblBestDistanceDate))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(label)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblKeepItMoving, GroupLayout.PREFERRED_SIZE, 24, Short.MAX_VALUE))
 		);
 		panel_6.setLayout(gl_panel_6);
 
@@ -299,7 +349,6 @@ public class BestPanel extends JPanel {
 		panel_8.setLayout(gbl_panel_8);
 		viewport.setOpaque(false);
 		scrollPane.setViewport(viewport);
-
 		scrollPane.setBackground(new Color(105, 105, 105));
 		// scrollPane.setScrollPosition(new Point(20, 20));
 		scrollPane.setSize(new Dimension(5, 5));

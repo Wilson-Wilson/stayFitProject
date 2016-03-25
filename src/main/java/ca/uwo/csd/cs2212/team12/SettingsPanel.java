@@ -74,7 +74,7 @@ public class SettingsPanel extends JPanel {
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		
 		final JEditorPane editorPane = new JEditorPane();
-		
+			
 		final JEditorPane editorPane_1 = new JEditorPane();
 		
 		final JEditorPane editorPane_2 = new JEditorPane();
@@ -84,6 +84,7 @@ public class SettingsPanel extends JPanel {
 		lblCalories.setForeground(new Color(255, 255, 255));
 		
 		final JEditorPane editorPane_3 = new JEditorPane();
+		
 		
 		JButton okbutton = new JButton("");
 		okbutton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -119,23 +120,27 @@ public class SettingsPanel extends JPanel {
 	            		Controller.getTheDailyGoals().setCalGoal(add);
 	            		
 	            	}
+	            	editorPane.setText("");
+	            	editorPane_1.setText("");
+	            	editorPane_2.setText("");
+	            	editorPane_3.setText("");
 	            }});
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_8.createSequentialGroup()
-					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel_8.createSequentialGroup()
-							.addComponent(lblCards, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.TRAILING, false)
+						.addGroup(Alignment.LEADING, gl_panel_8.createSequentialGroup()
+							.addComponent(lblCards, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(editorPane)
+							.addComponent(editorPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED))
 						.addGroup(gl_panel_8.createSequentialGroup()
-							.addComponent(lblCards_1, GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-							.addGap(18)
+							.addComponent(lblCards_1, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
 							.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
-								.addComponent(editorPane_2)
-								.addComponent(editorPane_1))))
+								.addComponent(editorPane_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(editorPane_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addGap(409))
 				.addGroup(gl_panel_8.createSequentialGroup()
 					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
@@ -143,7 +148,7 @@ public class SettingsPanel extends JPanel {
 				.addGroup(gl_panel_8.createSequentialGroup()
 					.addComponent(lblCalories)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(editorPane_3)
+					.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(okbutton)
 					.addGap(309))
@@ -168,7 +173,7 @@ public class SettingsPanel extends JPanel {
 						.addComponent(lblCalories)
 						.addComponent(editorPane_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(okbutton))
-					.addGap(0, 0, Short.MAX_VALUE))
+					.addGap(0, 3, Short.MAX_VALUE))
 		);
 		panel_8.setLayout(gl_panel_8);
 
