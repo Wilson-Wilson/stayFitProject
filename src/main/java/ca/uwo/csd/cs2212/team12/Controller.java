@@ -232,7 +232,7 @@ public class Controller implements Serializable{
 	            Thread.currentThread().interrupt();
 	        }
 			JSONObject timeHeartRate = theAPI.getHeartRateSeries();
-			JSONObject timeDistance = theAPI.getCalSeries();
+			JSONObject timeDistance = theAPI.getDistanceSeries();
 			try {
 	            Thread.sleep(1000);                 //1000 milliseconds is one second.
 	        } catch(InterruptedException ex) {

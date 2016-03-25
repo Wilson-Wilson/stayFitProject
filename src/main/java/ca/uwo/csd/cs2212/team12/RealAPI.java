@@ -315,7 +315,8 @@ public class RealAPI implements API
         baseDate = calndr.getTime();
         frmt1 = String.format("%tF", enDate);
         frmt2 = String.format("%tF", baseDate);
-        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"15min.json";
+        //requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt1+"15min.json";
+        requestUrlSuffix = "activities/minutesFairlyActive/date/"+frmt2+"/"+frmt1+".json";
         //[resource-path]/date/[date]/1d/[detail-level].json
         requestUrl = requestUrlPrefix + requestUrlSuffix;
         request = new OAuthRequest(Verb.GET, requestUrl, service);
@@ -348,7 +349,7 @@ public class RealAPI implements API
             Thread.currentThread().interrupt();
         }
         return retVal;
-    }
+    }		
     
     public JSONObject getDistance() throws JSONException{
         calndr.setTime(enDate);
