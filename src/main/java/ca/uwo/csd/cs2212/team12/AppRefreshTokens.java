@@ -1,5 +1,4 @@
 package ca.uwo.csd.cs2212.team12;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -118,7 +117,7 @@ public class AppRefreshTokens
         String requestUrlPrefix = "https://api.fitbit.com/1/user/3WGW2P/";
         String requestUrl;
         //    The URL from this point is how you ask for different information
-        requestUrl = requestUrlPrefix + "activities/floors/date/2016-01-07/1d/1min/time/19:15/19:30.json";
+        requestUrl = requestUrlPrefix + "activities/minutesFairlyActive/date/2016-03-24/1d/15min.json";
         // This actually generates an HTTP request from the URL
         //    -it has a header, body ect.
         OAuthRequest request = new OAuthRequest(Verb.GET, requestUrl, service);
