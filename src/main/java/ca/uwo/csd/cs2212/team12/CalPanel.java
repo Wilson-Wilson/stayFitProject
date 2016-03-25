@@ -386,6 +386,18 @@ public class CalPanel extends JPanel{
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));
 		panel_11.add(lblNewLabel_1, BorderLayout.NORTH);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
+		panel_11.add(panel_2, BorderLayout.CENTER);
+		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel lblNewLabel_2 = new JLabel("Please go to the Accolades and Goals Section to see a list of all the Accolades\r\n\r\n\r\n");
+		lblNewLabel_2.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+		lblNewLabel_2.setForeground(java.awt.Color.WHITE);
+		lblNewLabel_2.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_2.add(lblNewLabel_2);
   	    viewport.setOpaque(false);
         scrollPane.setViewport(viewport);
 

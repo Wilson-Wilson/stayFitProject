@@ -534,6 +534,15 @@ public class MovePanel extends JPanel{
 		lblNewLabel_1.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(new java.awt.Color(255, 255, 255));
 		panel_11.add(lblNewLabel_1, BorderLayout.NORTH);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setOpaque(false);
+		panel_11.add(panel_2, BorderLayout.CENTER);
+		
+		JLabel lblNewLabel_4 = new JLabel("Please go to the Accolades and Goals Section to see a list of all the Accolades");
+		lblNewLabel_4.setFont(new java.awt.Font("Trebuchet MS", java.awt.Font.PLAIN, 15));
+		lblNewLabel_4.setForeground(java.awt.Color.WHITE);
+		panel_2.add(lblNewLabel_4);
   	    viewport.setOpaque(false);
         scrollPane.setViewport(viewport);
 
