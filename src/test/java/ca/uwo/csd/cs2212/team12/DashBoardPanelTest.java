@@ -15,7 +15,7 @@ public class DashBoardPanelTest {
     @org.junit.Test
     public void testSubtractDay() throws Exception {
         Date day = new Date(172800000); // the number of milliseconds in two days
-        day = pan.addDay(day);
+        day = pan.subtractDay(day);
         assertEquals(day,new Date(86400000)); // the number of milliseconds in one day
     }
 
