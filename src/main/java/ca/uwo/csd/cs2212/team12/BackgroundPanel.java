@@ -2,9 +2,7 @@ package ca.uwo.csd.cs2212.team12;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
 import javax.swing.*;
-
 
 public class BackgroundPanel extends JPanel {
 

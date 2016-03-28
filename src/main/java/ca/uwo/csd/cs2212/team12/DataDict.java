@@ -1,88 +1,87 @@
 package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
-import java.io.*;
+import java.math.BigDecimal;
+import java.util.HashMap;
 
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
-//PLEASE NOTE THIS SPECIFIC CLASS MOST LIKELY WON'T BE USED IN FURTHER STAGES
-//ITS MAIN PURPOSE IS TO SERVE AS A REFERENCE FOR FUTURE CLASSES
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class DataDict implements Serializable{
-
-  private String user;
-  private List<DataEntry> collection;
-
+ 
+  /**
+   * Declare theDictionary to store data entries	
+   */
+  private HashMap<String,DataEntry> theDictionary;
+  private String earliest, latest;
   private static final long serialVersionUID= 1L;
-  private static final String FILENAME= "dailydata.boop";
-  //We may need to change our collection object to a more efficient one if we decide to store many days at a time
   
   /**
-   * possible constructors for DataDict
+   * Constructor.
+   * Fills DataDict with a maximum 365 Data Entry objects.
+   *
+   * @param calories is the JSONObject carrying daily calorie burned data for a year.
+   * @param distance is the JSONObject carrying daily distance traveled data for a year.
+   * @param floors is the JSONObject carrying daily floors climbed data for a year.
+   * @param steps is the JSONObject carrying daily steps climbed data for a year.
+   * @param activeMins is the JSONObject carrying active minutes data for a year.
+   * @param sedMins is the JSONObject carrying sedentary minutes data for a year.
+   * @throws JSONException 
+   */
+  public DataDict(JSONObject calories, JSONObject distance, JSONObject floors, JSONObject steps, JSONObject activeMins, JSONObject sedMins) throws JSONException{
+	  
+	  this.theDictionary = new HashMap<String,DataEntry>(365);
+	  
+	  int numdays = calories.getJSONArray("activities-calories").length();
+	  this.earliest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(0).getString("dateTime");
+	  this.latest = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(numdays-1).getString("dateTime");
+	  
+	  
+	  for(int i=0; i < numdays; i++){
+		  int addCal = calories.getJSONArray("activities-calories").getJSONObject(i).getInt("value");
+		  float addDistance = BigDecimal.valueOf(distance.getJSONArray("activities-distance").getJSONObject(i).getDouble("value")).floatValue();
+		  int addFloors = floors.getJSONArray("activities-floors").getJSONObject(i).getInt("value");
+		  int addSteps = steps.getJSONArray("activities-steps").getJSONObject(i).getInt("value");
+		  int addActive = activeMins.getJSONArray("activities-minutesFairlyActive").getJSONObject(i).getInt("value");
+		  int addSedentary= sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(i).getInt("value");
+		  String addDate = sedMins.getJSONArray("activities-minutesSedentary").getJSONObject(i).getString("dateTime");
+		  
+		  DataEntry addMe = new DataEntry(addCal, addDistance, addFloors, addSteps, addActive, addSedentary, addDate);
+		  
+		  this.theDictionary.put(addDate, addMe);
+		   
+	  }	   
+    
+  }
+
+  /**
+   * This is the default constructor for the DataDict class.
    */
   public DataDict(){
-    collection= new ArrayList<DataEntry>();
   }
-
-  public DataDict(String user){
-    this();
-    this.user= user;
-  }
-
-  
-  /**
-	* Returns value of user
-	* @return String 
-  */
-  public String getUser(){
-    return this.user;
-  }
-
-  
-  /**
-  * Sets new value of user
-  * @param user String sets this.user to user
-  */
-  public void setUser(String user){
-    this.user= user;
-  }
-
-
 
   /**
-   * This method is used to persist DataDict object between runs.
-   * 
-   * @param dat the DataDict to be stored/serialized to a file
+   * This method returns the value of the earliest data entry available.
+   * @return String This returns the value of earliest.
    */
- 
-  private static void storeData(DataDict dat){
-    try{
-      ObjectOutputStream out= new ObjectOutputStream( new FileOutputStream(FILENAME));
-      out.writeObject(dat);
-      out.close();
-        } catch(IOException e){
-            System.out.println("DataDict could not be saved to disk. IO error occured.");
-            e.printStackTrace();
-          }
-
-    }
+  public String getEarliest(){
+	  return this.earliest;
+  }
 
   /**
-   * This method loads serialized objects from a file
+   * This method returns the value of the most recent data entry available.
+   * @return String This returns the value of latest.
    */
-  private static void loadData(){
-    try{
-      ObjectInputStream in= new ObjectInputStream( new FileInputStream(FILENAME));
-      DataEntry data= (DataEntry) in.readObject();
-
-      in.close();
-        } catch (IOException e){
-            System.out.println("DataDict could not be loaded from disk. IO error occured.");
-            e.printStackTrace();
-          }
-    	catch (ClassNotFoundException e){
-    		System.out.println("Class could not be Found!");
-            e.printStackTrace();
-    	}
-    }
-
+  public String getLatest(){
+	  return this.latest;
   }
+
+  /**
+   * This method returns the dictionary containing the user information.
+   * @return HashMap<String,DataEntry> This returns the dictionary hash map.
+   */
+  public HashMap<String, DataEntry> getDictionary(){
+	  return this.theDictionary;
+  }
+
+}

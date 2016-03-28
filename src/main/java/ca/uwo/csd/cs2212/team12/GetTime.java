@@ -1,0 +1,24 @@
+package ca.uwo.csd.cs2212.team12;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import com.github.scribejava.apis.FitbitApi20;
+import com.github.scribejava.core.builder.ServiceBuilder;
+import com.github.scribejava.core.oauth.OAuthService;
+import com.github.scribejava.core.model.*;
+import com.github.scribejava.core.oauth.OAuth20Service;
+import com.github.scribejava.apis.service.FitbitOAuth20ServiceImpl;
+import java.awt.Desktop;
+import java.net.URI;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import java.util.Calendar;
+import java.util.Date;
+

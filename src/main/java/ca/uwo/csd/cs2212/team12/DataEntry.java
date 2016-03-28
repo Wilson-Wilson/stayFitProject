@@ -1,30 +1,31 @@
 package ca.uwo.csd.cs2212.team12;
 import java.io.Serializable;
 
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
-//PLEASE NOTE THIS SPECIFIC CLASS MOST LIKELY WON'T BE USED IN FURTHER STAGES
-//ITS MAIN PURPOSE IS TO SERVE AS A REFERENCE FOR FUTURE DATASTORES
 public class DataEntry implements Serializable {
 
-		private int calBurned;
-		private int distanceTravelled;
-		private int floorsClimbed;
-		private int stepsTaken;
-		private int actMins;
-		private int sedMins;
-		private String date;
-		
-		/**
-		 * Takes integers and stores them
-		 * @param cal
-		 * @param dist
-		 * @param floors
-		 * @param steps
-		 * @param actMinutes
-		 * @param sedMinutes
-		 * @param theDate
-		 */
-		public DataEntry(int cal, int dist, int floors, int steps, int actMinutes, int sedMinutes, String theDate){
+	/**
+	 * The data entries.
+	 */
+	private int calBurned;
+	private float distanceTravelled;
+	private int floorsClimbed;
+	private int stepsTaken;
+	private int actMins;
+	private int sedMins;
+	private String date;
+	private static final long serialVersionUID= 1L;
+	
+	/**
+	 * Takes integers representing the user's fitness data, and stores them.
+	 * @param cal This is the number of calories burned by the user.
+	 * @param dist This is the distance travelled by the user.
+	 * @param floors This is the number of floors climbed by the user.
+	 * @param steps This is the number of steps taken by the user.
+	 * @param actMinutes This is the user's number of active minutes.
+	 * @param sedMinutes This is the user's number of sedentary minutes.
+	 * @param theDate This is the date at which the previous values were recorded.
+	 */
+	public DataEntry(int cal, float dist, int floors, int steps, int actMinutes, int sedMinutes, String theDate){
 			 calBurned= cal;
 			 distanceTravelled= dist;
 			 floorsClimbed= floors;
@@ -34,123 +35,112 @@ public class DataEntry implements Serializable {
 			 date= theDate;
 	}
 
-		public DataEntry(){
-			calBurned=0;
-			distanceTravelled= 0;
-			floorsClimbed= 0;
-			stepsTaken= 0;
-			actMins= 0;
-			sedMins= 0;
-			date= null;
-		}
+	/**
+	 * The default constructor for the DataEntry class.
+	 */
+	public DataEntry(){
+	}
 
 	/**
-	* Returns value of calBurned
-	* @return
+	* This method returns the number of calories burned.
+	* @return int This is the value of calBurned
 	*/
 	public int getCalBurned() {
 		return calBurned;
 	}
 
 	/**
-	* Sets new value of calBurned
-	* @param
+	* This method sets the number of calories burned.
 	*/
 	public void setCalBurned(int calBurned) {
 		this.calBurned = calBurned;
 	}
 
 	/**
-	* Returns value of distanceTravelled
-	* @return
+	* This method returns the distance travelled by the user.
+	* @return int This is the value of distanceTravelled
 	*/
-	public int getDistanceTravelled() {
+	public float getDistanceTravelled() {
 		return distanceTravelled;
 	}
 
 	/**
-	* Sets new value of distanceTravelled
-	* @param
+	* This method sets the distance travelled by the user.
 	*/
-	public void setDistanceTravelled(int distanceTravelled) {
+	public void setDistanceTravelled(float distanceTravelled) {
 		this.distanceTravelled = distanceTravelled;
 	}
 
 	/**
-	* Returns value of floorsClimbed
-	* @return
+	* This method returns the number of floors climbed by the user
+	* @return int This is the value of floorsClimbed.
 	*/
 	public int getFloorsClimbed() {
 		return floorsClimbed;
 	}
 
 	/**
-	* Sets new value of floorsClimbed
-	* @param
+	* This method sets the number of floors climbed by the user.
 	*/
 	public void setFloorsClimbed(int floorsClimbed) {
 		this.floorsClimbed = floorsClimbed;
 	}
 
 	/**
-	* Returns value of stepsTaken
-	* @return
+	* This method returns the number of steps taken by the user.
+	* @return int This is the value of stepsTaken.
 	*/
 	public int getStepsTaken() {
 		return stepsTaken;
 	}
 
 	/**
-	* Sets new value of stepsTaken
-	* @param
+	* This method sets the number of steps taken by the user.
 	*/
 	public void setStepsTaken(int stepsTaken) {
 		this.stepsTaken = stepsTaken;
 	}
 
 	/**
-	* Returns value of actMins
-	* @return
+	* This method returns the number of active minutes.
+	* @return int This is the value of actMins.
 	*/
 	public int getActMins() {
 		return actMins;
 	}
 
 	/**
-	* Sets new value of actMins
-	* @param
+	* This method sets the number of active minutes.
 	*/
 	public void setActMins(int actMins) {
 		this.actMins = actMins;
 	}
 
 	/**
-	* Returns value of sedMins
-	* @return
+	* This method returns the number of sedentary minutes.
+	* @return int This is the value of sedMins.
 	*/
 	public int getSedMins() {
 		return sedMins;
 	}
 
 	/**
-	* Sets new value of sedMins
-	* @param
+	* This method sets the number of sedentary minutes.
 	*/
 	public void setSedMins(int sedMins) {
 		this.sedMins = sedMins;
 	}
 
 	/**
-	* Returns value of date
-	* @return
+	* This method returns the date at which the data entries were recorded.
+	* @return String This is the value of the date.
 	*/
 	public String getDate() {
 		return date;
 	}
 
 	/**
-	* Sets new value of date
-	* @param
+	* This method sets the date at which the data entries were recorded.
 	*/
 	public void setDate(String date) {
 		this.date = date;

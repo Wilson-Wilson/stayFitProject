@@ -1,36 +1,142 @@
-
 package ca.uwo.csd.cs2212.team12;
+
 import java.io.Serializable;
-//NOT IMPLEMENTED IN STAGE TWO BUT WILL MOST LIKELY BE USED AS A FUTURE REFERENCE
+
 public class Preferences implements Serializable{
 
-  private boolean showCaloriesCard;
-  private boolean showMinutesCard;
-  private boolean showMovementsCard;
-  private boolean showLifetimeCard;
-  private boolean showTimeSeriesCard;
-  private boolean showBestDaysCard;
-
-  private String preferredUnits;
+  private static final long serialVersionUID= 1L;	
+  public static boolean showCaloriesCard;
+  public static boolean showMinutesCard;
+  public static boolean showMovementsCard;
+  public static boolean showLifetimeCard;
+  public static boolean showTimeSeriesCard;
+  public static boolean showBestDaysCard;
+  
+  public boolean saveCaloriesCard;
+  public boolean saveMinutesCard;
+  public boolean saveMovementsCard;
+  public boolean saveLifetimeCard;
+  public boolean saveTimeSeriesCard;
+  public boolean saveBestDaysCard;
   
   /**
    * This would be the default layout of the dashboard
    */
   public Preferences(){
-    showCaloriesCard= true;
-    showMinutesCard= true;
-    showMovementsCard= true;
-    showLifetimeCard= true;
-    showTimeSeriesCard= true;
-    showBestDaysCard= true;
-    preferredUnits= "metric";
+    
   }
+  
+  
+  /**
+ * @return the saveCaloriesCard
+ */
+public boolean isSaveCaloriesCard() {
+	return saveCaloriesCard;
+}
 
+
+/**
+ * @param saveCaloriesCard the saveCaloriesCard to set
+ */
+public void setSaveCaloriesCard(boolean saveCaloriesCard) {
+	this.saveCaloriesCard = saveCaloriesCard;
+}
+
+
+/**
+ * @return the saveMinutesCard
+ */
+public boolean isSaveMinutesCard() {
+	return saveMinutesCard;
+}
+
+
+/**
+ * @param saveMinutesCard the saveMinutesCard to set
+ */
+public void setSaveMinutesCard(boolean saveMinutesCard) {
+	this.saveMinutesCard = saveMinutesCard;
+}
+
+
+/**
+ * @return the saveMovementsCard
+ */
+public boolean isSaveMovementsCard() {
+	return saveMovementsCard;
+}
+
+
+/**
+ * @param saveMovementsCard the saveMovementsCard to set
+ */
+public void setSaveMovementsCard(boolean saveMovementsCard) {
+	this.saveMovementsCard = saveMovementsCard;
+}
+
+
+/**
+ * @return the saveLifetimeCard
+ */
+public boolean isSaveLifetimeCard() {
+	return saveLifetimeCard;
+}
+
+
+/**
+ * @param saveLifetimeCard the saveLifetimeCard to set
+ */
+public void setSaveLifetimeCard(boolean saveLifetimeCard) {
+	this.saveLifetimeCard = saveLifetimeCard;
+}
+
+
+/**
+ * @return the saveTimeSeriesCard
+ */
+public boolean isSaveTimeSeriesCard() {
+	return saveTimeSeriesCard;
+}
+
+
+/**
+ * @param saveTimeSeriesCard the saveTimeSeriesCard to set
+ */
+public void setSaveTimeSeriesCard(boolean saveTimeSeriesCard) {
+	this.saveTimeSeriesCard = saveTimeSeriesCard;
+}
+
+
+/**
+ * @return the saveBestDaysCard
+ */
+public boolean isSaveBestDaysCard() {
+	return saveBestDaysCard;
+}
+
+
+/**
+ * @param saveBestDaysCard the saveBestDaysCard to set
+ */
+public void setSaveBestDaysCard(boolean saveBestDaysCard) {
+	this.saveBestDaysCard = saveBestDaysCard;
+}
+
+
+public static void setAllTrue(){
+	    Preferences.showCaloriesCard= true;
+	    Preferences.showMinutesCard= true;
+	    Preferences.showMovementsCard= true;
+	    Preferences.showLifetimeCard= true;
+	    Preferences.showTimeSeriesCard= true;
+	    Preferences.showBestDaysCard= true;
+  }
+  
 	/**
 	* Returns value of showCaloriesCard
 	* @return boolean lets the programme know this card's display status
 	*/
-	public boolean isShowCaloriesCard() {
+	public static boolean isShowCaloriesCard() {
 		return showCaloriesCard;
 	}
 
@@ -46,7 +152,7 @@ public class Preferences implements Serializable{
 	* Returns value of showMinutesCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowMinutesCard() {
+	public static boolean isShowMinutesCard() {
 		return showMinutesCard;
 	}
 
@@ -62,7 +168,7 @@ public class Preferences implements Serializable{
 	* Returns value of showMovementsCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowMovementsCard() {
+	public static boolean isShowMovementsCard() {
 		return showMovementsCard;
 	}
 
@@ -78,7 +184,7 @@ public class Preferences implements Serializable{
 	* Returns value of showLifetimeCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowLifetimeCard() {
+	public static boolean isShowLifetimeCard() {
 		return showLifetimeCard;
 	}
 
@@ -94,8 +200,20 @@ public class Preferences implements Serializable{
 	* Returns value of showTimeSeriesCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowTimeSeriesCard() {
+	public static boolean isShowTimeSeriesCard() {
 		return showTimeSeriesCard;
+	}
+
+	/**
+	 * Returns value of noCardsShowing
+	 * @return lets the program know if any cards are visible onscreen.
+	 */
+
+	public static boolean noCardsShowing() {
+		if (!showBestDaysCard && !showCaloriesCard && !showLifetimeCard && !showMinutesCard && !showMovementsCard && !showTimeSeriesCard) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -110,7 +228,7 @@ public class Preferences implements Serializable{
 	* Returns value of showBestDaysCard
 	* @return lets the programme know this card's display status
 	*/
-	public boolean isShowBestDaysCard() {
+	public static boolean isShowBestDaysCard() {
 		return showBestDaysCard;
 	}
 
@@ -122,19 +240,5 @@ public class Preferences implements Serializable{
 		this.showBestDaysCard = showBestDaysCard;
 	}
 
-	/**
-	* Returns value of preferredUnits
-	* @return lets the programme know what unit sthe user wants the data in
-	*/
-	public String getPreferredUnits() {
-		return preferredUnits;
-	}
-
-	/**
-	* Sets new value of preferredUnits
-	* @param preferredUnits determines what units the valu of the cards will be shown in
-	*/
-	public void setPreferredUnits(String preferredUnits) {
-		this.preferredUnits = preferredUnits;
-	}
+	
 }
