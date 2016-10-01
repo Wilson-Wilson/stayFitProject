@@ -15,7 +15,7 @@ cd team12
 mvn package
 ```
 
-### Run StayFit (please note due to lack of tokens only test mode will produce data)
+### Run StayFit (please note due to lack of tokens, only test mode will produce data)
 
 In normal mode:
 
